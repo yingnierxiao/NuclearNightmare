@@ -1,0 +1,14 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\users\\blain\\documents\\unreal projects\\nuclearnightmare\\source\\nuclearnightmare\\nuclearnightmare.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\users\\blain\\documents\\unreal projects\\nuclearnightmare\\intermediate\\build\\win64\\x64\\nuclearnightmareeditor\\development\\engine\\sharedpch.engine.cpp20.h.pch",
+        "Includes": [
+            "c:\\users\\blain\\documents\\unreal projects\\nuclearnightmare\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\nuclearnightmare\\definitions.nuclearnightmare.h",
+            "c:\\users\\blain\\documents\\unreal projects\\nuclearnightmare\\source\\nuclearnightmare\\nuclearnightmare.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

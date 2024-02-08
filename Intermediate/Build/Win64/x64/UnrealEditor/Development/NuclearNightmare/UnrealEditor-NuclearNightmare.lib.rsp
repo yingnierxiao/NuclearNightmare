@@ -1,0 +1,25 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UnrealEditor-NuclearNightmare.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"C:\Users\blain\Documents\Unreal Projects\NuclearNightmare\Intermediate\Build\Win64\x64\NuclearNightmareEditor\Development\Engine\SharedPCH.Engine.Cpp20.h.obj"
+"C:\Users\blain\Documents\Unreal Projects\NuclearNightmare\Intermediate\Build\Win64\x64\UnrealEditor\Development\NuclearNightmare\NuclearNightmare.init.gen.cpp.obj"
+"C:\Users\blain\Documents\Unreal Projects\NuclearNightmare\Intermediate\Build\Win64\x64\UnrealEditor\Development\NuclearNightmare\NuclearNightmareCharacter.gen.cpp.obj"
+"C:\Users\blain\Documents\Unreal Projects\NuclearNightmare\Intermediate\Build\Win64\x64\UnrealEditor\Development\NuclearNightmare\NuclearNightmareGameMode.gen.cpp.obj"
+"C:\Users\blain\Documents\Unreal Projects\NuclearNightmare\Intermediate\Build\Win64\x64\UnrealEditor\Development\NuclearNightmare\NuclearNightmarePlayerController.gen.cpp.obj"
+"C:\Users\blain\Documents\Unreal Projects\NuclearNightmare\Intermediate\Build\Win64\x64\UnrealEditor\Development\NuclearNightmare\NuclearNightmareProjectile.gen.cpp.obj"
+"C:\Users\blain\Documents\Unreal Projects\NuclearNightmare\Intermediate\Build\Win64\x64\UnrealEditor\Development\NuclearNightmare\TP_PickUpComponent.gen.cpp.obj"
+"C:\Users\blain\Documents\Unreal Projects\NuclearNightmare\Intermediate\Build\Win64\x64\UnrealEditor\Development\NuclearNightmare\TP_WeaponComponent.gen.cpp.obj"
+"C:\Users\blain\Documents\Unreal Projects\NuclearNightmare\Intermediate\Build\Win64\x64\UnrealEditor\Development\NuclearNightmare\NuclearNightmare.cpp.obj"
+"C:\Users\blain\Documents\Unreal Projects\NuclearNightmare\Intermediate\Build\Win64\x64\UnrealEditor\Development\NuclearNightmare\NuclearNightmareCharacter.cpp.obj"
+"C:\Users\blain\Documents\Unreal Projects\NuclearNightmare\Intermediate\Build\Win64\x64\UnrealEditor\Development\NuclearNightmare\NuclearNightmareGameMode.cpp.obj"
+"C:\Users\blain\Documents\Unreal Projects\NuclearNightmare\Intermediate\Build\Win64\x64\UnrealEditor\Development\NuclearNightmare\NuclearNightmarePlayerController.cpp.obj"
+"C:\Users\blain\Documents\Unreal Projects\NuclearNightmare\Intermediate\Build\Win64\x64\UnrealEditor\Development\NuclearNightmare\NuclearNightmareProjectile.cpp.obj"
+"C:\Users\blain\Documents\Unreal Projects\NuclearNightmare\Intermediate\Build\Win64\x64\UnrealEditor\Development\NuclearNightmare\TP_PickUpComponent.cpp.obj"
+"C:\Users\blain\Documents\Unreal Projects\NuclearNightmare\Intermediate\Build\Win64\x64\UnrealEditor\Development\NuclearNightmare\TP_WeaponComponent.cpp.obj"
+"C:\Users\blain\Documents\Unreal Projects\NuclearNightmare\Intermediate\Build\Win64\x64\UnrealEditor\Development\NuclearNightmare\Default.rc2.res"
+/OUT:"C:\Users\blain\Documents\Unreal Projects\NuclearNightmare\Intermediate\Build\Win64\x64\UnrealEditor\Development\NuclearNightmare\UnrealEditor-NuclearNightmare.lib"
