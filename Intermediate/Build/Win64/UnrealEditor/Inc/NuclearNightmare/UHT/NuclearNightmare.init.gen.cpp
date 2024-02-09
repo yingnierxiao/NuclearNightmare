@@ -7,27 +7,23 @@
 #include "UObject/GeneratedCppIncludes.h"
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeNuclearNightmare_init() {}
-	NUCLEARNIGHTMARE_API UFunction* Z_Construct_UDelegateFunction_NuclearNightmare_OnPickUp__DelegateSignature();
 	static FPackageRegistrationInfo Z_Registration_Info_UPackage__Script_NuclearNightmare;
 	FORCENOINLINE UPackage* Z_Construct_UPackage__Script_NuclearNightmare()
 	{
 		if (!Z_Registration_Info_UPackage__Script_NuclearNightmare.OuterSingleton)
 		{
-			static UObject* (*const SingletonFuncArray[])() = {
-				(UObject* (*)())Z_Construct_UDelegateFunction_NuclearNightmare_OnPickUp__DelegateSignature,
-			};
 			static const UECodeGen_Private::FPackageParams PackageParams = {
 				"/Script/NuclearNightmare",
-				SingletonFuncArray,
-				UE_ARRAY_COUNT(SingletonFuncArray),
+				nullptr,
+				0,
 				PKG_CompiledIn | 0x00000000,
-				0x1B85FF43,
-				0xE0F0BA96,
+				0x25BD626C,
+				0x6D6D5453,
 				METADATA_PARAMS(0, nullptr)
 			};
 			UECodeGen_Private::ConstructUPackage(Z_Registration_Info_UPackage__Script_NuclearNightmare.OuterSingleton, PackageParams);
 		}
 		return Z_Registration_Info_UPackage__Script_NuclearNightmare.OuterSingleton;
 	}
-	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_NuclearNightmare(Z_Construct_UPackage__Script_NuclearNightmare, TEXT("/Script/NuclearNightmare"), Z_Registration_Info_UPackage__Script_NuclearNightmare, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0x1B85FF43, 0xE0F0BA96));
+	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_NuclearNightmare(Z_Construct_UPackage__Script_NuclearNightmare, TEXT("/Script/NuclearNightmare"), Z_Registration_Info_UPackage__Script_NuclearNightmare, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0x25BD626C, 0x6D6D5453));
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

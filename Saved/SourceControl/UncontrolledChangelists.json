@@ -1,0 +1,38 @@
+{
+	"version": 1,
+	"changelists": [
+		{
+			"guid": "00000000000000000000000000000000",
+			"description": "Default Uncontrolled Changelist",
+			"files": [
+				"D:/NuclearNightmare/NuclearNightmare/Content/__ExternalActors__/BattleRoyaleStarterKit/Maps/BattleRoyale_Map_a/BattleRoyale_Map_a_WP/2T/XF/9NHKL6RZ3BE0O8KQOYE3P.uasset",
+				"D:/NuclearNightmare/NuclearNightmare/Content/__ExternalActors__/BattleRoyaleStarterKit/Maps/BattleRoyale_Map_a/BattleRoyale_Map_a_WP/AU/R0/5O5PEJLMDPYO5D9B04ZRI.uasset",
+				"D:/NuclearNightmare/NuclearNightmare/Content/__ExternalActors__/BattleRoyaleStarterKit/Maps/BattleRoyale_Map_a/BattleRoyale_Map_a_WP/B5/HS/L2BSUOJX6GP3F57PJ1Q2L.uasset",
+				"D:/NuclearNightmare/NuclearNightmare/Content/__ExternalActors__/BattleRoyaleStarterKit/Maps/BattleRoyale_Map_a/BattleRoyale_Map_a_WP/EY/WP/ZID7T3AGA4MKK03RJPVRH.uasset",
+				"D:/NuclearNightmare/NuclearNightmare/Content/BattleRoyaleStarterKit/Materials/Barnyard/BarnyardPropsMaterials/MI_Electric_Pole.uasset",
+				"D:/NuclearNightmare/NuclearNightmare/Content/__ExternalActors__/BattleRoyaleStarterKit/Maps/BattleRoyale_Map_a/BattleRoyale_Map_a_WP/EI/JN/I9T3Y195E3DEX554VCLD6.uasset",
+				"D:/NuclearNightmare/NuclearNightmare/Content/BattleRoyaleStarterKit/Materials/M_TranslucentWater.uasset",
+				"D:/NuclearNightmare/NuclearNightmare/Content/__ExternalActors__/BattleRoyaleStarterKit/Maps/BattleRoyale_Map_a/BattleRoyale_Map_a_WP/EV/DH/5R2910DGFXJT527KJ5M04.uasset",
+				"D:/NuclearNightmare/NuclearNightmare/Content/__ExternalActors__/BattleRoyaleStarterKit/Maps/BattleRoyale_Map_a/BattleRoyale_Map_a_WP/3W/D8/WQJITXO53QSNAENQCF671.uasset",
+				"D:/NuclearNightmare/NuclearNightmare/Content/__ExternalActors__/BattleRoyaleStarterKit/Maps/BattleRoyale_Map_a/BattleRoyale_Map_a_WP/BD/7W/CSSDQKTZGDNMONU28H3FJ.uasset",
+				"D:/NuclearNightmare/NuclearNightmare/Content/__ExternalActors__/BattleRoyaleStarterKit/Maps/BattleRoyale_Map_a/BattleRoyale_Map_a_WP/6X/FP/WT18PC001ROC3I7JUA11W.uasset",
+				"D:/NuclearNightmare/NuclearNightmare/Content/__ExternalActors__/BattleRoyaleStarterKit/Maps/BattleRoyale_Map_a/BattleRoyale_Map_a_WP/3I/ZO/D8QUKDJOM2090ZVSRKPS4.uasset",
+				"D:/NuclearNightmare/NuclearNightmare/Content/__ExternalActors__/BattleRoyaleStarterKit/Maps/BattleRoyale_Map_a/BattleRoyale_Map_a_WP/6P/7S/ME7ORN6WSTU481D1F84OR.uasset",
+				"D:/NuclearNightmare/NuclearNightmare/Content/__ExternalActors__/BattleRoyaleStarterKit/Maps/BattleRoyale_Map_a/BattleRoyale_Map_a_WP/4V/23/Z03WCXASHU7FQLVMFHIC5.uasset",
+				"D:/NuclearNightmare/NuclearNightmare/Content/__ExternalActors__/BattleRoyaleStarterKit/Maps/BattleRoyale_Map_a/BattleRoyale_Map_a_WP/1W/NG/9V0QOTS6S8QKWN7C07WOT.uasset",
+				"D:/NuclearNightmare/NuclearNightmare/Content/__ExternalActors__/BattleRoyaleStarterKit/Maps/BattleRoyale_Map_a/BattleRoyale_Map_a_WP/C4/P0/WU6RYQDBV7ZBMA82LA9VB.uasset",
+				"D:/NuclearNightmare/NuclearNightmare/Content/__ExternalActors__/BattleRoyaleStarterKit/Maps/BattleRoyale_Map_a/BattleRoyale_Map_a_WP/8A/XT/I6P9YFYVT0TUSVOGZOD10.uasset",
+				"D:/NuclearNightmare/NuclearNightmare/Content/__ExternalActors__/BattleRoyaleStarterKit/Maps/BattleRoyale_Map_a/BattleRoyale_Map_a_WP/5A/65/KCLMELRN4FGTVKL9P00Y9.uasset",
+				"D:/NuclearNightmare/NuclearNightmare/Content/Shaders/M_ToonShader.uasset",
+				"D:/NuclearNightmare/NuclearNightmare/Content/FirstPersonArms/Animations/FirstPerson_AnimBP.uasset",
+				"D:/NuclearNightmare/NuclearNightmare/Content/FirstPerson/Blueprints/BP_FirstPersonCharacter.uasset",
+				"D:/NuclearNightmare/NuclearNightmare/Content/Shaders/M_Sharpen.uasset",
+				"D:/NuclearNightmare/NuclearNightmare/Content/Shaders/M_Sharpen_Inst.uasset",
+				"D:/NuclearNightmare/NuclearNightmare/Content/FirstPerson/Blueprints/BP_PickUp_Rifle.uasset",
+				"D:/NuclearNightmare/NuclearNightmare/Content/FirstPerson/Blueprints/BP_FirstPersonProjectile.uasset",
+				"D:/NuclearNightmare/NuclearNightmare/Content/__ExternalActors__/BattleRoyaleStarterKit/Maps/BattleRoyale_Map_a/BattleRoyale_Map_a_WP/AD/41/QNLMMYBRL8B2SKUK31O9Y.uasset",
+				"D:/NuclearNightmare/NuclearNightmare/Content/__ExternalActors__/BattleRoyaleStarterKit/Maps/BattleRoyale_Map_a/BattleRoyale_Map_a_WP/5J/87/Y7DMOLICNJPMSXBYZERP6.uasset"
+			]
+		}
+	]
+}

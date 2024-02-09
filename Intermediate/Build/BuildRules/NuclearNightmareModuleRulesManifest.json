@@ -1,8 +1,8 @@
 {
 	"SourceFiles": [
-		"C:\\Users\\blain\\Documents\\Unreal Projects\\NuclearNightmare\\Source\\NuclearNightmare\\NuclearNightmare.Build.cs",
-		"C:\\Users\\blain\\Documents\\Unreal Projects\\NuclearNightmare\\Source\\NuclearNightmare.Target.cs",
-		"C:\\Users\\blain\\Documents\\Unreal Projects\\NuclearNightmare\\Source\\NuclearNightmareEditor.Target.cs"
+		"D:\\NuclearNightmare\\NuclearNightmare\\Source\\NuclearNightmare\\NuclearNightmare.Build.cs",
+		"D:\\NuclearNightmare\\NuclearNightmare\\Source\\NuclearNightmare.Target.cs",
+		"D:\\NuclearNightmare\\NuclearNightmare\\Source\\NuclearNightmareEditor.Target.cs"
 	],
 	"EngineVersion": "5.3.2"
 }

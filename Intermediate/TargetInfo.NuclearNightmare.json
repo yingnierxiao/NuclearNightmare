@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "NuclearNightmare",
+			"Path": "..\\Source\\NuclearNightmare.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "NuclearNightmareEditor",
+			"Path": "..\\Source\\NuclearNightmareEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}
