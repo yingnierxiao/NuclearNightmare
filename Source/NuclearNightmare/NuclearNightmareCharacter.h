@@ -27,7 +27,7 @@ class ANuclearNightmareCharacter : public ACharacter
 	UCameraComponent* FirstPersonCameraComponent;
 
 	/** Spring Arm For Camera */
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	USpringArmComponent* SpringArmFPCam;
 
 	/** MappingContext */
@@ -37,6 +37,13 @@ class ANuclearNightmareCharacter : public ACharacter
 	/** Jump Input Action */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
 	UInputAction* JumpAction;
+
+	//Sprint Input Action
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
+	UInputAction* SprintAction;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
+	UInputAction* StopSprintAction;
 
 	/** Move Input Action */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
@@ -54,12 +61,31 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	class UInputAction* LookAction;
 
+	//Sprint Value
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Movement, meta = (AllowPrivateAccess = "true"))
+	float SprintValue;
+
+	//Sprint Value
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Movement, meta = (AllowPrivateAccess = "true"))
+	float WalkValue;
+
 protected:
 	/** Called for movement input */
 	void Move(const FInputActionValue& Value);
 
 	/** Called for looking input */
 	void Look(const FInputActionValue& Value);
+
+	//Called for sprinting
+	UFUNCTION(Server, Reliable)
+	void SprintOnServer(bool Sprinting);
+
+	UFUNCTION(NetMulticast, Reliable)
+	void SprintOnClient(bool Sprinting);
+
+	void sprint();
+
+	void StopSprint();
 
 protected:
 	// APawn interface

@@ -9,6 +9,7 @@
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
 #include "Engine/LocalPlayer.h"
+#include "GameFramework/CharacterMovementComponent.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
@@ -17,13 +18,17 @@ DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
 ANuclearNightmareCharacter::ANuclearNightmareCharacter()
 {
+	SprintValue = 600;
+	WalkValue = 200;
 	
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(55.f, 96.0f);
 
 	//Create a SpringArmComponent
 	SpringArmFPCam = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArmFPCam"));
-	SpringArmFPCam->SetupAttachment(GetCapsuleComponent());
+	//SpringArmFPCam->SetupAttachment(GetCapsuleComponent());
+	FName SocketNameHead = "neck_01";
+	SpringArmFPCam->SetupAttachment(GetMesh(), SocketNameHead);
 	SpringArmFPCam->SetRelativeLocation(FVector(-10.f, 0.f, 60.f)); // Position the camera
 	SpringArmFPCam->bUsePawnControlRotation = true;
 		
@@ -50,6 +55,33 @@ void ANuclearNightmareCharacter::BeginPlay()
 
 //////////////////////////////////////////////////////////////////////////// Input
 
+void ANuclearNightmareCharacter::SprintOnServer_Implementation(bool Sprinting)
+{
+	SprintOnClient(Sprinting);
+}
+
+void ANuclearNightmareCharacter::SprintOnClient_Implementation(bool Sprinting)
+{
+	if(Sprinting)
+	{
+		GetCharacterMovement()->MaxWalkSpeed = SprintValue;
+	}
+	else
+	{
+		GetCharacterMovement()->MaxWalkSpeed = WalkValue;
+	}
+}
+
+void ANuclearNightmareCharacter::sprint()
+{
+	SprintOnServer(true);
+}
+
+void ANuclearNightmareCharacter::StopSprint()
+{
+	SprintOnServer(false);
+}
+
 void ANuclearNightmareCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	// Set up action bindings
@@ -61,6 +93,8 @@ void ANuclearNightmareCharacter::SetupPlayerInputComponent(UInputComponent* Play
 
 		// Moving
 		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ANuclearNightmareCharacter::Move);
+		EnhancedInputComponent->BindAction(SprintAction, ETriggerEvent::Started, this, &ANuclearNightmareCharacter::sprint);
+		EnhancedInputComponent->BindAction(SprintAction, ETriggerEvent::Completed, this, &ANuclearNightmareCharacter::StopSprint);
 
 		// Looking
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &ANuclearNightmareCharacter::Look);
@@ -84,6 +118,7 @@ void ANuclearNightmareCharacter::Move(const FInputActionValue& Value)
 		AddMovementInput(GetActorRightVector(), MovementVector.X);
 	}
 }
+
 
 void ANuclearNightmareCharacter::Look(const FInputActionValue& Value)
 {
