@@ -20,6 +20,14 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 	NUCLEARNIGHTMARE_API UClass* Z_Construct_UClass_ANuclearNightmareCharacter_NoRegister();
 	UPackage* Z_Construct_UPackage__Script_NuclearNightmare();
 // End Cross Module References
+	DEFINE_FUNCTION(ANuclearNightmareCharacter::execCameraToggleOnClient)
+	{
+		P_GET_UBOOL(Z_Param_ThirdPersonView);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->CameraToggleOnClient_Implementation(Z_Param_ThirdPersonView);
+		P_NATIVE_END;
+	}
 	DEFINE_FUNCTION(ANuclearNightmareCharacter::execFlashlightOnClient)
 	{
 		P_GET_UBOOL(Z_Param_Flashlight);
@@ -52,6 +60,10 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 		P_THIS->SprintOnServer_Implementation(Z_Param_Sprinting);
 		P_NATIVE_END;
 	}
+	struct NuclearNightmareCharacter_eventCameraToggleOnClient_Parms
+	{
+		bool ThirdPersonView;
+	};
 	struct NuclearNightmareCharacter_eventFlashlightOnClient_Parms
 	{
 		bool Flashlight;
@@ -68,6 +80,13 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 	{
 		bool Sprinting;
 	};
+	static FName NAME_ANuclearNightmareCharacter_CameraToggleOnClient = FName(TEXT("CameraToggleOnClient"));
+	void ANuclearNightmareCharacter::CameraToggleOnClient(bool ThirdPersonView)
+	{
+		NuclearNightmareCharacter_eventCameraToggleOnClient_Parms Parms;
+		Parms.ThirdPersonView=ThirdPersonView ? true : false;
+		ProcessEvent(FindFunctionChecked(NAME_ANuclearNightmareCharacter_CameraToggleOnClient),&Parms);
+	}
 	static FName NAME_ANuclearNightmareCharacter_FlashlightOnClient = FName(TEXT("FlashlightOnClient"));
 	void ANuclearNightmareCharacter::FlashlightOnClient(bool Flashlight)
 	{
@@ -100,12 +119,54 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 	{
 		UClass* Class = ANuclearNightmareCharacter::StaticClass();
 		static const FNameNativePtrPair Funcs[] = {
+			{ "CameraToggleOnClient", &ANuclearNightmareCharacter::execCameraToggleOnClient },
 			{ "FlashlightOnClient", &ANuclearNightmareCharacter::execFlashlightOnClient },
 			{ "FlashlightOnServer", &ANuclearNightmareCharacter::execFlashlightOnServer },
 			{ "SprintOnClient", &ANuclearNightmareCharacter::execSprintOnClient },
 			{ "SprintOnServer", &ANuclearNightmareCharacter::execSprintOnServer },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
+	}
+	struct Z_Construct_UFunction_ANuclearNightmareCharacter_CameraToggleOnClient_Statics
+	{
+		static void NewProp_ThirdPersonView_SetBit(void* Obj);
+		static const UECodeGen_Private::FBoolPropertyParams NewProp_ThirdPersonView;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+	void Z_Construct_UFunction_ANuclearNightmareCharacter_CameraToggleOnClient_Statics::NewProp_ThirdPersonView_SetBit(void* Obj)
+	{
+		((NuclearNightmareCharacter_eventCameraToggleOnClient_Parms*)Obj)->ThirdPersonView = 1;
+	}
+	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_ANuclearNightmareCharacter_CameraToggleOnClient_Statics::NewProp_ThirdPersonView = { "ThirdPersonView", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(NuclearNightmareCharacter_eventCameraToggleOnClient_Parms), &Z_Construct_UFunction_ANuclearNightmareCharacter_CameraToggleOnClient_Statics::NewProp_ThirdPersonView_SetBit, METADATA_PARAMS(0, nullptr) };
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_ANuclearNightmareCharacter_CameraToggleOnClient_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ANuclearNightmareCharacter_CameraToggleOnClient_Statics::NewProp_ThirdPersonView,
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_ANuclearNightmareCharacter_CameraToggleOnClient_Statics::Function_MetaDataParams[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//Camera Toggle\n" },
+#endif
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Camera Toggle" },
+#endif
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ANuclearNightmareCharacter_CameraToggleOnClient_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ANuclearNightmareCharacter, nullptr, "CameraToggleOnClient", nullptr, nullptr, Z_Construct_UFunction_ANuclearNightmareCharacter_CameraToggleOnClient_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_ANuclearNightmareCharacter_CameraToggleOnClient_Statics::PropPointers), sizeof(NuclearNightmareCharacter_eventCameraToggleOnClient_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x01080CC0, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ANuclearNightmareCharacter_CameraToggleOnClient_Statics::Function_MetaDataParams), Z_Construct_UFunction_ANuclearNightmareCharacter_CameraToggleOnClient_Statics::Function_MetaDataParams) };
+	static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_ANuclearNightmareCharacter_CameraToggleOnClient_Statics::PropPointers) < 2048);
+	static_assert(sizeof(NuclearNightmareCharacter_eventCameraToggleOnClient_Parms) < MAX_uint16);
+	UFunction* Z_Construct_UFunction_ANuclearNightmareCharacter_CameraToggleOnClient()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ANuclearNightmareCharacter_CameraToggleOnClient_Statics::FuncParams);
+		}
+		return ReturnFunction;
 	}
 	struct Z_Construct_UFunction_ANuclearNightmareCharacter_FlashlightOnClient_Statics
 	{
@@ -308,6 +369,10 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 #endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_FlashlightAction;
 #if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_FirstThirdCameraAction_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_FirstThirdCameraAction;
+#if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_MoveAction_MetaData[];
 #endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_MoveAction;
@@ -328,6 +393,11 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 #endif
 		static void NewProp_bFlashlightToggle_SetBit(void* Obj);
 		static const UECodeGen_Private::FBoolPropertyParams NewProp_bFlashlightToggle;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_bCameraThirdToggle_MetaData[];
+#endif
+		static void NewProp_bCameraThirdToggle_SetBit(void* Obj);
+		static const UECodeGen_Private::FBoolPropertyParams NewProp_bCameraThirdToggle;
 		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UECodeGen_Private::FClassParams ClassParams;
@@ -338,6 +408,7 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 	};
 	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::DependentSingletons) < 16);
 	const FClassFunctionLinkInfo Z_Construct_UClass_ANuclearNightmareCharacter_Statics::FuncInfo[] = {
+		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_CameraToggleOnClient, "CameraToggleOnClient" }, // 3409967154
 		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_FlashlightOnClient, "FlashlightOnClient" }, // 1721160597
 		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_FlashlightOnServer, "FlashlightOnServer" }, // 1424184229
 		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_SprintOnClient, "SprintOnClient" }, // 1995746813
@@ -470,6 +541,20 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 #endif
 	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightAction = { "FlashlightAction", nullptr, (EPropertyFlags)0x0040000000000015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANuclearNightmareCharacter, FlashlightAction), Z_Construct_UClass_UInputAction_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightAction_MetaData), Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightAction_MetaData) };
 #if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FirstThirdCameraAction_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "Input" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//First Person/Third Person Camera Toggle Input Action\n" },
+#endif
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "First Person/Third Person Camera Toggle Input Action" },
+#endif
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FirstThirdCameraAction = { "FirstThirdCameraAction", nullptr, (EPropertyFlags)0x0040000000000015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANuclearNightmareCharacter, FirstThirdCameraAction), Z_Construct_UClass_UInputAction_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FirstThirdCameraAction_MetaData), Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FirstThirdCameraAction_MetaData) };
+#if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_MoveAction_MetaData[] = {
 		{ "AllowPrivateAccess", "true" },
 		{ "Category", "Input" },
@@ -542,6 +627,23 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 		((ANuclearNightmareCharacter*)Obj)->bFlashlightToggle = 1;
 	}
 	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_bFlashlightToggle = { "bFlashlightToggle", nullptr, (EPropertyFlags)0x0010000000000025, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(ANuclearNightmareCharacter), &Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_bFlashlightToggle_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_bFlashlightToggle_MetaData), Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_bFlashlightToggle_MetaData) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_bCameraThirdToggle_MetaData[] = {
+		{ "Category", "LightSource" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//Camera Toggle\n" },
+#endif
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Camera Toggle" },
+#endif
+	};
+#endif
+	void Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_bCameraThirdToggle_SetBit(void* Obj)
+	{
+		((ANuclearNightmareCharacter*)Obj)->bCameraThirdToggle = 1;
+	}
+	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_bCameraThirdToggle = { "bCameraThirdToggle", nullptr, (EPropertyFlags)0x0010000000000025, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(ANuclearNightmareCharacter), &Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_bCameraThirdToggle_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_bCameraThirdToggle_MetaData), Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_bCameraThirdToggle_MetaData) };
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ANuclearNightmareCharacter_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FirstPersonCameraComponent,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_SpringArmFPCam,
@@ -552,11 +654,13 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_SprintAction,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_StopSprintAction,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightAction,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FirstThirdCameraAction,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_MoveAction,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_LookAction,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_SprintValue,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_WalkValue,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_bFlashlightToggle,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_bCameraThirdToggle,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_ANuclearNightmareCharacter_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<ANuclearNightmareCharacter>::IsAbstract,
@@ -593,9 +697,11 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 	void ANuclearNightmareCharacter::ValidateGeneratedRepEnums(const TArray<struct FRepRecord>& ClassReps) const
 	{
 		static const FName Name_bFlashlightToggle(TEXT("bFlashlightToggle"));
+		static const FName Name_bCameraThirdToggle(TEXT("bCameraThirdToggle"));
 
 		const bool bIsValid = true
-			&& Name_bFlashlightToggle == ClassReps[(int32)ENetFields_Private::bFlashlightToggle].Property->GetFName();
+			&& Name_bFlashlightToggle == ClassReps[(int32)ENetFields_Private::bFlashlightToggle].Property->GetFName()
+			&& Name_bCameraThirdToggle == ClassReps[(int32)ENetFields_Private::bCameraThirdToggle].Property->GetFName();
 
 		checkf(bIsValid, TEXT("UHT Generated Rep Indices do not match runtime populated Rep Indices for properties in ANuclearNightmareCharacter"));
 	}
@@ -606,9 +712,9 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_ANuclearNightmareCharacter, ANuclearNightmareCharacter::StaticClass, TEXT("ANuclearNightmareCharacter"), &Z_Registration_Info_UClass_ANuclearNightmareCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ANuclearNightmareCharacter), 2992869978U) },
+		{ Z_Construct_UClass_ANuclearNightmareCharacter, ANuclearNightmareCharacter::StaticClass, TEXT("ANuclearNightmareCharacter"), &Z_Registration_Info_UClass_ANuclearNightmareCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ANuclearNightmareCharacter), 2247753545U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_57985385(TEXT("/Script/NuclearNightmare"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_991888248(TEXT("/Script/NuclearNightmare"),
 		Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

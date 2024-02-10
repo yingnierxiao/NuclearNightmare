@@ -59,6 +59,10 @@ class ANuclearNightmareCharacter : public ACharacter
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
 	UInputAction* FlashlightAction;
 
+	//First Person/Third Person Camera Toggle Input Action
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
+	UInputAction* FirstThirdCameraAction;
+
 	/** Move Input Action */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
 	UInputAction* MoveAction;
@@ -87,6 +91,10 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Replicated, Category = LightSource)
 	bool bFlashlightToggle;
 
+	//Camera Toggle
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Replicated, Category = LightSource)
+	bool bCameraThirdToggle;
+
 protected:
 	/** Called for movement input */
 	void Move(const FInputActionValue& Value);
@@ -114,6 +122,12 @@ protected:
 	void FlashlightOn();
 	void FlashlightOff();
 	void FlashlightToggle();
+
+	//Camera Toggle
+	UFUNCTION(Client, Reliable)
+	void CameraToggleOnClient(bool ThirdPersonView);
+
+	void CameraToggle();
 	
 
 protected:

@@ -22,6 +22,7 @@ ANuclearNightmareCharacter::ANuclearNightmareCharacter()
 	SprintValue = 600;
 	WalkValue = 200;
 	bFlashlightToggle = false;
+	bCameraThirdToggle = false;
 	
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(55.f, 96.0f);
@@ -70,6 +71,7 @@ void ANuclearNightmareCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProp
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
 	DOREPLIFETIME(ANuclearNightmareCharacter, bFlashlightToggle);
+	DOREPLIFETIME(ANuclearNightmareCharacter, bCameraThirdToggle);
 }
 
 //////////////////////////////////////////////////////////////////////////// Input
@@ -144,6 +146,32 @@ void ANuclearNightmareCharacter::FlashlightToggle()
 	}
 }
 
+void ANuclearNightmareCharacter::CameraToggleOnClient_Implementation(bool ThirdPersonView)
+{
+	if(ThirdPersonView)
+	{
+		SpringArmFPCam->TargetArmLength = 300.0f;
+	}
+	else
+	{
+		SpringArmFPCam->TargetArmLength = 0.0f;
+	}
+}
+
+void ANuclearNightmareCharacter::CameraToggle()
+{
+	if(bCameraThirdToggle)
+	{
+		CameraToggleOnClient(false);
+		bCameraThirdToggle = false;
+	}
+	else
+	{
+		CameraToggleOnClient(true);
+		bCameraThirdToggle = true;
+	}
+}
+
 void ANuclearNightmareCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	// Set up action bindings
@@ -157,6 +185,9 @@ void ANuclearNightmareCharacter::SetupPlayerInputComponent(UInputComponent* Play
 		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ANuclearNightmareCharacter::Move);
 		EnhancedInputComponent->BindAction(SprintAction, ETriggerEvent::Started, this, &ANuclearNightmareCharacter::sprint);
 		EnhancedInputComponent->BindAction(SprintAction, ETriggerEvent::Completed, this, &ANuclearNightmareCharacter::StopSprint);
+
+		//ThirdPersonToggle
+		EnhancedInputComponent->BindAction(FirstThirdCameraAction, ETriggerEvent::Started, this, &ANuclearNightmareCharacter::CameraToggle);
 
 		//Flashlight
 		EnhancedInputComponent->BindAction(FlashlightAction, ETriggerEvent::Started, this, &ANuclearNightmareCharacter::FlashlightToggle);
