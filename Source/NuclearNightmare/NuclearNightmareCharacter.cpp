@@ -9,6 +9,7 @@
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
 #include "Engine/LocalPlayer.h"
+#include "Net/UnrealNetwork.h"
 #include "GameFramework/CharacterMovementComponent.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
@@ -20,6 +21,7 @@ ANuclearNightmareCharacter::ANuclearNightmareCharacter()
 {
 	SprintValue = 600;
 	WalkValue = 200;
+	bFlashlightToggle = false;
 	
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(55.f, 96.0f);
@@ -27,7 +29,7 @@ ANuclearNightmareCharacter::ANuclearNightmareCharacter()
 	//Create a SpringArmComponent
 	SpringArmFPCam = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArmFPCam"));
 	//SpringArmFPCam->SetupAttachment(GetCapsuleComponent());
-	FName SocketNameHead = "neck_01";
+	const FName SocketNameHead = "neck_01";
 	SpringArmFPCam->SetupAttachment(GetMesh(), SocketNameHead);
 	SpringArmFPCam->SetRelativeLocation(FVector(-10.f, 0.f, 60.f)); // Position the camera
 	SpringArmFPCam->bUsePawnControlRotation = true;
@@ -35,6 +37,16 @@ ANuclearNightmareCharacter::ANuclearNightmareCharacter()
 	// Create a CameraComponent	
 	FirstPersonCameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("FirstPersonCamera"));
 	FirstPersonCameraComponent->SetupAttachment(SpringArmFPCam);
+
+	//Create Flashlight
+	FlashlightMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("FlashlightMesh"));
+	const FName FlashlightSocketName = "FlashlightSocket";
+	FlashlightMesh->SetupAttachment(GetMesh(), FlashlightSocketName);
+	FlashlightMesh->SetVisibility(false);
+	
+	FlashlightSource = CreateDefaultSubobject<USpotLightComponent>(TEXT("FlashlightSource"));
+	FlashlightSource->SetupAttachment(FlashlightMesh);
+	FlashlightSource->SetVisibility(false);
 }
 
 void ANuclearNightmareCharacter::BeginPlay()
@@ -51,6 +63,13 @@ void ANuclearNightmareCharacter::BeginPlay()
 		}
 	}
 
+}
+
+void ANuclearNightmareCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	DOREPLIFETIME(ANuclearNightmareCharacter, bFlashlightToggle);
 }
 
 //////////////////////////////////////////////////////////////////////////// Input
@@ -82,6 +101,49 @@ void ANuclearNightmareCharacter::StopSprint()
 	SprintOnServer(false);
 }
 
+void ANuclearNightmareCharacter::FlashlightOnServer_Implementation(bool Flashlight)
+{
+	FlashlightOnClient(Flashlight);
+}
+
+void ANuclearNightmareCharacter::FlashlightOnClient_Implementation(bool Flashlight)
+{
+	if(Flashlight)
+	{
+		FlashlightMesh->SetVisibility(true);
+		FlashlightSource->SetVisibility(true);
+		bFlashlightToggle = true;
+	}
+	else
+	{
+		FlashlightMesh->SetVisibility(false);
+		FlashlightSource->SetVisibility(false);
+		bFlashlightToggle = false;
+	}
+}
+
+void ANuclearNightmareCharacter::FlashlightOn()
+{
+	FlashlightOnServer(true);
+}
+
+void ANuclearNightmareCharacter::FlashlightOff()
+{
+	FlashlightOnServer(false);
+}
+
+void ANuclearNightmareCharacter::FlashlightToggle()
+{
+	if(bFlashlightToggle)
+	{
+		FlashlightOff();
+	}
+	else
+	{
+		FlashlightOn();
+	}
+}
+
 void ANuclearNightmareCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	// Set up action bindings
@@ -96,6 +158,9 @@ void ANuclearNightmareCharacter::SetupPlayerInputComponent(UInputComponent* Play
 		EnhancedInputComponent->BindAction(SprintAction, ETriggerEvent::Started, this, &ANuclearNightmareCharacter::sprint);
 		EnhancedInputComponent->BindAction(SprintAction, ETriggerEvent::Completed, this, &ANuclearNightmareCharacter::StopSprint);
 
+		//Flashlight
+		EnhancedInputComponent->BindAction(FlashlightAction, ETriggerEvent::Started, this, &ANuclearNightmareCharacter::FlashlightToggle);
+		
 		// Looking
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &ANuclearNightmareCharacter::Look);
 	}
