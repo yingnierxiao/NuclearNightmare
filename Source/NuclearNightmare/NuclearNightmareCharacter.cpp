@@ -8,6 +8,7 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
+#include "Blueprint/UserWidget.h"
 #include "Engine/LocalPlayer.h"
 #include "Net/UnrealNetwork.h"
 #include "GameFramework/CharacterMovementComponent.h"
@@ -62,6 +63,15 @@ void ANuclearNightmareCharacter::BeginPlay()
 		{
 			Subsystem->AddMappingContext(DefaultMappingContext, 0);
 		}
+	}
+
+	if(IsLocallyControlled())
+	{
+			GasMaskHud = Cast<UUserWidget>(CreateWidget(GetWorld(), GasMaskClass));
+			if(GasMaskHud)
+			{
+				GasMaskHud->AddToViewport();
+			}
 	}
 
 }
@@ -151,10 +161,23 @@ void ANuclearNightmareCharacter::CameraToggleOnClient_Implementation(bool ThirdP
 	if(ThirdPersonView)
 	{
 		SpringArmFPCam->TargetArmLength = 300.0f;
+		if(GasMaskHud)
+		{
+			GasMaskHud->RemoveFromParent();
+		}
 	}
 	else
 	{
 		SpringArmFPCam->TargetArmLength = 0.0f;
+
+		if(IsLocallyControlled())
+		{
+			GasMaskHud = Cast<UUserWidget>(CreateWidget(GetWorld(), GasMaskClass));
+			if(GasMaskHud)
+			{
+				GasMaskHud->AddToViewport();
+			}
+		}
 	}
 }
 

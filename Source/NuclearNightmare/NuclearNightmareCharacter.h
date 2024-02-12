@@ -33,6 +33,13 @@ class ANuclearNightmareCharacter : public ACharacter
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	USpringArmComponent* SpringArmFPCam;
 
+	//HUD
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Hud, meta = (AllowPrivateAccess = "true"))
+	UUserWidget* GasMaskHud;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Hud, meta = (AllowPrivateAccess = "true"))
+	TSubclassOf<UUserWidget> GasMaskClass;
+
 	//Flashlight Mesh & Light Source
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = LightSource, meta = (AllowPrivateAccess = "true"))
 	UStaticMeshComponent* FlashlightMesh;
