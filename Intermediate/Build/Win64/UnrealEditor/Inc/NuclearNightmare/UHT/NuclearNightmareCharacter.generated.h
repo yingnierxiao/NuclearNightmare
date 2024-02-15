@@ -19,12 +19,16 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #define FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_26_EDITOR_ONLY_SPARSE_DATA_PROPERTY_ACCESSORS
 #define FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_26_RPC_WRAPPERS_NO_PURE_DECLS \
 	virtual void CameraToggleOnClient_Implementation(bool ThirdPersonView); \
+	virtual void CrouchOnClient_Implementation(bool Crouch); \
+	virtual void CrouchOnServer_Implementation(bool Crouch); \
 	virtual void FlashlightOnClient_Implementation(bool Flashlight); \
 	virtual void FlashlightOnServer_Implementation(bool Flashlight); \
 	virtual void SprintOnClient_Implementation(bool Sprinting); \
 	virtual void SprintOnServer_Implementation(bool Sprinting); \
  \
 	DECLARE_FUNCTION(execCameraToggleOnClient); \
+	DECLARE_FUNCTION(execCrouchOnClient); \
+	DECLARE_FUNCTION(execCrouchOnServer); \
 	DECLARE_FUNCTION(execFlashlightOnClient); \
 	DECLARE_FUNCTION(execFlashlightOnServer); \
 	DECLARE_FUNCTION(execSprintOnClient); \
@@ -46,7 +50,10 @@ public: \
 		NETFIELD_REP_START=(uint16)((int32)Super::ENetFields_Private::NETFIELD_REP_END + (int32)1), \
 		bFlashlightToggle=NETFIELD_REP_START, \
 		bCameraThirdToggle, \
-		NETFIELD_REP_END=bCameraThirdToggle	}; \
+		bIsPlayerCrouched, \
+		LocationBeforeCrouch, \
+		LocationAfterCrouch, \
+		NETFIELD_REP_END=LocationAfterCrouch	}; \
 	NO_API virtual void ValidateGeneratedRepEnums(const TArray<struct FRepRecord>& ClassReps) const override;
 
 

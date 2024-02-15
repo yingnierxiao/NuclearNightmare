@@ -24,6 +24,7 @@ ANuclearNightmareCharacter::ANuclearNightmareCharacter()
 	WalkValue = 200;
 	bFlashlightToggle = false;
 	bCameraThirdToggle = false;
+	bIsPlayerCrouched = false;
 	
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(55.f, 96.0f);
@@ -82,6 +83,9 @@ void ANuclearNightmareCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProp
 
 	DOREPLIFETIME(ANuclearNightmareCharacter, bFlashlightToggle);
 	DOREPLIFETIME(ANuclearNightmareCharacter, bCameraThirdToggle);
+	DOREPLIFETIME(ANuclearNightmareCharacter, bIsPlayerCrouched);
+	DOREPLIFETIME(ANuclearNightmareCharacter, LocationAfterCrouch);
+	DOREPLIFETIME(ANuclearNightmareCharacter, LocationBeforeCrouch);
 }
 
 //////////////////////////////////////////////////////////////////////////// Input
@@ -96,6 +100,10 @@ void ANuclearNightmareCharacter::SprintOnClient_Implementation(bool Sprinting)
 	if(Sprinting)
 	{
 		GetCharacterMovement()->MaxWalkSpeed = SprintValue;
+		if(bIsPlayerCrouched)
+		{
+			CrouchOnServer(false);
+		}
 	}
 	else
 	{
@@ -156,6 +164,11 @@ void ANuclearNightmareCharacter::FlashlightToggle()
 	}
 }
 
+void ANuclearNightmareCharacter::CrouchOnServer_Implementation(bool Crouch)
+{
+	CrouchOnClient(Crouch);
+}
+
 void ANuclearNightmareCharacter::CameraToggleOnClient_Implementation(bool ThirdPersonView)
 {
 	if(ThirdPersonView)
@@ -178,6 +191,53 @@ void ANuclearNightmareCharacter::CameraToggleOnClient_Implementation(bool ThirdP
 				GasMaskHud->AddToViewport();
 			}
 		}
+	}
+}
+
+void ANuclearNightmareCharacter::CrouchOnClient_Implementation(bool Crouch)
+{
+	if(Crouch)
+	{
+		bIsPlayerCrouched = true;
+		GetCapsuleComponent()->SetCapsuleHalfHeight(65);
+		if(IsLocallyControlled())
+		{
+			GetMesh()->SetRelativeLocation(LocationAfterCrouch);
+		}
+		else
+		{
+			LocationAfterCrouch.Z = LocationAfterCrouch.Z - 45;
+			BaseTranslationOffset = LocationAfterCrouch;
+		}
+	}
+	else
+	{
+		bIsPlayerCrouched = false;
+		GetCapsuleComponent()->SetCapsuleHalfHeight(96);
+		if(IsLocallyControlled())
+		{
+			GetMesh()->SetRelativeLocation(LocationBeforeCrouch);
+		}
+		else
+		{
+			BaseTranslationOffset = LocationBeforeCrouch;
+		}
+	}
+}
+
+void ANuclearNightmareCharacter::CrouchToggle()
+{
+	if(bIsPlayerCrouched)
+	{
+		
+		CrouchOnServer(false);
+	}
+	else
+	{
+		LocationBeforeCrouch = GetMesh()->GetRelativeLocation();
+		LocationAfterCrouch = LocationBeforeCrouch;
+		LocationAfterCrouch.Z = LocationAfterCrouch.Z + 30;
+		CrouchOnServer(true);
 	}
 }
 
@@ -208,6 +268,9 @@ void ANuclearNightmareCharacter::SetupPlayerInputComponent(UInputComponent* Play
 		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ANuclearNightmareCharacter::Move);
 		EnhancedInputComponent->BindAction(SprintAction, ETriggerEvent::Started, this, &ANuclearNightmareCharacter::sprint);
 		EnhancedInputComponent->BindAction(SprintAction, ETriggerEvent::Completed, this, &ANuclearNightmareCharacter::StopSprint);
+
+		//Crouching
+		EnhancedInputComponent->BindAction(CrouchAction, ETriggerEvent::Started, this, &ANuclearNightmareCharacter::CrouchToggle);
 
 		//ThirdPersonToggle
 		EnhancedInputComponent->BindAction(FirstThirdCameraAction, ETriggerEvent::Started, this, &ANuclearNightmareCharacter::CameraToggle);

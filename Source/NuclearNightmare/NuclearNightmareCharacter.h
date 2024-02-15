@@ -66,6 +66,10 @@ class ANuclearNightmareCharacter : public ACharacter
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
 	UInputAction* FlashlightAction;
 
+	//Crouch Input Action
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
+	UInputAction* CrouchAction;
+
 	//First Person/Third Person Camera Toggle Input Action
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
 	UInputAction* FirstThirdCameraAction;
@@ -99,8 +103,18 @@ public:
 	bool bFlashlightToggle;
 
 	//Camera Toggle
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Replicated, Category = LightSource)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Replicated, Category = Camera)
 	bool bCameraThirdToggle;
+
+	//Crouching
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Replicated, Category = Movement)
+	bool bIsPlayerCrouched;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Replicated, Category = Movement)
+	FVector LocationBeforeCrouch;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Replicated, Category = Movement)
+	FVector LocationAfterCrouch;
 
 protected:
 	/** Called for movement input */
@@ -129,6 +143,15 @@ protected:
 	void FlashlightOn();
 	void FlashlightOff();
 	void FlashlightToggle();
+
+	//Crouch Logic
+	UFUNCTION(Server, Reliable)
+	void CrouchOnServer(bool Crouch);
+
+	UFUNCTION(NetMulticast, Reliable)
+	void CrouchOnClient(bool Crouch);
+	
+	void CrouchToggle();
 
 	//Camera Toggle
 	UFUNCTION(Client, Reliable)
