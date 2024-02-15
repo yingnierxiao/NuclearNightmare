@@ -153,6 +153,8 @@ protected:
 	
 	void CrouchToggle();
 
+	FVector InitalCrouchTraceLoc;
+
 	//Camera Toggle
 	UFUNCTION(Client, Reliable)
 	void CameraToggleOnClient(bool ThirdPersonView);

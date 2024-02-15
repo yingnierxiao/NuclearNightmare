@@ -113,7 +113,22 @@ void ANuclearNightmareCharacter::SprintOnClient_Implementation(bool Sprinting)
 
 void ANuclearNightmareCharacter::sprint()
 {
-	SprintOnServer(true);
+	if(bIsPlayerCrouched)
+	{
+		InitalCrouchTraceLoc = GetCapsuleComponent()->GetComponentLocation();
+		TArray<AActor*> ActorsToIgnore;
+		ActorsToIgnore.Add(this);
+		FHitResult HitResultCrouch;
+		UKismetSystemLibrary::SphereTraceSingle(GetWorld(), InitalCrouchTraceLoc, FVector(InitalCrouchTraceLoc.X, InitalCrouchTraceLoc.Y, InitalCrouchTraceLoc.Z + 96), 29, ETraceTypeQuery::TraceTypeQuery1, false, ActorsToIgnore, EDrawDebugTrace::None, HitResultCrouch, true, FLinearColor::Green);
+		if(!HitResultCrouch.bBlockingHit)
+		{
+			SprintOnServer(true);
+		}
+	}
+	else
+	{
+		SprintOnServer(true);	
+	}
 }
 
 void ANuclearNightmareCharacter::StopSprint()
@@ -200,28 +215,17 @@ void ANuclearNightmareCharacter::CrouchOnClient_Implementation(bool Crouch)
 	{
 		bIsPlayerCrouched = true;
 		GetCapsuleComponent()->SetCapsuleHalfHeight(65);
-		if(IsLocallyControlled())
-		{
-			GetMesh()->SetRelativeLocation(LocationAfterCrouch);
-		}
-		else
-		{
-			LocationAfterCrouch.Z = LocationAfterCrouch.Z - 45;
-			BaseTranslationOffset = LocationAfterCrouch;
-		}
+		
+			CacheInitialMeshOffset(FVector(LocationAfterCrouch.X, LocationAfterCrouch.Y, LocationAfterCrouch.Z - 64), FRotator(0, -90, 0));
+		GetMesh()->SetRelativeLocation(LocationAfterCrouch);
 	}
 	else
 	{
 		bIsPlayerCrouched = false;
 		GetCapsuleComponent()->SetCapsuleHalfHeight(96);
-		if(IsLocallyControlled())
-		{
-			GetMesh()->SetRelativeLocation(LocationBeforeCrouch);
-		}
-		else
-		{
-			BaseTranslationOffset = LocationBeforeCrouch;
-		}
+		
+			CacheInitialMeshOffset(FVector(LocationBeforeCrouch.X, LocationBeforeCrouch.Y, LocationBeforeCrouch.Z - 97), FRotator(0, -90, 0));
+		GetMesh()->SetRelativeLocation(LocationBeforeCrouch);
 	}
 }
 
@@ -229,8 +233,15 @@ void ANuclearNightmareCharacter::CrouchToggle()
 {
 	if(bIsPlayerCrouched)
 	{
-		
-		CrouchOnServer(false);
+		InitalCrouchTraceLoc = GetCapsuleComponent()->GetComponentLocation();
+		TArray<AActor*> ActorsToIgnore;
+		ActorsToIgnore.Add(this);
+		FHitResult HitResultCrouch;
+		UKismetSystemLibrary::SphereTraceSingle(GetWorld(), InitalCrouchTraceLoc, FVector(InitalCrouchTraceLoc.X, InitalCrouchTraceLoc.Y, InitalCrouchTraceLoc.Z + 96), 29, ETraceTypeQuery::TraceTypeQuery1, false, ActorsToIgnore, EDrawDebugTrace::None, HitResultCrouch, true, FLinearColor::Green);
+		if(!HitResultCrouch.bBlockingHit)
+		{
+			CrouchOnServer(false);
+		}
 	}
 	else
 	{
