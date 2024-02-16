@@ -13,6 +13,8 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
 	ENGINE_API UClass* Z_Construct_UClass_ACharacter();
 	ENGINE_API UClass* Z_Construct_UClass_UCameraComponent_NoRegister();
+	ENGINE_API UClass* Z_Construct_UClass_USoundAttenuation_NoRegister();
+	ENGINE_API UClass* Z_Construct_UClass_USoundBase_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_USpotLightComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_USpringArmComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
@@ -525,6 +527,18 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 		static void NewProp_bFlashlightToggle_SetBit(void* Obj);
 		static const UECodeGen_Private::FBoolPropertyParams NewProp_bFlashlightToggle;
 #if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_FlashlightOnSound_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_FlashlightOnSound;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_FlashlightOffSound_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_FlashlightOffSound;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_FlashlightAttenuation_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_FlashlightAttenuation;
+#if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_bCameraThirdToggle_MetaData[];
 #endif
 		static void NewProp_bCameraThirdToggle_SetBit(void* Obj);
@@ -811,6 +825,27 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 	}
 	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_bFlashlightToggle = { "bFlashlightToggle", nullptr, (EPropertyFlags)0x0010000000000025, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(ANuclearNightmareCharacter), &Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_bFlashlightToggle_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_bFlashlightToggle_MetaData), Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_bFlashlightToggle_MetaData) };
 #if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightOnSound_MetaData[] = {
+		{ "Category", "LightSource" },
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightOnSound = { "FlashlightOnSound", nullptr, (EPropertyFlags)0x0010000000000025, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANuclearNightmareCharacter, FlashlightOnSound), Z_Construct_UClass_USoundBase_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightOnSound_MetaData), Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightOnSound_MetaData) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightOffSound_MetaData[] = {
+		{ "Category", "LightSource" },
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightOffSound = { "FlashlightOffSound", nullptr, (EPropertyFlags)0x0010000000000025, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANuclearNightmareCharacter, FlashlightOffSound), Z_Construct_UClass_USoundBase_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightOffSound_MetaData), Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightOffSound_MetaData) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightAttenuation_MetaData[] = {
+		{ "Category", "LightSource" },
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightAttenuation = { "FlashlightAttenuation", nullptr, (EPropertyFlags)0x0010000000000025, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANuclearNightmareCharacter, FlashlightAttenuation), Z_Construct_UClass_USoundAttenuation_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightAttenuation_MetaData), Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightAttenuation_MetaData) };
+#if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_bCameraThirdToggle_MetaData[] = {
 		{ "Category", "Camera" },
 #if !UE_BUILD_SHIPPING
@@ -877,6 +912,9 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_SprintValue,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_WalkValue,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_bFlashlightToggle,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightOnSound,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightOffSound,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightAttenuation,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_bCameraThirdToggle,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_bIsPlayerCrouched,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_LocationBeforeCrouch,
@@ -917,6 +955,9 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 	void ANuclearNightmareCharacter::ValidateGeneratedRepEnums(const TArray<struct FRepRecord>& ClassReps) const
 	{
 		static const FName Name_bFlashlightToggle(TEXT("bFlashlightToggle"));
+		static const FName Name_FlashlightOnSound(TEXT("FlashlightOnSound"));
+		static const FName Name_FlashlightOffSound(TEXT("FlashlightOffSound"));
+		static const FName Name_FlashlightAttenuation(TEXT("FlashlightAttenuation"));
 		static const FName Name_bCameraThirdToggle(TEXT("bCameraThirdToggle"));
 		static const FName Name_bIsPlayerCrouched(TEXT("bIsPlayerCrouched"));
 		static const FName Name_LocationBeforeCrouch(TEXT("LocationBeforeCrouch"));
@@ -924,6 +965,9 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 
 		const bool bIsValid = true
 			&& Name_bFlashlightToggle == ClassReps[(int32)ENetFields_Private::bFlashlightToggle].Property->GetFName()
+			&& Name_FlashlightOnSound == ClassReps[(int32)ENetFields_Private::FlashlightOnSound].Property->GetFName()
+			&& Name_FlashlightOffSound == ClassReps[(int32)ENetFields_Private::FlashlightOffSound].Property->GetFName()
+			&& Name_FlashlightAttenuation == ClassReps[(int32)ENetFields_Private::FlashlightAttenuation].Property->GetFName()
 			&& Name_bCameraThirdToggle == ClassReps[(int32)ENetFields_Private::bCameraThirdToggle].Property->GetFName()
 			&& Name_bIsPlayerCrouched == ClassReps[(int32)ENetFields_Private::bIsPlayerCrouched].Property->GetFName()
 			&& Name_LocationBeforeCrouch == ClassReps[(int32)ENetFields_Private::LocationBeforeCrouch].Property->GetFName()
@@ -938,9 +982,9 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_ANuclearNightmareCharacter, ANuclearNightmareCharacter::StaticClass, TEXT("ANuclearNightmareCharacter"), &Z_Registration_Info_UClass_ANuclearNightmareCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ANuclearNightmareCharacter), 1938571207U) },
+		{ Z_Construct_UClass_ANuclearNightmareCharacter, ANuclearNightmareCharacter::StaticClass, TEXT("ANuclearNightmareCharacter"), &Z_Registration_Info_UClass_ANuclearNightmareCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ANuclearNightmareCharacter), 1958940932U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_102005754(TEXT("/Script/NuclearNightmare"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_3841513543(TEXT("/Script/NuclearNightmare"),
 		Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

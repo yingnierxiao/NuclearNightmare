@@ -148,12 +148,14 @@ void ANuclearNightmareCharacter::FlashlightOnClient_Implementation(bool Flashlig
 		FlashlightMesh->SetVisibility(true);
 		FlashlightSource->SetVisibility(true);
 		bFlashlightToggle = true;
+		UGameplayStatics::PlaySoundAtLocation(GetWorld(), FlashlightOnSound, GetActorLocation(), FRotator(0,0,0), 1.0, 1.0, 0.0, FlashlightAttenuation);
 	}
 	else
 	{
 		FlashlightMesh->SetVisibility(false);
 		FlashlightSource->SetVisibility(false);
 		bFlashlightToggle = false;
+		UGameplayStatics::PlaySoundAtLocation(GetWorld(), FlashlightOffSound, GetActorLocation(), FRotator(0,0,0), 1.0, 1.0, 0.0, FlashlightAttenuation);
 	}
 }
 

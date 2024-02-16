@@ -101,6 +101,15 @@ public:
 	//Flashlight Toggle
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Replicated, Category = LightSource)
 	bool bFlashlightToggle;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Replicated, Category = LightSource)
+	class USoundBase* FlashlightOnSound;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Replicated, Category = LightSource)
+	class USoundBase* FlashlightOffSound;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Replicated, Category = LightSource)
+	class USoundAttenuation* FlashlightAttenuation;
 
 	//Camera Toggle
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Replicated, Category = Camera)
