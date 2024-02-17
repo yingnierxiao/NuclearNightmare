@@ -13,6 +13,7 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
 	ENGINE_API UClass* Z_Construct_UClass_ACharacter();
 	ENGINE_API UClass* Z_Construct_UClass_UCameraComponent_NoRegister();
+	ENGINE_API UClass* Z_Construct_UClass_UPointLightComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_USoundAttenuation_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_USoundBase_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_USpotLightComponent_NoRegister();
@@ -47,6 +48,22 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 		P_FINISH;
 		P_NATIVE_BEGIN;
 		P_THIS->CrouchOnServer_Implementation(Z_Param_Crouch);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(ANuclearNightmareCharacter::execGlowstickOnClient)
+	{
+		P_GET_UBOOL(Z_Param_Glowstick);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->GlowstickOnClient_Implementation(Z_Param_Glowstick);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(ANuclearNightmareCharacter::execGlowstickOnServer)
+	{
+		P_GET_UBOOL(Z_Param_Glowstick);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->GlowstickOnServer_Implementation(Z_Param_Glowstick);
 		P_NATIVE_END;
 	}
 	DEFINE_FUNCTION(ANuclearNightmareCharacter::execFlashlightOnClient)
@@ -101,6 +118,14 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 	{
 		bool Flashlight;
 	};
+	struct NuclearNightmareCharacter_eventGlowstickOnClient_Parms
+	{
+		bool Glowstick;
+	};
+	struct NuclearNightmareCharacter_eventGlowstickOnServer_Parms
+	{
+		bool Glowstick;
+	};
 	struct NuclearNightmareCharacter_eventSprintOnClient_Parms
 	{
 		bool Sprinting;
@@ -144,6 +169,20 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 		Parms.Flashlight=Flashlight ? true : false;
 		ProcessEvent(FindFunctionChecked(NAME_ANuclearNightmareCharacter_FlashlightOnServer),&Parms);
 	}
+	static FName NAME_ANuclearNightmareCharacter_GlowstickOnClient = FName(TEXT("GlowstickOnClient"));
+	void ANuclearNightmareCharacter::GlowstickOnClient(bool Glowstick)
+	{
+		NuclearNightmareCharacter_eventGlowstickOnClient_Parms Parms;
+		Parms.Glowstick=Glowstick ? true : false;
+		ProcessEvent(FindFunctionChecked(NAME_ANuclearNightmareCharacter_GlowstickOnClient),&Parms);
+	}
+	static FName NAME_ANuclearNightmareCharacter_GlowstickOnServer = FName(TEXT("GlowstickOnServer"));
+	void ANuclearNightmareCharacter::GlowstickOnServer(bool Glowstick)
+	{
+		NuclearNightmareCharacter_eventGlowstickOnServer_Parms Parms;
+		Parms.Glowstick=Glowstick ? true : false;
+		ProcessEvent(FindFunctionChecked(NAME_ANuclearNightmareCharacter_GlowstickOnServer),&Parms);
+	}
 	static FName NAME_ANuclearNightmareCharacter_SprintOnClient = FName(TEXT("SprintOnClient"));
 	void ANuclearNightmareCharacter::SprintOnClient(bool Sprinting)
 	{
@@ -167,6 +206,8 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 			{ "CrouchOnServer", &ANuclearNightmareCharacter::execCrouchOnServer },
 			{ "FlashlightOnClient", &ANuclearNightmareCharacter::execFlashlightOnClient },
 			{ "FlashlightOnServer", &ANuclearNightmareCharacter::execFlashlightOnServer },
+			{ "GlowstickOnClient", &ANuclearNightmareCharacter::execGlowstickOnClient },
+			{ "GlowstickOnServer", &ANuclearNightmareCharacter::execGlowstickOnServer },
 			{ "SprintOnClient", &ANuclearNightmareCharacter::execSprintOnClient },
 			{ "SprintOnServer", &ANuclearNightmareCharacter::execSprintOnServer },
 		};
@@ -365,6 +406,82 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 		}
 		return ReturnFunction;
 	}
+	struct Z_Construct_UFunction_ANuclearNightmareCharacter_GlowstickOnClient_Statics
+	{
+		static void NewProp_Glowstick_SetBit(void* Obj);
+		static const UECodeGen_Private::FBoolPropertyParams NewProp_Glowstick;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+	void Z_Construct_UFunction_ANuclearNightmareCharacter_GlowstickOnClient_Statics::NewProp_Glowstick_SetBit(void* Obj)
+	{
+		((NuclearNightmareCharacter_eventGlowstickOnClient_Parms*)Obj)->Glowstick = 1;
+	}
+	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_ANuclearNightmareCharacter_GlowstickOnClient_Statics::NewProp_Glowstick = { "Glowstick", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(NuclearNightmareCharacter_eventGlowstickOnClient_Parms), &Z_Construct_UFunction_ANuclearNightmareCharacter_GlowstickOnClient_Statics::NewProp_Glowstick_SetBit, METADATA_PARAMS(0, nullptr) };
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_ANuclearNightmareCharacter_GlowstickOnClient_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ANuclearNightmareCharacter_GlowstickOnClient_Statics::NewProp_Glowstick,
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_ANuclearNightmareCharacter_GlowstickOnClient_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ANuclearNightmareCharacter_GlowstickOnClient_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ANuclearNightmareCharacter, nullptr, "GlowstickOnClient", nullptr, nullptr, Z_Construct_UFunction_ANuclearNightmareCharacter_GlowstickOnClient_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_ANuclearNightmareCharacter_GlowstickOnClient_Statics::PropPointers), sizeof(NuclearNightmareCharacter_eventGlowstickOnClient_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00084CC0, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ANuclearNightmareCharacter_GlowstickOnClient_Statics::Function_MetaDataParams), Z_Construct_UFunction_ANuclearNightmareCharacter_GlowstickOnClient_Statics::Function_MetaDataParams) };
+	static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_ANuclearNightmareCharacter_GlowstickOnClient_Statics::PropPointers) < 2048);
+	static_assert(sizeof(NuclearNightmareCharacter_eventGlowstickOnClient_Parms) < MAX_uint16);
+	UFunction* Z_Construct_UFunction_ANuclearNightmareCharacter_GlowstickOnClient()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ANuclearNightmareCharacter_GlowstickOnClient_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_ANuclearNightmareCharacter_GlowstickOnServer_Statics
+	{
+		static void NewProp_Glowstick_SetBit(void* Obj);
+		static const UECodeGen_Private::FBoolPropertyParams NewProp_Glowstick;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+	void Z_Construct_UFunction_ANuclearNightmareCharacter_GlowstickOnServer_Statics::NewProp_Glowstick_SetBit(void* Obj)
+	{
+		((NuclearNightmareCharacter_eventGlowstickOnServer_Parms*)Obj)->Glowstick = 1;
+	}
+	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_ANuclearNightmareCharacter_GlowstickOnServer_Statics::NewProp_Glowstick = { "Glowstick", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(NuclearNightmareCharacter_eventGlowstickOnServer_Parms), &Z_Construct_UFunction_ANuclearNightmareCharacter_GlowstickOnServer_Statics::NewProp_Glowstick_SetBit, METADATA_PARAMS(0, nullptr) };
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_ANuclearNightmareCharacter_GlowstickOnServer_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ANuclearNightmareCharacter_GlowstickOnServer_Statics::NewProp_Glowstick,
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_ANuclearNightmareCharacter_GlowstickOnServer_Statics::Function_MetaDataParams[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//Glowstick Logic\n" },
+#endif
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Glowstick Logic" },
+#endif
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ANuclearNightmareCharacter_GlowstickOnServer_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ANuclearNightmareCharacter, nullptr, "GlowstickOnServer", nullptr, nullptr, Z_Construct_UFunction_ANuclearNightmareCharacter_GlowstickOnServer_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_ANuclearNightmareCharacter_GlowstickOnServer_Statics::PropPointers), sizeof(NuclearNightmareCharacter_eventGlowstickOnServer_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00280CC0, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ANuclearNightmareCharacter_GlowstickOnServer_Statics::Function_MetaDataParams), Z_Construct_UFunction_ANuclearNightmareCharacter_GlowstickOnServer_Statics::Function_MetaDataParams) };
+	static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_ANuclearNightmareCharacter_GlowstickOnServer_Statics::PropPointers) < 2048);
+	static_assert(sizeof(NuclearNightmareCharacter_eventGlowstickOnServer_Parms) < MAX_uint16);
+	UFunction* Z_Construct_UFunction_ANuclearNightmareCharacter_GlowstickOnServer()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ANuclearNightmareCharacter_GlowstickOnServer_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
 	struct Z_Construct_UFunction_ANuclearNightmareCharacter_SprintOnClient_Statics
 	{
 		static void NewProp_Sprinting_SetBit(void* Obj);
@@ -474,9 +591,21 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 #endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_FlashlightMesh;
 #if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_FlashlightLightSourceMesh_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_FlashlightLightSourceMesh;
+#if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_FlashlightSource_MetaData[];
 #endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_FlashlightSource;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_GlowstickMesh_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_GlowstickMesh;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_GlowstickSource_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_GlowstickSource;
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_DefaultMappingContext_MetaData[];
 #endif
@@ -497,6 +626,10 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_FlashlightAction_MetaData[];
 #endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_FlashlightAction;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_GlowstickAction_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_GlowstickAction;
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_CrouchAction_MetaData[];
 #endif
@@ -539,6 +672,23 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 #endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_FlashlightAttenuation;
 #if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_bGlowstickToggle_MetaData[];
+#endif
+		static void NewProp_bGlowstickToggle_SetBit(void* Obj);
+		static const UECodeGen_Private::FBoolPropertyParams NewProp_bGlowstickToggle;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_GlowstickOnSound_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_GlowstickOnSound;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_GlowstickOffSound_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_GlowstickOffSound;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_GlowstickAttenuation_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_GlowstickAttenuation;
+#if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_bCameraThirdToggle_MetaData[];
 #endif
 		static void NewProp_bCameraThirdToggle_SetBit(void* Obj);
@@ -571,6 +721,8 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_CrouchOnServer, "CrouchOnServer" }, // 1457779063
 		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_FlashlightOnClient, "FlashlightOnClient" }, // 1721160597
 		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_FlashlightOnServer, "FlashlightOnServer" }, // 1424184229
+		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_GlowstickOnClient, "GlowstickOnClient" }, // 258725295
+		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_GlowstickOnServer, "GlowstickOnServer" }, // 3820998505
 		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_SprintOnClient, "SprintOnClient" }, // 1995746813
 		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_SprintOnServer, "SprintOnServer" }, // 2100253083
 	};
@@ -651,6 +803,15 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 #endif
 	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightMesh = { "FlashlightMesh", nullptr, (EPropertyFlags)0x004000000008000d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANuclearNightmareCharacter, FlashlightMesh), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightMesh_MetaData), Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightMesh_MetaData) };
 #if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightLightSourceMesh_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "LightSource" },
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightLightSourceMesh = { "FlashlightLightSourceMesh", nullptr, (EPropertyFlags)0x004000000008000d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANuclearNightmareCharacter, FlashlightLightSourceMesh), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightLightSourceMesh_MetaData), Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightLightSourceMesh_MetaData) };
+#if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightSource_MetaData[] = {
 		{ "AllowPrivateAccess", "true" },
 		{ "Category", "LightSource" },
@@ -659,6 +820,30 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 	};
 #endif
 	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightSource = { "FlashlightSource", nullptr, (EPropertyFlags)0x004000000008000d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANuclearNightmareCharacter, FlashlightSource), Z_Construct_UClass_USpotLightComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightSource_MetaData), Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightSource_MetaData) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_GlowstickMesh_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "LightSource" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//Glowstick Mesh & Light Source\n" },
+#endif
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Glowstick Mesh & Light Source" },
+#endif
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_GlowstickMesh = { "GlowstickMesh", nullptr, (EPropertyFlags)0x004000000008000d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANuclearNightmareCharacter, GlowstickMesh), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_GlowstickMesh_MetaData), Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_GlowstickMesh_MetaData) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_GlowstickSource_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "LightSource" },
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_GlowstickSource = { "GlowstickSource", nullptr, (EPropertyFlags)0x004000000008000d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANuclearNightmareCharacter, GlowstickSource), Z_Construct_UClass_UPointLightComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_GlowstickSource_MetaData), Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_GlowstickSource_MetaData) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_DefaultMappingContext_MetaData[] = {
 		{ "AllowPrivateAccess", "true" },
@@ -723,6 +908,20 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 	};
 #endif
 	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightAction = { "FlashlightAction", nullptr, (EPropertyFlags)0x0040000000000015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANuclearNightmareCharacter, FlashlightAction), Z_Construct_UClass_UInputAction_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightAction_MetaData), Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightAction_MetaData) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_GlowstickAction_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "Input" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//Glowstick Input Action\n" },
+#endif
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Glowstick Input Action" },
+#endif
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_GlowstickAction = { "GlowstickAction", nullptr, (EPropertyFlags)0x0040000000000015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANuclearNightmareCharacter, GlowstickAction), Z_Construct_UClass_UInputAction_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_GlowstickAction_MetaData), Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_GlowstickAction_MetaData) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_CrouchAction_MetaData[] = {
 		{ "AllowPrivateAccess", "true" },
@@ -846,6 +1045,44 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 #endif
 	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightAttenuation = { "FlashlightAttenuation", nullptr, (EPropertyFlags)0x0010000000000025, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANuclearNightmareCharacter, FlashlightAttenuation), Z_Construct_UClass_USoundAttenuation_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightAttenuation_MetaData), Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightAttenuation_MetaData) };
 #if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_bGlowstickToggle_MetaData[] = {
+		{ "Category", "LightSource" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//Glowstick Toggle\n" },
+#endif
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Glowstick Toggle" },
+#endif
+	};
+#endif
+	void Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_bGlowstickToggle_SetBit(void* Obj)
+	{
+		((ANuclearNightmareCharacter*)Obj)->bGlowstickToggle = 1;
+	}
+	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_bGlowstickToggle = { "bGlowstickToggle", nullptr, (EPropertyFlags)0x0010000000000025, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(ANuclearNightmareCharacter), &Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_bGlowstickToggle_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_bGlowstickToggle_MetaData), Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_bGlowstickToggle_MetaData) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_GlowstickOnSound_MetaData[] = {
+		{ "Category", "LightSource" },
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_GlowstickOnSound = { "GlowstickOnSound", nullptr, (EPropertyFlags)0x0010000000000025, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANuclearNightmareCharacter, GlowstickOnSound), Z_Construct_UClass_USoundBase_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_GlowstickOnSound_MetaData), Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_GlowstickOnSound_MetaData) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_GlowstickOffSound_MetaData[] = {
+		{ "Category", "LightSource" },
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_GlowstickOffSound = { "GlowstickOffSound", nullptr, (EPropertyFlags)0x0010000000000025, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANuclearNightmareCharacter, GlowstickOffSound), Z_Construct_UClass_USoundBase_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_GlowstickOffSound_MetaData), Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_GlowstickOffSound_MetaData) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_GlowstickAttenuation_MetaData[] = {
+		{ "Category", "LightSource" },
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_GlowstickAttenuation = { "GlowstickAttenuation", nullptr, (EPropertyFlags)0x0010000000000025, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANuclearNightmareCharacter, GlowstickAttenuation), Z_Construct_UClass_USoundAttenuation_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_GlowstickAttenuation_MetaData), Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_GlowstickAttenuation_MetaData) };
+#if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_bCameraThirdToggle_MetaData[] = {
 		{ "Category", "Camera" },
 #if !UE_BUILD_SHIPPING
@@ -899,12 +1136,16 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_GasMaskHud,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_GasMaskClass,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightMesh,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightLightSourceMesh,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightSource,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_GlowstickMesh,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_GlowstickSource,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_DefaultMappingContext,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_JumpAction,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_SprintAction,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_StopSprintAction,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightAction,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_GlowstickAction,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_CrouchAction,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FirstThirdCameraAction,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_MoveAction,
@@ -915,6 +1156,10 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightOnSound,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightOffSound,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightAttenuation,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_bGlowstickToggle,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_GlowstickOnSound,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_GlowstickOffSound,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_GlowstickAttenuation,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_bCameraThirdToggle,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_bIsPlayerCrouched,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_LocationBeforeCrouch,
@@ -958,6 +1203,10 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 		static const FName Name_FlashlightOnSound(TEXT("FlashlightOnSound"));
 		static const FName Name_FlashlightOffSound(TEXT("FlashlightOffSound"));
 		static const FName Name_FlashlightAttenuation(TEXT("FlashlightAttenuation"));
+		static const FName Name_bGlowstickToggle(TEXT("bGlowstickToggle"));
+		static const FName Name_GlowstickOnSound(TEXT("GlowstickOnSound"));
+		static const FName Name_GlowstickOffSound(TEXT("GlowstickOffSound"));
+		static const FName Name_GlowstickAttenuation(TEXT("GlowstickAttenuation"));
 		static const FName Name_bCameraThirdToggle(TEXT("bCameraThirdToggle"));
 		static const FName Name_bIsPlayerCrouched(TEXT("bIsPlayerCrouched"));
 		static const FName Name_LocationBeforeCrouch(TEXT("LocationBeforeCrouch"));
@@ -968,6 +1217,10 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 			&& Name_FlashlightOnSound == ClassReps[(int32)ENetFields_Private::FlashlightOnSound].Property->GetFName()
 			&& Name_FlashlightOffSound == ClassReps[(int32)ENetFields_Private::FlashlightOffSound].Property->GetFName()
 			&& Name_FlashlightAttenuation == ClassReps[(int32)ENetFields_Private::FlashlightAttenuation].Property->GetFName()
+			&& Name_bGlowstickToggle == ClassReps[(int32)ENetFields_Private::bGlowstickToggle].Property->GetFName()
+			&& Name_GlowstickOnSound == ClassReps[(int32)ENetFields_Private::GlowstickOnSound].Property->GetFName()
+			&& Name_GlowstickOffSound == ClassReps[(int32)ENetFields_Private::GlowstickOffSound].Property->GetFName()
+			&& Name_GlowstickAttenuation == ClassReps[(int32)ENetFields_Private::GlowstickAttenuation].Property->GetFName()
 			&& Name_bCameraThirdToggle == ClassReps[(int32)ENetFields_Private::bCameraThirdToggle].Property->GetFName()
 			&& Name_bIsPlayerCrouched == ClassReps[(int32)ENetFields_Private::bIsPlayerCrouched].Property->GetFName()
 			&& Name_LocationBeforeCrouch == ClassReps[(int32)ENetFields_Private::LocationBeforeCrouch].Property->GetFName()
@@ -982,9 +1235,9 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_ANuclearNightmareCharacter, ANuclearNightmareCharacter::StaticClass, TEXT("ANuclearNightmareCharacter"), &Z_Registration_Info_UClass_ANuclearNightmareCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ANuclearNightmareCharacter), 1958940932U) },
+		{ Z_Construct_UClass_ANuclearNightmareCharacter, ANuclearNightmareCharacter::StaticClass, TEXT("ANuclearNightmareCharacter"), &Z_Registration_Info_UClass_ANuclearNightmareCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ANuclearNightmareCharacter), 2514543593U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_3841513543(TEXT("/Script/NuclearNightmare"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_3783225065(TEXT("/Script/NuclearNightmare"),
 		Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

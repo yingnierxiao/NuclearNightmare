@@ -21,6 +21,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	virtual void CameraToggleOnClient_Implementation(bool ThirdPersonView); \
 	virtual void CrouchOnClient_Implementation(bool Crouch); \
 	virtual void CrouchOnServer_Implementation(bool Crouch); \
+	virtual void GlowstickOnClient_Implementation(bool Glowstick); \
+	virtual void GlowstickOnServer_Implementation(bool Glowstick); \
 	virtual void FlashlightOnClient_Implementation(bool Flashlight); \
 	virtual void FlashlightOnServer_Implementation(bool Flashlight); \
 	virtual void SprintOnClient_Implementation(bool Sprinting); \
@@ -29,6 +31,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	DECLARE_FUNCTION(execCameraToggleOnClient); \
 	DECLARE_FUNCTION(execCrouchOnClient); \
 	DECLARE_FUNCTION(execCrouchOnServer); \
+	DECLARE_FUNCTION(execGlowstickOnClient); \
+	DECLARE_FUNCTION(execGlowstickOnServer); \
 	DECLARE_FUNCTION(execFlashlightOnClient); \
 	DECLARE_FUNCTION(execFlashlightOnServer); \
 	DECLARE_FUNCTION(execSprintOnClient); \
@@ -52,6 +56,10 @@ public: \
 		FlashlightOnSound, \
 		FlashlightOffSound, \
 		FlashlightAttenuation, \
+		bGlowstickToggle, \
+		GlowstickOnSound, \
+		GlowstickOffSound, \
+		GlowstickAttenuation, \
 		bCameraThirdToggle, \
 		bIsPlayerCrouched, \
 		LocationBeforeCrouch, \

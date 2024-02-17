@@ -50,6 +50,20 @@ ANuclearNightmareCharacter::ANuclearNightmareCharacter()
 	FlashlightSource = CreateDefaultSubobject<USpotLightComponent>(TEXT("FlashlightSource"));
 	FlashlightSource->SetupAttachment(FlashlightMesh);
 	FlashlightSource->SetVisibility(false);
+
+	FlashlightLightSourceMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("FlashlightSourceMesh"));
+	FlashlightLightSourceMesh->SetupAttachment(FlashlightMesh);
+	FlashlightLightSourceMesh->SetVisibility(false);
+
+	//Create Glowstick
+	GlowstickMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("GlowstickMesh"));
+	const FName GlowstickSocketName = "GlowstickSocket";
+	GlowstickMesh->SetupAttachment(GetMesh(), GlowstickSocketName);
+	GlowstickMesh->SetVisibility(false);
+
+	GlowstickSource = CreateDefaultSubobject<UPointLightComponent>(TEXT("GlowstickSource"));
+	GlowstickSource->SetupAttachment(GlowstickMesh);
+	GlowstickSource->SetVisibility(false);
 }
 
 void ANuclearNightmareCharacter::BeginPlay()
@@ -86,6 +100,7 @@ void ANuclearNightmareCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProp
 	DOREPLIFETIME(ANuclearNightmareCharacter, bIsPlayerCrouched);
 	DOREPLIFETIME(ANuclearNightmareCharacter, LocationAfterCrouch);
 	DOREPLIFETIME(ANuclearNightmareCharacter, LocationBeforeCrouch);
+	DOREPLIFETIME(ANuclearNightmareCharacter, bGlowstickToggle);
 }
 
 //////////////////////////////////////////////////////////////////////////// Input
@@ -147,6 +162,7 @@ void ANuclearNightmareCharacter::FlashlightOnClient_Implementation(bool Flashlig
 	{
 		FlashlightMesh->SetVisibility(true);
 		FlashlightSource->SetVisibility(true);
+		FlashlightLightSourceMesh->SetVisibility(true);
 		bFlashlightToggle = true;
 		UGameplayStatics::PlaySoundAtLocation(GetWorld(), FlashlightOnSound, GetActorLocation(), FRotator(0,0,0), 1.0, 1.0, 0.0, FlashlightAttenuation);
 	}
@@ -154,6 +170,7 @@ void ANuclearNightmareCharacter::FlashlightOnClient_Implementation(bool Flashlig
 	{
 		FlashlightMesh->SetVisibility(false);
 		FlashlightSource->SetVisibility(false);
+		FlashlightLightSourceMesh->SetVisibility(false);
 		bFlashlightToggle = false;
 		UGameplayStatics::PlaySoundAtLocation(GetWorld(), FlashlightOffSound, GetActorLocation(), FRotator(0,0,0), 1.0, 1.0, 0.0, FlashlightAttenuation);
 	}
@@ -179,6 +196,61 @@ void ANuclearNightmareCharacter::FlashlightToggle()
 	{
 		FlashlightOn();
 	}
+
+	if(bGlowstickToggle)
+	{
+		GlowstickOff();
+	}
+}
+
+void ANuclearNightmareCharacter::GlowstickOn()
+{
+	GlowstickOnServer(true);
+}
+
+void ANuclearNightmareCharacter::GlowstickOff()
+{
+	GlowstickOnServer(false);
+}
+
+void ANuclearNightmareCharacter::GlowstickToggle()
+{
+	if(bGlowstickToggle)
+	{
+		GlowstickOff();
+	}
+	else
+	{
+		GlowstickOn();
+	}
+	
+	if(bFlashlightToggle)
+	{
+		FlashlightOff();
+	}
+}
+
+void ANuclearNightmareCharacter::GlowstickOnClient_Implementation(bool Glowstick)
+{
+	if(Glowstick)
+	{
+		GlowstickMesh->SetVisibility(true);
+		GlowstickSource->SetVisibility(true);
+		bGlowstickToggle = true;
+		UGameplayStatics::PlaySoundAtLocation(GetWorld(), GlowstickOnSound, GetActorLocation(), FRotator(0,0,0), 1.0, 1.0, 0.0, FlashlightAttenuation);
+	}
+	else
+	{
+		GlowstickMesh->SetVisibility(false);
+		GlowstickSource->SetVisibility(false);
+		bGlowstickToggle = false;
+		UGameplayStatics::PlaySoundAtLocation(GetWorld(), GlowstickOffSound, GetActorLocation(), FRotator(0,0,0), 1.0, 1.0, 0.0, FlashlightAttenuation);
+	}
+}
+
+void ANuclearNightmareCharacter::GlowstickOnServer_Implementation(bool Glowstick)
+{
+	GlowstickOnClient(Glowstick);
 }
 
 void ANuclearNightmareCharacter::CrouchOnServer_Implementation(bool Crouch)
@@ -290,6 +362,9 @@ void ANuclearNightmareCharacter::SetupPlayerInputComponent(UInputComponent* Play
 
 		//Flashlight
 		EnhancedInputComponent->BindAction(FlashlightAction, ETriggerEvent::Started, this, &ANuclearNightmareCharacter::FlashlightToggle);
+
+		//Glowstick
+		EnhancedInputComponent->BindAction(GlowstickAction, ETriggerEvent::Started, this, &ANuclearNightmareCharacter::GlowstickToggle);
 		
 		// Looking
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &ANuclearNightmareCharacter::Look);

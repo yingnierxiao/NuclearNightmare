@@ -45,7 +45,17 @@ class ANuclearNightmareCharacter : public ACharacter
 	UStaticMeshComponent* FlashlightMesh;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = LightSource, meta = (AllowPrivateAccess = "true"))
+	UStaticMeshComponent* FlashlightLightSourceMesh;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = LightSource, meta = (AllowPrivateAccess = "true"))
 	USpotLightComponent* FlashlightSource;
+
+	//Glowstick Mesh & Light Source
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = LightSource, meta = (AllowPrivateAccess = "true"))
+	UStaticMeshComponent* GlowstickMesh;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = LightSource, meta = (AllowPrivateAccess = "true"))
+	UPointLightComponent* GlowstickSource;
 
 	/** MappingContext */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
@@ -65,6 +75,10 @@ class ANuclearNightmareCharacter : public ACharacter
 	//Flashlight Input Action
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
 	UInputAction* FlashlightAction;
+
+	//Glowstick Input Action
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
+	UInputAction* GlowstickAction;
 
 	//Crouch Input Action
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
@@ -111,6 +125,19 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Replicated, Category = LightSource)
 	class USoundAttenuation* FlashlightAttenuation;
 
+	//Glowstick Toggle
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Replicated, Category = LightSource)
+	bool bGlowstickToggle;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Replicated, Category = LightSource)
+	class USoundBase* GlowstickOnSound;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Replicated, Category = LightSource)
+	class USoundBase* GlowstickOffSound;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Replicated, Category = LightSource)
+	class USoundAttenuation* GlowstickAttenuation;
+
 	//Camera Toggle
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Replicated, Category = Camera)
 	bool bCameraThirdToggle;
@@ -152,6 +179,18 @@ protected:
 	void FlashlightOn();
 	void FlashlightOff();
 	void FlashlightToggle();
+
+	//Glowstick Logic
+
+	UFUNCTION(Server, Reliable)
+	void GlowstickOnServer(bool Glowstick);
+
+	UFUNCTION(NetMulticast, Reliable)
+	void GlowstickOnClient(bool Glowstick);
+
+	void GlowstickOn();
+	void GlowstickOff();
+	void GlowstickToggle();
 
 	//Crouch Logic
 	UFUNCTION(Server, Reliable)
