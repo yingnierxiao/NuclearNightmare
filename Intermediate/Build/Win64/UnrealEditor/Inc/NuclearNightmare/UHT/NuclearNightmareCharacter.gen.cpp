@@ -579,13 +579,13 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 #endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_SpringArmFPCam;
 #if WITH_METADATA
-		static const UECodeGen_Private::FMetaDataPairParam NewProp_GasMaskHud_MetaData[];
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_InventoryHud_MetaData[];
 #endif
-		static const UECodeGen_Private::FObjectPropertyParams NewProp_GasMaskHud;
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_InventoryHud;
 #if WITH_METADATA
-		static const UECodeGen_Private::FMetaDataPairParam NewProp_GasMaskClass_MetaData[];
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_InventoryClass_MetaData[];
 #endif
-		static const UECodeGen_Private::FClassPropertyParams NewProp_GasMaskClass;
+		static const UECodeGen_Private::FClassPropertyParams NewProp_InventoryClass;
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_FlashlightMesh_MetaData[];
 #endif
@@ -765,7 +765,7 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 #endif
 	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_SpringArmFPCam = { "SpringArmFPCam", nullptr, (EPropertyFlags)0x004000000008000d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANuclearNightmareCharacter, SpringArmFPCam), Z_Construct_UClass_USpringArmComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_SpringArmFPCam_MetaData), Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_SpringArmFPCam_MetaData) };
 #if WITH_METADATA
-	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_GasMaskHud_MetaData[] = {
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InventoryHud_MetaData[] = {
 		{ "AllowPrivateAccess", "true" },
 		{ "Category", "Hud" },
 #if !UE_BUILD_SHIPPING
@@ -778,15 +778,15 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 #endif
 	};
 #endif
-	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_GasMaskHud = { "GasMaskHud", nullptr, (EPropertyFlags)0x004000000008000d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANuclearNightmareCharacter, GasMaskHud), Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_GasMaskHud_MetaData), Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_GasMaskHud_MetaData) };
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InventoryHud = { "InventoryHud", nullptr, (EPropertyFlags)0x004000000008000d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANuclearNightmareCharacter, InventoryHud), Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InventoryHud_MetaData), Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InventoryHud_MetaData) };
 #if WITH_METADATA
-	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_GasMaskClass_MetaData[] = {
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InventoryClass_MetaData[] = {
 		{ "AllowPrivateAccess", "true" },
 		{ "Category", "Hud" },
 		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
 	};
 #endif
-	const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_GasMaskClass = { "GasMaskClass", nullptr, (EPropertyFlags)0x0044000000000005, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANuclearNightmareCharacter, GasMaskClass), Z_Construct_UClass_UClass, Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_GasMaskClass_MetaData), Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_GasMaskClass_MetaData) };
+	const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InventoryClass = { "InventoryClass", nullptr, (EPropertyFlags)0x0044000000000005, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANuclearNightmareCharacter, InventoryClass), Z_Construct_UClass_UClass, Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InventoryClass_MetaData), Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InventoryClass_MetaData) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightMesh_MetaData[] = {
 		{ "AllowPrivateAccess", "true" },
@@ -1133,8 +1133,8 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ANuclearNightmareCharacter_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FirstPersonCameraComponent,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_SpringArmFPCam,
-		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_GasMaskHud,
-		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_GasMaskClass,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InventoryHud,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InventoryClass,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightMesh,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightLightSourceMesh,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightSource,
@@ -1235,9 +1235,9 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_ANuclearNightmareCharacter, ANuclearNightmareCharacter::StaticClass, TEXT("ANuclearNightmareCharacter"), &Z_Registration_Info_UClass_ANuclearNightmareCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ANuclearNightmareCharacter), 2514543593U) },
+		{ Z_Construct_UClass_ANuclearNightmareCharacter, ANuclearNightmareCharacter::StaticClass, TEXT("ANuclearNightmareCharacter"), &Z_Registration_Info_UClass_ANuclearNightmareCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ANuclearNightmareCharacter), 1692919142U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_3783225065(TEXT("/Script/NuclearNightmare"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_2521930885(TEXT("/Script/NuclearNightmare"),
 		Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

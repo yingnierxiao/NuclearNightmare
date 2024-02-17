@@ -35,10 +35,10 @@ class ANuclearNightmareCharacter : public ACharacter
 
 	//HUD
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Hud, meta = (AllowPrivateAccess = "true"))
-	UUserWidget* GasMaskHud;
+	UUserWidget* InventoryHud;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Hud, meta = (AllowPrivateAccess = "true"))
-	TSubclassOf<UUserWidget> GasMaskClass;
+	TSubclassOf<UUserWidget> InventoryClass;
 
 	//Flashlight Mesh & Light Source
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = LightSource, meta = (AllowPrivateAccess = "true"))

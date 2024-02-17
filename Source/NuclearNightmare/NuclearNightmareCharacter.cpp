@@ -82,10 +82,10 @@ void ANuclearNightmareCharacter::BeginPlay()
 
 	if(IsLocallyControlled())
 	{
-			GasMaskHud = Cast<UUserWidget>(CreateWidget(GetWorld(), GasMaskClass));
-			if(GasMaskHud)
+			InventoryHud = Cast<UUserWidget>(CreateWidget(GetWorld(), InventoryClass));
+			if(InventoryHud)
 			{
-				GasMaskHud->AddToViewport();
+				InventoryHud->AddToViewport();
 			}
 	}
 
@@ -263,23 +263,10 @@ void ANuclearNightmareCharacter::CameraToggleOnClient_Implementation(bool ThirdP
 	if(ThirdPersonView)
 	{
 		SpringArmFPCam->TargetArmLength = 300.0f;
-		if(GasMaskHud)
-		{
-			GasMaskHud->RemoveFromParent();
-		}
 	}
 	else
 	{
 		SpringArmFPCam->TargetArmLength = 0.0f;
-
-		if(IsLocallyControlled())
-		{
-			GasMaskHud = Cast<UUserWidget>(CreateWidget(GetWorld(), GasMaskClass));
-			if(GasMaskHud)
-			{
-				GasMaskHud->AddToViewport();
-			}
-		}
 	}
 }
 

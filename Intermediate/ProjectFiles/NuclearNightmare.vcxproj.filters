@@ -12,6 +12,7 @@
       <Filter>Source</Filter>
     </None>
     <None Include="..\..\.gitattributes" />
+    <None Include="..\..\.gitignore" />
     <None Include="..\..\.vsconfig" />
     <Filter Include="Config">
       <UniqueIdentifier>{FA535FFB-25E1-3D20-B416-52F9BE21E06E}</UniqueIdentifier>
@@ -34,6 +35,12 @@
     <Filter Include="Source\NuclearNightmare">
       <UniqueIdentifier>{97A27FC3-A29D-3FB0-A85E-B1EC38FECB5A}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\NuclearNightmare\ItemActor.cpp">
+      <Filter>Source\NuclearNightmare</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\NuclearNightmare\ItemActor.h">
+      <Filter>Source\NuclearNightmare</Filter>
+    </ClInclude>
     <None Include="..\..\Source\NuclearNightmare\NuclearNightmare.Build.cs">
       <Filter>Source\NuclearNightmare</Filter>
     </None>
@@ -59,24 +66,6 @@
       <Filter>Source\NuclearNightmare</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\NuclearNightmare\NuclearNightmarePlayerController.h">
-      <Filter>Source\NuclearNightmare</Filter>
-    </ClInclude>
-    <ClCompile Include="..\..\Source\NuclearNightmare\NuclearNightmareProjectile.cpp">
-      <Filter>Source\NuclearNightmare</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Source\NuclearNightmare\NuclearNightmareProjectile.h">
-      <Filter>Source\NuclearNightmare</Filter>
-    </ClInclude>
-    <ClCompile Include="..\..\Source\NuclearNightmare\TP_PickUpComponent.cpp">
-      <Filter>Source\NuclearNightmare</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Source\NuclearNightmare\TP_PickUpComponent.h">
-      <Filter>Source\NuclearNightmare</Filter>
-    </ClInclude>
-    <ClCompile Include="..\..\Source\NuclearNightmare\TP_WeaponComponent.cpp">
-      <Filter>Source\NuclearNightmare</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Source\NuclearNightmare\TP_WeaponComponent.h">
       <Filter>Source\NuclearNightmare</Filter>
     </ClInclude>
   </ItemGroup>
