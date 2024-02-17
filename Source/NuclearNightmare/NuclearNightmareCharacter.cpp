@@ -108,12 +108,21 @@ if(IsLocallyControlled())
 	const FVector ForwardVector = FirstPersonCameraComponent->GetForwardVector();
 	FVector End = ((ForwardVector * 250.0f) + Start);
 	FHitResult ItemHitResult;
-	if(UKismetSystemLibrary::SphereTraceSingle(GetWorld(), Start, End, 25.0f, TraceTypeQuery1, false, ActorsToIgnore, EDrawDebugTrace::None, ItemHitResult, true, FLinearColor::Blue))
+	if(UKismetSystemLibrary::SphereTraceSingle(GetWorld(), Start, End, 15.0f, TraceTypeQuery1, false, ActorsToIgnore, EDrawDebugTrace::None, ItemHitResult, true, FLinearColor::Blue))
 	{
 		if(Cast<AItemActor>(ItemHitResult.GetActor()))
 		{
 			ItemLookedAt = Cast<AItemActor>(ItemHitResult.GetActor());
+			ShowPickUpIcon.Broadcast();
 		}
+		else
+		{
+			RemovePickUpIcon.Broadcast();
+		}
+	}
+	else
+	{
+		RemovePickUpIcon.Broadcast();
 	}
 }
 }
@@ -443,8 +452,24 @@ void ANuclearNightmareCharacter::InventoryScrollFunction(bool backwards)
 	{
 		LastIndex = CurrentSlotIndex;
 	}
+
+	if(backwards && CurrentSlotIndex == -1)
+	{
+		CurrentSlotIndex = ItemsInInv.Num();
+	}
+
+	if(!backwards && CurrentSlotIndex == ItemsInInv.Num() + 1)
+	{
+		CurrentSlotIndex = 0;
+	}
 	
 	(backwards)? CurrentSlotIndex-- : CurrentSlotIndex++;
+
+	if(!backwards && CurrentSlotIndex > ItemsInInv.Num())
+	{
+		CurrentSlotIndex = 0;
+	}
+	
 	for(int32 i = 0; i < ItemsInInv.Num(); i++)
 	{
 		if (CurrentSlotIndex == i)
@@ -456,6 +481,9 @@ void ANuclearNightmareCharacter::InventoryScrollFunction(bool backwards)
 			break;
 		}
 	}
+
+	//const FString LogIndex = FString::FromInt(CurrentSlotIndex);
+	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, LogIndex);
 
 	if(WasLastIndexValid)
 	{

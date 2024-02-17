@@ -26,6 +26,8 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 	NUCLEARNIGHTMARE_API UClass* Z_Construct_UClass_ANuclearNightmareCharacter_NoRegister();
 	NUCLEARNIGHTMARE_API UFunction* Z_Construct_UDelegateFunction_NuclearNightmare_OnInventoryScroll__DelegateSignature();
 	NUCLEARNIGHTMARE_API UFunction* Z_Construct_UDelegateFunction_NuclearNightmare_OnInventoryUpdated__DelegateSignature();
+	NUCLEARNIGHTMARE_API UFunction* Z_Construct_UDelegateFunction_NuclearNightmare_RemovePickUpIcon__DelegateSignature();
+	NUCLEARNIGHTMARE_API UFunction* Z_Construct_UDelegateFunction_NuclearNightmare_ShowPickUpIcon__DelegateSignature();
 	UMG_API UClass* Z_Construct_UClass_UUserWidget_NoRegister();
 	UPackage* Z_Construct_UPackage__Script_NuclearNightmare();
 // End Cross Module References
@@ -98,6 +100,58 @@ void FOnInventoryScroll_DelegateWrapper(const FMulticastScriptDelegate& OnInvent
 	_Script_NuclearNightmare_eventOnInventoryScroll_Parms Parms;
 	Parms.CurrentSlot=CurrentSlot;
 	OnInventoryScroll.ProcessMulticastDelegate<UObject>(&Parms);
+}
+	struct Z_Construct_UDelegateFunction_NuclearNightmare_ShowPickUpIcon__DelegateSignature_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UDelegateFunction_NuclearNightmare_ShowPickUpIcon__DelegateSignature_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UDelegateFunction_NuclearNightmare_ShowPickUpIcon__DelegateSignature_Statics::FuncParams = { (UObject*(*)())Z_Construct_UPackage__Script_NuclearNightmare, nullptr, "ShowPickUpIcon__DelegateSignature", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00130000, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_NuclearNightmare_ShowPickUpIcon__DelegateSignature_Statics::Function_MetaDataParams), Z_Construct_UDelegateFunction_NuclearNightmare_ShowPickUpIcon__DelegateSignature_Statics::Function_MetaDataParams) };
+	UFunction* Z_Construct_UDelegateFunction_NuclearNightmare_ShowPickUpIcon__DelegateSignature()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UDelegateFunction_NuclearNightmare_ShowPickUpIcon__DelegateSignature_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+void FShowPickUpIcon_DelegateWrapper(const FMulticastScriptDelegate& ShowPickUpIcon)
+{
+	ShowPickUpIcon.ProcessMulticastDelegate<UObject>(NULL);
+}
+	struct Z_Construct_UDelegateFunction_NuclearNightmare_RemovePickUpIcon__DelegateSignature_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UDelegateFunction_NuclearNightmare_RemovePickUpIcon__DelegateSignature_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UDelegateFunction_NuclearNightmare_RemovePickUpIcon__DelegateSignature_Statics::FuncParams = { (UObject*(*)())Z_Construct_UPackage__Script_NuclearNightmare, nullptr, "RemovePickUpIcon__DelegateSignature", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00130000, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_NuclearNightmare_RemovePickUpIcon__DelegateSignature_Statics::Function_MetaDataParams), Z_Construct_UDelegateFunction_NuclearNightmare_RemovePickUpIcon__DelegateSignature_Statics::Function_MetaDataParams) };
+	UFunction* Z_Construct_UDelegateFunction_NuclearNightmare_RemovePickUpIcon__DelegateSignature()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UDelegateFunction_NuclearNightmare_RemovePickUpIcon__DelegateSignature_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+void FRemovePickUpIcon_DelegateWrapper(const FMulticastScriptDelegate& RemovePickUpIcon)
+{
+	RemovePickUpIcon.ProcessMulticastDelegate<UObject>(NULL);
 }
 	DEFINE_FUNCTION(ANuclearNightmareCharacter::execGetItemSlot)
 	{
@@ -1085,6 +1139,14 @@ void FOnInventoryScroll_DelegateWrapper(const FMulticastScriptDelegate& OnInvent
 #endif
 		static const UECodeGen_Private::FMulticastDelegatePropertyParams NewProp_InventoryUpdatedDelegate;
 #if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_ShowPickUpIcon_MetaData[];
+#endif
+		static const UECodeGen_Private::FMulticastDelegatePropertyParams NewProp_ShowPickUpIcon;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_RemovePickUpIcon_MetaData[];
+#endif
+		static const UECodeGen_Private::FMulticastDelegatePropertyParams NewProp_RemovePickUpIcon;
+#if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_InventoryScroll_MetaData[];
 #endif
 		static const UECodeGen_Private::FMulticastDelegatePropertyParams NewProp_InventoryScroll;
@@ -1483,6 +1545,18 @@ void FOnInventoryScroll_DelegateWrapper(const FMulticastScriptDelegate& OnInvent
 #endif
 	const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InventoryUpdatedDelegate = { "InventoryUpdatedDelegate", nullptr, (EPropertyFlags)0x0010000010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANuclearNightmareCharacter, InventoryUpdatedDelegate), Z_Construct_UDelegateFunction_NuclearNightmare_OnInventoryUpdated__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InventoryUpdatedDelegate_MetaData), Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InventoryUpdatedDelegate_MetaData) }; // 3760714769
 #if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_ShowPickUpIcon_MetaData[] = {
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_ShowPickUpIcon = { "ShowPickUpIcon", nullptr, (EPropertyFlags)0x0010000010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANuclearNightmareCharacter, ShowPickUpIcon), Z_Construct_UDelegateFunction_NuclearNightmare_ShowPickUpIcon__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_ShowPickUpIcon_MetaData), Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_ShowPickUpIcon_MetaData) }; // 2493696295
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_RemovePickUpIcon_MetaData[] = {
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_RemovePickUpIcon = { "RemovePickUpIcon", nullptr, (EPropertyFlags)0x0010000010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANuclearNightmareCharacter, RemovePickUpIcon), Z_Construct_UDelegateFunction_NuclearNightmare_RemovePickUpIcon__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_RemovePickUpIcon_MetaData), Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_RemovePickUpIcon_MetaData) }; // 262815015
+#if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InventoryScroll_MetaData[] = {
 		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
 	};
@@ -1703,6 +1777,8 @@ void FOnInventoryScroll_DelegateWrapper(const FMulticastScriptDelegate& OnInvent
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_ItemsInInv_Inner,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_ItemsInInv,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InventoryUpdatedDelegate,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_ShowPickUpIcon,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_RemovePickUpIcon,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InventoryScroll,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InventoryCapcity,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_ItemLookedAt,
@@ -1793,9 +1869,9 @@ void FOnInventoryScroll_DelegateWrapper(const FMulticastScriptDelegate& OnInvent
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_ANuclearNightmareCharacter, ANuclearNightmareCharacter::StaticClass, TEXT("ANuclearNightmareCharacter"), &Z_Registration_Info_UClass_ANuclearNightmareCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ANuclearNightmareCharacter), 2717978606U) },
+		{ Z_Construct_UClass_ANuclearNightmareCharacter, ANuclearNightmareCharacter::StaticClass, TEXT("ANuclearNightmareCharacter"), &Z_Registration_Info_UClass_ANuclearNightmareCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ANuclearNightmareCharacter), 1249475702U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_2317973910(TEXT("/Script/NuclearNightmare"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_2470042617(TEXT("/Script/NuclearNightmare"),
 		Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

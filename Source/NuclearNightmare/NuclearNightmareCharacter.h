@@ -22,6 +22,8 @@ struct FInputActionValue;
 DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnInventoryUpdated);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnInventoryScroll, int32, CurrentSlot);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FShowPickUpIcon);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FRemovePickUpIcon);
 
 UCLASS(config=Game)
 class ANuclearNightmareCharacter : public ACharacter
@@ -121,6 +123,12 @@ public:
 
 	UPROPERTY(BlueprintAssignable)
 	FOnInventoryUpdated InventoryUpdatedDelegate;
+
+	UPROPERTY(BlueprintAssignable)
+	FShowPickUpIcon ShowPickUpIcon;
+
+	UPROPERTY(BlueprintAssignable)
+	FRemovePickUpIcon RemovePickUpIcon;
 
 	UPROPERTY(BlueprintAssignable)
 	FOnInventoryScroll InventoryScroll;
