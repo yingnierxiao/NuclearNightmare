@@ -12,6 +12,7 @@
 #include "Engine/LocalPlayer.h"
 #include "Net/UnrealNetwork.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "ItemActor.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
@@ -64,6 +65,10 @@ ANuclearNightmareCharacter::ANuclearNightmareCharacter()
 	GlowstickSource = CreateDefaultSubobject<UPointLightComponent>(TEXT("GlowstickSource"));
 	GlowstickSource->SetupAttachment(GlowstickMesh);
 	GlowstickSource->SetVisibility(false);
+
+	//Inventory
+	InventoryCapcity = 5;
+	CurrentSlotIndex = -1;
 }
 
 void ANuclearNightmareCharacter::BeginPlay()
@@ -89,6 +94,28 @@ void ANuclearNightmareCharacter::BeginPlay()
 			}
 	}
 
+}
+
+void ANuclearNightmareCharacter::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+if(IsLocallyControlled())
+{
+	//Search for items
+	TArray<AActor*> ActorsToIgnore;
+	ActorsToIgnore.Add(this);
+	const FVector Start = FirstPersonCameraComponent->GetComponentLocation();
+	const FVector ForwardVector = FirstPersonCameraComponent->GetForwardVector();
+	FVector End = ((ForwardVector * 250.0f) + Start);
+	FHitResult ItemHitResult;
+	if(UKismetSystemLibrary::SphereTraceSingle(GetWorld(), Start, End, 25.0f, TraceTypeQuery1, false, ActorsToIgnore, EDrawDebugTrace::None, ItemHitResult, true, FLinearColor::Blue))
+	{
+		if(Cast<AItemActor>(ItemHitResult.GetActor()))
+		{
+			ItemLookedAt = Cast<AItemActor>(ItemHitResult.GetActor());
+		}
+	}
+}
 }
 
 void ANuclearNightmareCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
@@ -188,18 +215,21 @@ void ANuclearNightmareCharacter::FlashlightOff()
 
 void ANuclearNightmareCharacter::FlashlightToggle()
 {
-	if(bFlashlightToggle)
+	if(HasItem("Flashlight"))
 	{
-		FlashlightOff();
-	}
-	else
-	{
-		FlashlightOn();
-	}
+		if(bFlashlightToggle)
+		{
+			FlashlightOff();
+		}
+		else
+		{
+			FlashlightOn();
+		}
 
-	if(bGlowstickToggle)
-	{
-		GlowstickOff();
+		if(bGlowstickToggle)
+		{
+			GlowstickOff();
+		}
 	}
 }
 
@@ -215,18 +245,21 @@ void ANuclearNightmareCharacter::GlowstickOff()
 
 void ANuclearNightmareCharacter::GlowstickToggle()
 {
-	if(bGlowstickToggle)
+	if(HasItem("Glowstick"))
 	{
-		GlowstickOff();
-	}
-	else
-	{
-		GlowstickOn();
-	}
+		if(bGlowstickToggle)
+		{
+			GlowstickOff();
+		}
+		else
+		{
+			GlowstickOn();
+		}
 	
-	if(bFlashlightToggle)
-	{
-		FlashlightOff();
+		if(bFlashlightToggle)
+		{
+			FlashlightOff();
+		}
 	}
 }
 
@@ -327,6 +360,68 @@ void ANuclearNightmareCharacter::CameraToggle()
 	}
 }
 
+void ANuclearNightmareCharacter::PickUpItem(AItemActor* Item)
+{
+	if(ItemsInInv.Num() < InventoryCapcity)
+	{
+		ItemsInInv.Add(Item);
+		Item->OnPickedUp();
+		PickUpItemOnServer(Item);
+		UGameplayStatics::PlaySound2D(GetWorld(), Item->PickUpSound, 1.0f, 1.0f, 0.0f);
+		InventoryUpdatedDelegate.Broadcast();
+	}
+	else
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Your Inventory is full!"));
+	}
+}
+
+void ANuclearNightmareCharacter::PickUpItemOnServer_Implementation(AItemActor* Item)
+{
+	Item->OnPickedUpServer();
+}
+
+void ANuclearNightmareCharacter::AttemptItemPickUp()
+{
+	if(ItemLookedAt)
+	{
+		if(ItemLookedAt->PickedUp == false)
+		{
+			PickUpItem(ItemLookedAt);
+		}
+	}
+}
+
+bool ANuclearNightmareCharacter::HasItem(FString ItemName)
+{
+	bool bFoundName = false;
+	
+	for (auto const Item : ItemsInInv)
+	{
+		if(Item->ItemName == ItemName)
+		{
+			bFoundName = true;
+			break;
+		}
+	}
+	return bFoundName;
+}
+
+int32 ANuclearNightmareCharacter::GetItemSlot(FString ItemName)
+{
+	int32 FoundSlotNumber = 0;
+	
+	for (int i = 0; i < ItemsInInv.Num(); i++)
+	{
+		if(ItemsInInv[i]->ItemName == ItemName)
+		{
+			FoundSlotNumber = i;
+			break;
+		}
+	}
+	return FoundSlotNumber;
+}
+
 void ANuclearNightmareCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	// Set up action bindings
@@ -355,6 +450,9 @@ void ANuclearNightmareCharacter::SetupPlayerInputComponent(UInputComponent* Play
 		
 		// Looking
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &ANuclearNightmareCharacter::Look);
+
+		//Inventory
+		EnhancedInputComponent->BindAction(InteractAction, ETriggerEvent::Started, this, &ANuclearNightmareCharacter::AttemptItemPickUp);
 	}
 	else
 	{

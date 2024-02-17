@@ -16,9 +16,11 @@ class USkeletalMeshComponent;
 class UCameraComponent;
 class UInputAction;
 class UInputMappingContext;
+class AItemActor;
 struct FInputActionValue;
 
 DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnInventoryUpdated);
 
 UCLASS(config=Game)
 class ANuclearNightmareCharacter : public ACharacter
@@ -91,6 +93,10 @@ class ANuclearNightmareCharacter : public ACharacter
 	/** Move Input Action */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
 	UInputAction* MoveAction;
+
+	//Interact Input
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
+	UInputAction* InteractAction;
 	
 public:
 	ANuclearNightmareCharacter();
@@ -98,8 +104,26 @@ public:
 protected:
 	virtual void BeginPlay();
 
+	virtual void Tick(float DeltaSeconds) override;
+
 public:
-		
+
+	//Inventory
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Inventory, meta = (AllowPrivateAccess = "true"))
+	TArray<class AItemActor*> ItemsInInv;
+
+	UPROPERTY(BlueprintAssignable)
+	FOnInventoryUpdated InventoryUpdatedDelegate;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Inventory, meta = (AllowPrivateAccess = "true"))
+	int32 InventoryCapcity;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Inventory, meta = (AllowPrivateAccess = "true"))
+	class AItemActor* ItemLookedAt;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Inventory, meta = (AllowPrivateAccess = "true"))
+	int32 CurrentSlotIndex;
+	
 	/** Look Input Action */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	class UInputAction* LookAction;
@@ -208,7 +232,22 @@ protected:
 	void CameraToggleOnClient(bool ThirdPersonView);
 
 	void CameraToggle();
-	
+
+	//Inventory
+	UFUNCTION()
+	void PickUpItem(AItemActor* Item);
+
+	UFUNCTION(Server, Reliable)
+	void PickUpItemOnServer(AItemActor* Item);
+
+	UFUNCTION()
+	void AttemptItemPickUp();
+
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+	bool HasItem(FString ItemName);
+
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+	int32 GetItemSlot(FString ItemName);
 
 protected:
 	// APawn interface

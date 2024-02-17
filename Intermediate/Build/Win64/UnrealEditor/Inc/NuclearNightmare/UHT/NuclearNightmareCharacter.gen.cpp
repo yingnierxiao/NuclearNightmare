@@ -21,11 +21,70 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 	ENGINE_API UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
 	ENHANCEDINPUT_API UClass* Z_Construct_UClass_UInputAction_NoRegister();
 	ENHANCEDINPUT_API UClass* Z_Construct_UClass_UInputMappingContext_NoRegister();
+	NUCLEARNIGHTMARE_API UClass* Z_Construct_UClass_AItemActor_NoRegister();
 	NUCLEARNIGHTMARE_API UClass* Z_Construct_UClass_ANuclearNightmareCharacter();
 	NUCLEARNIGHTMARE_API UClass* Z_Construct_UClass_ANuclearNightmareCharacter_NoRegister();
+	NUCLEARNIGHTMARE_API UFunction* Z_Construct_UDelegateFunction_NuclearNightmare_OnInventoryUpdated__DelegateSignature();
 	UMG_API UClass* Z_Construct_UClass_UUserWidget_NoRegister();
 	UPackage* Z_Construct_UPackage__Script_NuclearNightmare();
 // End Cross Module References
+	struct Z_Construct_UDelegateFunction_NuclearNightmare_OnInventoryUpdated__DelegateSignature_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UDelegateFunction_NuclearNightmare_OnInventoryUpdated__DelegateSignature_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UDelegateFunction_NuclearNightmare_OnInventoryUpdated__DelegateSignature_Statics::FuncParams = { (UObject*(*)())Z_Construct_UPackage__Script_NuclearNightmare, nullptr, "OnInventoryUpdated__DelegateSignature", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00130000, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_NuclearNightmare_OnInventoryUpdated__DelegateSignature_Statics::Function_MetaDataParams), Z_Construct_UDelegateFunction_NuclearNightmare_OnInventoryUpdated__DelegateSignature_Statics::Function_MetaDataParams) };
+	UFunction* Z_Construct_UDelegateFunction_NuclearNightmare_OnInventoryUpdated__DelegateSignature()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UDelegateFunction_NuclearNightmare_OnInventoryUpdated__DelegateSignature_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+void FOnInventoryUpdated_DelegateWrapper(const FMulticastScriptDelegate& OnInventoryUpdated)
+{
+	OnInventoryUpdated.ProcessMulticastDelegate<UObject>(NULL);
+}
+	DEFINE_FUNCTION(ANuclearNightmareCharacter::execHasItem)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_ItemName);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(bool*)Z_Param__Result=P_THIS->HasItem(Z_Param_ItemName);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(ANuclearNightmareCharacter::execAttemptItemPickUp)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->AttemptItemPickUp();
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(ANuclearNightmareCharacter::execPickUpItemOnServer)
+	{
+		P_GET_OBJECT(AItemActor,Z_Param_Item);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->PickUpItemOnServer_Implementation(Z_Param_Item);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(ANuclearNightmareCharacter::execPickUpItem)
+	{
+		P_GET_OBJECT(AItemActor,Z_Param_Item);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->PickUpItem(Z_Param_Item);
+		P_NATIVE_END;
+	}
 	DEFINE_FUNCTION(ANuclearNightmareCharacter::execCameraToggleOnClient)
 	{
 		P_GET_UBOOL(Z_Param_ThirdPersonView);
@@ -126,6 +185,10 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 	{
 		bool Glowstick;
 	};
+	struct NuclearNightmareCharacter_eventPickUpItemOnServer_Parms
+	{
+		AItemActor* Item;
+	};
 	struct NuclearNightmareCharacter_eventSprintOnClient_Parms
 	{
 		bool Sprinting;
@@ -183,6 +246,13 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 		Parms.Glowstick=Glowstick ? true : false;
 		ProcessEvent(FindFunctionChecked(NAME_ANuclearNightmareCharacter_GlowstickOnServer),&Parms);
 	}
+	static FName NAME_ANuclearNightmareCharacter_PickUpItemOnServer = FName(TEXT("PickUpItemOnServer"));
+	void ANuclearNightmareCharacter::PickUpItemOnServer(AItemActor* Item)
+	{
+		NuclearNightmareCharacter_eventPickUpItemOnServer_Parms Parms;
+		Parms.Item=Item;
+		ProcessEvent(FindFunctionChecked(NAME_ANuclearNightmareCharacter_PickUpItemOnServer),&Parms);
+	}
 	static FName NAME_ANuclearNightmareCharacter_SprintOnClient = FName(TEXT("SprintOnClient"));
 	void ANuclearNightmareCharacter::SprintOnClient(bool Sprinting)
 	{
@@ -201,6 +271,7 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 	{
 		UClass* Class = ANuclearNightmareCharacter::StaticClass();
 		static const FNameNativePtrPair Funcs[] = {
+			{ "AttemptItemPickUp", &ANuclearNightmareCharacter::execAttemptItemPickUp },
 			{ "CameraToggleOnClient", &ANuclearNightmareCharacter::execCameraToggleOnClient },
 			{ "CrouchOnClient", &ANuclearNightmareCharacter::execCrouchOnClient },
 			{ "CrouchOnServer", &ANuclearNightmareCharacter::execCrouchOnServer },
@@ -208,10 +279,35 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 			{ "FlashlightOnServer", &ANuclearNightmareCharacter::execFlashlightOnServer },
 			{ "GlowstickOnClient", &ANuclearNightmareCharacter::execGlowstickOnClient },
 			{ "GlowstickOnServer", &ANuclearNightmareCharacter::execGlowstickOnServer },
+			{ "HasItem", &ANuclearNightmareCharacter::execHasItem },
+			{ "PickUpItem", &ANuclearNightmareCharacter::execPickUpItem },
+			{ "PickUpItemOnServer", &ANuclearNightmareCharacter::execPickUpItemOnServer },
 			{ "SprintOnClient", &ANuclearNightmareCharacter::execSprintOnClient },
 			{ "SprintOnServer", &ANuclearNightmareCharacter::execSprintOnServer },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
+	}
+	struct Z_Construct_UFunction_ANuclearNightmareCharacter_AttemptItemPickUp_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_ANuclearNightmareCharacter_AttemptItemPickUp_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ANuclearNightmareCharacter_AttemptItemPickUp_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ANuclearNightmareCharacter, nullptr, "AttemptItemPickUp", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00080401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ANuclearNightmareCharacter_AttemptItemPickUp_Statics::Function_MetaDataParams), Z_Construct_UFunction_ANuclearNightmareCharacter_AttemptItemPickUp_Statics::Function_MetaDataParams) };
+	UFunction* Z_Construct_UFunction_ANuclearNightmareCharacter_AttemptItemPickUp()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ANuclearNightmareCharacter_AttemptItemPickUp_Statics::FuncParams);
+		}
+		return ReturnFunction;
 	}
 	struct Z_Construct_UFunction_ANuclearNightmareCharacter_CameraToggleOnClient_Statics
 	{
@@ -482,6 +578,119 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 		}
 		return ReturnFunction;
 	}
+	struct Z_Construct_UFunction_ANuclearNightmareCharacter_HasItem_Statics
+	{
+		struct NuclearNightmareCharacter_eventHasItem_Parms
+		{
+			FString ItemName;
+			bool ReturnValue;
+		};
+		static const UECodeGen_Private::FStrPropertyParams NewProp_ItemName;
+		static void NewProp_ReturnValue_SetBit(void* Obj);
+		static const UECodeGen_Private::FBoolPropertyParams NewProp_ReturnValue;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UECodeGen_Private::FStrPropertyParams Z_Construct_UFunction_ANuclearNightmareCharacter_HasItem_Statics::NewProp_ItemName = { "ItemName", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(NuclearNightmareCharacter_eventHasItem_Parms, ItemName), METADATA_PARAMS(0, nullptr) };
+	void Z_Construct_UFunction_ANuclearNightmareCharacter_HasItem_Statics::NewProp_ReturnValue_SetBit(void* Obj)
+	{
+		((NuclearNightmareCharacter_eventHasItem_Parms*)Obj)->ReturnValue = 1;
+	}
+	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_ANuclearNightmareCharacter_HasItem_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(NuclearNightmareCharacter_eventHasItem_Parms), &Z_Construct_UFunction_ANuclearNightmareCharacter_HasItem_Statics::NewProp_ReturnValue_SetBit, METADATA_PARAMS(0, nullptr) };
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_ANuclearNightmareCharacter_HasItem_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ANuclearNightmareCharacter_HasItem_Statics::NewProp_ItemName,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ANuclearNightmareCharacter_HasItem_Statics::NewProp_ReturnValue,
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_ANuclearNightmareCharacter_HasItem_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ANuclearNightmareCharacter_HasItem_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ANuclearNightmareCharacter, nullptr, "HasItem", nullptr, nullptr, Z_Construct_UFunction_ANuclearNightmareCharacter_HasItem_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_ANuclearNightmareCharacter_HasItem_Statics::PropPointers), sizeof(Z_Construct_UFunction_ANuclearNightmareCharacter_HasItem_Statics::NuclearNightmareCharacter_eventHasItem_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x14080401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ANuclearNightmareCharacter_HasItem_Statics::Function_MetaDataParams), Z_Construct_UFunction_ANuclearNightmareCharacter_HasItem_Statics::Function_MetaDataParams) };
+	static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_ANuclearNightmareCharacter_HasItem_Statics::PropPointers) < 2048);
+	static_assert(sizeof(Z_Construct_UFunction_ANuclearNightmareCharacter_HasItem_Statics::NuclearNightmareCharacter_eventHasItem_Parms) < MAX_uint16);
+	UFunction* Z_Construct_UFunction_ANuclearNightmareCharacter_HasItem()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ANuclearNightmareCharacter_HasItem_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_ANuclearNightmareCharacter_PickUpItem_Statics
+	{
+		struct NuclearNightmareCharacter_eventPickUpItem_Parms
+		{
+			AItemActor* Item;
+		};
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_Item;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_ANuclearNightmareCharacter_PickUpItem_Statics::NewProp_Item = { "Item", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(NuclearNightmareCharacter_eventPickUpItem_Parms, Item), Z_Construct_UClass_AItemActor_NoRegister, METADATA_PARAMS(0, nullptr) };
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_ANuclearNightmareCharacter_PickUpItem_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ANuclearNightmareCharacter_PickUpItem_Statics::NewProp_Item,
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_ANuclearNightmareCharacter_PickUpItem_Statics::Function_MetaDataParams[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//Inventory\n" },
+#endif
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Inventory" },
+#endif
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ANuclearNightmareCharacter_PickUpItem_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ANuclearNightmareCharacter, nullptr, "PickUpItem", nullptr, nullptr, Z_Construct_UFunction_ANuclearNightmareCharacter_PickUpItem_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_ANuclearNightmareCharacter_PickUpItem_Statics::PropPointers), sizeof(Z_Construct_UFunction_ANuclearNightmareCharacter_PickUpItem_Statics::NuclearNightmareCharacter_eventPickUpItem_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00080401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ANuclearNightmareCharacter_PickUpItem_Statics::Function_MetaDataParams), Z_Construct_UFunction_ANuclearNightmareCharacter_PickUpItem_Statics::Function_MetaDataParams) };
+	static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_ANuclearNightmareCharacter_PickUpItem_Statics::PropPointers) < 2048);
+	static_assert(sizeof(Z_Construct_UFunction_ANuclearNightmareCharacter_PickUpItem_Statics::NuclearNightmareCharacter_eventPickUpItem_Parms) < MAX_uint16);
+	UFunction* Z_Construct_UFunction_ANuclearNightmareCharacter_PickUpItem()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ANuclearNightmareCharacter_PickUpItem_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_ANuclearNightmareCharacter_PickUpItemOnServer_Statics
+	{
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_Item;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_ANuclearNightmareCharacter_PickUpItemOnServer_Statics::NewProp_Item = { "Item", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(NuclearNightmareCharacter_eventPickUpItemOnServer_Parms, Item), Z_Construct_UClass_AItemActor_NoRegister, METADATA_PARAMS(0, nullptr) };
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_ANuclearNightmareCharacter_PickUpItemOnServer_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ANuclearNightmareCharacter_PickUpItemOnServer_Statics::NewProp_Item,
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_ANuclearNightmareCharacter_PickUpItemOnServer_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ANuclearNightmareCharacter_PickUpItemOnServer_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ANuclearNightmareCharacter, nullptr, "PickUpItemOnServer", nullptr, nullptr, Z_Construct_UFunction_ANuclearNightmareCharacter_PickUpItemOnServer_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_ANuclearNightmareCharacter_PickUpItemOnServer_Statics::PropPointers), sizeof(NuclearNightmareCharacter_eventPickUpItemOnServer_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00280CC0, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ANuclearNightmareCharacter_PickUpItemOnServer_Statics::Function_MetaDataParams), Z_Construct_UFunction_ANuclearNightmareCharacter_PickUpItemOnServer_Statics::Function_MetaDataParams) };
+	static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_ANuclearNightmareCharacter_PickUpItemOnServer_Statics::PropPointers) < 2048);
+	static_assert(sizeof(NuclearNightmareCharacter_eventPickUpItemOnServer_Parms) < MAX_uint16);
+	UFunction* Z_Construct_UFunction_ANuclearNightmareCharacter_PickUpItemOnServer()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ANuclearNightmareCharacter_PickUpItemOnServer_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
 	struct Z_Construct_UFunction_ANuclearNightmareCharacter_SprintOnClient_Statics
 	{
 		static void NewProp_Sprinting_SetBit(void* Obj);
@@ -643,6 +852,27 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 #endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_MoveAction;
 #if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_InteractAction_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_InteractAction;
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_ItemsInInv_Inner;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_ItemsInInv_MetaData[];
+#endif
+		static const UECodeGen_Private::FArrayPropertyParams NewProp_ItemsInInv;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_InventoryUpdatedDelegate_MetaData[];
+#endif
+		static const UECodeGen_Private::FMulticastDelegatePropertyParams NewProp_InventoryUpdatedDelegate;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_InventoryCapcity_MetaData[];
+#endif
+		static const UECodeGen_Private::FIntPropertyParams NewProp_InventoryCapcity;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_ItemLookedAt_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_ItemLookedAt;
+#if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_LookAction_MetaData[];
 #endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_LookAction;
@@ -716,6 +946,7 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 	};
 	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::DependentSingletons) < 16);
 	const FClassFunctionLinkInfo Z_Construct_UClass_ANuclearNightmareCharacter_Statics::FuncInfo[] = {
+		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_AttemptItemPickUp, "AttemptItemPickUp" }, // 1946516490
 		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_CameraToggleOnClient, "CameraToggleOnClient" }, // 3409967154
 		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_CrouchOnClient, "CrouchOnClient" }, // 1091692659
 		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_CrouchOnServer, "CrouchOnServer" }, // 1457779063
@@ -723,6 +954,9 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_FlashlightOnServer, "FlashlightOnServer" }, // 1424184229
 		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_GlowstickOnClient, "GlowstickOnClient" }, // 258725295
 		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_GlowstickOnServer, "GlowstickOnServer" }, // 3820998505
+		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_HasItem, "HasItem" }, // 645814734
+		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_PickUpItem, "PickUpItem" }, // 4074552153
+		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_PickUpItemOnServer, "PickUpItemOnServer" }, // 2713900082
 		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_SprintOnClient, "SprintOnClient" }, // 1995746813
 		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_SprintOnServer, "SprintOnServer" }, // 2100253083
 	};
@@ -965,6 +1199,57 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 #endif
 	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_MoveAction = { "MoveAction", nullptr, (EPropertyFlags)0x0040000000000015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANuclearNightmareCharacter, MoveAction), Z_Construct_UClass_UInputAction_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_MoveAction_MetaData), Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_MoveAction_MetaData) };
 #if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InteractAction_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "Input" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//Interact Input\n" },
+#endif
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Interact Input" },
+#endif
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InteractAction = { "InteractAction", nullptr, (EPropertyFlags)0x0040000000000015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANuclearNightmareCharacter, InteractAction), Z_Construct_UClass_UInputAction_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InteractAction_MetaData), Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InteractAction_MetaData) };
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_ItemsInInv_Inner = { "ItemsInInv", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UClass_AItemActor_NoRegister, METADATA_PARAMS(0, nullptr) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_ItemsInInv_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "Inventory" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//Inventory\n" },
+#endif
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Inventory" },
+#endif
+	};
+#endif
+	const UECodeGen_Private::FArrayPropertyParams Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_ItemsInInv = { "ItemsInInv", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANuclearNightmareCharacter, ItemsInInv), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_ItemsInInv_MetaData), Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_ItemsInInv_MetaData) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InventoryUpdatedDelegate_MetaData[] = {
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InventoryUpdatedDelegate = { "InventoryUpdatedDelegate", nullptr, (EPropertyFlags)0x0010000010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANuclearNightmareCharacter, InventoryUpdatedDelegate), Z_Construct_UDelegateFunction_NuclearNightmare_OnInventoryUpdated__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InventoryUpdatedDelegate_MetaData), Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InventoryUpdatedDelegate_MetaData) }; // 3760714769
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InventoryCapcity_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "Inventory" },
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FIntPropertyParams Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InventoryCapcity = { "InventoryCapcity", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANuclearNightmareCharacter, InventoryCapcity), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InventoryCapcity_MetaData), Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InventoryCapcity_MetaData) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_ItemLookedAt_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "Inventory" },
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_ItemLookedAt = { "ItemLookedAt", nullptr, (EPropertyFlags)0x0010000000000015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANuclearNightmareCharacter, ItemLookedAt), Z_Construct_UClass_AItemActor_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_ItemLookedAt_MetaData), Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_ItemLookedAt_MetaData) };
+#if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_LookAction_MetaData[] = {
 		{ "AllowPrivateAccess", "true" },
 		{ "Category", "Input" },
@@ -1149,6 +1434,12 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_CrouchAction,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FirstThirdCameraAction,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_MoveAction,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InteractAction,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_ItemsInInv_Inner,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_ItemsInInv,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InventoryUpdatedDelegate,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InventoryCapcity,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_ItemLookedAt,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_LookAction,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_SprintValue,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_WalkValue,
@@ -1235,9 +1526,9 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_ANuclearNightmareCharacter, ANuclearNightmareCharacter::StaticClass, TEXT("ANuclearNightmareCharacter"), &Z_Registration_Info_UClass_ANuclearNightmareCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ANuclearNightmareCharacter), 1692919142U) },
+		{ Z_Construct_UClass_ANuclearNightmareCharacter, ANuclearNightmareCharacter::StaticClass, TEXT("ANuclearNightmareCharacter"), &Z_Registration_Info_UClass_ANuclearNightmareCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ANuclearNightmareCharacter), 200388658U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_2521930885(TEXT("/Script/NuclearNightmare"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_1387369887(TEXT("/Script/NuclearNightmare"),
 		Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

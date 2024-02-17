@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NuclearNightmareModuleRules")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Development")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+35c6d816674b30d984733d36803cfc427de94057")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("NuclearNightmareModuleRules")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NuclearNightmareModuleRules")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

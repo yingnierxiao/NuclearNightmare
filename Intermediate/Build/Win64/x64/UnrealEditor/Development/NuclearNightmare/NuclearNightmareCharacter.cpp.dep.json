@@ -714,7 +714,9 @@
             "d:\\epic games\\ue_5.3\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\umg\\uht\\widgetanimationevents.generated.h",
             "d:\\epic games\\ue_5.3\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\umg\\uht\\userwidget.generated.h",
             "d:\\epic games\\ue_5.3\\engine\\source\\runtime\\engine\\public\\net\\unrealnetwork.h",
-            "d:\\epic games\\ue_5.3\\engine\\source\\runtime\\net\\core\\public\\net\\core\\propertyconditions\\propertyconditions.h"
+            "d:\\epic games\\ue_5.3\\engine\\source\\runtime\\net\\core\\public\\net\\core\\propertyconditions\\propertyconditions.h",
+            "d:\\nuclearnightmare\\nuclearnightmare\\source\\nuclearnightmare\\itemactor.h",
+            "d:\\nuclearnightmare\\nuclearnightmare\\intermediate\\build\\win64\\unrealeditor\\inc\\nuclearnightmare\\uht\\itemactor.generated.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []
