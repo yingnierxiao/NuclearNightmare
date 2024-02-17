@@ -21,6 +21,7 @@ struct FInputActionValue;
 
 DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnInventoryUpdated);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnInventoryScroll, int32, CurrentSlot);
 
 UCLASS(config=Game)
 class ANuclearNightmareCharacter : public ACharacter
@@ -41,6 +42,12 @@ class ANuclearNightmareCharacter : public ACharacter
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Hud, meta = (AllowPrivateAccess = "true"))
 	TSubclassOf<UUserWidget> InventoryClass;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
+	UInputAction* InventoryScrollAction;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
+	UInputAction* InventoryScrollBackAction;
 
 	//Flashlight Mesh & Light Source
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = LightSource, meta = (AllowPrivateAccess = "true"))
@@ -114,6 +121,9 @@ public:
 
 	UPROPERTY(BlueprintAssignable)
 	FOnInventoryUpdated InventoryUpdatedDelegate;
+
+	UPROPERTY(BlueprintAssignable)
+	FOnInventoryScroll InventoryScroll;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Inventory, meta = (AllowPrivateAccess = "true"))
 	int32 InventoryCapcity;
@@ -200,8 +210,11 @@ protected:
 	UFUNCTION(NetMulticast, Reliable)
 	void FlashlightOnClient(bool Flashlight);
 
+	UFUNCTION(BlueprintCallable)
 	void FlashlightOn();
+	UFUNCTION(BlueprintCallable)
 	void FlashlightOff();
+	
 	void FlashlightToggle();
 
 	//Glowstick Logic
@@ -212,8 +225,11 @@ protected:
 	UFUNCTION(NetMulticast, Reliable)
 	void GlowstickOnClient(bool Glowstick);
 
+	UFUNCTION(BlueprintCallable)
 	void GlowstickOn();
+	UFUNCTION(BlueprintCallable)
 	void GlowstickOff();
+	
 	void GlowstickToggle();
 
 	//Crouch Logic
@@ -248,6 +264,11 @@ protected:
 
 	UFUNCTION(BlueprintCallable, BlueprintPure)
 	int32 GetItemSlot(FString ItemName);
+	
+	void InventoryScrollFunction(bool backwards);
+
+	void InventoryScrollForward();
+	void InventoryScrollBack();
 
 protected:
 	// APawn interface

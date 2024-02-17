@@ -217,9 +217,15 @@ void ANuclearNightmareCharacter::FlashlightToggle()
 {
 	if(HasItem("Flashlight"))
 	{
+		int32 FlashlightSlot = GetItemSlot("Flashlight");
+		CurrentSlotIndex = FlashlightSlot;
+		InventoryScroll.Broadcast(FlashlightSlot);
+		
 		if(bFlashlightToggle)
 		{
 			FlashlightOff();
+			CurrentSlotIndex = -1;
+			InventoryScroll.Broadcast(-1);
 		}
 		else
 		{
@@ -247,9 +253,15 @@ void ANuclearNightmareCharacter::GlowstickToggle()
 {
 	if(HasItem("Glowstick"))
 	{
+		int32 GlowstickSlot = GetItemSlot("Glowstick");
+		CurrentSlotIndex = GlowstickSlot;
+		InventoryScroll.Broadcast(GlowstickSlot);
+		
 		if(bGlowstickToggle)
 		{
 			GlowstickOff();
+			CurrentSlotIndex = -1;
+			InventoryScroll.Broadcast(-1);
 		}
 		else
 		{
@@ -422,6 +434,51 @@ int32 ANuclearNightmareCharacter::GetItemSlot(FString ItemName)
 	return FoundSlotNumber;
 }
 
+void ANuclearNightmareCharacter::InventoryScrollFunction(bool backwards)
+{
+	bool FoundIndex = false;
+	const bool WasLastIndexValid = ItemsInInv.IsValidIndex(CurrentSlotIndex);
+	int32 LastIndex = -1;
+	if(WasLastIndexValid)
+	{
+		LastIndex = CurrentSlotIndex;
+	}
+	
+	(backwards)? CurrentSlotIndex-- : CurrentSlotIndex++;
+	for(int32 i = 0; i < ItemsInInv.Num(); i++)
+	{
+		if (CurrentSlotIndex == i)
+		{
+			ItemsInInv[i]->Equip(this);
+			FoundIndex = true;
+			InventoryScroll.Broadcast(i);
+			
+			break;
+		}
+	}
+
+	if(WasLastIndexValid)
+	{
+		ItemsInInv[LastIndex]->UnEquip(this);
+	}
+
+	if(!FoundIndex)
+	{
+		(backwards)? CurrentSlotIndex = ItemsInInv.Num() : CurrentSlotIndex = -1;
+		InventoryScroll.Broadcast(CurrentSlotIndex);	
+	}
+}
+
+void ANuclearNightmareCharacter::InventoryScrollForward()
+{
+	InventoryScrollFunction(false);
+}
+
+void ANuclearNightmareCharacter::InventoryScrollBack()
+{
+	InventoryScrollFunction(true);
+}
+
 void ANuclearNightmareCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	// Set up action bindings
@@ -453,6 +510,8 @@ void ANuclearNightmareCharacter::SetupPlayerInputComponent(UInputComponent* Play
 
 		//Inventory
 		EnhancedInputComponent->BindAction(InteractAction, ETriggerEvent::Started, this, &ANuclearNightmareCharacter::AttemptItemPickUp);
+		EnhancedInputComponent->BindAction(InventoryScrollAction, ETriggerEvent::Started, this, &ANuclearNightmareCharacter::InventoryScrollForward);
+		EnhancedInputComponent->BindAction(InventoryScrollBackAction, ETriggerEvent::Started, this, &ANuclearNightmareCharacter::InventoryScrollBack);
 	}
 	else
 	{
