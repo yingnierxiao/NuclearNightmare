@@ -5,6 +5,11 @@
 			"guid": "00000000000000000000000000000000",
 			"description": "Default Uncontrolled Changelist",
 			"files": [
+				"C:/Users/blain/Documents/Unreal Projects/NuclearNightmare/Content/Interactions/BPI_Interactions.uasset",
+				"C:/Users/blain/Documents/Unreal Projects/NuclearNightmare/Content/FirstPerson/Blueprints/BP_FirstPersonCharacter.uasset",
+				"C:/Users/blain/Documents/Unreal Projects/NuclearNightmare/Content/Interactions/W_InteractionDisplay.uasset",
+				"C:/Users/blain/Documents/Unreal Projects/NuclearNightmare/Content/Interactions/BP_TestActor.uasset",
+				"C:/Users/blain/Documents/Unreal Projects/NuclearNightmare/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/8/5L/Y9BD97LFCE4XH4RR41WTML.uasset",
 				"D:/NuclearNightmare/NuclearNightmare/Content/__ExternalActors__/BattleRoyaleStarterKit/Maps/BattleRoyale_Map_a/BattleRoyale_Map_a_WP/2T/XF/9NHKL6RZ3BE0O8KQOYE3P.uasset",
 				"D:/NuclearNightmare/NuclearNightmare/Content/__ExternalActors__/BattleRoyaleStarterKit/Maps/BattleRoyale_Map_a/BattleRoyale_Map_a_WP/AU/R0/5O5PEJLMDPYO5D9B04ZRI.uasset",
 				"D:/NuclearNightmare/NuclearNightmare/Content/__ExternalActors__/BattleRoyaleStarterKit/Maps/BattleRoyale_Map_a/BattleRoyale_Map_a_WP/B5/HS/L2BSUOJX6GP3F57PJ1Q2L.uasset",
