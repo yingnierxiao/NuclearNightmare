@@ -35,6 +35,8 @@ NUCLEARNIGHTMARE_API void FRemovePickUpIcon_DelegateWrapper(const FMulticastScri
 #define FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_31_SPARSE_DATA_PROPERTY_ACCESSORS
 #define FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_31_EDITOR_ONLY_SPARSE_DATA_PROPERTY_ACCESSORS
 #define FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_31_RPC_WRAPPERS_NO_PURE_DECLS \
+	virtual void DropItemOnClient_Implementation(AItemActor* Item); \
+	virtual void DropItemOnServer_Implementation(AItemActor* Item); \
 	virtual void PickUpItemOnServer_Implementation(AItemActor* Item); \
 	virtual void CameraToggleOnClient_Implementation(bool ThirdPersonView); \
 	virtual void CrouchOnClient_Implementation(bool Crouch); \
@@ -46,6 +48,8 @@ NUCLEARNIGHTMARE_API void FRemovePickUpIcon_DelegateWrapper(const FMulticastScri
 	virtual void SprintOnClient_Implementation(bool Sprinting); \
 	virtual void SprintOnServer_Implementation(bool Sprinting); \
  \
+	DECLARE_FUNCTION(execDropItemOnClient); \
+	DECLARE_FUNCTION(execDropItemOnServer); \
 	DECLARE_FUNCTION(execGetItemSlot); \
 	DECLARE_FUNCTION(execHasItem); \
 	DECLARE_FUNCTION(execAttemptItemPickUp); \

@@ -153,6 +153,22 @@ void FRemovePickUpIcon_DelegateWrapper(const FMulticastScriptDelegate& RemovePic
 {
 	RemovePickUpIcon.ProcessMulticastDelegate<UObject>(NULL);
 }
+	DEFINE_FUNCTION(ANuclearNightmareCharacter::execDropItemOnClient)
+	{
+		P_GET_OBJECT(AItemActor,Z_Param_Item);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->DropItemOnClient_Implementation(Z_Param_Item);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(ANuclearNightmareCharacter::execDropItemOnServer)
+	{
+		P_GET_OBJECT(AItemActor,Z_Param_Item);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->DropItemOnServer_Implementation(Z_Param_Item);
+		P_NATIVE_END;
+	}
 	DEFINE_FUNCTION(ANuclearNightmareCharacter::execGetItemSlot)
 	{
 		P_GET_PROPERTY(FStrProperty,Z_Param_ItemName);
@@ -304,6 +320,14 @@ void FRemovePickUpIcon_DelegateWrapper(const FMulticastScriptDelegate& RemovePic
 	{
 		bool Crouch;
 	};
+	struct NuclearNightmareCharacter_eventDropItemOnClient_Parms
+	{
+		AItemActor* Item;
+	};
+	struct NuclearNightmareCharacter_eventDropItemOnServer_Parms
+	{
+		AItemActor* Item;
+	};
 	struct NuclearNightmareCharacter_eventFlashlightOnClient_Parms
 	{
 		bool Flashlight;
@@ -352,6 +376,20 @@ void FRemovePickUpIcon_DelegateWrapper(const FMulticastScriptDelegate& RemovePic
 		NuclearNightmareCharacter_eventCrouchOnServer_Parms Parms;
 		Parms.Crouch=Crouch ? true : false;
 		ProcessEvent(FindFunctionChecked(NAME_ANuclearNightmareCharacter_CrouchOnServer),&Parms);
+	}
+	static FName NAME_ANuclearNightmareCharacter_DropItemOnClient = FName(TEXT("DropItemOnClient"));
+	void ANuclearNightmareCharacter::DropItemOnClient(AItemActor* Item)
+	{
+		NuclearNightmareCharacter_eventDropItemOnClient_Parms Parms;
+		Parms.Item=Item;
+		ProcessEvent(FindFunctionChecked(NAME_ANuclearNightmareCharacter_DropItemOnClient),&Parms);
+	}
+	static FName NAME_ANuclearNightmareCharacter_DropItemOnServer = FName(TEXT("DropItemOnServer"));
+	void ANuclearNightmareCharacter::DropItemOnServer(AItemActor* Item)
+	{
+		NuclearNightmareCharacter_eventDropItemOnServer_Parms Parms;
+		Parms.Item=Item;
+		ProcessEvent(FindFunctionChecked(NAME_ANuclearNightmareCharacter_DropItemOnServer),&Parms);
 	}
 	static FName NAME_ANuclearNightmareCharacter_FlashlightOnClient = FName(TEXT("FlashlightOnClient"));
 	void ANuclearNightmareCharacter::FlashlightOnClient(bool Flashlight)
@@ -410,6 +448,8 @@ void FRemovePickUpIcon_DelegateWrapper(const FMulticastScriptDelegate& RemovePic
 			{ "CameraToggleOnClient", &ANuclearNightmareCharacter::execCameraToggleOnClient },
 			{ "CrouchOnClient", &ANuclearNightmareCharacter::execCrouchOnClient },
 			{ "CrouchOnServer", &ANuclearNightmareCharacter::execCrouchOnServer },
+			{ "DropItemOnClient", &ANuclearNightmareCharacter::execDropItemOnClient },
+			{ "DropItemOnServer", &ANuclearNightmareCharacter::execDropItemOnServer },
 			{ "FlashlightOff", &ANuclearNightmareCharacter::execFlashlightOff },
 			{ "FlashlightOn", &ANuclearNightmareCharacter::execFlashlightOn },
 			{ "FlashlightOnClient", &ANuclearNightmareCharacter::execFlashlightOnClient },
@@ -563,6 +603,66 @@ void FRemovePickUpIcon_DelegateWrapper(const FMulticastScriptDelegate& RemovePic
 		if (!ReturnFunction)
 		{
 			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ANuclearNightmareCharacter_CrouchOnServer_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_ANuclearNightmareCharacter_DropItemOnClient_Statics
+	{
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_Item;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_ANuclearNightmareCharacter_DropItemOnClient_Statics::NewProp_Item = { "Item", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(NuclearNightmareCharacter_eventDropItemOnClient_Parms, Item), Z_Construct_UClass_AItemActor_NoRegister, METADATA_PARAMS(0, nullptr) };
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_ANuclearNightmareCharacter_DropItemOnClient_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ANuclearNightmareCharacter_DropItemOnClient_Statics::NewProp_Item,
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_ANuclearNightmareCharacter_DropItemOnClient_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ANuclearNightmareCharacter_DropItemOnClient_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ANuclearNightmareCharacter, nullptr, "DropItemOnClient", nullptr, nullptr, Z_Construct_UFunction_ANuclearNightmareCharacter_DropItemOnClient_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_ANuclearNightmareCharacter_DropItemOnClient_Statics::PropPointers), sizeof(NuclearNightmareCharacter_eventDropItemOnClient_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00084CC0, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ANuclearNightmareCharacter_DropItemOnClient_Statics::Function_MetaDataParams), Z_Construct_UFunction_ANuclearNightmareCharacter_DropItemOnClient_Statics::Function_MetaDataParams) };
+	static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_ANuclearNightmareCharacter_DropItemOnClient_Statics::PropPointers) < 2048);
+	static_assert(sizeof(NuclearNightmareCharacter_eventDropItemOnClient_Parms) < MAX_uint16);
+	UFunction* Z_Construct_UFunction_ANuclearNightmareCharacter_DropItemOnClient()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ANuclearNightmareCharacter_DropItemOnClient_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_ANuclearNightmareCharacter_DropItemOnServer_Statics
+	{
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_Item;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_ANuclearNightmareCharacter_DropItemOnServer_Statics::NewProp_Item = { "Item", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(NuclearNightmareCharacter_eventDropItemOnServer_Parms, Item), Z_Construct_UClass_AItemActor_NoRegister, METADATA_PARAMS(0, nullptr) };
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_ANuclearNightmareCharacter_DropItemOnServer_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ANuclearNightmareCharacter_DropItemOnServer_Statics::NewProp_Item,
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_ANuclearNightmareCharacter_DropItemOnServer_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ANuclearNightmareCharacter_DropItemOnServer_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ANuclearNightmareCharacter, nullptr, "DropItemOnServer", nullptr, nullptr, Z_Construct_UFunction_ANuclearNightmareCharacter_DropItemOnServer_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_ANuclearNightmareCharacter_DropItemOnServer_Statics::PropPointers), sizeof(NuclearNightmareCharacter_eventDropItemOnServer_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00280CC0, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ANuclearNightmareCharacter_DropItemOnServer_Statics::Function_MetaDataParams), Z_Construct_UFunction_ANuclearNightmareCharacter_DropItemOnServer_Statics::Function_MetaDataParams) };
+	static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_ANuclearNightmareCharacter_DropItemOnServer_Statics::PropPointers) < 2048);
+	static_assert(sizeof(NuclearNightmareCharacter_eventDropItemOnServer_Parms) < MAX_uint16);
+	UFunction* Z_Construct_UFunction_ANuclearNightmareCharacter_DropItemOnServer()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ANuclearNightmareCharacter_DropItemOnServer_Statics::FuncParams);
 		}
 		return ReturnFunction;
 	}
@@ -1070,6 +1170,10 @@ void FRemovePickUpIcon_DelegateWrapper(const FMulticastScriptDelegate& RemovePic
 #endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_InventoryScrollBackAction;
 #if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_InventoryDropItemAction_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_InventoryDropItemAction;
+#if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_FlashlightMesh_MetaData[];
 #endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_FlashlightMesh;
@@ -1240,6 +1344,8 @@ void FRemovePickUpIcon_DelegateWrapper(const FMulticastScriptDelegate& RemovePic
 		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_CameraToggleOnClient, "CameraToggleOnClient" }, // 3409967154
 		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_CrouchOnClient, "CrouchOnClient" }, // 1091692659
 		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_CrouchOnServer, "CrouchOnServer" }, // 1457779063
+		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_DropItemOnClient, "DropItemOnClient" }, // 2444109725
+		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_DropItemOnServer, "DropItemOnServer" }, // 3408017480
 		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_FlashlightOff, "FlashlightOff" }, // 91466856
 		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_FlashlightOn, "FlashlightOn" }, // 3035784129
 		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_FlashlightOnClient, "FlashlightOnClient" }, // 1721160597
@@ -1332,6 +1438,14 @@ void FRemovePickUpIcon_DelegateWrapper(const FMulticastScriptDelegate& RemovePic
 	};
 #endif
 	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InventoryScrollBackAction = { "InventoryScrollBackAction", nullptr, (EPropertyFlags)0x0040000000000015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANuclearNightmareCharacter, InventoryScrollBackAction), Z_Construct_UClass_UInputAction_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InventoryScrollBackAction_MetaData), Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InventoryScrollBackAction_MetaData) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InventoryDropItemAction_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "Input" },
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InventoryDropItemAction = { "InventoryDropItemAction", nullptr, (EPropertyFlags)0x0040000000000015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANuclearNightmareCharacter, InventoryDropItemAction), Z_Construct_UClass_UInputAction_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InventoryDropItemAction_MetaData), Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InventoryDropItemAction_MetaData) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightMesh_MetaData[] = {
 		{ "AllowPrivateAccess", "true" },
@@ -1759,6 +1873,7 @@ void FRemovePickUpIcon_DelegateWrapper(const FMulticastScriptDelegate& RemovePic
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InventoryClass,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InventoryScrollAction,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InventoryScrollBackAction,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InventoryDropItemAction,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightMesh,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightLightSourceMesh,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightSource,
@@ -1869,9 +1984,9 @@ void FRemovePickUpIcon_DelegateWrapper(const FMulticastScriptDelegate& RemovePic
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_ANuclearNightmareCharacter, ANuclearNightmareCharacter::StaticClass, TEXT("ANuclearNightmareCharacter"), &Z_Registration_Info_UClass_ANuclearNightmareCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ANuclearNightmareCharacter), 1249475702U) },
+		{ Z_Construct_UClass_ANuclearNightmareCharacter, ANuclearNightmareCharacter::StaticClass, TEXT("ANuclearNightmareCharacter"), &Z_Registration_Info_UClass_ANuclearNightmareCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ANuclearNightmareCharacter), 2300149691U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_2470042617(TEXT("/Script/NuclearNightmare"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_1414333577(TEXT("/Script/NuclearNightmare"),
 		Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

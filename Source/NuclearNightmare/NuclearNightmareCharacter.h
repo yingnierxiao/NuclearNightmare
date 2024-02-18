@@ -51,6 +51,9 @@ class ANuclearNightmareCharacter : public ACharacter
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
 	UInputAction* InventoryScrollBackAction;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
+	UInputAction* InventoryDropItemAction;
+
 	//Flashlight Mesh & Light Source
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = LightSource, meta = (AllowPrivateAccess = "true"))
 	UStaticMeshComponent* FlashlightMesh;
@@ -278,6 +281,18 @@ protected:
 	void InventoryScrollForward();
 	void InventoryScrollBack();
 
+	void DropItem();
+
+	UFUNCTION(Server, Reliable)
+	void DropItemOnServer(AItemActor* Item);
+
+	UFUNCTION(NetMulticast, Reliable)
+	void DropItemOnClient(AItemActor* Item);
+
+	void ResetValuesAfterDropping();
+
+	int32 IndexThatWasDropped;
+	
 protected:
 	// APawn interface
 	virtual void SetupPlayerInputComponent(UInputComponent* InputComponent) override;

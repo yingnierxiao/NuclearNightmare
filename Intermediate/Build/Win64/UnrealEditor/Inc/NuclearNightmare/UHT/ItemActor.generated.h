@@ -19,9 +19,13 @@ class ANuclearNightmareCharacter;
 #define FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_ItemActor_h_14_SPARSE_DATA_PROPERTY_ACCESSORS
 #define FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_ItemActor_h_14_EDITOR_ONLY_SPARSE_DATA_PROPERTY_ACCESSORS
 #define FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_ItemActor_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
+	virtual void DropOnServer_Implementation(); \
+	virtual void DropOnClients_Implementation(); \
 	virtual void OnPickedUpServer_Implementation(); \
 	virtual void OnPickedUp_Implementation(); \
  \
+	DECLARE_FUNCTION(execDropOnServer); \
+	DECLARE_FUNCTION(execDropOnClients); \
 	DECLARE_FUNCTION(execOnPickedUpServer); \
 	DECLARE_FUNCTION(execOnPickedUp);
 

@@ -58,4 +58,10 @@ public:
 
 	virtual void PickUpEvent();
 
+	UFUNCTION(NetMulticast, Reliable)
+	void DropOnClients();
+
+	UFUNCTION(Server, Reliable)
+	void DropOnServer();
+
 };

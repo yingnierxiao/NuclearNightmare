@@ -113,15 +113,20 @@ if(IsLocallyControlled())
 		if(Cast<AItemActor>(ItemHitResult.GetActor()))
 		{
 			ItemLookedAt = Cast<AItemActor>(ItemHitResult.GetActor());
-			ShowPickUpIcon.Broadcast();
+			if(!ItemLookedAt->PickedUp)
+			{
+				ShowPickUpIcon.Broadcast();
+			}
 		}
 		else
 		{
+			ItemLookedAt = nullptr;
 			RemovePickUpIcon.Broadcast();
 		}
 	}
 	else
 	{
+		ItemLookedAt = nullptr;
 		RemovePickUpIcon.Broadcast();
 	}
 }
@@ -390,6 +395,7 @@ void ANuclearNightmareCharacter::PickUpItem(AItemActor* Item)
 		PickUpItemOnServer(Item);
 		UGameplayStatics::PlaySound2D(GetWorld(), Item->PickUpSound, 1.0f, 1.0f, 0.0f);
 		InventoryUpdatedDelegate.Broadcast();
+		RemovePickUpIcon.Broadcast();
 	}
 	else
 	{
@@ -507,6 +513,45 @@ void ANuclearNightmareCharacter::InventoryScrollBack()
 	InventoryScrollFunction(true);
 }
 
+void ANuclearNightmareCharacter::DropItem()
+{
+	if(ItemsInInv.IsValidIndex(CurrentSlotIndex))
+	{
+		IndexThatWasDropped = CurrentSlotIndex;
+		DropItemOnServer(ItemsInInv[CurrentSlotIndex]);
+		ItemsInInv[CurrentSlotIndex]->UnEquip(this);
+		
+		CurrentSlotIndex = -1;
+		InventoryScroll.Broadcast(-1);
+	}
+}
+
+void ANuclearNightmareCharacter::DropItemOnServer_Implementation(AItemActor* Item)
+{
+	DropItemOnClient(Item);
+	Item->DropOnClients();
+}
+
+void ANuclearNightmareCharacter::DropItemOnClient_Implementation(AItemActor* Item)
+{
+	const FVector Start = FirstPersonCameraComponent->GetComponentLocation();
+	const FVector ForwardVector = FirstPersonCameraComponent->GetForwardVector();
+	const FVector End = ((ForwardVector * 250.0f) + Start);
+	const FRotator Rotation(0.0f, 0.0f, 0.0f);
+	Item->TeleportTo(End, Rotation, false, false);
+	FHitResult* TeleportResult = nullptr;
+	Item->Mesh->SetWorldLocation(End, true, TeleportResult, ETeleportType::TeleportPhysics);
+
+	FTimerHandle ResetInvHandle;
+	GetWorldTimerManager().SetTimer(ResetInvHandle, this, &ANuclearNightmareCharacter::ResetValuesAfterDropping, 0.5f, false);
+}
+
+void ANuclearNightmareCharacter::ResetValuesAfterDropping()
+{
+	ItemsInInv.RemoveAt(IndexThatWasDropped);
+	InventoryUpdatedDelegate.Broadcast();
+}
+
 void ANuclearNightmareCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	// Set up action bindings
@@ -540,6 +585,7 @@ void ANuclearNightmareCharacter::SetupPlayerInputComponent(UInputComponent* Play
 		EnhancedInputComponent->BindAction(InteractAction, ETriggerEvent::Started, this, &ANuclearNightmareCharacter::AttemptItemPickUp);
 		EnhancedInputComponent->BindAction(InventoryScrollAction, ETriggerEvent::Started, this, &ANuclearNightmareCharacter::InventoryScrollForward);
 		EnhancedInputComponent->BindAction(InventoryScrollBackAction, ETriggerEvent::Started, this, &ANuclearNightmareCharacter::InventoryScrollBack);
+		EnhancedInputComponent->BindAction(InventoryDropItemAction, ETriggerEvent::Started, this, &ANuclearNightmareCharacter::DropItem);
 	}
 	else
 	{

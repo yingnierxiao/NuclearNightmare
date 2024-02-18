@@ -49,13 +49,24 @@ void AItemActor::UnEquip(ANuclearNightmareCharacter* Character)
 
 void AItemActor::OnPickedUp_Implementation()
 {
-	Mesh->DestroyComponent();
+	Mesh->SetVisibility(false);
 	PickedUp = true;
 	PickUpEvent();
 }
 
 void AItemActor::PickUpEvent()
 {
+}
+
+void AItemActor::DropOnServer_Implementation()
+{
+	DropOnClients();
+}
+
+void AItemActor::DropOnClients_Implementation()
+{
+	Mesh->SetVisibility(true);
+	PickedUp = false;
 }
 
 void AItemActor::OnPickedUpServer_Implementation()

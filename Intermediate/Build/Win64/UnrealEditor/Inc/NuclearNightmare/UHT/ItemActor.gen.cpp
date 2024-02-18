@@ -18,6 +18,20 @@ void EmptyLinkFunctionForGeneratedCodeItemActor() {}
 	NUCLEARNIGHTMARE_API UClass* Z_Construct_UClass_ANuclearNightmareCharacter_NoRegister();
 	UPackage* Z_Construct_UPackage__Script_NuclearNightmare();
 // End Cross Module References
+	DEFINE_FUNCTION(AItemActor::execDropOnServer)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->DropOnServer_Implementation();
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(AItemActor::execDropOnClients)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->DropOnClients_Implementation();
+		P_NATIVE_END;
+	}
 	DEFINE_FUNCTION(AItemActor::execOnPickedUpServer)
 	{
 		P_FINISH;
@@ -40,6 +54,16 @@ void EmptyLinkFunctionForGeneratedCodeItemActor() {}
 	{
 		ANuclearNightmareCharacter* Character;
 	};
+	static FName NAME_AItemActor_DropOnClients = FName(TEXT("DropOnClients"));
+	void AItemActor::DropOnClients()
+	{
+		ProcessEvent(FindFunctionChecked(NAME_AItemActor_DropOnClients),NULL);
+	}
+	static FName NAME_AItemActor_DropOnServer = FName(TEXT("DropOnServer"));
+	void AItemActor::DropOnServer()
+	{
+		ProcessEvent(FindFunctionChecked(NAME_AItemActor_DropOnServer),NULL);
+	}
 	static FName NAME_AItemActor_OnEquip = FName(TEXT("OnEquip"));
 	void AItemActor::OnEquip(ANuclearNightmareCharacter* Character)
 	{
@@ -68,10 +92,56 @@ void EmptyLinkFunctionForGeneratedCodeItemActor() {}
 	{
 		UClass* Class = AItemActor::StaticClass();
 		static const FNameNativePtrPair Funcs[] = {
+			{ "DropOnClients", &AItemActor::execDropOnClients },
+			{ "DropOnServer", &AItemActor::execDropOnServer },
 			{ "OnPickedUp", &AItemActor::execOnPickedUp },
 			{ "OnPickedUpServer", &AItemActor::execOnPickedUpServer },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
+	}
+	struct Z_Construct_UFunction_AItemActor_DropOnClients_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AItemActor_DropOnClients_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "ItemActor.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AItemActor_DropOnClients_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AItemActor, nullptr, "DropOnClients", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00024CC0, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AItemActor_DropOnClients_Statics::Function_MetaDataParams), Z_Construct_UFunction_AItemActor_DropOnClients_Statics::Function_MetaDataParams) };
+	UFunction* Z_Construct_UFunction_AItemActor_DropOnClients()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AItemActor_DropOnClients_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_AItemActor_DropOnServer_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AItemActor_DropOnServer_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "ItemActor.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AItemActor_DropOnServer_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AItemActor, nullptr, "DropOnServer", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00220CC0, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AItemActor_DropOnServer_Statics::Function_MetaDataParams), Z_Construct_UFunction_AItemActor_DropOnServer_Statics::Function_MetaDataParams) };
+	UFunction* Z_Construct_UFunction_AItemActor_DropOnServer()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AItemActor_DropOnServer_Statics::FuncParams);
+		}
+		return ReturnFunction;
 	}
 	struct Z_Construct_UFunction_AItemActor_OnEquip_Statics
 	{
@@ -220,6 +290,8 @@ void EmptyLinkFunctionForGeneratedCodeItemActor() {}
 	};
 	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AItemActor_Statics::DependentSingletons) < 16);
 	const FClassFunctionLinkInfo Z_Construct_UClass_AItemActor_Statics::FuncInfo[] = {
+		{ &Z_Construct_UFunction_AItemActor_DropOnClients, "DropOnClients" }, // 557455750
+		{ &Z_Construct_UFunction_AItemActor_DropOnServer, "DropOnServer" }, // 2408515410
 		{ &Z_Construct_UFunction_AItemActor_OnEquip, "OnEquip" }, // 142257374
 		{ &Z_Construct_UFunction_AItemActor_OnPickedUp, "OnPickedUp" }, // 2939570985
 		{ &Z_Construct_UFunction_AItemActor_OnPickedUpServer, "OnPickedUpServer" }, // 2956935694
@@ -329,9 +401,9 @@ void EmptyLinkFunctionForGeneratedCodeItemActor() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_ItemActor_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AItemActor, AItemActor::StaticClass, TEXT("AItemActor"), &Z_Registration_Info_UClass_AItemActor, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AItemActor), 1297992556U) },
+		{ Z_Construct_UClass_AItemActor, AItemActor::StaticClass, TEXT("AItemActor"), &Z_Registration_Info_UClass_AItemActor, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AItemActor), 3479497398U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_ItemActor_h_3826796618(TEXT("/Script/NuclearNightmare"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_ItemActor_h_3907428567(TEXT("/Script/NuclearNightmare"),
 		Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_ItemActor_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_ItemActor_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);
