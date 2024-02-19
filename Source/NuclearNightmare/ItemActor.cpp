@@ -51,6 +51,7 @@ void AItemActor::OnPickedUp_Implementation()
 {
 	Mesh->SetVisibility(false);
 	PickedUp = true;
+	Mesh->SetSimulatePhysics(false);
 	PickUpEvent();
 }
 

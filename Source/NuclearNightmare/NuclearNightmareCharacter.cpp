@@ -523,6 +523,9 @@ void ANuclearNightmareCharacter::DropItem()
 		
 		CurrentSlotIndex = -1;
 		InventoryScroll.Broadcast(-1);
+
+		FTimerHandle ResetInvHandle;
+		GetWorldTimerManager().SetTimer(ResetInvHandle, this, &ANuclearNightmareCharacter::ResetValuesAfterDropping, 0.5f, false);
 	}
 }
 
@@ -536,14 +539,13 @@ void ANuclearNightmareCharacter::DropItemOnClient_Implementation(AItemActor* Ite
 {
 	const FVector Start = FirstPersonCameraComponent->GetComponentLocation();
 	const FVector ForwardVector = FirstPersonCameraComponent->GetForwardVector();
-	const FVector End = ((ForwardVector * 250.0f) + Start);
+	const FVector End = ((ForwardVector * 1.0f) + Start);
 	const FRotator Rotation(0.0f, 0.0f, 0.0f);
 	Item->TeleportTo(End, Rotation, false, false);
 	FHitResult* TeleportResult = nullptr;
+	Item->Mesh->SetSimulatePhysics(true);
 	Item->Mesh->SetWorldLocation(End, true, TeleportResult, ETeleportType::TeleportPhysics);
-
-	FTimerHandle ResetInvHandle;
-	GetWorldTimerManager().SetTimer(ResetInvHandle, this, &ANuclearNightmareCharacter::ResetValuesAfterDropping, 0.5f, false);
+	Item->Mesh->AddImpulseAtLocation(End * (ForwardVector * 35), End);
 }
 
 void ANuclearNightmareCharacter::ResetValuesAfterDropping()

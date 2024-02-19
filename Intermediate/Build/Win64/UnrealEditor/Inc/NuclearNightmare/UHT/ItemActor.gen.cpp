@@ -264,6 +264,10 @@ void EmptyLinkFunctionForGeneratedCodeItemActor() {}
 #endif
 		static const UECodeGen_Private::FStrPropertyParams NewProp_ItemName;
 #if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_ItemDescription_MetaData[];
+#endif
+		static const UECodeGen_Private::FStrPropertyParams NewProp_ItemDescription;
+#if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_Icon_MetaData[];
 #endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_Icon;
@@ -312,6 +316,13 @@ void EmptyLinkFunctionForGeneratedCodeItemActor() {}
 #endif
 	const UECodeGen_Private::FStrPropertyParams Z_Construct_UClass_AItemActor_Statics::NewProp_ItemName = { "ItemName", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AItemActor, ItemName), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_AItemActor_Statics::NewProp_ItemName_MetaData), Z_Construct_UClass_AItemActor_Statics::NewProp_ItemName_MetaData) };
 #if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AItemActor_Statics::NewProp_ItemDescription_MetaData[] = {
+		{ "Category", "ItemActor" },
+		{ "ModuleRelativePath", "ItemActor.h" },
+	};
+#endif
+	const UECodeGen_Private::FStrPropertyParams Z_Construct_UClass_AItemActor_Statics::NewProp_ItemDescription = { "ItemDescription", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AItemActor, ItemDescription), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_AItemActor_Statics::NewProp_ItemDescription_MetaData), Z_Construct_UClass_AItemActor_Statics::NewProp_ItemDescription_MetaData) };
+#if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AItemActor_Statics::NewProp_Icon_MetaData[] = {
 		{ "Category", "ItemActor" },
 		{ "ModuleRelativePath", "ItemActor.h" },
@@ -346,6 +357,7 @@ void EmptyLinkFunctionForGeneratedCodeItemActor() {}
 	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AItemActor_Statics::NewProp_PickUpSound = { "PickUpSound", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AItemActor, PickUpSound), Z_Construct_UClass_USoundBase_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_AItemActor_Statics::NewProp_PickUpSound_MetaData), Z_Construct_UClass_AItemActor_Statics::NewProp_PickUpSound_MetaData) };
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AItemActor_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AItemActor_Statics::NewProp_ItemName,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AItemActor_Statics::NewProp_ItemDescription,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AItemActor_Statics::NewProp_Icon,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AItemActor_Statics::NewProp_Mesh,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AItemActor_Statics::NewProp_PickedUp,
@@ -401,9 +413,9 @@ void EmptyLinkFunctionForGeneratedCodeItemActor() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_ItemActor_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AItemActor, AItemActor::StaticClass, TEXT("AItemActor"), &Z_Registration_Info_UClass_AItemActor, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AItemActor), 3479497398U) },
+		{ Z_Construct_UClass_AItemActor, AItemActor::StaticClass, TEXT("AItemActor"), &Z_Registration_Info_UClass_AItemActor, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AItemActor), 3004839992U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_ItemActor_h_3907428567(TEXT("/Script/NuclearNightmare"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_ItemActor_h_2188305083(TEXT("/Script/NuclearNightmare"),
 		Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_ItemActor_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_ItemActor_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);
