@@ -524,6 +524,8 @@ void ANuclearNightmareCharacter::DropItem()
 		CurrentSlotIndex = -1;
 		InventoryScroll.Broadcast(-1);
 
+		UGameplayStatics::PlaySound2D(GetWorld(), DropItemSound, 1.0f, 1.0f);
+
 		FTimerHandle ResetInvHandle;
 		GetWorldTimerManager().SetTimer(ResetInvHandle, this, &ANuclearNightmareCharacter::ResetValuesAfterDropping, 0.5f, false);
 	}
