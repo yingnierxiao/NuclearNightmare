@@ -153,6 +153,13 @@ void FRemovePickUpIcon_DelegateWrapper(const FMulticastScriptDelegate& RemovePic
 {
 	RemovePickUpIcon.ProcessMulticastDelegate<UObject>(NULL);
 }
+	DEFINE_FUNCTION(ANuclearNightmareCharacter::execAddMappingInput)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->AddMappingInput();
+		P_NATIVE_END;
+	}
 	DEFINE_FUNCTION(ANuclearNightmareCharacter::execDropItemOnClient)
 	{
 		P_GET_OBJECT(AItemActor,Z_Param_Item);
@@ -444,6 +451,7 @@ void FRemovePickUpIcon_DelegateWrapper(const FMulticastScriptDelegate& RemovePic
 	{
 		UClass* Class = ANuclearNightmareCharacter::StaticClass();
 		static const FNameNativePtrPair Funcs[] = {
+			{ "AddMappingInput", &ANuclearNightmareCharacter::execAddMappingInput },
 			{ "AttemptItemPickUp", &ANuclearNightmareCharacter::execAttemptItemPickUp },
 			{ "CameraToggleOnClient", &ANuclearNightmareCharacter::execCameraToggleOnClient },
 			{ "CrouchOnClient", &ANuclearNightmareCharacter::execCrouchOnClient },
@@ -466,6 +474,34 @@ void FRemovePickUpIcon_DelegateWrapper(const FMulticastScriptDelegate& RemovePic
 			{ "SprintOnServer", &ANuclearNightmareCharacter::execSprintOnServer },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
+	}
+	struct Z_Construct_UFunction_ANuclearNightmareCharacter_AddMappingInput_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_ANuclearNightmareCharacter_AddMappingInput_Statics::Function_MetaDataParams[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//Input\n" },
+#endif
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Input" },
+#endif
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ANuclearNightmareCharacter_AddMappingInput_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ANuclearNightmareCharacter, nullptr, "AddMappingInput", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04080401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ANuclearNightmareCharacter_AddMappingInput_Statics::Function_MetaDataParams), Z_Construct_UFunction_ANuclearNightmareCharacter_AddMappingInput_Statics::Function_MetaDataParams) };
+	UFunction* Z_Construct_UFunction_ANuclearNightmareCharacter_AddMappingInput()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ANuclearNightmareCharacter_AddMappingInput_Statics::FuncParams);
+		}
+		return ReturnFunction;
 	}
 	struct Z_Construct_UFunction_ANuclearNightmareCharacter_AttemptItemPickUp_Statics
 	{
@@ -1344,6 +1380,7 @@ void FRemovePickUpIcon_DelegateWrapper(const FMulticastScriptDelegate& RemovePic
 	};
 	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::DependentSingletons) < 16);
 	const FClassFunctionLinkInfo Z_Construct_UClass_ANuclearNightmareCharacter_Statics::FuncInfo[] = {
+		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_AddMappingInput, "AddMappingInput" }, // 3927939939
 		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_AttemptItemPickUp, "AttemptItemPickUp" }, // 1946516490
 		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_CameraToggleOnClient, "CameraToggleOnClient" }, // 3409967154
 		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_CrouchOnClient, "CrouchOnClient" }, // 1091692659
@@ -1997,9 +2034,9 @@ void FRemovePickUpIcon_DelegateWrapper(const FMulticastScriptDelegate& RemovePic
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_ANuclearNightmareCharacter, ANuclearNightmareCharacter::StaticClass, TEXT("ANuclearNightmareCharacter"), &Z_Registration_Info_UClass_ANuclearNightmareCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ANuclearNightmareCharacter), 2830992604U) },
+		{ Z_Construct_UClass_ANuclearNightmareCharacter, ANuclearNightmareCharacter::StaticClass, TEXT("ANuclearNightmareCharacter"), &Z_Registration_Info_UClass_ANuclearNightmareCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ANuclearNightmareCharacter), 873454002U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_3892682522(TEXT("/Script/NuclearNightmare"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_1009752883(TEXT("/Script/NuclearNightmare"),
 		Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

@@ -48,6 +48,7 @@ NUCLEARNIGHTMARE_API void FRemovePickUpIcon_DelegateWrapper(const FMulticastScri
 	virtual void SprintOnClient_Implementation(bool Sprinting); \
 	virtual void SprintOnServer_Implementation(bool Sprinting); \
  \
+	DECLARE_FUNCTION(execAddMappingInput); \
 	DECLARE_FUNCTION(execDropItemOnClient); \
 	DECLARE_FUNCTION(execDropItemOnServer); \
 	DECLARE_FUNCTION(execGetItemSlot); \

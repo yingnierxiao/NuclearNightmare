@@ -295,6 +295,10 @@ protected:
 	void ResetValuesAfterDropping();
 
 	int32 IndexThatWasDropped;
+
+	//Input
+	UFUNCTION(BlueprintCallable)
+	void AddMappingInput();
 	
 protected:
 	// APawn interface
