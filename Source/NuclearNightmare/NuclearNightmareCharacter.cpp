@@ -84,15 +84,12 @@ void ANuclearNightmareCharacter::BeginPlay()
 			Subsystem->AddMappingContext(DefaultMappingContext, 0);
 		}
 	}
-
-	if(IsLocallyControlled())
-	{
-			InventoryHud = Cast<UUserWidget>(CreateWidget(GetWorld(), InventoryClass));
-			if(InventoryHud)
-			{
-				InventoryHud->AddToViewport();
-			}
-	}
+	
+			//InventoryHud = Cast<UUserWidget>(CreateWidget(GetWorld(), InventoryClass));
+			//if(InventoryHud)
+			//{
+			//	InventoryHud->AddToViewport();
+			//}
 
 }
 
