@@ -4,7 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "Engine/GameInstance.h"
+#include "interfaces/OnlineSessionInterface.h"
 #include "NuclearNightmareGameInstance.generated.h"
+
+class IOnlineSession;
 
 /**
  * 
@@ -18,5 +21,22 @@ public:
 	UNuclearNightmareGameInstance();
 
 protected:
+	IOnlineSessionPtr SessionInterface;
+
+	TSharedPtr<FOnlineSessionSearch> SessionSearch;
+
+	virtual void OnFindSessionComplete(bool Succeeded);
+
+	virtual void OnJoinSessionComplete(FName SessionName, EOnJoinSessionCompleteResult::Type Result);
+	
 	virtual void Init() override;
+
+	virtual void OnCreateSessionComplete(FName ServerName, bool Succeeded);
+
+	UFUNCTION(BlueprintCallable)
+	void CreateServer();
+
+	UFUNCTION(BlueprintCallable)
+	void JoinServer();
+	
 };
