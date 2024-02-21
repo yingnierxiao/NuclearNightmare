@@ -14,6 +14,7 @@
     <None Include="..\..\.gitattributes" />
     <None Include="..\..\.gitignore" />
     <None Include="..\..\.vsconfig" />
+    <None Include="..\..\West_Heli_UH60A.png" />
     <Filter Include="Config">
       <UniqueIdentifier>{FA535FFB-25E1-3D20-B416-52F9BE21E06E}</UniqueIdentifier>
     </Filter>
@@ -54,6 +55,12 @@
       <Filter>Source\NuclearNightmare</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\NuclearNightmare\NuclearNightmareCharacter.h">
+      <Filter>Source\NuclearNightmare</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\NuclearNightmare\NuclearNightmareGameInstance.cpp">
+      <Filter>Source\NuclearNightmare</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\NuclearNightmare\NuclearNightmareGameInstance.h">
       <Filter>Source\NuclearNightmare</Filter>
     </ClInclude>
     <ClCompile Include="..\..\Source\NuclearNightmare\NuclearNightmareGameMode.cpp">

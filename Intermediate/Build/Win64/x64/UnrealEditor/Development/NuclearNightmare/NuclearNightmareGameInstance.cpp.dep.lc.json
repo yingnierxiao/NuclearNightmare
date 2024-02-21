@@ -1,0 +1,15 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\nuclearnightmare\\nuclearnightmare\\source\\nuclearnightmare\\nuclearnightmaregameinstance.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\nuclearnightmare\\nuclearnightmare\\intermediate\\build\\win64\\x64\\nuclearnightmareeditor\\development\\engine\\sharedpch.engine.cpp20.h.pch",
+        "Includes": [
+            "d:\\nuclearnightmare\\nuclearnightmare\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\nuclearnightmare\\definitions.nuclearnightmare.h",
+            "d:\\nuclearnightmare\\nuclearnightmare\\source\\nuclearnightmare\\nuclearnightmaregameinstance.h",
+            "d:\\nuclearnightmare\\nuclearnightmare\\intermediate\\build\\win64\\unrealeditor\\inc\\nuclearnightmare\\uht\\nuclearnightmaregameinstance.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

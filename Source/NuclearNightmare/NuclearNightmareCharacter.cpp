@@ -96,8 +96,7 @@ void ANuclearNightmareCharacter::BeginPlay()
 void ANuclearNightmareCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-if(IsLocallyControlled())
-{
+
 	//Search for items
 	TArray<AActor*> ActorsToIgnore;
 	ActorsToIgnore.Add(this);
@@ -126,7 +125,6 @@ if(IsLocallyControlled())
 		ItemLookedAt = nullptr;
 		RemovePickUpIcon.Broadcast();
 	}
-}
 }
 
 void ANuclearNightmareCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
