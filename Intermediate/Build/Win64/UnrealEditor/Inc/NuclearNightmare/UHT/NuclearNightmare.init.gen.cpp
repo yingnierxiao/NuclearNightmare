@@ -10,6 +10,7 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmare_init() {}
 	NUCLEARNIGHTMARE_API UFunction* Z_Construct_UDelegateFunction_NuclearNightmare_OnInventoryScroll__DelegateSignature();
 	NUCLEARNIGHTMARE_API UFunction* Z_Construct_UDelegateFunction_NuclearNightmare_OnInventoryUpdated__DelegateSignature();
 	NUCLEARNIGHTMARE_API UFunction* Z_Construct_UDelegateFunction_NuclearNightmare_RemovePickUpIcon__DelegateSignature();
+	NUCLEARNIGHTMARE_API UFunction* Z_Construct_UDelegateFunction_NuclearNightmare_ServerDelegate__DelegateSignature();
 	NUCLEARNIGHTMARE_API UFunction* Z_Construct_UDelegateFunction_NuclearNightmare_ShowPickUpIcon__DelegateSignature();
 	static FPackageRegistrationInfo Z_Registration_Info_UPackage__Script_NuclearNightmare;
 	FORCENOINLINE UPackage* Z_Construct_UPackage__Script_NuclearNightmare()
@@ -20,6 +21,7 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmare_init() {}
 				(UObject* (*)())Z_Construct_UDelegateFunction_NuclearNightmare_OnInventoryScroll__DelegateSignature,
 				(UObject* (*)())Z_Construct_UDelegateFunction_NuclearNightmare_OnInventoryUpdated__DelegateSignature,
 				(UObject* (*)())Z_Construct_UDelegateFunction_NuclearNightmare_RemovePickUpIcon__DelegateSignature,
+				(UObject* (*)())Z_Construct_UDelegateFunction_NuclearNightmare_ServerDelegate__DelegateSignature,
 				(UObject* (*)())Z_Construct_UDelegateFunction_NuclearNightmare_ShowPickUpIcon__DelegateSignature,
 			};
 			static const UECodeGen_Private::FPackageParams PackageParams = {
@@ -27,13 +29,13 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmare_init() {}
 				SingletonFuncArray,
 				UE_ARRAY_COUNT(SingletonFuncArray),
 				PKG_CompiledIn | 0x00000000,
-				0x77D7D7E3,
-				0x3BECB576,
+				0xA9CCDDD7,
+				0x6BCF84EB,
 				METADATA_PARAMS(0, nullptr)
 			};
 			UECodeGen_Private::ConstructUPackage(Z_Registration_Info_UPackage__Script_NuclearNightmare.OuterSingleton, PackageParams);
 		}
 		return Z_Registration_Info_UPackage__Script_NuclearNightmare.OuterSingleton;
 	}
-	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_NuclearNightmare(Z_Construct_UPackage__Script_NuclearNightmare, TEXT("/Script/NuclearNightmare"), Z_Registration_Info_UPackage__Script_NuclearNightmare, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0x77D7D7E3, 0x3BECB576));
+	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_NuclearNightmare(Z_Construct_UPackage__Script_NuclearNightmare, TEXT("/Script/NuclearNightmare"), Z_Registration_Info_UPackage__Script_NuclearNightmare, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0xA9CCDDD7, 0x6BCF84EB));
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

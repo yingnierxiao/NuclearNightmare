@@ -9,6 +9,23 @@
 
 class IOnlineSession;
 
+USTRUCT(BlueprintType)
+struct FServerInfo
+{
+	GENERATED_BODY()
+public:
+	UPROPERTY(BlueprintReadOnly)
+	FString ServerName;
+	
+	UPROPERTY(BlueprintReadOnly)
+	int32 CurrentPlayers;
+	
+	UPROPERTY(BlueprintReadOnly)
+	int32 MaxPlayers;
+};
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FServerDelegate, FServerInfo, ServerListDel);
+
 /**
  * 
  */
@@ -21,6 +38,9 @@ public:
 	UNuclearNightmareGameInstance();
 
 protected:
+	UPROPERTY(BlueprintAssignable)
+	FServerDelegate ServerListDelegate;
+	
 	IOnlineSessionPtr SessionInterface;
 
 	TSharedPtr<FOnlineSessionSearch> SessionSearch;

@@ -21,11 +21,23 @@ void UNuclearNightmareGameInstance::OnFindSessionComplete(bool Succeeded)
 	{
 		TArray<FOnlineSessionSearchResult> SearchResults = SessionSearch->SearchResults;
 
+		for(FOnlineSessionSearchResult Result : SearchResults)
+		{
+			if(!Result.IsValid())
+				continue;
+
+			FServerInfo Info;
+			Info.ServerName = "Test Server Name";
+			Info.MaxPlayers = Result.Session.SessionSettings.NumPublicConnections;
+			Info.CurrentPlayers = Info.MaxPlayers - Result.Session.NumOpenPublicConnections;
+			ServerListDelegate.Broadcast(Info);
+		}
+
 		UE_LOG(LogTemp, Warning, TEXT("SearchResults, Server Count: %d"), SearchResults.Num());
 		if(SearchResults.Num())
 		{
-			UE_LOG(LogTemp, Warning, TEXT("Joining Server..."));
-			SessionInterface->JoinSession(0, "My Session", SearchResults[0]);
+			//UE_LOG(LogTemp, Warning, TEXT("Joining Server..."));
+			//SessionInterface->JoinSession(0, "My Session", SearchResults[0]);
 		}
 	}
 }
