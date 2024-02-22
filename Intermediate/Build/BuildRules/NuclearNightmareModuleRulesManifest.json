@@ -1,6 +1,7 @@
 {
 	"SourceFiles": [
 		"D:\\NuclearNightmare\\NuclearNightmare\\Source\\NuclearNightmare\\NuclearNightmare.Build.cs",
+		"D:\\NuclearNightmare\\NuclearNightmare\\Plugins\\AsyncLoadingScreen\\Source\\AsyncLoadingScreen\\AsyncLoadingScreen.Build.cs",
 		"D:\\NuclearNightmare\\NuclearNightmare\\Source\\NuclearNightmare.Target.cs",
 		"D:\\NuclearNightmare\\NuclearNightmare\\Source\\NuclearNightmareEditor.Target.cs"
 	],

@@ -8,6 +8,6 @@ public class NuclearNightmare : ModuleRules
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "UMG", "Slate", "SlateCore", "InputCore", "EnhancedInput", "OnlineSubsystem", "OnlineSubsystemSteam" });
+		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "UMG", "Slate", "SlateCore", "InputCore", "EnhancedInput", "OnlineSubsystem", "OnlineSubsystemSteam", "AsyncLoadingScreen" });
 	}
 }
