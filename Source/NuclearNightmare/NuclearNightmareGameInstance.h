@@ -16,15 +16,34 @@ struct FServerInfo
 public:
 	UPROPERTY(BlueprintReadOnly)
 	FString ServerName;
+
+	UPROPERTY(BlueprintReadOnly)
+	FString PlayerCountStr;
 	
 	UPROPERTY(BlueprintReadOnly)
 	int32 CurrentPlayers;
+
+	UPROPERTY(BlueprintReadOnly)
+	bool IsLan;
+
+	UPROPERTY(BlueprintReadOnly)
+	int32 Ping;
 	
 	UPROPERTY(BlueprintReadOnly)
 	int32 MaxPlayers;
+
+	UPROPERTY(BlueprintReadOnly)
+	int32 ServerArrayIndex;
+
+	void setPlayerCount()
+	{
+		PlayerCountStr = FString(FString::FromInt(CurrentPlayers) + "/" + FString::FromInt(MaxPlayers));
+	}
 };
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FServerDelegate, FServerInfo, ServerListDel);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FServerRefreshFinished, bool, FoundServers);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FStartLookingForServers);
 
 /**
  * 
@@ -38,8 +57,16 @@ public:
 	UNuclearNightmareGameInstance();
 
 protected:
+	FName MySessionName;
+	
 	UPROPERTY(BlueprintAssignable)
 	FServerDelegate ServerListDelegate;
+
+	UPROPERTY(BlueprintAssignable)
+	FServerRefreshFinished ServerRefreshFinished;
+
+	UPROPERTY(BlueprintAssignable)
+	FStartLookingForServers StartLookingForServers;
 	
 	IOnlineSessionPtr SessionInterface;
 
@@ -51,12 +78,15 @@ protected:
 	
 	virtual void Init() override;
 
-	virtual void OnCreateSessionComplete(FName ServerName, bool Succeeded);
+	virtual void OnCreateSessionComplete(FName SessionName, bool Succeeded);
 
 	UFUNCTION(BlueprintCallable)
-	void CreateServer();
+	void CreateServer(FString SessionName, bool IsLan);
 
 	UFUNCTION(BlueprintCallable)
-	void JoinServer();
+	void FindServers(bool IsLan);
+
+	UFUNCTION(BlueprintCallable)
+	void JoinServer(int32 ServerIndex);
 	
 };

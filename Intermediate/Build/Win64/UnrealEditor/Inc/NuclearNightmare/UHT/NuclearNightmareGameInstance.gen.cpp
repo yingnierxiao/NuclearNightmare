@@ -13,6 +13,8 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareGameInstance() {}
 	NUCLEARNIGHTMARE_API UClass* Z_Construct_UClass_UNuclearNightmareGameInstance();
 	NUCLEARNIGHTMARE_API UClass* Z_Construct_UClass_UNuclearNightmareGameInstance_NoRegister();
 	NUCLEARNIGHTMARE_API UFunction* Z_Construct_UDelegateFunction_NuclearNightmare_ServerDelegate__DelegateSignature();
+	NUCLEARNIGHTMARE_API UFunction* Z_Construct_UDelegateFunction_NuclearNightmare_ServerRefreshFinished__DelegateSignature();
+	NUCLEARNIGHTMARE_API UFunction* Z_Construct_UDelegateFunction_NuclearNightmare_StartLookingForServers__DelegateSignature();
 	NUCLEARNIGHTMARE_API UScriptStruct* Z_Construct_UScriptStruct_FServerInfo();
 	UPackage* Z_Construct_UPackage__Script_NuclearNightmare();
 // End Cross Module References
@@ -40,13 +42,30 @@ template<> NUCLEARNIGHTMARE_API UScriptStruct* StaticStruct<FServerInfo>()
 #endif
 		static const UECodeGen_Private::FStrPropertyParams NewProp_ServerName;
 #if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_PlayerCountStr_MetaData[];
+#endif
+		static const UECodeGen_Private::FStrPropertyParams NewProp_PlayerCountStr;
+#if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_CurrentPlayers_MetaData[];
 #endif
 		static const UECodeGen_Private::FIntPropertyParams NewProp_CurrentPlayers;
 #if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_IsLan_MetaData[];
+#endif
+		static void NewProp_IsLan_SetBit(void* Obj);
+		static const UECodeGen_Private::FBoolPropertyParams NewProp_IsLan;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_Ping_MetaData[];
+#endif
+		static const UECodeGen_Private::FIntPropertyParams NewProp_Ping;
+#if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_MaxPlayers_MetaData[];
 #endif
 		static const UECodeGen_Private::FIntPropertyParams NewProp_MaxPlayers;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_ServerArrayIndex_MetaData[];
+#endif
+		static const UECodeGen_Private::FIntPropertyParams NewProp_ServerArrayIndex;
 		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const UECodeGen_Private::FStructParams ReturnStructParams;
 	};
@@ -68,6 +87,13 @@ template<> NUCLEARNIGHTMARE_API UScriptStruct* StaticStruct<FServerInfo>()
 #endif
 	const UECodeGen_Private::FStrPropertyParams Z_Construct_UScriptStruct_FServerInfo_Statics::NewProp_ServerName = { "ServerName", nullptr, (EPropertyFlags)0x0010000000000014, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FServerInfo, ServerName), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FServerInfo_Statics::NewProp_ServerName_MetaData), Z_Construct_UScriptStruct_FServerInfo_Statics::NewProp_ServerName_MetaData) };
 #if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FServerInfo_Statics::NewProp_PlayerCountStr_MetaData[] = {
+		{ "Category", "ServerInfo" },
+		{ "ModuleRelativePath", "NuclearNightmareGameInstance.h" },
+	};
+#endif
+	const UECodeGen_Private::FStrPropertyParams Z_Construct_UScriptStruct_FServerInfo_Statics::NewProp_PlayerCountStr = { "PlayerCountStr", nullptr, (EPropertyFlags)0x0010000000000014, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FServerInfo, PlayerCountStr), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FServerInfo_Statics::NewProp_PlayerCountStr_MetaData), Z_Construct_UScriptStruct_FServerInfo_Statics::NewProp_PlayerCountStr_MetaData) };
+#if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FServerInfo_Statics::NewProp_CurrentPlayers_MetaData[] = {
 		{ "Category", "ServerInfo" },
 		{ "ModuleRelativePath", "NuclearNightmareGameInstance.h" },
@@ -75,16 +101,45 @@ template<> NUCLEARNIGHTMARE_API UScriptStruct* StaticStruct<FServerInfo>()
 #endif
 	const UECodeGen_Private::FIntPropertyParams Z_Construct_UScriptStruct_FServerInfo_Statics::NewProp_CurrentPlayers = { "CurrentPlayers", nullptr, (EPropertyFlags)0x0010000000000014, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FServerInfo, CurrentPlayers), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FServerInfo_Statics::NewProp_CurrentPlayers_MetaData), Z_Construct_UScriptStruct_FServerInfo_Statics::NewProp_CurrentPlayers_MetaData) };
 #if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FServerInfo_Statics::NewProp_IsLan_MetaData[] = {
+		{ "Category", "ServerInfo" },
+		{ "ModuleRelativePath", "NuclearNightmareGameInstance.h" },
+	};
+#endif
+	void Z_Construct_UScriptStruct_FServerInfo_Statics::NewProp_IsLan_SetBit(void* Obj)
+	{
+		((FServerInfo*)Obj)->IsLan = 1;
+	}
+	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UScriptStruct_FServerInfo_Statics::NewProp_IsLan = { "IsLan", nullptr, (EPropertyFlags)0x0010000000000014, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(FServerInfo), &Z_Construct_UScriptStruct_FServerInfo_Statics::NewProp_IsLan_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FServerInfo_Statics::NewProp_IsLan_MetaData), Z_Construct_UScriptStruct_FServerInfo_Statics::NewProp_IsLan_MetaData) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FServerInfo_Statics::NewProp_Ping_MetaData[] = {
+		{ "Category", "ServerInfo" },
+		{ "ModuleRelativePath", "NuclearNightmareGameInstance.h" },
+	};
+#endif
+	const UECodeGen_Private::FIntPropertyParams Z_Construct_UScriptStruct_FServerInfo_Statics::NewProp_Ping = { "Ping", nullptr, (EPropertyFlags)0x0010000000000014, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FServerInfo, Ping), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FServerInfo_Statics::NewProp_Ping_MetaData), Z_Construct_UScriptStruct_FServerInfo_Statics::NewProp_Ping_MetaData) };
+#if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FServerInfo_Statics::NewProp_MaxPlayers_MetaData[] = {
 		{ "Category", "ServerInfo" },
 		{ "ModuleRelativePath", "NuclearNightmareGameInstance.h" },
 	};
 #endif
 	const UECodeGen_Private::FIntPropertyParams Z_Construct_UScriptStruct_FServerInfo_Statics::NewProp_MaxPlayers = { "MaxPlayers", nullptr, (EPropertyFlags)0x0010000000000014, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FServerInfo, MaxPlayers), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FServerInfo_Statics::NewProp_MaxPlayers_MetaData), Z_Construct_UScriptStruct_FServerInfo_Statics::NewProp_MaxPlayers_MetaData) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FServerInfo_Statics::NewProp_ServerArrayIndex_MetaData[] = {
+		{ "Category", "ServerInfo" },
+		{ "ModuleRelativePath", "NuclearNightmareGameInstance.h" },
+	};
+#endif
+	const UECodeGen_Private::FIntPropertyParams Z_Construct_UScriptStruct_FServerInfo_Statics::NewProp_ServerArrayIndex = { "ServerArrayIndex", nullptr, (EPropertyFlags)0x0010000000000014, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(FServerInfo, ServerArrayIndex), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FServerInfo_Statics::NewProp_ServerArrayIndex_MetaData), Z_Construct_UScriptStruct_FServerInfo_Statics::NewProp_ServerArrayIndex_MetaData) };
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UScriptStruct_FServerInfo_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FServerInfo_Statics::NewProp_ServerName,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FServerInfo_Statics::NewProp_PlayerCountStr,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FServerInfo_Statics::NewProp_CurrentPlayers,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FServerInfo_Statics::NewProp_IsLan,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FServerInfo_Statics::NewProp_Ping,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FServerInfo_Statics::NewProp_MaxPlayers,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FServerInfo_Statics::NewProp_ServerArrayIndex,
 	};
 	const UECodeGen_Private::FStructParams Z_Construct_UScriptStruct_FServerInfo_Statics::ReturnStructParams = {
 		(UObject* (*)())Z_Construct_UPackage__Script_NuclearNightmare,
@@ -121,7 +176,7 @@ template<> NUCLEARNIGHTMARE_API UScriptStruct* StaticStruct<FServerInfo>()
 #endif
 		static const UECodeGen_Private::FFunctionParams FuncParams;
 	};
-	const UECodeGen_Private::FStructPropertyParams Z_Construct_UDelegateFunction_NuclearNightmare_ServerDelegate__DelegateSignature_Statics::NewProp_ServerListDel = { "ServerListDel", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(_Script_NuclearNightmare_eventServerDelegate_Parms, ServerListDel), Z_Construct_UScriptStruct_FServerInfo, METADATA_PARAMS(0, nullptr) }; // 1298432765
+	const UECodeGen_Private::FStructPropertyParams Z_Construct_UDelegateFunction_NuclearNightmare_ServerDelegate__DelegateSignature_Statics::NewProp_ServerListDel = { "ServerListDel", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(_Script_NuclearNightmare_eventServerDelegate_Parms, ServerListDel), Z_Construct_UScriptStruct_FServerInfo, METADATA_PARAMS(0, nullptr) }; // 4117687150
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UDelegateFunction_NuclearNightmare_ServerDelegate__DelegateSignature_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UDelegateFunction_NuclearNightmare_ServerDelegate__DelegateSignature_Statics::NewProp_ServerListDel,
 	};
@@ -152,30 +207,56 @@ void FServerDelegate_DelegateWrapper(const FMulticastScriptDelegate& ServerDeleg
 	Parms.ServerListDel=ServerListDel;
 	ServerDelegate.ProcessMulticastDelegate<UObject>(&Parms);
 }
-	DEFINE_FUNCTION(UNuclearNightmareGameInstance::execJoinServer)
+	struct Z_Construct_UDelegateFunction_NuclearNightmare_ServerRefreshFinished__DelegateSignature_Statics
 	{
-		P_FINISH;
-		P_NATIVE_BEGIN;
-		P_THIS->JoinServer();
-		P_NATIVE_END;
-	}
-	DEFINE_FUNCTION(UNuclearNightmareGameInstance::execCreateServer)
-	{
-		P_FINISH;
-		P_NATIVE_BEGIN;
-		P_THIS->CreateServer();
-		P_NATIVE_END;
-	}
-	void UNuclearNightmareGameInstance::StaticRegisterNativesUNuclearNightmareGameInstance()
-	{
-		UClass* Class = UNuclearNightmareGameInstance::StaticClass();
-		static const FNameNativePtrPair Funcs[] = {
-			{ "CreateServer", &UNuclearNightmareGameInstance::execCreateServer },
-			{ "JoinServer", &UNuclearNightmareGameInstance::execJoinServer },
+		struct _Script_NuclearNightmare_eventServerRefreshFinished_Parms
+		{
+			bool FoundServers;
 		};
-		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
+		static void NewProp_FoundServers_SetBit(void* Obj);
+		static const UECodeGen_Private::FBoolPropertyParams NewProp_FoundServers;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+	void Z_Construct_UDelegateFunction_NuclearNightmare_ServerRefreshFinished__DelegateSignature_Statics::NewProp_FoundServers_SetBit(void* Obj)
+	{
+		((_Script_NuclearNightmare_eventServerRefreshFinished_Parms*)Obj)->FoundServers = 1;
 	}
-	struct Z_Construct_UFunction_UNuclearNightmareGameInstance_CreateServer_Statics
+	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UDelegateFunction_NuclearNightmare_ServerRefreshFinished__DelegateSignature_Statics::NewProp_FoundServers = { "FoundServers", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(_Script_NuclearNightmare_eventServerRefreshFinished_Parms), &Z_Construct_UDelegateFunction_NuclearNightmare_ServerRefreshFinished__DelegateSignature_Statics::NewProp_FoundServers_SetBit, METADATA_PARAMS(0, nullptr) };
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UDelegateFunction_NuclearNightmare_ServerRefreshFinished__DelegateSignature_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UDelegateFunction_NuclearNightmare_ServerRefreshFinished__DelegateSignature_Statics::NewProp_FoundServers,
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UDelegateFunction_NuclearNightmare_ServerRefreshFinished__DelegateSignature_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "NuclearNightmareGameInstance.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UDelegateFunction_NuclearNightmare_ServerRefreshFinished__DelegateSignature_Statics::FuncParams = { (UObject*(*)())Z_Construct_UPackage__Script_NuclearNightmare, nullptr, "ServerRefreshFinished__DelegateSignature", nullptr, nullptr, Z_Construct_UDelegateFunction_NuclearNightmare_ServerRefreshFinished__DelegateSignature_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_NuclearNightmare_ServerRefreshFinished__DelegateSignature_Statics::PropPointers), sizeof(Z_Construct_UDelegateFunction_NuclearNightmare_ServerRefreshFinished__DelegateSignature_Statics::_Script_NuclearNightmare_eventServerRefreshFinished_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00130000, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_NuclearNightmare_ServerRefreshFinished__DelegateSignature_Statics::Function_MetaDataParams), Z_Construct_UDelegateFunction_NuclearNightmare_ServerRefreshFinished__DelegateSignature_Statics::Function_MetaDataParams) };
+	static_assert(UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_NuclearNightmare_ServerRefreshFinished__DelegateSignature_Statics::PropPointers) < 2048);
+	static_assert(sizeof(Z_Construct_UDelegateFunction_NuclearNightmare_ServerRefreshFinished__DelegateSignature_Statics::_Script_NuclearNightmare_eventServerRefreshFinished_Parms) < MAX_uint16);
+	UFunction* Z_Construct_UDelegateFunction_NuclearNightmare_ServerRefreshFinished__DelegateSignature()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UDelegateFunction_NuclearNightmare_ServerRefreshFinished__DelegateSignature_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+void FServerRefreshFinished_DelegateWrapper(const FMulticastScriptDelegate& ServerRefreshFinished, bool FoundServers)
+{
+	struct _Script_NuclearNightmare_eventServerRefreshFinished_Parms
+	{
+		bool FoundServers;
+	};
+	_Script_NuclearNightmare_eventServerRefreshFinished_Parms Parms;
+	Parms.FoundServers=FoundServers ? true : false;
+	ServerRefreshFinished.ProcessMulticastDelegate<UObject>(&Parms);
+}
+	struct Z_Construct_UDelegateFunction_NuclearNightmare_StartLookingForServers__DelegateSignature_Statics
 	{
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
@@ -183,11 +264,93 @@ void FServerDelegate_DelegateWrapper(const FMulticastScriptDelegate& ServerDeleg
 		static const UECodeGen_Private::FFunctionParams FuncParams;
 	};
 #if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UDelegateFunction_NuclearNightmare_StartLookingForServers__DelegateSignature_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "NuclearNightmareGameInstance.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UDelegateFunction_NuclearNightmare_StartLookingForServers__DelegateSignature_Statics::FuncParams = { (UObject*(*)())Z_Construct_UPackage__Script_NuclearNightmare, nullptr, "StartLookingForServers__DelegateSignature", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00130000, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_NuclearNightmare_StartLookingForServers__DelegateSignature_Statics::Function_MetaDataParams), Z_Construct_UDelegateFunction_NuclearNightmare_StartLookingForServers__DelegateSignature_Statics::Function_MetaDataParams) };
+	UFunction* Z_Construct_UDelegateFunction_NuclearNightmare_StartLookingForServers__DelegateSignature()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UDelegateFunction_NuclearNightmare_StartLookingForServers__DelegateSignature_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+void FStartLookingForServers_DelegateWrapper(const FMulticastScriptDelegate& StartLookingForServers)
+{
+	StartLookingForServers.ProcessMulticastDelegate<UObject>(NULL);
+}
+	DEFINE_FUNCTION(UNuclearNightmareGameInstance::execJoinServer)
+	{
+		P_GET_PROPERTY(FIntProperty,Z_Param_ServerIndex);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->JoinServer(Z_Param_ServerIndex);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(UNuclearNightmareGameInstance::execFindServers)
+	{
+		P_GET_UBOOL(Z_Param_IsLan);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->FindServers(Z_Param_IsLan);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(UNuclearNightmareGameInstance::execCreateServer)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_SessionName);
+		P_GET_UBOOL(Z_Param_IsLan);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->CreateServer(Z_Param_SessionName,Z_Param_IsLan);
+		P_NATIVE_END;
+	}
+	void UNuclearNightmareGameInstance::StaticRegisterNativesUNuclearNightmareGameInstance()
+	{
+		UClass* Class = UNuclearNightmareGameInstance::StaticClass();
+		static const FNameNativePtrPair Funcs[] = {
+			{ "CreateServer", &UNuclearNightmareGameInstance::execCreateServer },
+			{ "FindServers", &UNuclearNightmareGameInstance::execFindServers },
+			{ "JoinServer", &UNuclearNightmareGameInstance::execJoinServer },
+		};
+		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
+	}
+	struct Z_Construct_UFunction_UNuclearNightmareGameInstance_CreateServer_Statics
+	{
+		struct NuclearNightmareGameInstance_eventCreateServer_Parms
+		{
+			FString SessionName;
+			bool IsLan;
+		};
+		static const UECodeGen_Private::FStrPropertyParams NewProp_SessionName;
+		static void NewProp_IsLan_SetBit(void* Obj);
+		static const UECodeGen_Private::FBoolPropertyParams NewProp_IsLan;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UECodeGen_Private::FStrPropertyParams Z_Construct_UFunction_UNuclearNightmareGameInstance_CreateServer_Statics::NewProp_SessionName = { "SessionName", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(NuclearNightmareGameInstance_eventCreateServer_Parms, SessionName), METADATA_PARAMS(0, nullptr) };
+	void Z_Construct_UFunction_UNuclearNightmareGameInstance_CreateServer_Statics::NewProp_IsLan_SetBit(void* Obj)
+	{
+		((NuclearNightmareGameInstance_eventCreateServer_Parms*)Obj)->IsLan = 1;
+	}
+	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_UNuclearNightmareGameInstance_CreateServer_Statics::NewProp_IsLan = { "IsLan", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(NuclearNightmareGameInstance_eventCreateServer_Parms), &Z_Construct_UFunction_UNuclearNightmareGameInstance_CreateServer_Statics::NewProp_IsLan_SetBit, METADATA_PARAMS(0, nullptr) };
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UNuclearNightmareGameInstance_CreateServer_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UNuclearNightmareGameInstance_CreateServer_Statics::NewProp_SessionName,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UNuclearNightmareGameInstance_CreateServer_Statics::NewProp_IsLan,
+	};
+#if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UNuclearNightmareGameInstance_CreateServer_Statics::Function_MetaDataParams[] = {
 		{ "ModuleRelativePath", "NuclearNightmareGameInstance.h" },
 	};
 #endif
-	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UNuclearNightmareGameInstance_CreateServer_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UNuclearNightmareGameInstance, nullptr, "CreateServer", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04080401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UNuclearNightmareGameInstance_CreateServer_Statics::Function_MetaDataParams), Z_Construct_UFunction_UNuclearNightmareGameInstance_CreateServer_Statics::Function_MetaDataParams) };
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UNuclearNightmareGameInstance_CreateServer_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UNuclearNightmareGameInstance, nullptr, "CreateServer", nullptr, nullptr, Z_Construct_UFunction_UNuclearNightmareGameInstance_CreateServer_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UNuclearNightmareGameInstance_CreateServer_Statics::PropPointers), sizeof(Z_Construct_UFunction_UNuclearNightmareGameInstance_CreateServer_Statics::NuclearNightmareGameInstance_eventCreateServer_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04080401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UNuclearNightmareGameInstance_CreateServer_Statics::Function_MetaDataParams), Z_Construct_UFunction_UNuclearNightmareGameInstance_CreateServer_Statics::Function_MetaDataParams) };
+	static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_UNuclearNightmareGameInstance_CreateServer_Statics::PropPointers) < 2048);
+	static_assert(sizeof(Z_Construct_UFunction_UNuclearNightmareGameInstance_CreateServer_Statics::NuclearNightmareGameInstance_eventCreateServer_Parms) < MAX_uint16);
 	UFunction* Z_Construct_UFunction_UNuclearNightmareGameInstance_CreateServer()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -197,19 +360,70 @@ void FServerDelegate_DelegateWrapper(const FMulticastScriptDelegate& ServerDeleg
 		}
 		return ReturnFunction;
 	}
-	struct Z_Construct_UFunction_UNuclearNightmareGameInstance_JoinServer_Statics
+	struct Z_Construct_UFunction_UNuclearNightmareGameInstance_FindServers_Statics
 	{
+		struct NuclearNightmareGameInstance_eventFindServers_Parms
+		{
+			bool IsLan;
+		};
+		static void NewProp_IsLan_SetBit(void* Obj);
+		static const UECodeGen_Private::FBoolPropertyParams NewProp_IsLan;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
 #endif
 		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+	void Z_Construct_UFunction_UNuclearNightmareGameInstance_FindServers_Statics::NewProp_IsLan_SetBit(void* Obj)
+	{
+		((NuclearNightmareGameInstance_eventFindServers_Parms*)Obj)->IsLan = 1;
+	}
+	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_UNuclearNightmareGameInstance_FindServers_Statics::NewProp_IsLan = { "IsLan", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(NuclearNightmareGameInstance_eventFindServers_Parms), &Z_Construct_UFunction_UNuclearNightmareGameInstance_FindServers_Statics::NewProp_IsLan_SetBit, METADATA_PARAMS(0, nullptr) };
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UNuclearNightmareGameInstance_FindServers_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UNuclearNightmareGameInstance_FindServers_Statics::NewProp_IsLan,
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UNuclearNightmareGameInstance_FindServers_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "NuclearNightmareGameInstance.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UNuclearNightmareGameInstance_FindServers_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UNuclearNightmareGameInstance, nullptr, "FindServers", nullptr, nullptr, Z_Construct_UFunction_UNuclearNightmareGameInstance_FindServers_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UNuclearNightmareGameInstance_FindServers_Statics::PropPointers), sizeof(Z_Construct_UFunction_UNuclearNightmareGameInstance_FindServers_Statics::NuclearNightmareGameInstance_eventFindServers_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04080401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UNuclearNightmareGameInstance_FindServers_Statics::Function_MetaDataParams), Z_Construct_UFunction_UNuclearNightmareGameInstance_FindServers_Statics::Function_MetaDataParams) };
+	static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_UNuclearNightmareGameInstance_FindServers_Statics::PropPointers) < 2048);
+	static_assert(sizeof(Z_Construct_UFunction_UNuclearNightmareGameInstance_FindServers_Statics::NuclearNightmareGameInstance_eventFindServers_Parms) < MAX_uint16);
+	UFunction* Z_Construct_UFunction_UNuclearNightmareGameInstance_FindServers()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UNuclearNightmareGameInstance_FindServers_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_UNuclearNightmareGameInstance_JoinServer_Statics
+	{
+		struct NuclearNightmareGameInstance_eventJoinServer_Parms
+		{
+			int32 ServerIndex;
+		};
+		static const UECodeGen_Private::FIntPropertyParams NewProp_ServerIndex;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UECodeGen_Private::FIntPropertyParams Z_Construct_UFunction_UNuclearNightmareGameInstance_JoinServer_Statics::NewProp_ServerIndex = { "ServerIndex", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(NuclearNightmareGameInstance_eventJoinServer_Parms, ServerIndex), METADATA_PARAMS(0, nullptr) };
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UNuclearNightmareGameInstance_JoinServer_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UNuclearNightmareGameInstance_JoinServer_Statics::NewProp_ServerIndex,
 	};
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UNuclearNightmareGameInstance_JoinServer_Statics::Function_MetaDataParams[] = {
 		{ "ModuleRelativePath", "NuclearNightmareGameInstance.h" },
 	};
 #endif
-	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UNuclearNightmareGameInstance_JoinServer_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UNuclearNightmareGameInstance, nullptr, "JoinServer", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04080401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UNuclearNightmareGameInstance_JoinServer_Statics::Function_MetaDataParams), Z_Construct_UFunction_UNuclearNightmareGameInstance_JoinServer_Statics::Function_MetaDataParams) };
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UNuclearNightmareGameInstance_JoinServer_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UNuclearNightmareGameInstance, nullptr, "JoinServer", nullptr, nullptr, Z_Construct_UFunction_UNuclearNightmareGameInstance_JoinServer_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UNuclearNightmareGameInstance_JoinServer_Statics::PropPointers), sizeof(Z_Construct_UFunction_UNuclearNightmareGameInstance_JoinServer_Statics::NuclearNightmareGameInstance_eventJoinServer_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04080401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UNuclearNightmareGameInstance_JoinServer_Statics::Function_MetaDataParams), Z_Construct_UFunction_UNuclearNightmareGameInstance_JoinServer_Statics::Function_MetaDataParams) };
+	static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_UNuclearNightmareGameInstance_JoinServer_Statics::PropPointers) < 2048);
+	static_assert(sizeof(Z_Construct_UFunction_UNuclearNightmareGameInstance_JoinServer_Statics::NuclearNightmareGameInstance_eventJoinServer_Parms) < MAX_uint16);
 	UFunction* Z_Construct_UFunction_UNuclearNightmareGameInstance_JoinServer()
 	{
 		static UFunction* ReturnFunction = nullptr;
@@ -235,6 +449,14 @@ void FServerDelegate_DelegateWrapper(const FMulticastScriptDelegate& ServerDeleg
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_ServerListDelegate_MetaData[];
 #endif
 		static const UECodeGen_Private::FMulticastDelegatePropertyParams NewProp_ServerListDelegate;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_ServerRefreshFinished_MetaData[];
+#endif
+		static const UECodeGen_Private::FMulticastDelegatePropertyParams NewProp_ServerRefreshFinished;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_StartLookingForServers_MetaData[];
+#endif
+		static const UECodeGen_Private::FMulticastDelegatePropertyParams NewProp_StartLookingForServers;
 		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UECodeGen_Private::FClassParams ClassParams;
@@ -245,8 +467,9 @@ void FServerDelegate_DelegateWrapper(const FMulticastScriptDelegate& ServerDeleg
 	};
 	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_UNuclearNightmareGameInstance_Statics::DependentSingletons) < 16);
 	const FClassFunctionLinkInfo Z_Construct_UClass_UNuclearNightmareGameInstance_Statics::FuncInfo[] = {
-		{ &Z_Construct_UFunction_UNuclearNightmareGameInstance_CreateServer, "CreateServer" }, // 795366731
-		{ &Z_Construct_UFunction_UNuclearNightmareGameInstance_JoinServer, "JoinServer" }, // 3741685306
+		{ &Z_Construct_UFunction_UNuclearNightmareGameInstance_CreateServer, "CreateServer" }, // 4246938950
+		{ &Z_Construct_UFunction_UNuclearNightmareGameInstance_FindServers, "FindServers" }, // 3436234803
+		{ &Z_Construct_UFunction_UNuclearNightmareGameInstance_JoinServer, "JoinServer" }, // 3835465570
 	};
 	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_UNuclearNightmareGameInstance_Statics::FuncInfo) < 2048);
 #if WITH_METADATA
@@ -263,9 +486,23 @@ void FServerDelegate_DelegateWrapper(const FMulticastScriptDelegate& ServerDeleg
 		{ "ModuleRelativePath", "NuclearNightmareGameInstance.h" },
 	};
 #endif
-	const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_UNuclearNightmareGameInstance_Statics::NewProp_ServerListDelegate = { "ServerListDelegate", nullptr, (EPropertyFlags)0x0020080010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNuclearNightmareGameInstance, ServerListDelegate), Z_Construct_UDelegateFunction_NuclearNightmare_ServerDelegate__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UNuclearNightmareGameInstance_Statics::NewProp_ServerListDelegate_MetaData), Z_Construct_UClass_UNuclearNightmareGameInstance_Statics::NewProp_ServerListDelegate_MetaData) }; // 754634418
+	const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_UNuclearNightmareGameInstance_Statics::NewProp_ServerListDelegate = { "ServerListDelegate", nullptr, (EPropertyFlags)0x0020080010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNuclearNightmareGameInstance, ServerListDelegate), Z_Construct_UDelegateFunction_NuclearNightmare_ServerDelegate__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UNuclearNightmareGameInstance_Statics::NewProp_ServerListDelegate_MetaData), Z_Construct_UClass_UNuclearNightmareGameInstance_Statics::NewProp_ServerListDelegate_MetaData) }; // 3341117933
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UNuclearNightmareGameInstance_Statics::NewProp_ServerRefreshFinished_MetaData[] = {
+		{ "ModuleRelativePath", "NuclearNightmareGameInstance.h" },
+	};
+#endif
+	const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_UNuclearNightmareGameInstance_Statics::NewProp_ServerRefreshFinished = { "ServerRefreshFinished", nullptr, (EPropertyFlags)0x0020080010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNuclearNightmareGameInstance, ServerRefreshFinished), Z_Construct_UDelegateFunction_NuclearNightmare_ServerRefreshFinished__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UNuclearNightmareGameInstance_Statics::NewProp_ServerRefreshFinished_MetaData), Z_Construct_UClass_UNuclearNightmareGameInstance_Statics::NewProp_ServerRefreshFinished_MetaData) }; // 868902489
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UNuclearNightmareGameInstance_Statics::NewProp_StartLookingForServers_MetaData[] = {
+		{ "ModuleRelativePath", "NuclearNightmareGameInstance.h" },
+	};
+#endif
+	const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_UNuclearNightmareGameInstance_Statics::NewProp_StartLookingForServers = { "StartLookingForServers", nullptr, (EPropertyFlags)0x0020080010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNuclearNightmareGameInstance, StartLookingForServers), Z_Construct_UDelegateFunction_NuclearNightmare_StartLookingForServers__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UNuclearNightmareGameInstance_Statics::NewProp_StartLookingForServers_MetaData), Z_Construct_UClass_UNuclearNightmareGameInstance_Statics::NewProp_StartLookingForServers_MetaData) }; // 1093281772
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UNuclearNightmareGameInstance_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNuclearNightmareGameInstance_Statics::NewProp_ServerListDelegate,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNuclearNightmareGameInstance_Statics::NewProp_ServerRefreshFinished,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNuclearNightmareGameInstance_Statics::NewProp_StartLookingForServers,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_UNuclearNightmareGameInstance_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<UNuclearNightmareGameInstance>::IsAbstract,
@@ -306,12 +543,12 @@ void FServerDelegate_DelegateWrapper(const FMulticastScriptDelegate& ServerDeleg
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FStructRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareGameInstance_h_Statics::ScriptStructInfo[] = {
-		{ FServerInfo::StaticStruct, Z_Construct_UScriptStruct_FServerInfo_Statics::NewStructOps, TEXT("ServerInfo"), &Z_Registration_Info_UScriptStruct_ServerInfo, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FServerInfo), 1298432765U) },
+		{ FServerInfo::StaticStruct, Z_Construct_UScriptStruct_FServerInfo_Statics::NewStructOps, TEXT("ServerInfo"), &Z_Registration_Info_UScriptStruct_ServerInfo, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FServerInfo), 4117687150U) },
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareGameInstance_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_UNuclearNightmareGameInstance, UNuclearNightmareGameInstance::StaticClass, TEXT("UNuclearNightmareGameInstance"), &Z_Registration_Info_UClass_UNuclearNightmareGameInstance, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UNuclearNightmareGameInstance), 871575825U) },
+		{ Z_Construct_UClass_UNuclearNightmareGameInstance, UNuclearNightmareGameInstance::StaticClass, TEXT("UNuclearNightmareGameInstance"), &Z_Registration_Info_UClass_UNuclearNightmareGameInstance, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UNuclearNightmareGameInstance), 1437316662U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareGameInstance_h_3922459140(TEXT("/Script/NuclearNightmare"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareGameInstance_h_1398313728(TEXT("/Script/NuclearNightmare"),
 		Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareGameInstance_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareGameInstance_h_Statics::ClassInfo),
 		Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareGameInstance_h_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareGameInstance_h_Statics::ScriptStructInfo),
 		nullptr, 0);

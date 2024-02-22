@@ -11,34 +11,43 @@
 
 UNuclearNightmareGameInstance::UNuclearNightmareGameInstance()
 {
-	
+	MySessionName = FName("My Session");
 }
 
 void UNuclearNightmareGameInstance::OnFindSessionComplete(bool Succeeded)
 {
 	UE_LOG(LogTemp, Warning, TEXT("OnFindSessionComplete, Succeeded: %d"), Succeeded);
+	ServerRefreshFinished.Broadcast(Succeeded);
+	
 	if(Succeeded)
 	{
-		TArray<FOnlineSessionSearchResult> SearchResults = SessionSearch->SearchResults;
 
-		for(FOnlineSessionSearchResult Result : SearchResults)
+		int8 ArrayIndex = -1;
+		for(FOnlineSessionSearchResult Result : SessionSearch->SearchResults)
 		{
+			++ArrayIndex;
 			if(!Result.IsValid())
 				continue;
 
 			FServerInfo Info;
-			Info.ServerName = "Test Server Name";
+			FString ServerName = "New Server";
+			FString HostName = "Local Host";
+
+			Result.Session.SessionSettings.Get(FName("SERVER_NAME_KEY"), ServerName);
+			Result.Session.SessionSettings.Get(FName("SERVER_HOSTNAME_KEY"), HostName);
+			
+			Info.ServerName = ServerName;
 			Info.MaxPlayers = Result.Session.SessionSettings.NumPublicConnections;
 			Info.CurrentPlayers = Info.MaxPlayers - Result.Session.NumOpenPublicConnections;
+			Info.ServerArrayIndex = ArrayIndex;
+			Info.setPlayerCount();
+			Info.IsLan = Result.Session.SessionSettings.bIsLANMatch;
+			Info.Ping = Result.PingInMs;
+			
 			ServerListDelegate.Broadcast(Info);
 		}
 
-		UE_LOG(LogTemp, Warning, TEXT("SearchResults, Server Count: %d"), SearchResults.Num());
-		if(SearchResults.Num())
-		{
-			//UE_LOG(LogTemp, Warning, TEXT("Joining Server..."));
-			//SessionInterface->JoinSession(0, "My Session", SearchResults[0]);
-		}
+		UE_LOG(LogTemp, Warning, TEXT("SearchResults, Server Count: %d"), SessionSearch->SearchResults.Num());
 	}
 }
 
@@ -73,7 +82,7 @@ void UNuclearNightmareGameInstance::Init()
 	}
 }
 
-void UNuclearNightmareGameInstance::OnCreateSessionComplete(FName ServerName, bool Succeeded)
+void UNuclearNightmareGameInstance::OnCreateSessionComplete(FName SessionName, bool Succeeded)
 {
 	UE_LOG(LogTemp, Warning, TEXT("OnCreateSessionComplete, Succeeded: %d"), Succeeded);
 
@@ -83,7 +92,7 @@ void UNuclearNightmareGameInstance::OnCreateSessionComplete(FName ServerName, bo
 	}
 }
 
-void UNuclearNightmareGameInstance::CreateServer()
+void UNuclearNightmareGameInstance::CreateServer(FString SessionName, bool IsLan)
 {
 	UE_LOG(LogTemp, Warning, TEXT("Creating Server..."));
 	
@@ -91,20 +100,39 @@ void UNuclearNightmareGameInstance::CreateServer()
 	SessionSettings.bAllowJoinInProgress = true;
 	SessionSettings.bIsDedicated = false;
 	//Change LanMatch to false for steam package build
-	SessionSettings.bIsLANMatch = true;
+	SessionSettings.bIsLANMatch = IsLan;
 	SessionSettings.bShouldAdvertise = true;
 	SessionSettings.bUsesPresence = true;
 	SessionSettings.NumPublicConnections = 4;
-	SessionInterface->CreateSession(0, FName("My Session"), SessionSettings);
+
+	SessionSettings.Set(FName("SERVER_NAME_KEY"), SessionName, EOnlineDataAdvertisementType::ViaOnlineServiceAndPing);
+	SessionSettings.Set(FName("SERVER_HOSTNAME_KEY"), SessionName, EOnlineDataAdvertisementType::ViaOnlineServiceAndPing);
+	
+	SessionInterface->CreateSession(0, MySessionName, SessionSettings);
 }
 
-void UNuclearNightmareGameInstance::JoinServer()
+void UNuclearNightmareGameInstance::FindServers(bool IsLan)
 {
-	UE_LOG(LogTemp, Warning, TEXT("Joining Server..."));
+	UE_LOG(LogTemp, Warning, TEXT("Finding Servers..."));
+	StartLookingForServers.Broadcast();
 	
 	SessionSearch = MakeShareable(new FOnlineSessionSearch());
-	SessionSearch->bIsLanQuery = true; //Is LanMatch
+	SessionSearch->bIsLanQuery = IsLan;
 	SessionSearch->MaxSearchResults = 10000;
 	SessionSearch->QuerySettings.Set(SEARCH_PRESENCE, true, EOnlineComparisonOp::Equals);
 	SessionInterface->FindSessions(0, SessionSearch.ToSharedRef());
+}
+
+void UNuclearNightmareGameInstance::JoinServer(int32 ServerIndex)
+{
+	FOnlineSessionSearchResult Result = SessionSearch->SearchResults[ServerIndex];
+	if(Result.IsValid())
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Joining server at index: %d"), ServerIndex);
+		SessionInterface->JoinSession(0, MySessionName, Result);
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Failed to join server at index: %d"), ServerIndex);
+	}
 }
