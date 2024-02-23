@@ -16,3 +16,6 @@ SM_vehTruck_vehicle11_No_Wheel.uasset filter=lfs diff=lfs merge=lfs -text
 T_vehTruck_vehicle11_Grime.uasset filter=lfs diff=lfs merge=lfs -text
 West_Heli_UH60A_LTG_BuiltData.uasset filter=lfs diff=lfs merge=lfs -text
 Map_Overview_BuiltData.uasset filter=lfs diff=lfs merge=lfs -text
+Gameplay.umap filter=lfs diff=lfs merge=lfs -text
+Gameplay_Auto4.umap filter=lfs diff=lfs merge=lfs -text
+Gameplay_Auto5.umap filter=lfs diff=lfs merge=lfs -text
