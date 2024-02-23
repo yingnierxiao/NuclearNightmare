@@ -88,5 +88,11 @@ protected:
 
 	UFUNCTION(BlueprintCallable)
 	void JoinServer(int32 ServerIndex);
+
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+	bool CheckLevelLoadStatus();
+
+	UFUNCTION(BlueprintCallable)
+	void ServerTravelToMap(FString MapName);
 	
 };

@@ -282,6 +282,21 @@ void FStartLookingForServers_DelegateWrapper(const FMulticastScriptDelegate& Sta
 {
 	StartLookingForServers.ProcessMulticastDelegate<UObject>(NULL);
 }
+	DEFINE_FUNCTION(UNuclearNightmareGameInstance::execServerTravelToMap)
+	{
+		P_GET_PROPERTY(FStrProperty,Z_Param_MapName);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->ServerTravelToMap(Z_Param_MapName);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(UNuclearNightmareGameInstance::execCheckLevelLoadStatus)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(bool*)Z_Param__Result=P_THIS->CheckLevelLoadStatus();
+		P_NATIVE_END;
+	}
 	DEFINE_FUNCTION(UNuclearNightmareGameInstance::execJoinServer)
 	{
 		P_GET_PROPERTY(FIntProperty,Z_Param_ServerIndex);
@@ -311,11 +326,52 @@ void FStartLookingForServers_DelegateWrapper(const FMulticastScriptDelegate& Sta
 	{
 		UClass* Class = UNuclearNightmareGameInstance::StaticClass();
 		static const FNameNativePtrPair Funcs[] = {
+			{ "CheckLevelLoadStatus", &UNuclearNightmareGameInstance::execCheckLevelLoadStatus },
 			{ "CreateServer", &UNuclearNightmareGameInstance::execCreateServer },
 			{ "FindServers", &UNuclearNightmareGameInstance::execFindServers },
 			{ "JoinServer", &UNuclearNightmareGameInstance::execJoinServer },
+			{ "ServerTravelToMap", &UNuclearNightmareGameInstance::execServerTravelToMap },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
+	}
+	struct Z_Construct_UFunction_UNuclearNightmareGameInstance_CheckLevelLoadStatus_Statics
+	{
+		struct NuclearNightmareGameInstance_eventCheckLevelLoadStatus_Parms
+		{
+			bool ReturnValue;
+		};
+		static void NewProp_ReturnValue_SetBit(void* Obj);
+		static const UECodeGen_Private::FBoolPropertyParams NewProp_ReturnValue;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+	void Z_Construct_UFunction_UNuclearNightmareGameInstance_CheckLevelLoadStatus_Statics::NewProp_ReturnValue_SetBit(void* Obj)
+	{
+		((NuclearNightmareGameInstance_eventCheckLevelLoadStatus_Parms*)Obj)->ReturnValue = 1;
+	}
+	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_UNuclearNightmareGameInstance_CheckLevelLoadStatus_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(NuclearNightmareGameInstance_eventCheckLevelLoadStatus_Parms), &Z_Construct_UFunction_UNuclearNightmareGameInstance_CheckLevelLoadStatus_Statics::NewProp_ReturnValue_SetBit, METADATA_PARAMS(0, nullptr) };
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UNuclearNightmareGameInstance_CheckLevelLoadStatus_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UNuclearNightmareGameInstance_CheckLevelLoadStatus_Statics::NewProp_ReturnValue,
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UNuclearNightmareGameInstance_CheckLevelLoadStatus_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "NuclearNightmareGameInstance.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UNuclearNightmareGameInstance_CheckLevelLoadStatus_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UNuclearNightmareGameInstance, nullptr, "CheckLevelLoadStatus", nullptr, nullptr, Z_Construct_UFunction_UNuclearNightmareGameInstance_CheckLevelLoadStatus_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UNuclearNightmareGameInstance_CheckLevelLoadStatus_Statics::PropPointers), sizeof(Z_Construct_UFunction_UNuclearNightmareGameInstance_CheckLevelLoadStatus_Statics::NuclearNightmareGameInstance_eventCheckLevelLoadStatus_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x14080401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UNuclearNightmareGameInstance_CheckLevelLoadStatus_Statics::Function_MetaDataParams), Z_Construct_UFunction_UNuclearNightmareGameInstance_CheckLevelLoadStatus_Statics::Function_MetaDataParams) };
+	static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_UNuclearNightmareGameInstance_CheckLevelLoadStatus_Statics::PropPointers) < 2048);
+	static_assert(sizeof(Z_Construct_UFunction_UNuclearNightmareGameInstance_CheckLevelLoadStatus_Statics::NuclearNightmareGameInstance_eventCheckLevelLoadStatus_Parms) < MAX_uint16);
+	UFunction* Z_Construct_UFunction_UNuclearNightmareGameInstance_CheckLevelLoadStatus()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UNuclearNightmareGameInstance_CheckLevelLoadStatus_Statics::FuncParams);
+		}
+		return ReturnFunction;
 	}
 	struct Z_Construct_UFunction_UNuclearNightmareGameInstance_CreateServer_Statics
 	{
@@ -433,6 +489,40 @@ void FStartLookingForServers_DelegateWrapper(const FMulticastScriptDelegate& Sta
 		}
 		return ReturnFunction;
 	}
+	struct Z_Construct_UFunction_UNuclearNightmareGameInstance_ServerTravelToMap_Statics
+	{
+		struct NuclearNightmareGameInstance_eventServerTravelToMap_Parms
+		{
+			FString MapName;
+		};
+		static const UECodeGen_Private::FStrPropertyParams NewProp_MapName;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UECodeGen_Private::FStrPropertyParams Z_Construct_UFunction_UNuclearNightmareGameInstance_ServerTravelToMap_Statics::NewProp_MapName = { "MapName", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(NuclearNightmareGameInstance_eventServerTravelToMap_Parms, MapName), METADATA_PARAMS(0, nullptr) };
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UNuclearNightmareGameInstance_ServerTravelToMap_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UNuclearNightmareGameInstance_ServerTravelToMap_Statics::NewProp_MapName,
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UNuclearNightmareGameInstance_ServerTravelToMap_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "NuclearNightmareGameInstance.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UNuclearNightmareGameInstance_ServerTravelToMap_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UNuclearNightmareGameInstance, nullptr, "ServerTravelToMap", nullptr, nullptr, Z_Construct_UFunction_UNuclearNightmareGameInstance_ServerTravelToMap_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UNuclearNightmareGameInstance_ServerTravelToMap_Statics::PropPointers), sizeof(Z_Construct_UFunction_UNuclearNightmareGameInstance_ServerTravelToMap_Statics::NuclearNightmareGameInstance_eventServerTravelToMap_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04080401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UNuclearNightmareGameInstance_ServerTravelToMap_Statics::Function_MetaDataParams), Z_Construct_UFunction_UNuclearNightmareGameInstance_ServerTravelToMap_Statics::Function_MetaDataParams) };
+	static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_UNuclearNightmareGameInstance_ServerTravelToMap_Statics::PropPointers) < 2048);
+	static_assert(sizeof(Z_Construct_UFunction_UNuclearNightmareGameInstance_ServerTravelToMap_Statics::NuclearNightmareGameInstance_eventServerTravelToMap_Parms) < MAX_uint16);
+	UFunction* Z_Construct_UFunction_UNuclearNightmareGameInstance_ServerTravelToMap()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UNuclearNightmareGameInstance_ServerTravelToMap_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
 	IMPLEMENT_CLASS_NO_AUTO_REGISTRATION(UNuclearNightmareGameInstance);
 	UClass* Z_Construct_UClass_UNuclearNightmareGameInstance_NoRegister()
 	{
@@ -467,9 +557,11 @@ void FStartLookingForServers_DelegateWrapper(const FMulticastScriptDelegate& Sta
 	};
 	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_UNuclearNightmareGameInstance_Statics::DependentSingletons) < 16);
 	const FClassFunctionLinkInfo Z_Construct_UClass_UNuclearNightmareGameInstance_Statics::FuncInfo[] = {
+		{ &Z_Construct_UFunction_UNuclearNightmareGameInstance_CheckLevelLoadStatus, "CheckLevelLoadStatus" }, // 3467072529
 		{ &Z_Construct_UFunction_UNuclearNightmareGameInstance_CreateServer, "CreateServer" }, // 4246938950
 		{ &Z_Construct_UFunction_UNuclearNightmareGameInstance_FindServers, "FindServers" }, // 3436234803
 		{ &Z_Construct_UFunction_UNuclearNightmareGameInstance_JoinServer, "JoinServer" }, // 3835465570
+		{ &Z_Construct_UFunction_UNuclearNightmareGameInstance_ServerTravelToMap, "ServerTravelToMap" }, // 3038853401
 	};
 	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_UNuclearNightmareGameInstance_Statics::FuncInfo) < 2048);
 #if WITH_METADATA
@@ -546,9 +638,9 @@ void FStartLookingForServers_DelegateWrapper(const FMulticastScriptDelegate& Sta
 		{ FServerInfo::StaticStruct, Z_Construct_UScriptStruct_FServerInfo_Statics::NewStructOps, TEXT("ServerInfo"), &Z_Registration_Info_UScriptStruct_ServerInfo, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FServerInfo), 4117687150U) },
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareGameInstance_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_UNuclearNightmareGameInstance, UNuclearNightmareGameInstance::StaticClass, TEXT("UNuclearNightmareGameInstance"), &Z_Registration_Info_UClass_UNuclearNightmareGameInstance, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UNuclearNightmareGameInstance), 1437316662U) },
+		{ Z_Construct_UClass_UNuclearNightmareGameInstance, UNuclearNightmareGameInstance::StaticClass, TEXT("UNuclearNightmareGameInstance"), &Z_Registration_Info_UClass_UNuclearNightmareGameInstance, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UNuclearNightmareGameInstance), 79139028U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareGameInstance_h_1398313728(TEXT("/Script/NuclearNightmare"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareGameInstance_h_4021695666(TEXT("/Script/NuclearNightmare"),
 		Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareGameInstance_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareGameInstance_h_Statics::ClassInfo),
 		Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareGameInstance_h_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareGameInstance_h_Statics::ScriptStructInfo),
 		nullptr, 0);

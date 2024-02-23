@@ -27,7 +27,13 @@
             "d:\\epic games\\ue_5.3\\engine\\source\\runtime\\engine\\classes\\kismet\\gameplaystaticstypes.h",
             "d:\\epic games\\ue_5.3\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\gameplaystaticstypes.generated.h",
             "d:\\epic games\\ue_5.3\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\gameplaystatics.generated.h",
-            "d:\\epic games\\ue_5.3\\engine\\plugins\\online\\onlinebase\\source\\public\\online\\onlinesessionnames.h"
+            "d:\\epic games\\ue_5.3\\engine\\plugins\\online\\onlinebase\\source\\public\\online\\onlinesessionnames.h",
+            "d:\\epic games\\ue_5.3\\engine\\source\\runtime\\engine\\public\\worldpartition\\worldpartitionsubsystem.h",
+            "d:\\epic games\\ue_5.3\\engine\\source\\runtime\\engine\\public\\worldpartition\\filter\\worldpartitionactorfilter.h",
+            "d:\\epic games\\ue_5.3\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\worldpartitionactorfilter.generated.h",
+            "d:\\epic games\\ue_5.3\\engine\\source\\runtime\\engine\\public\\worldpartition\\worldpartitionactorcontainerid.h",
+            "d:\\epic games\\ue_5.3\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\worldpartitionactorcontainerid.generated.h",
+            "d:\\epic games\\ue_5.3\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\worldpartitionsubsystem.generated.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

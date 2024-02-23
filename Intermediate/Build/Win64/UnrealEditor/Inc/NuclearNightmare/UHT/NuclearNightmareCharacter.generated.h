@@ -55,6 +55,7 @@ NUCLEARNIGHTMARE_API void FRemovePickUpIcon_DelegateWrapper(const FMulticastScri
 	DECLARE_FUNCTION(execHasItem); \
 	DECLARE_FUNCTION(execAttemptItemPickUp); \
 	DECLARE_FUNCTION(execPickUpItemOnServer); \
+	DECLARE_FUNCTION(execPickUpItemBlueprint); \
 	DECLARE_FUNCTION(execPickUpItem); \
 	DECLARE_FUNCTION(execCameraToggleOnClient); \
 	DECLARE_FUNCTION(execCrouchOnClient); \

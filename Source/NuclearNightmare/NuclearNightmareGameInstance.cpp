@@ -8,6 +8,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "Online/OnlineSessionNames.h"
 #include "Kismet/GameplayStatics.h"
+#include "WorldPartition/WorldPartitionSubsystem.h"
 
 UNuclearNightmareGameInstance::UNuclearNightmareGameInstance()
 {
@@ -135,4 +136,21 @@ void UNuclearNightmareGameInstance::JoinServer(int32 ServerIndex)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Failed to join server at index: %d"), ServerIndex);
 	}
+}
+
+bool UNuclearNightmareGameInstance::CheckLevelLoadStatus()
+{
+	if (const UWorldPartitionSubsystem* WorldPartitionSubsystem = GetWorld()->GetSubsystem<UWorldPartitionSubsystem>())
+	{
+		return WorldPartitionSubsystem->IsStreamingCompleted();
+	}
+	else
+	{
+		return false;
+	}
+}
+
+void UNuclearNightmareGameInstance::ServerTravelToMap(FString MapName)
+{
+	GetWorld()->ServerTravel(MapName, true, false);
 }

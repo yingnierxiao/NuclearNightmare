@@ -97,21 +97,29 @@ void ANuclearNightmareCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	//Search for items
-	TArray<AActor*> ActorsToIgnore;
-	ActorsToIgnore.Add(this);
-	const FVector Start = FirstPersonCameraComponent->GetComponentLocation();
-	const FVector ForwardVector = FirstPersonCameraComponent->GetForwardVector();
-	FVector End = ((ForwardVector * 250.0f) + Start);
-	FHitResult ItemHitResult;
-	if(UKismetSystemLibrary::SphereTraceSingle(GetWorld(), Start, End, 15.0f, TraceTypeQuery1, false, ActorsToIgnore, EDrawDebugTrace::None, ItemHitResult, true, FLinearColor::Blue))
+	if(IsLocallyControlled())
 	{
-		if(Cast<AItemActor>(ItemHitResult.GetActor()))
+		//Search for items
+		TArray<AActor*> ActorsToIgnore;
+		ActorsToIgnore.Add(this);
+		const FVector Start = FirstPersonCameraComponent->GetComponentLocation();
+		const FVector ForwardVector = FirstPersonCameraComponent->GetForwardVector();
+		FVector End = ((ForwardVector * 250.0f) + Start);
+		FHitResult ItemHitResult;
+		if(UKismetSystemLibrary::SphereTraceSingle(GetWorld(), Start, End, 15.0f, TraceTypeQuery1, false, ActorsToIgnore, EDrawDebugTrace::None, ItemHitResult, true, FLinearColor::Blue))
 		{
-			ItemLookedAt = Cast<AItemActor>(ItemHitResult.GetActor());
-			if(!ItemLookedAt->PickedUp)
+			if(Cast<AItemActor>(ItemHitResult.GetActor()))
 			{
-				ShowPickUpIcon.Broadcast();
+				ItemLookedAt = Cast<AItemActor>(ItemHitResult.GetActor());
+				if(!ItemLookedAt->PickedUp)
+				{
+					ShowPickUpIcon.Broadcast();
+				}
+			}
+			else
+			{
+				ItemLookedAt = nullptr;
+				RemovePickUpIcon.Broadcast();
 			}
 		}
 		else
@@ -119,11 +127,6 @@ void ANuclearNightmareCharacter::Tick(float DeltaTime)
 			ItemLookedAt = nullptr;
 			RemovePickUpIcon.Broadcast();
 		}
-	}
-	else
-	{
-		ItemLookedAt = nullptr;
-		RemovePickUpIcon.Broadcast();
 	}
 }
 
@@ -396,6 +399,14 @@ void ANuclearNightmareCharacter::PickUpItem(AItemActor* Item)
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Your Inventory is full!"));
 	}
+}
+
+void ANuclearNightmareCharacter::PickUpItemBlueprint(AItemActor* Item)
+{
+	ItemsInInv.Add(Item);
+	Item->OnPickedUp();
+	PickUpItemOnServer(Item);
+	InventoryUpdatedDelegate.Broadcast();
 }
 
 void ANuclearNightmareCharacter::PickUpItemOnServer_Implementation(AItemActor* Item)

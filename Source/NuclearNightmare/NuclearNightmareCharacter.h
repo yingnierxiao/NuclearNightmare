@@ -267,6 +267,9 @@ protected:
 	UFUNCTION()
 	void PickUpItem(AItemActor* Item);
 
+	UFUNCTION(BlueprintCallable)
+	void PickUpItemBlueprint(AItemActor* Item);
+
 	UFUNCTION(Server, Reliable)
 	void PickUpItemOnServer(AItemActor* Item);
 

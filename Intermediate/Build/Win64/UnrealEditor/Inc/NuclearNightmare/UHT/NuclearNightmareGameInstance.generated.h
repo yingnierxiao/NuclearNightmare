@@ -39,6 +39,8 @@ NUCLEARNIGHTMARE_API void FStartLookingForServers_DelegateWrapper(const FMultica
 #define FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareGameInstance_h_54_EDITOR_ONLY_SPARSE_DATA_PROPERTY_ACCESSORS
 #define FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareGameInstance_h_54_RPC_WRAPPERS_NO_PURE_DECLS \
  \
+	DECLARE_FUNCTION(execServerTravelToMap); \
+	DECLARE_FUNCTION(execCheckLevelLoadStatus); \
 	DECLARE_FUNCTION(execJoinServer); \
 	DECLARE_FUNCTION(execFindServers); \
 	DECLARE_FUNCTION(execCreateServer);
