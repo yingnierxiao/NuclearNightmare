@@ -24,6 +24,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnInventoryUpdated);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnInventoryScroll, int32, CurrentSlot);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FShowPickUpIcon);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FRemovePickUpIcon);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FInventoryFull);
 
 UCLASS(config=Game)
 class ANuclearNightmareCharacter : public ACharacter
@@ -129,6 +130,9 @@ public:
 
 	UPROPERTY(BlueprintAssignable)
 	FOnInventoryUpdated InventoryUpdatedDelegate;
+
+	UPROPERTY(BlueprintAssignable)
+	FInventoryFull InventoryFull;
 
 	UPROPERTY(BlueprintAssignable)
 	FShowPickUpIcon ShowPickUpIcon;

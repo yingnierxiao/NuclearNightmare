@@ -398,6 +398,7 @@ void ANuclearNightmareCharacter::PickUpItem(AItemActor* Item)
 	else
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Your Inventory is full!"));
+		InventoryFull.Broadcast();
 	}
 }
 
