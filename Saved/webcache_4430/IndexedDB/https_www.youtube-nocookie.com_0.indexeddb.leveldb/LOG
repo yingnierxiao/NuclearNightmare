@@ -1,0 +1,8 @@
+2024/02/28-17:19:25.945 3c94 Reusing MANIFEST D:/NuclearNightmare/NuclearNightmare/Saved/webcache_4430\IndexedDB\https_www.youtube-nocookie.com_0.indexeddb.leveldb/MANIFEST-000001
+2024/02/28-17:19:25.945 3c94 Recovering log #4
+2024/02/28-17:19:25.945 3c94 Reusing old log D:/NuclearNightmare/NuclearNightmare/Saved/webcache_4430\IndexedDB\https_www.youtube-nocookie.com_0.indexeddb.leveldb/000004.log 
+2024/02/28-17:20:04.222 5390 Level-0 table #8: started
+2024/02/28-17:20:04.222 5390 Level-0 table #8: 0 bytes OK
+2024/02/28-17:20:04.235 5390 Delete type=0 #4
+2024/02/28-17:20:04.235 5390 Manual compaction at level-0 from (begin) .. (end); will stop at (end)
+2024/02/28-17:20:04.235 5390 Manual compaction at level-1 from (begin) .. (end); will stop at (end)

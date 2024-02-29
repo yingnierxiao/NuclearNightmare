@@ -1,0 +1,6 @@
+2024/02/28-17:17:51.663 25c8 Creating DB D:/NuclearNightmare/NuclearNightmare/Saved/webcache_4430\IndexedDB\https_www.youtube-nocookie.com_0.indexeddb.leveldb since it was missing.
+2024/02/28-17:17:51.675 25c8 Reusing MANIFEST D:/NuclearNightmare/NuclearNightmare/Saved/webcache_4430\IndexedDB\https_www.youtube-nocookie.com_0.indexeddb.leveldb/MANIFEST-000001
+2024/02/28-17:19:25.565 5390 Level-0 table #5: started
+2024/02/28-17:19:25.578 5390 Level-0 table #5: 1167 bytes OK
+2024/02/28-17:19:25.583 5390 Delete type=0 #3
+2024/02/28-17:19:25.583 5390 Manual compaction at level-0 from (begin) .. (end); will stop at (end)
