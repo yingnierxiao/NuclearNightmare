@@ -27572,6 +27572,18 @@
 			"Type": "UFS"
 		},
 		{
+			"Path": "$(ProjectDir)/Content/Slate/CursorUI.uasset",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Content/Slate/cursor.png",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Content/Slate/cursor.uasset",
+			"Type": "UFS"
+		},
+		{
 			"Path": "$(ProjectDir)/NuclearNightmare.uproject",
 			"Type": "UFS"
 		},
