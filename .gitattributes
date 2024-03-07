@@ -50,3 +50,4 @@ Level_01_non_lumen.umap filter=lfs diff=lfs merge=lfs -text
 Level_02_non_lumen.umap filter=lfs diff=lfs merge=lfs -text
 Level_03_non_lumen.umap filter=lfs diff=lfs merge=lfs -text
 Level_04_non_lumen.umap filter=lfs diff=lfs merge=lfs -text
+NuclearNightmare-backup-2024.03.07-11.24.00.log filter=lfs diff=lfs merge=lfs -text
