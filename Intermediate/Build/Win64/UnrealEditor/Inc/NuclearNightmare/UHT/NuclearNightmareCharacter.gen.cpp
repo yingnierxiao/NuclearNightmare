@@ -187,6 +187,38 @@ void FInventoryFull_DelegateWrapper(const FMulticastScriptDelegate& InventoryFul
 		P_THIS->AddMappingInput();
 		P_NATIVE_END;
 	}
+	DEFINE_FUNCTION(ANuclearNightmareCharacter::execRPCSetPitchControlRotationMulticast)
+	{
+		P_GET_PROPERTY(FFloatProperty,Z_Param_value);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->RPCSetPitchControlRotationMulticast_Implementation(Z_Param_value);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(ANuclearNightmareCharacter::execRPCSetPitchControlRotationServer)
+	{
+		P_GET_PROPERTY(FFloatProperty,Z_Param_value);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->RPCSetPitchControlRotationServer_Implementation(Z_Param_value);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(ANuclearNightmareCharacter::execRPCSetYawControlRotationMulticast)
+	{
+		P_GET_PROPERTY(FFloatProperty,Z_Param_value);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->RPCSetYawControlRotationMulticast_Implementation(Z_Param_value);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(ANuclearNightmareCharacter::execRPCSetYawControlRotationServer)
+	{
+		P_GET_PROPERTY(FFloatProperty,Z_Param_value);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->RPCSetYawControlRotationServer_Implementation(Z_Param_value);
+		P_NATIVE_END;
+	}
 	DEFINE_FUNCTION(ANuclearNightmareCharacter::execDropItemOnClient)
 	{
 		P_GET_OBJECT(AItemActor,Z_Param_Item);
@@ -390,6 +422,22 @@ void FInventoryFull_DelegateWrapper(const FMulticastScriptDelegate& InventoryFul
 	{
 		AItemActor* Item;
 	};
+	struct NuclearNightmareCharacter_eventRPCSetPitchControlRotationMulticast_Parms
+	{
+		float value;
+	};
+	struct NuclearNightmareCharacter_eventRPCSetPitchControlRotationServer_Parms
+	{
+		float value;
+	};
+	struct NuclearNightmareCharacter_eventRPCSetYawControlRotationMulticast_Parms
+	{
+		float value;
+	};
+	struct NuclearNightmareCharacter_eventRPCSetYawControlRotationServer_Parms
+	{
+		float value;
+	};
 	struct NuclearNightmareCharacter_eventSprintOnClient_Parms
 	{
 		bool Sprinting;
@@ -468,6 +516,34 @@ void FInventoryFull_DelegateWrapper(const FMulticastScriptDelegate& InventoryFul
 		Parms.Item=Item;
 		ProcessEvent(FindFunctionChecked(NAME_ANuclearNightmareCharacter_PickUpItemOnServer),&Parms);
 	}
+	static FName NAME_ANuclearNightmareCharacter_RPCSetPitchControlRotationMulticast = FName(TEXT("RPCSetPitchControlRotationMulticast"));
+	void ANuclearNightmareCharacter::RPCSetPitchControlRotationMulticast(float value)
+	{
+		NuclearNightmareCharacter_eventRPCSetPitchControlRotationMulticast_Parms Parms;
+		Parms.value=value;
+		ProcessEvent(FindFunctionChecked(NAME_ANuclearNightmareCharacter_RPCSetPitchControlRotationMulticast),&Parms);
+	}
+	static FName NAME_ANuclearNightmareCharacter_RPCSetPitchControlRotationServer = FName(TEXT("RPCSetPitchControlRotationServer"));
+	void ANuclearNightmareCharacter::RPCSetPitchControlRotationServer(float value)
+	{
+		NuclearNightmareCharacter_eventRPCSetPitchControlRotationServer_Parms Parms;
+		Parms.value=value;
+		ProcessEvent(FindFunctionChecked(NAME_ANuclearNightmareCharacter_RPCSetPitchControlRotationServer),&Parms);
+	}
+	static FName NAME_ANuclearNightmareCharacter_RPCSetYawControlRotationMulticast = FName(TEXT("RPCSetYawControlRotationMulticast"));
+	void ANuclearNightmareCharacter::RPCSetYawControlRotationMulticast(float value)
+	{
+		NuclearNightmareCharacter_eventRPCSetYawControlRotationMulticast_Parms Parms;
+		Parms.value=value;
+		ProcessEvent(FindFunctionChecked(NAME_ANuclearNightmareCharacter_RPCSetYawControlRotationMulticast),&Parms);
+	}
+	static FName NAME_ANuclearNightmareCharacter_RPCSetYawControlRotationServer = FName(TEXT("RPCSetYawControlRotationServer"));
+	void ANuclearNightmareCharacter::RPCSetYawControlRotationServer(float value)
+	{
+		NuclearNightmareCharacter_eventRPCSetYawControlRotationServer_Parms Parms;
+		Parms.value=value;
+		ProcessEvent(FindFunctionChecked(NAME_ANuclearNightmareCharacter_RPCSetYawControlRotationServer),&Parms);
+	}
 	static FName NAME_ANuclearNightmareCharacter_SprintOnClient = FName(TEXT("SprintOnClient"));
 	void ANuclearNightmareCharacter::SprintOnClient(bool Sprinting)
 	{
@@ -506,6 +582,10 @@ void FInventoryFull_DelegateWrapper(const FMulticastScriptDelegate& InventoryFul
 			{ "PickUpItem", &ANuclearNightmareCharacter::execPickUpItem },
 			{ "PickUpItemBlueprint", &ANuclearNightmareCharacter::execPickUpItemBlueprint },
 			{ "PickUpItemOnServer", &ANuclearNightmareCharacter::execPickUpItemOnServer },
+			{ "RPCSetPitchControlRotationMulticast", &ANuclearNightmareCharacter::execRPCSetPitchControlRotationMulticast },
+			{ "RPCSetPitchControlRotationServer", &ANuclearNightmareCharacter::execRPCSetPitchControlRotationServer },
+			{ "RPCSetYawControlRotationMulticast", &ANuclearNightmareCharacter::execRPCSetYawControlRotationMulticast },
+			{ "RPCSetYawControlRotationServer", &ANuclearNightmareCharacter::execRPCSetYawControlRotationServer },
 			{ "SprintOnClient", &ANuclearNightmareCharacter::execSprintOnClient },
 			{ "SprintOnServer", &ANuclearNightmareCharacter::execSprintOnServer },
 		};
@@ -1163,6 +1243,132 @@ void FInventoryFull_DelegateWrapper(const FMulticastScriptDelegate& InventoryFul
 		}
 		return ReturnFunction;
 	}
+	struct Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetPitchControlRotationMulticast_Statics
+	{
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_value;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetPitchControlRotationMulticast_Statics::NewProp_value = { "value", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(NuclearNightmareCharacter_eventRPCSetPitchControlRotationMulticast_Parms, value), METADATA_PARAMS(0, nullptr) };
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetPitchControlRotationMulticast_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetPitchControlRotationMulticast_Statics::NewProp_value,
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetPitchControlRotationMulticast_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetPitchControlRotationMulticast_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ANuclearNightmareCharacter, nullptr, "RPCSetPitchControlRotationMulticast", nullptr, nullptr, Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetPitchControlRotationMulticast_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetPitchControlRotationMulticast_Statics::PropPointers), sizeof(NuclearNightmareCharacter_eventRPCSetPitchControlRotationMulticast_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00084C40, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetPitchControlRotationMulticast_Statics::Function_MetaDataParams), Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetPitchControlRotationMulticast_Statics::Function_MetaDataParams) };
+	static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetPitchControlRotationMulticast_Statics::PropPointers) < 2048);
+	static_assert(sizeof(NuclearNightmareCharacter_eventRPCSetPitchControlRotationMulticast_Parms) < MAX_uint16);
+	UFunction* Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetPitchControlRotationMulticast()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetPitchControlRotationMulticast_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetPitchControlRotationServer_Statics
+	{
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_value;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetPitchControlRotationServer_Statics::NewProp_value = { "value", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(NuclearNightmareCharacter_eventRPCSetPitchControlRotationServer_Parms, value), METADATA_PARAMS(0, nullptr) };
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetPitchControlRotationServer_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetPitchControlRotationServer_Statics::NewProp_value,
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetPitchControlRotationServer_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetPitchControlRotationServer_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ANuclearNightmareCharacter, nullptr, "RPCSetPitchControlRotationServer", nullptr, nullptr, Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetPitchControlRotationServer_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetPitchControlRotationServer_Statics::PropPointers), sizeof(NuclearNightmareCharacter_eventRPCSetPitchControlRotationServer_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00280C40, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetPitchControlRotationServer_Statics::Function_MetaDataParams), Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetPitchControlRotationServer_Statics::Function_MetaDataParams) };
+	static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetPitchControlRotationServer_Statics::PropPointers) < 2048);
+	static_assert(sizeof(NuclearNightmareCharacter_eventRPCSetPitchControlRotationServer_Parms) < MAX_uint16);
+	UFunction* Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetPitchControlRotationServer()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetPitchControlRotationServer_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetYawControlRotationMulticast_Statics
+	{
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_value;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetYawControlRotationMulticast_Statics::NewProp_value = { "value", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(NuclearNightmareCharacter_eventRPCSetYawControlRotationMulticast_Parms, value), METADATA_PARAMS(0, nullptr) };
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetYawControlRotationMulticast_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetYawControlRotationMulticast_Statics::NewProp_value,
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetYawControlRotationMulticast_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetYawControlRotationMulticast_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ANuclearNightmareCharacter, nullptr, "RPCSetYawControlRotationMulticast", nullptr, nullptr, Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetYawControlRotationMulticast_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetYawControlRotationMulticast_Statics::PropPointers), sizeof(NuclearNightmareCharacter_eventRPCSetYawControlRotationMulticast_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00084C40, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetYawControlRotationMulticast_Statics::Function_MetaDataParams), Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetYawControlRotationMulticast_Statics::Function_MetaDataParams) };
+	static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetYawControlRotationMulticast_Statics::PropPointers) < 2048);
+	static_assert(sizeof(NuclearNightmareCharacter_eventRPCSetYawControlRotationMulticast_Parms) < MAX_uint16);
+	UFunction* Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetYawControlRotationMulticast()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetYawControlRotationMulticast_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetYawControlRotationServer_Statics
+	{
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_value;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetYawControlRotationServer_Statics::NewProp_value = { "value", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(NuclearNightmareCharacter_eventRPCSetYawControlRotationServer_Parms, value), METADATA_PARAMS(0, nullptr) };
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetYawControlRotationServer_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetYawControlRotationServer_Statics::NewProp_value,
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetYawControlRotationServer_Statics::Function_MetaDataParams[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//Snowmobile Funcs\n" },
+#endif
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Snowmobile Funcs" },
+#endif
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetYawControlRotationServer_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ANuclearNightmareCharacter, nullptr, "RPCSetYawControlRotationServer", nullptr, nullptr, Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetYawControlRotationServer_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetYawControlRotationServer_Statics::PropPointers), sizeof(NuclearNightmareCharacter_eventRPCSetYawControlRotationServer_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00280C40, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetYawControlRotationServer_Statics::Function_MetaDataParams), Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetYawControlRotationServer_Statics::Function_MetaDataParams) };
+	static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetYawControlRotationServer_Statics::PropPointers) < 2048);
+	static_assert(sizeof(NuclearNightmareCharacter_eventRPCSetYawControlRotationServer_Parms) < MAX_uint16);
+	UFunction* Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetYawControlRotationServer()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetYawControlRotationServer_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
 	struct Z_Construct_UFunction_ANuclearNightmareCharacter_SprintOnClient_Statics
 	{
 		static void NewProp_Sprinting_SetBit(void* Obj);
@@ -1410,6 +1616,24 @@ void FInventoryFull_DelegateWrapper(const FMulticastScriptDelegate& InventoryFul
 #endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_FlashlightAttenuation;
 #if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_Driver_MetaData[];
+#endif
+		static void NewProp_Driver_SetBit(void* Obj);
+		static const UECodeGen_Private::FBoolPropertyParams NewProp_Driver;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_Passenger_MetaData[];
+#endif
+		static void NewProp_Passenger_SetBit(void* Obj);
+		static const UECodeGen_Private::FBoolPropertyParams NewProp_Passenger;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_YawControlRotation_MetaData[];
+#endif
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_YawControlRotation;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_PitchControlRotation_MetaData[];
+#endif
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_PitchControlRotation;
+#if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_bGlowstickToggle_MetaData[];
 #endif
 		static void NewProp_bGlowstickToggle_SetBit(void* Obj);
@@ -1474,6 +1698,10 @@ void FInventoryFull_DelegateWrapper(const FMulticastScriptDelegate& InventoryFul
 		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_PickUpItem, "PickUpItem" }, // 4074552153
 		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_PickUpItemBlueprint, "PickUpItemBlueprint" }, // 1834821891
 		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_PickUpItemOnServer, "PickUpItemOnServer" }, // 2713900082
+		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetPitchControlRotationMulticast, "RPCSetPitchControlRotationMulticast" }, // 3625921539
+		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetPitchControlRotationServer, "RPCSetPitchControlRotationServer" }, // 3203403271
+		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetYawControlRotationMulticast, "RPCSetYawControlRotationMulticast" }, // 1925910877
+		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_RPCSetYawControlRotationServer, "RPCSetYawControlRotationServer" }, // 3421567500
 		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_SprintOnClient, "SprintOnClient" }, // 1995746813
 		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_SprintOnServer, "SprintOnServer" }, // 2100253083
 	};
@@ -1911,6 +2139,48 @@ void FInventoryFull_DelegateWrapper(const FMulticastScriptDelegate& InventoryFul
 #endif
 	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightAttenuation = { "FlashlightAttenuation", nullptr, (EPropertyFlags)0x0010000000000025, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANuclearNightmareCharacter, FlashlightAttenuation), Z_Construct_UClass_USoundAttenuation_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightAttenuation_MetaData), Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightAttenuation_MetaData) };
 #if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_Driver_MetaData[] = {
+		{ "Category", "Snowmobile" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//Snowmobile Logic\n" },
+#endif
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Snowmobile Logic" },
+#endif
+	};
+#endif
+	void Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_Driver_SetBit(void* Obj)
+	{
+		((ANuclearNightmareCharacter*)Obj)->Driver = 1;
+	}
+	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_Driver = { "Driver", nullptr, (EPropertyFlags)0x0010000000000025, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(ANuclearNightmareCharacter), &Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_Driver_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_Driver_MetaData), Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_Driver_MetaData) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_Passenger_MetaData[] = {
+		{ "Category", "Snowmobile" },
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+	};
+#endif
+	void Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_Passenger_SetBit(void* Obj)
+	{
+		((ANuclearNightmareCharacter*)Obj)->Passenger = 1;
+	}
+	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_Passenger = { "Passenger", nullptr, (EPropertyFlags)0x0010000000000025, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(ANuclearNightmareCharacter), &Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_Passenger_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_Passenger_MetaData), Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_Passenger_MetaData) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_YawControlRotation_MetaData[] = {
+		{ "Category", "Snowmobile" },
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_YawControlRotation = { "YawControlRotation", nullptr, (EPropertyFlags)0x0010000000000025, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANuclearNightmareCharacter, YawControlRotation), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_YawControlRotation_MetaData), Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_YawControlRotation_MetaData) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_PitchControlRotation_MetaData[] = {
+		{ "Category", "Snowmobile" },
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_PitchControlRotation = { "PitchControlRotation", nullptr, (EPropertyFlags)0x0010000000000025, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANuclearNightmareCharacter, PitchControlRotation), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_PitchControlRotation_MetaData), Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_PitchControlRotation_MetaData) };
+#if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_bGlowstickToggle_MetaData[] = {
 		{ "Category", "LightSource" },
 #if !UE_BUILD_SHIPPING
@@ -2037,6 +2307,10 @@ void FInventoryFull_DelegateWrapper(const FMulticastScriptDelegate& InventoryFul
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightOnSound,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightOffSound,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_FlashlightAttenuation,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_Driver,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_Passenger,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_YawControlRotation,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_PitchControlRotation,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_bGlowstickToggle,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_GlowstickOnSound,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_GlowstickOffSound,
@@ -2084,6 +2358,10 @@ void FInventoryFull_DelegateWrapper(const FMulticastScriptDelegate& InventoryFul
 		static const FName Name_FlashlightOnSound(TEXT("FlashlightOnSound"));
 		static const FName Name_FlashlightOffSound(TEXT("FlashlightOffSound"));
 		static const FName Name_FlashlightAttenuation(TEXT("FlashlightAttenuation"));
+		static const FName Name_Driver(TEXT("Driver"));
+		static const FName Name_Passenger(TEXT("Passenger"));
+		static const FName Name_YawControlRotation(TEXT("YawControlRotation"));
+		static const FName Name_PitchControlRotation(TEXT("PitchControlRotation"));
 		static const FName Name_bGlowstickToggle(TEXT("bGlowstickToggle"));
 		static const FName Name_GlowstickOnSound(TEXT("GlowstickOnSound"));
 		static const FName Name_GlowstickOffSound(TEXT("GlowstickOffSound"));
@@ -2098,6 +2376,10 @@ void FInventoryFull_DelegateWrapper(const FMulticastScriptDelegate& InventoryFul
 			&& Name_FlashlightOnSound == ClassReps[(int32)ENetFields_Private::FlashlightOnSound].Property->GetFName()
 			&& Name_FlashlightOffSound == ClassReps[(int32)ENetFields_Private::FlashlightOffSound].Property->GetFName()
 			&& Name_FlashlightAttenuation == ClassReps[(int32)ENetFields_Private::FlashlightAttenuation].Property->GetFName()
+			&& Name_Driver == ClassReps[(int32)ENetFields_Private::Driver].Property->GetFName()
+			&& Name_Passenger == ClassReps[(int32)ENetFields_Private::Passenger].Property->GetFName()
+			&& Name_YawControlRotation == ClassReps[(int32)ENetFields_Private::YawControlRotation].Property->GetFName()
+			&& Name_PitchControlRotation == ClassReps[(int32)ENetFields_Private::PitchControlRotation].Property->GetFName()
 			&& Name_bGlowstickToggle == ClassReps[(int32)ENetFields_Private::bGlowstickToggle].Property->GetFName()
 			&& Name_GlowstickOnSound == ClassReps[(int32)ENetFields_Private::GlowstickOnSound].Property->GetFName()
 			&& Name_GlowstickOffSound == ClassReps[(int32)ENetFields_Private::GlowstickOffSound].Property->GetFName()
@@ -2116,9 +2398,9 @@ void FInventoryFull_DelegateWrapper(const FMulticastScriptDelegate& InventoryFul
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_ANuclearNightmareCharacter, ANuclearNightmareCharacter::StaticClass, TEXT("ANuclearNightmareCharacter"), &Z_Registration_Info_UClass_ANuclearNightmareCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ANuclearNightmareCharacter), 3985485916U) },
+		{ Z_Construct_UClass_ANuclearNightmareCharacter, ANuclearNightmareCharacter::StaticClass, TEXT("ANuclearNightmareCharacter"), &Z_Registration_Info_UClass_ANuclearNightmareCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ANuclearNightmareCharacter), 924387224U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_181572804(TEXT("/Script/NuclearNightmare"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_2522104309(TEXT("/Script/NuclearNightmare"),
 		Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

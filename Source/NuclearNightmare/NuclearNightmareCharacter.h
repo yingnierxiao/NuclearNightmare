@@ -177,6 +177,19 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Replicated, Category = LightSource)
 	class USoundAttenuation* FlashlightAttenuation;
 
+	//Snowmobile Logic
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Replicated, Category = Snowmobile)
+	bool Driver;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Replicated, Category = Snowmobile)
+	bool Passenger;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Replicated, Category = Snowmobile)
+	float YawControlRotation;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Replicated, Category = Snowmobile)
+	float PitchControlRotation;
+
 	//Glowstick Toggle
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Replicated, Category = LightSource)
 	bool bGlowstickToggle;
@@ -302,6 +315,19 @@ protected:
 	void ResetValuesAfterDropping();
 
 	int32 IndexThatWasDropped;
+
+	//Snowmobile Funcs
+	UFUNCTION(Server, Unreliable)
+	void RPCSetYawControlRotationServer(float value);
+
+	UFUNCTION(NetMulticast, Unreliable)
+	void RPCSetYawControlRotationMulticast(float value);
+
+	UFUNCTION(Server, Unreliable)
+	void RPCSetPitchControlRotationServer(float value);
+
+	UFUNCTION(NetMulticast, Unreliable)
+	void RPCSetPitchControlRotationMulticast(float value);
 
 	//Input
 	UFUNCTION(BlueprintCallable)

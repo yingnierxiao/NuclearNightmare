@@ -39,6 +39,10 @@ NUCLEARNIGHTMARE_API void FInventoryFull_DelegateWrapper(const FMulticastScriptD
 #define FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_32_SPARSE_DATA_PROPERTY_ACCESSORS
 #define FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_32_EDITOR_ONLY_SPARSE_DATA_PROPERTY_ACCESSORS
 #define FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_32_RPC_WRAPPERS_NO_PURE_DECLS \
+	virtual void RPCSetPitchControlRotationMulticast_Implementation(float value); \
+	virtual void RPCSetPitchControlRotationServer_Implementation(float value); \
+	virtual void RPCSetYawControlRotationMulticast_Implementation(float value); \
+	virtual void RPCSetYawControlRotationServer_Implementation(float value); \
 	virtual void DropItemOnClient_Implementation(AItemActor* Item); \
 	virtual void DropItemOnServer_Implementation(AItemActor* Item); \
 	virtual void PickUpItemOnServer_Implementation(AItemActor* Item); \
@@ -53,6 +57,10 @@ NUCLEARNIGHTMARE_API void FInventoryFull_DelegateWrapper(const FMulticastScriptD
 	virtual void SprintOnServer_Implementation(bool Sprinting); \
  \
 	DECLARE_FUNCTION(execAddMappingInput); \
+	DECLARE_FUNCTION(execRPCSetPitchControlRotationMulticast); \
+	DECLARE_FUNCTION(execRPCSetPitchControlRotationServer); \
+	DECLARE_FUNCTION(execRPCSetYawControlRotationMulticast); \
+	DECLARE_FUNCTION(execRPCSetYawControlRotationServer); \
 	DECLARE_FUNCTION(execDropItemOnClient); \
 	DECLARE_FUNCTION(execDropItemOnServer); \
 	DECLARE_FUNCTION(execGetItemSlot); \
@@ -93,6 +101,10 @@ public: \
 		FlashlightOnSound, \
 		FlashlightOffSound, \
 		FlashlightAttenuation, \
+		Driver, \
+		Passenger, \
+		YawControlRotation, \
+		PitchControlRotation, \
 		bGlowstickToggle, \
 		GlowstickOnSound, \
 		GlowstickOffSound, \

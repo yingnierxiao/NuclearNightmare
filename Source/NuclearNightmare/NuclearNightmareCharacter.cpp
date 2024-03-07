@@ -140,6 +140,10 @@ void ANuclearNightmareCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProp
 	DOREPLIFETIME(ANuclearNightmareCharacter, LocationAfterCrouch);
 	DOREPLIFETIME(ANuclearNightmareCharacter, LocationBeforeCrouch);
 	DOREPLIFETIME(ANuclearNightmareCharacter, bGlowstickToggle);
+	DOREPLIFETIME(ANuclearNightmareCharacter, Driver);
+	DOREPLIFETIME(ANuclearNightmareCharacter, Passenger);
+	DOREPLIFETIME(ANuclearNightmareCharacter, YawControlRotation);
+	DOREPLIFETIME(ANuclearNightmareCharacter, PitchControlRotation);
 }
 
 //////////////////////////////////////////////////////////////////////////// Input
@@ -563,6 +567,26 @@ void ANuclearNightmareCharacter::ResetValuesAfterDropping()
 	InventoryUpdatedDelegate.Broadcast();
 }
 
+void ANuclearNightmareCharacter::RPCSetYawControlRotationMulticast_Implementation(float value)
+{
+	YawControlRotation = value;
+}
+
+void ANuclearNightmareCharacter::RPCSetYawControlRotationServer_Implementation(float value)
+{
+	RPCSetYawControlRotationMulticast(value);
+}
+
+void ANuclearNightmareCharacter::RPCSetPitchControlRotationServer_Implementation(float value)
+{
+	RPCSetPitchControlRotationMulticast(value);
+}
+
+void ANuclearNightmareCharacter::RPCSetPitchControlRotationMulticast_Implementation(float value)
+{
+	PitchControlRotation = value;
+}
+
 void ANuclearNightmareCharacter::AddMappingInput()
 {
 	if (APlayerController* PlayerController = Cast<APlayerController>(Controller))
@@ -640,5 +664,19 @@ void ANuclearNightmareCharacter::Look(const FInputActionValue& Value)
 		// add yaw and pitch input to controller
 		AddControllerYawInput(LookAxisVector.X);
 		AddControllerPitchInput(LookAxisVector.Y);
+
+		//Checks if we are attached to snowmobile
+		if(GetAttachParentActor() != nullptr)
+		{
+			if(YawControlRotation != GetControlRotation().Yaw)
+			{
+				RPCSetYawControlRotationServer(GetControlRotation().Yaw);
+			}
+
+			if(PitchControlRotation != GetControlRotation().Pitch)
+			{
+				RPCSetPitchControlRotationServer(GetControlRotation().Pitch);
+			}
+		}
 	}
 }
