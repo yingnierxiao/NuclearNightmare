@@ -6284,6 +6284,18 @@
 		{
 			"Path": "$(ProjectDir)/Plugins/AsyncLoadingScreen/Binaries/Win64/UnrealEditor.modules",
 			"Type": "RequiredResource"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/ShaderDirectory/Binaries/Win64/UnrealEditor-ShaderDirectory.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/ShaderDirectory/Binaries/Win64/UnrealEditor-ShaderDirectory.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/ShaderDirectory/Binaries/Win64/UnrealEditor.modules",
+			"Type": "RequiredResource"
 		}
 	],
 	"RuntimeDependencies": [
@@ -27589,6 +27601,10 @@
 		},
 		{
 			"Path": "$(ProjectDir)/Plugins/AsyncLoadingScreen/AsyncLoadingScreen.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/ShaderDirectory/ShaderDirectory.uplugin",
 			"Type": "UFS"
 		}
 	],

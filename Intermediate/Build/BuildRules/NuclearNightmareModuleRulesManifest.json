@@ -1,9 +1,13 @@
 {
 	"SourceFiles": [
 		"D:\\NuclearNightmare\\NuclearNightmare\\Source\\NuclearNightmare\\NuclearNightmare.Build.cs",
+		"D:\\NuclearNightmare\\NuclearNightmare\\Source\\ShaderMacro\\ShaderMacro.Build.cs",
 		"D:\\NuclearNightmare\\NuclearNightmare\\Plugins\\AsyncLoadingScreen\\Source\\AsyncLoadingScreen\\AsyncLoadingScreen.Build.cs",
+		"D:\\NuclearNightmare\\NuclearNightmare\\Plugins\\ShaderDirectory\\Source\\ShaderDirectory\\ShaderDirectory.Build.cs",
 		"D:\\NuclearNightmare\\NuclearNightmare\\Source\\NuclearNightmare.Target.cs",
-		"D:\\NuclearNightmare\\NuclearNightmare\\Source\\NuclearNightmareEditor.Target.cs"
+		"D:\\NuclearNightmare\\NuclearNightmare\\Source\\NuclearNightmareEditor.Target.cs",
+		"D:\\NuclearNightmare\\NuclearNightmare\\Source\\ShaderMacro.Target.cs",
+		"D:\\NuclearNightmare\\NuclearNightmare\\Source\\ShaderMacroEditor.Target.cs"
 	],
 	"EngineVersion": "5.3.2"
 }

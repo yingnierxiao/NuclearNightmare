@@ -9,6 +9,16 @@
 			"Name": "NuclearNightmareEditor",
 			"Path": "..\\Source\\NuclearNightmareEditor.Target.cs",
 			"Type": "Editor"
+		},
+		{
+			"Name": "ShaderMacro",
+			"Path": "..\\Source\\ShaderMacro.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "ShaderMacroEditor",
+			"Path": "..\\Source\\ShaderMacroEditor.Target.cs",
+			"Type": "Editor"
 		}
 	]
 }
