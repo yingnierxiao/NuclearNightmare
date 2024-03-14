@@ -19,6 +19,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FString ItemName;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FVector ItemOffset;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FString ItemDescription;

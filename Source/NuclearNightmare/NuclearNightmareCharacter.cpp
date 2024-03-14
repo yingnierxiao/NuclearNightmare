@@ -550,15 +550,42 @@ void ANuclearNightmareCharacter::DropItemOnServer_Implementation(AItemActor* Ite
 
 void ANuclearNightmareCharacter::DropItemOnClient_Implementation(AItemActor* Item)
 {
-	const FVector Start = FirstPersonCameraComponent->GetComponentLocation();
-	const FVector ForwardVector = FirstPersonCameraComponent->GetForwardVector();
-	const FVector End = ((ForwardVector * 1.0f) + Start);
-	const FRotator Rotation(0.0f, 0.0f, 0.0f);
-	Item->TeleportTo(End, Rotation, false, false);
-	FHitResult* TeleportResult = nullptr;
-	Item->Mesh->SetSimulatePhysics(true);
-	Item->Mesh->SetWorldLocation(End, true, TeleportResult, ETeleportType::TeleportPhysics);
-	Item->Mesh->AddImpulseAtLocation(End * (ForwardVector * 35), End);
+	const FVector Start = GetCapsuleComponent()->GetComponentLocation();
+	const FVector EndVector = GetCapsuleComponent()->GetUpVector();
+	const FVector End = ((EndVector * -500.0f) + Start);
+	FCollisionQueryParams CollisonParams;
+	CollisonParams.AddIgnoredActor(this);
+	CollisonParams.AddIgnoredActor(Item);
+	FHitResult HitRes;
+
+	if(GetWorld()->LineTraceSingleByChannel(HitRes, Start, End, ECollisionChannel::ECC_Visibility, CollisonParams, FCollisionResponseParams::DefaultResponseParam))
+	{
+		FVector UpVector = Item->Mesh->GetUpVector();
+		FVector NormalVector = HitRes.ImpactNormal;
+
+		FVector RotationAxis = FVector::CrossProduct(UpVector, NormalVector);
+		RotationAxis.Normalize();
+
+		float DotProduct = FVector::DotProduct(UpVector, NormalVector);
+		float RotationAngle = acosf(DotProduct);
+
+		FQuat Quat = FQuat(RotationAxis, RotationAngle);
+		FQuat RootQuat = Item->Mesh->GetComponentQuat();
+
+		FQuat NewQuat = Quat * RootQuat;
+		
+		//Item->TeleportTo(HitRes.Location, NewQuat.Rotator(), false, false);
+		FHitResult* TeleportResult = nullptr;
+		Item->Mesh->SetWorldLocationAndRotation((HitRes.Location + Item->ItemOffset), NewQuat.Rotator());
+		//Item->Mesh->SetWorldRotation(NewQuat.Rotator());
+	}
+	else
+	{
+		const FRotator Rotation(0.0f, 0.0f, 0.0f);
+		Item->TeleportTo(End, Rotation, false, false);
+		FHitResult* TeleportResult = nullptr;
+		Item->Mesh->SetWorldLocation((End + Item->ItemOffset), true, TeleportResult, ETeleportType::TeleportPhysics);
+	}
 }
 
 void ANuclearNightmareCharacter::ResetValuesAfterDropping()
