@@ -53,6 +53,8 @@ NUCLEARNIGHTMARE_API void FInventoryFull_DelegateWrapper(const FMulticastScriptD
 	virtual void GlowstickOnServer_Implementation(bool Glowstick); \
 	virtual void FlashlightOnClient_Implementation(bool Flashlight); \
 	virtual void FlashlightOnServer_Implementation(bool Flashlight); \
+	virtual void PeakOnClient_Implementation(bool Peaking, bool bLeft); \
+	virtual void PeakOnServer_Implementation(bool Peaking, bool bLeft); \
 	virtual void SprintOnClient_Implementation(bool Sprinting); \
 	virtual void SprintOnServer_Implementation(bool Sprinting); \
  \
@@ -80,6 +82,8 @@ NUCLEARNIGHTMARE_API void FInventoryFull_DelegateWrapper(const FMulticastScriptD
 	DECLARE_FUNCTION(execFlashlightOn); \
 	DECLARE_FUNCTION(execFlashlightOnClient); \
 	DECLARE_FUNCTION(execFlashlightOnServer); \
+	DECLARE_FUNCTION(execPeakOnClient); \
+	DECLARE_FUNCTION(execPeakOnServer); \
 	DECLARE_FUNCTION(execSprintOnClient); \
 	DECLARE_FUNCTION(execSprintOnServer);
 
@@ -97,7 +101,10 @@ public: \
 	enum class ENetFields_Private : uint16 \
 	{ \
 		NETFIELD_REP_START=(uint16)((int32)Super::ENetFields_Private::NETFIELD_REP_END + (int32)1), \
-		bFlashlightToggle=NETFIELD_REP_START, \
+		bSprinting=NETFIELD_REP_START, \
+		bPeakLeft, \
+		bPeakRight, \
+		bFlashlightToggle, \
 		FlashlightOnSound, \
 		FlashlightOffSound, \
 		FlashlightAttenuation, \

@@ -102,6 +102,13 @@ class ANuclearNightmareCharacter : public ACharacter
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
 	UInputAction* CrouchAction;
 
+	//Peak Input Actions
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
+	UInputAction* PeakLeftAction;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
+	UInputAction* PeakRightAction;
+
 	//First Person/Third Person Camera Toggle Input Action
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
 	UInputAction* FirstThirdCameraAction;
@@ -163,6 +170,16 @@ public:
 	//Sprint Value
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Movement, meta = (AllowPrivateAccess = "true"))
 	float WalkValue;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Replicated, Category = Movement)
+	bool bSprinting;
+
+	//Peak Logic
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Replicated, Category = Movement)
+	bool bPeakLeft;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Replicated, Category = Movement)
+	bool bPeakRight;
 
 	//Flashlight Toggle
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Replicated, Category = LightSource)
@@ -233,6 +250,21 @@ protected:
 
 	void sprint();
 	void StopSprint();
+
+	FVector2d MovementXY;
+
+	//Peak Logic
+	UFUNCTION(Server, Reliable)
+	void PeakOnServer(bool Peaking, bool bLeft);
+
+	UFUNCTION(NetMulticast, Reliable)
+	void PeakOnClient(bool Peaking, bool bLeft);
+
+	void PeakLeft();
+	void PeakRight();
+
+	void StopPeakLeft();
+	void StopPeakRight();
 
 	//Flashlight Logic
 	UFUNCTION(Server, Reliable)

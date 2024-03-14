@@ -144,6 +144,9 @@ void ANuclearNightmareCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProp
 	DOREPLIFETIME(ANuclearNightmareCharacter, Passenger);
 	DOREPLIFETIME(ANuclearNightmareCharacter, YawControlRotation);
 	DOREPLIFETIME(ANuclearNightmareCharacter, PitchControlRotation);
+	DOREPLIFETIME(ANuclearNightmareCharacter, bSprinting);
+	DOREPLIFETIME(ANuclearNightmareCharacter, bPeakLeft);
+	DOREPLIFETIME(ANuclearNightmareCharacter, bPeakRight);
 }
 
 //////////////////////////////////////////////////////////////////////////// Input
@@ -157,6 +160,7 @@ void ANuclearNightmareCharacter::SprintOnClient_Implementation(bool Sprinting)
 {
 	if(Sprinting)
 	{
+		bSprinting = true;
 		GetCharacterMovement()->MaxWalkSpeed = SprintValue;
 		if(bIsPlayerCrouched)
 		{
@@ -165,6 +169,7 @@ void ANuclearNightmareCharacter::SprintOnClient_Implementation(bool Sprinting)
 	}
 	else
 	{
+		bSprinting = false;
 		GetCharacterMovement()->MaxWalkSpeed = WalkValue;
 	}
 }
@@ -180,18 +185,96 @@ void ANuclearNightmareCharacter::sprint()
 		UKismetSystemLibrary::SphereTraceSingle(GetWorld(), InitalCrouchTraceLoc, FVector(InitalCrouchTraceLoc.X, InitalCrouchTraceLoc.Y, InitalCrouchTraceLoc.Z + 96), 29, ETraceTypeQuery::TraceTypeQuery1, false, ActorsToIgnore, EDrawDebugTrace::None, HitResultCrouch, true, FLinearColor::Green);
 		if(!HitResultCrouch.bBlockingHit)
 		{
-			SprintOnServer(true);
+			if(MovementXY.Y > 0 && MovementXY.X == 0)
+			{
+				SprintOnServer(true);
+			}
 		}
 	}
 	else
 	{
-		SprintOnServer(true);	
+		if(MovementXY.Y > 0 && MovementXY.X == 0)
+		{
+			SprintOnServer(true);
+		}
 	}
 }
 
 void ANuclearNightmareCharacter::StopSprint()
 {
 	SprintOnServer(false);
+}
+
+void ANuclearNightmareCharacter::PeakLeft()
+{
+	PeakOnServer(true, true);
+}
+
+void ANuclearNightmareCharacter::PeakRight()
+{
+	PeakOnServer(true, false);
+}
+
+void ANuclearNightmareCharacter::StopPeakLeft()
+{
+	PeakOnServer(false, true);
+}
+
+void ANuclearNightmareCharacter::StopPeakRight()
+{
+	PeakOnServer(false, false);
+}
+
+void ANuclearNightmareCharacter::PeakOnClient_Implementation(bool Peaking, bool bLeft)
+{
+	if(Peaking)
+	{
+		FVector InitalLocation = GetCapsuleComponent()->GetComponentLocation() + FVector(0, 0, 55);
+		TArray<AActor*> ActorsToIgnore;
+		ActorsToIgnore.Add(this);
+		if(bLeft)
+		{
+			const FVector PeakDirection = GetActorRightVector();
+			FHitResult HitResultPeak;
+			UKismetSystemLibrary::SphereTraceSingle(GetWorld(), InitalLocation, FVector(InitalLocation + (PeakDirection * -40)), 15, ETraceTypeQuery::TraceTypeQuery1, false, ActorsToIgnore, EDrawDebugTrace::None, HitResultPeak, true, FLinearColor::Green);
+			if(HitResultPeak.bBlockingHit)
+			{
+				bPeakLeft = false;
+				bPeakRight = false;
+			}
+			else
+			{
+				bPeakLeft = true;
+				bPeakRight = false;
+			}
+		}
+		else
+		{
+			const FVector PeakDirection = GetActorRightVector();
+			FHitResult HitResultPeak;
+			UKismetSystemLibrary::SphereTraceSingle(GetWorld(), InitalLocation, FVector(InitalLocation + (PeakDirection * 40)), 15, ETraceTypeQuery::TraceTypeQuery1, false, ActorsToIgnore, EDrawDebugTrace::None, HitResultPeak, true, FLinearColor::Green);
+			if(HitResultPeak.bBlockingHit)
+			{
+				bPeakLeft = false;
+				bPeakRight = false;
+			}
+			else
+			{
+				bPeakLeft = false;
+				bPeakRight = true;
+			}
+		}
+	}
+	else
+	{
+		bPeakLeft = false;
+		bPeakRight = false;
+	}
+}
+
+void ANuclearNightmareCharacter::PeakOnServer_Implementation(bool Peaking, bool bLeft)
+{
+	PeakOnClient(Peaking, bLeft);
 }
 
 void ANuclearNightmareCharacter::FlashlightOnServer_Implementation(bool Flashlight)
@@ -639,6 +722,13 @@ void ANuclearNightmareCharacter::SetupPlayerInputComponent(UInputComponent* Play
 		EnhancedInputComponent->BindAction(SprintAction, ETriggerEvent::Started, this, &ANuclearNightmareCharacter::sprint);
 		EnhancedInputComponent->BindAction(SprintAction, ETriggerEvent::Completed, this, &ANuclearNightmareCharacter::StopSprint);
 
+		//Peaking
+		EnhancedInputComponent->BindAction(PeakLeftAction, ETriggerEvent::Started, this, &ANuclearNightmareCharacter::PeakLeft);
+		EnhancedInputComponent->BindAction(PeakLeftAction, ETriggerEvent::Completed, this, &ANuclearNightmareCharacter::StopPeakLeft);
+
+		EnhancedInputComponent->BindAction(PeakRightAction, ETriggerEvent::Started, this, &ANuclearNightmareCharacter::PeakRight);
+		EnhancedInputComponent->BindAction(PeakRightAction, ETriggerEvent::Completed, this, &ANuclearNightmareCharacter::StopPeakRight);
+		
 		//Crouching
 		EnhancedInputComponent->BindAction(CrouchAction, ETriggerEvent::Started, this, &ANuclearNightmareCharacter::CrouchToggle);
 
@@ -671,12 +761,22 @@ void ANuclearNightmareCharacter::Move(const FInputActionValue& Value)
 {
 	// input is a Vector2D
 	FVector2D MovementVector = Value.Get<FVector2D>();
+	MovementXY = MovementVector;
 
 	if (Controller != nullptr)
 	{
 		// add movement 
 		AddMovementInput(GetActorForwardVector(), MovementVector.Y);
 		AddMovementInput(GetActorRightVector(), MovementVector.X);
+		
+		//float Yaxis = MovementVector.Y;
+		//FString TheFloatStr = FString::SanitizeFloat(Yaxis);
+		//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, *TheFloatStr);
+
+		if(bSprinting && (MovementVector.X > 0 || MovementVector.Y < 0 || MovementVector.X < 0))
+		{
+			StopSprint();
+		}
 	}
 }
 
