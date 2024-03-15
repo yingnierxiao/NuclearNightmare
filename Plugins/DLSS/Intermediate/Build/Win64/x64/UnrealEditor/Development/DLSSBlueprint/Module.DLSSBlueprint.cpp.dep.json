@@ -1,0 +1,38 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\nuclearnightmare\\nuclearnightmare\\plugins\\dlss\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\dlssblueprint\\module.dlssblueprint.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\nuclearnightmare\\nuclearnightmare\\intermediate\\build\\win64\\x64\\nuclearnightmareeditor\\development\\engine\\sharedpch.engine.cpp20.h.pch",
+        "Includes": [
+            "d:\\nuclearnightmare\\nuclearnightmare\\plugins\\dlss\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\dlssblueprint\\definitions.dlssblueprint.h",
+            "d:\\nuclearnightmare\\nuclearnightmare\\plugins\\dlss\\intermediate\\build\\win64\\unrealeditor\\inc\\dlssblueprint\\uht\\dlssblueprint.init.gen.cpp",
+            "d:\\nuclearnightmare\\nuclearnightmare\\plugins\\dlss\\source\\dlssblueprint\\private\\dlsslibrary.cpp",
+            "d:\\nuclearnightmare\\nuclearnightmare\\plugins\\dlss\\source\\dlssblueprint\\public\\dlsslibrary.h",
+            "d:\\nuclearnightmare\\nuclearnightmare\\plugins\\dlss\\intermediate\\build\\win64\\unrealeditor\\inc\\dlssblueprint\\uht\\dlsslibrary.generated.h",
+            "d:\\nuclearnightmare\\nuclearnightmare\\plugins\\dlss\\source\\dlss\\public\\dlss.h",
+            "d:\\nuclearnightmare\\nuclearnightmare\\plugins\\dlss\\source\\dlss\\public\\dlsssettings.h",
+            "d:\\nuclearnightmare\\nuclearnightmare\\plugins\\dlss\\intermediate\\build\\win64\\unrealeditor\\inc\\dlss\\uht\\dlsssettings.generated.h",
+            "d:\\nuclearnightmare\\nuclearnightmare\\plugins\\dlss\\source\\dlss\\public\\dlssupscaler.h",
+            "d:\\epic games\\ue_5.3\\engine\\source\\runtime\\rendercore\\public\\customresourcepool.h",
+            "d:\\nuclearnightmare\\nuclearnightmare\\plugins\\dlss\\source\\ngxrhi\\public\\ngxrhi.h",
+            "d:\\nuclearnightmare\\nuclearnightmare\\plugins\\dlss\\source\\thirdparty\\ngx\\include\\nvsdk_ngx_params.h",
+            "d:\\nuclearnightmare\\nuclearnightmare\\plugins\\dlss\\source\\thirdparty\\ngx\\include\\nvsdk_ngx_defs.h",
+            "d:\\nuclearnightmare\\nuclearnightmare\\plugins\\dlss\\source\\thirdparty\\ngx\\include\\nvsdk_ngx_helpers_dlssd.h",
+            "d:\\nuclearnightmare\\nuclearnightmare\\plugins\\dlss\\source\\thirdparty\\ngx\\include\\nvsdk_ngx_helpers.h",
+            "d:\\nuclearnightmare\\nuclearnightmare\\plugins\\dlss\\source\\thirdparty\\ngx\\include\\nvsdk_ngx.h",
+            "d:\\nuclearnightmare\\nuclearnightmare\\plugins\\dlss\\source\\thirdparty\\ngx\\include\\nvsdk_ngx_defs_dlssd.h",
+            "d:\\nuclearnightmare\\nuclearnightmare\\plugins\\dlss\\source\\thirdparty\\ngx\\include\\nvsdk_ngx_params_dlssd.h",
+            "d:\\epic games\\ue_5.3\\engine\\source\\runtime\\projects\\public\\interfaces\\ipluginmanager.h",
+            "d:\\epic games\\ue_5.3\\engine\\source\\runtime\\projects\\public\\plugindescriptor.h",
+            "d:\\epic games\\ue_5.3\\engine\\source\\runtime\\projects\\public\\custombuildsteps.h",
+            "d:\\epic games\\ue_5.3\\engine\\source\\runtime\\projects\\public\\localizationdescriptor.h",
+            "d:\\epic games\\ue_5.3\\engine\\source\\runtime\\projects\\public\\moduledescriptor.h",
+            "d:\\epic games\\ue_5.3\\engine\\source\\runtime\\projects\\public\\pluginreferencedescriptor.h",
+            "d:\\epic games\\ue_5.3\\engine\\source\\runtime\\projects\\public\\versescope.h",
+            "d:\\nuclearnightmare\\nuclearnightmare\\plugins\\dlss\\intermediate\\build\\win64\\unrealeditor\\inc\\dlssblueprint\\uht\\dlsslibrary.gen.cpp"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

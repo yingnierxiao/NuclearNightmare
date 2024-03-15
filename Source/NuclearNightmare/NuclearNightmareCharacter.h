@@ -174,6 +174,8 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Replicated, Category = Movement)
 	bool bSprinting;
 
+	bool bPressingSprint;
+
 	//Peak Logic
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Replicated, Category = Movement)
 	bool bPeakLeft;
@@ -250,6 +252,8 @@ protected:
 
 	void sprint();
 	void StopSprint();
+
+	void MovementStopSprint();
 
 	FVector2d MovementXY;
 

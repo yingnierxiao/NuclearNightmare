@@ -273,6 +273,9 @@
 /I "D:\NuclearNightmare\NuclearNightmare\Plugins\AsyncLoadingScreen\Intermediate\Build\Win64\UnrealEditor\Inc\AsyncLoadingScreen\UHT"
 /I "D:\NuclearNightmare\NuclearNightmare\Plugins\AsyncLoadingScreen\Source"
 /I "D:\NuclearNightmare\NuclearNightmare\Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Public"
+/I "D:\NuclearNightmare\NuclearNightmare\Plugins\DLSS\Intermediate\Build\Win64\UnrealEditor\Inc\DLSS\UHT"
+/I "D:\NuclearNightmare\NuclearNightmare\Plugins\DLSS\Source"
+/I "D:\NuclearNightmare\NuclearNightmare\Plugins\DLSS\Source\DLSS\Public"
 /external:W0
 /external:I "ThirdParty\mimalloc\include"
 /external:I "ThirdParty\LibTiff\Source\Win64"

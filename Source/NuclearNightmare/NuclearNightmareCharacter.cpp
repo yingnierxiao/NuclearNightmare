@@ -176,6 +176,7 @@ void ANuclearNightmareCharacter::SprintOnClient_Implementation(bool Sprinting)
 
 void ANuclearNightmareCharacter::sprint()
 {
+	bPressingSprint = true;
 	if(bIsPlayerCrouched)
 	{
 		InitalCrouchTraceLoc = GetCapsuleComponent()->GetComponentLocation();
@@ -201,6 +202,12 @@ void ANuclearNightmareCharacter::sprint()
 }
 
 void ANuclearNightmareCharacter::StopSprint()
+{
+	bPressingSprint = false;
+	SprintOnServer(false);
+}
+
+void ANuclearNightmareCharacter::MovementStopSprint()
 {
 	SprintOnServer(false);
 }
@@ -775,7 +782,11 @@ void ANuclearNightmareCharacter::Move(const FInputActionValue& Value)
 
 		if(bSprinting && (MovementVector.X > 0 || MovementVector.Y < 0 || MovementVector.X < 0))
 		{
-			StopSprint();
+			MovementStopSprint();
+		}
+		else if(bPressingSprint && (MovementVector.X == 0 && MovementVector.Y > 0))
+		{
+			sprint();
 		}
 	}
 }

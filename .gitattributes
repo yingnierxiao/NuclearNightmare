@@ -54,3 +54,4 @@ NuclearNightmare-backup-2024.03.07-11.24.00.log filter=lfs diff=lfs merge=lfs -t
 Gameplay_Auto3,umap filter=lfs diff=lfs merge=lfs -text
 Gameplay_Auto3.umap filter=lfs diff=lfs merge=lfs -text
 Arctic.umap filter=lfs diff=lfs merge=lfs -text
+Gameplay_BuiltData.uasset filter=lfs diff=lfs merge=lfs -text
