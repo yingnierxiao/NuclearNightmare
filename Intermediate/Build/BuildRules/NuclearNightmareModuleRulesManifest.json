@@ -14,6 +14,7 @@
 		"D:\\NuclearNightmare\\NuclearNightmare\\Plugins\\DLSS\\Source\\NGXVulkanRHI\\NGXVulkanRHI.Build.cs",
 		"D:\\NuclearNightmare\\NuclearNightmare\\Plugins\\DLSS\\Source\\ThirdParty\\NGX\\NGX.Build.cs",
 		"D:\\NuclearNightmare\\NuclearNightmare\\Plugins\\ShaderDirectory\\Source\\ShaderDirectory\\ShaderDirectory.Build.cs",
+		"D:\\NuclearNightmare\\NuclearNightmare\\Plugins\\SmoothSync\\Source\\SmoothSyncPlugin\\SmoothSyncPlugin.Build.cs",
 		"D:\\NuclearNightmare\\NuclearNightmare\\Source\\NuclearNightmare.Target.cs",
 		"D:\\NuclearNightmare\\NuclearNightmare\\Source\\NuclearNightmareEditor.Target.cs",
 		"D:\\NuclearNightmare\\NuclearNightmare\\Source\\ShaderMacro.Target.cs",

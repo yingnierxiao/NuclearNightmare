@@ -6380,6 +6380,18 @@
 		{
 			"Path": "$(ProjectDir)/Plugins/ShaderDirectory/Binaries/Win64/UnrealEditor.modules",
 			"Type": "RequiredResource"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/SmoothSync/Binaries/Win64/UnrealEditor-SmoothSyncPlugin.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/SmoothSync/Binaries/Win64/UnrealEditor-SmoothSyncPlugin.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/SmoothSync/Binaries/Win64/UnrealEditor.modules",
+			"Type": "RequiredResource"
 		}
 	],
 	"RuntimeDependencies": [
@@ -27709,6 +27721,10 @@
 		},
 		{
 			"Path": "$(ProjectDir)/Plugins/ShaderDirectory/ShaderDirectory.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/SmoothSync/SmoothSyncPlugin.uplugin",
 			"Type": "UFS"
 		}
 	],
