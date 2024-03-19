@@ -52,6 +52,7 @@ void AItemActor::OnPickedUp_Implementation()
 	Mesh->SetVisibility(false);
 	PickedUp = true;
 	Mesh->SetSimulatePhysics(false);
+	Mesh->SetCollisionResponseToChannel(ECC_Visibility, ECollisionResponse::ECR_Ignore);
 	PickUpEvent();
 }
 
@@ -68,6 +69,7 @@ void AItemActor::DropOnClients_Implementation()
 {
 	Mesh->SetVisibility(true);
 	PickedUp = false;
+	Mesh->SetCollisionResponseToChannel(ECC_Visibility, ECR_Block);
 }
 
 void AItemActor::OnPickedUpServer_Implementation()

@@ -60,6 +60,7 @@
 "..\Plugins\Online\OnlineSubsystemSteam\Intermediate\Build\Win64\x64\UnrealEditor\Development\OnlineSubsystemSteam\UnrealEditor-OnlineSubsystemSteam.lib"
 "D:\NuclearNightmare\NuclearNightmare\Plugins\AsyncLoadingScreen\Intermediate\Build\Win64\x64\UnrealEditor\Development\AsyncLoadingScreen\UnrealEditor-AsyncLoadingScreen.lib"
 "D:\NuclearNightmare\NuclearNightmare\Plugins\DLSS\Intermediate\Build\Win64\x64\UnrealEditor\Development\DLSS\UnrealEditor-DLSS.lib"
+"D:\NuclearNightmare\NuclearNightmare\Plugins\SmoothSync\Intermediate\Build\Win64\x64\UnrealEditor\Development\SmoothSyncPlugin\UnrealEditor-SmoothSyncPlugin.lib"
 "delayimp.lib"
 "wininet.lib"
 "rpcrt4.lib"
