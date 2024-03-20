@@ -147,6 +147,7 @@ void ANuclearNightmareCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProp
 	DOREPLIFETIME(ANuclearNightmareCharacter, bSprinting);
 	DOREPLIFETIME(ANuclearNightmareCharacter, bPeakLeft);
 	DOREPLIFETIME(ANuclearNightmareCharacter, bPeakRight);
+	DOREPLIFETIME(ANuclearNightmareCharacter, Health);
 }
 
 //////////////////////////////////////////////////////////////////////////// Input
@@ -230,6 +231,31 @@ void ANuclearNightmareCharacter::StopPeakLeft()
 void ANuclearNightmareCharacter::StopPeakRight()
 {
 	PeakOnServer(false, false);
+}
+
+void ANuclearNightmareCharacter::CallDamageEvent(float DamageAmount)
+{
+	Health = Health - DamageAmount;
+	DamageEventServer(Health);
+
+	if(Health <= 0)
+	{
+		HealthDeath.Broadcast();
+	}
+	else
+	{
+		DamageEventDelegate.Broadcast();
+	}
+}
+
+void ANuclearNightmareCharacter::DamageEventMulticast_Implementation(float HealthAmount)
+{
+	Health = HealthAmount;
+}
+
+void ANuclearNightmareCharacter::DamageEventServer_Implementation(float HealthAmount)
+{
+	DamageEventMulticast(HealthAmount);
 }
 
 void ANuclearNightmareCharacter::PeakOnClient_Implementation(bool Peaking, bool bLeft)

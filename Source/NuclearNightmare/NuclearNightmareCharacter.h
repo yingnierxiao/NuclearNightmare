@@ -25,6 +25,8 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnInventoryScroll, int32, CurrentSl
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FShowPickUpIcon);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FRemovePickUpIcon);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FInventoryFull);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FHealthDeath);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FDamageEventDelegate);
 
 UCLASS(config=Game)
 class ANuclearNightmareCharacter : public ACharacter
@@ -150,6 +152,12 @@ public:
 	UPROPERTY(BlueprintAssignable)
 	FOnInventoryScroll InventoryScroll;
 
+	UPROPERTY(BlueprintAssignable)
+	FDamageEventDelegate DamageEventDelegate;
+
+	UPROPERTY(BlueprintAssignable)
+	FHealthDeath HealthDeath;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Inventory, meta = (AllowPrivateAccess = "true"))
 	int32 InventoryCapcity;
 
@@ -175,6 +183,10 @@ public:
 	bool bSprinting;
 
 	bool bPressingSprint;
+
+	//Health
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Replicated, Category = Health)
+	float Health = 100.f;
 
 	//Peak Logic
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Replicated, Category = Movement)
@@ -269,6 +281,16 @@ protected:
 
 	void StopPeakLeft();
 	void StopPeakRight();
+
+	//Health
+	UFUNCTION(BlueprintCallable)
+	void CallDamageEvent(float DamageAmount);
+
+	UFUNCTION(Server, Reliable)
+	void DamageEventServer(float HealthAmount);
+
+	UFUNCTION(NetMulticast, Reliable)
+	void DamageEventMulticast(float HealthAmount);
 
 	//Flashlight Logic
 	UFUNCTION(Server, Reliable)

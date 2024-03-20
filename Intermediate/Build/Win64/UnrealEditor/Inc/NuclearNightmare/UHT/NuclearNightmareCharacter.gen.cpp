@@ -24,6 +24,8 @@ void EmptyLinkFunctionForGeneratedCodeNuclearNightmareCharacter() {}
 	NUCLEARNIGHTMARE_API UClass* Z_Construct_UClass_AItemActor_NoRegister();
 	NUCLEARNIGHTMARE_API UClass* Z_Construct_UClass_ANuclearNightmareCharacter();
 	NUCLEARNIGHTMARE_API UClass* Z_Construct_UClass_ANuclearNightmareCharacter_NoRegister();
+	NUCLEARNIGHTMARE_API UFunction* Z_Construct_UDelegateFunction_NuclearNightmare_DamageEventDelegate__DelegateSignature();
+	NUCLEARNIGHTMARE_API UFunction* Z_Construct_UDelegateFunction_NuclearNightmare_HealthDeath__DelegateSignature();
 	NUCLEARNIGHTMARE_API UFunction* Z_Construct_UDelegateFunction_NuclearNightmare_InventoryFull__DelegateSignature();
 	NUCLEARNIGHTMARE_API UFunction* Z_Construct_UDelegateFunction_NuclearNightmare_OnInventoryScroll__DelegateSignature();
 	NUCLEARNIGHTMARE_API UFunction* Z_Construct_UDelegateFunction_NuclearNightmare_OnInventoryUpdated__DelegateSignature();
@@ -179,6 +181,58 @@ void FRemovePickUpIcon_DelegateWrapper(const FMulticastScriptDelegate& RemovePic
 void FInventoryFull_DelegateWrapper(const FMulticastScriptDelegate& InventoryFull)
 {
 	InventoryFull.ProcessMulticastDelegate<UObject>(NULL);
+}
+	struct Z_Construct_UDelegateFunction_NuclearNightmare_HealthDeath__DelegateSignature_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UDelegateFunction_NuclearNightmare_HealthDeath__DelegateSignature_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UDelegateFunction_NuclearNightmare_HealthDeath__DelegateSignature_Statics::FuncParams = { (UObject*(*)())Z_Construct_UPackage__Script_NuclearNightmare, nullptr, "HealthDeath__DelegateSignature", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00130000, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_NuclearNightmare_HealthDeath__DelegateSignature_Statics::Function_MetaDataParams), Z_Construct_UDelegateFunction_NuclearNightmare_HealthDeath__DelegateSignature_Statics::Function_MetaDataParams) };
+	UFunction* Z_Construct_UDelegateFunction_NuclearNightmare_HealthDeath__DelegateSignature()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UDelegateFunction_NuclearNightmare_HealthDeath__DelegateSignature_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+void FHealthDeath_DelegateWrapper(const FMulticastScriptDelegate& HealthDeath)
+{
+	HealthDeath.ProcessMulticastDelegate<UObject>(NULL);
+}
+	struct Z_Construct_UDelegateFunction_NuclearNightmare_DamageEventDelegate__DelegateSignature_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UDelegateFunction_NuclearNightmare_DamageEventDelegate__DelegateSignature_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UDelegateFunction_NuclearNightmare_DamageEventDelegate__DelegateSignature_Statics::FuncParams = { (UObject*(*)())Z_Construct_UPackage__Script_NuclearNightmare, nullptr, "DamageEventDelegate__DelegateSignature", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00130000, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_NuclearNightmare_DamageEventDelegate__DelegateSignature_Statics::Function_MetaDataParams), Z_Construct_UDelegateFunction_NuclearNightmare_DamageEventDelegate__DelegateSignature_Statics::Function_MetaDataParams) };
+	UFunction* Z_Construct_UDelegateFunction_NuclearNightmare_DamageEventDelegate__DelegateSignature()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UDelegateFunction_NuclearNightmare_DamageEventDelegate__DelegateSignature_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+void FDamageEventDelegate_DelegateWrapper(const FMulticastScriptDelegate& DamageEventDelegate)
+{
+	DamageEventDelegate.ProcessMulticastDelegate<UObject>(NULL);
 }
 	DEFINE_FUNCTION(ANuclearNightmareCharacter::execAddMappingInput)
 	{
@@ -366,6 +420,30 @@ void FInventoryFull_DelegateWrapper(const FMulticastScriptDelegate& InventoryFul
 		P_THIS->FlashlightOnServer_Implementation(Z_Param_Flashlight);
 		P_NATIVE_END;
 	}
+	DEFINE_FUNCTION(ANuclearNightmareCharacter::execDamageEventMulticast)
+	{
+		P_GET_PROPERTY(FFloatProperty,Z_Param_HealthAmount);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->DamageEventMulticast_Implementation(Z_Param_HealthAmount);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(ANuclearNightmareCharacter::execDamageEventServer)
+	{
+		P_GET_PROPERTY(FFloatProperty,Z_Param_HealthAmount);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->DamageEventServer_Implementation(Z_Param_HealthAmount);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(ANuclearNightmareCharacter::execCallDamageEvent)
+	{
+		P_GET_PROPERTY(FFloatProperty,Z_Param_DamageAmount);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->CallDamageEvent(Z_Param_DamageAmount);
+		P_NATIVE_END;
+	}
 	DEFINE_FUNCTION(ANuclearNightmareCharacter::execPeakOnClient)
 	{
 		P_GET_UBOOL(Z_Param_Peaking);
@@ -411,6 +489,14 @@ void FInventoryFull_DelegateWrapper(const FMulticastScriptDelegate& InventoryFul
 	struct NuclearNightmareCharacter_eventCrouchOnServer_Parms
 	{
 		bool Crouch;
+	};
+	struct NuclearNightmareCharacter_eventDamageEventMulticast_Parms
+	{
+		float HealthAmount;
+	};
+	struct NuclearNightmareCharacter_eventDamageEventServer_Parms
+	{
+		float HealthAmount;
 	};
 	struct NuclearNightmareCharacter_eventDropItemOnClient_Parms
 	{
@@ -494,6 +580,20 @@ void FInventoryFull_DelegateWrapper(const FMulticastScriptDelegate& InventoryFul
 		NuclearNightmareCharacter_eventCrouchOnServer_Parms Parms;
 		Parms.Crouch=Crouch ? true : false;
 		ProcessEvent(FindFunctionChecked(NAME_ANuclearNightmareCharacter_CrouchOnServer),&Parms);
+	}
+	static FName NAME_ANuclearNightmareCharacter_DamageEventMulticast = FName(TEXT("DamageEventMulticast"));
+	void ANuclearNightmareCharacter::DamageEventMulticast(float HealthAmount)
+	{
+		NuclearNightmareCharacter_eventDamageEventMulticast_Parms Parms;
+		Parms.HealthAmount=HealthAmount;
+		ProcessEvent(FindFunctionChecked(NAME_ANuclearNightmareCharacter_DamageEventMulticast),&Parms);
+	}
+	static FName NAME_ANuclearNightmareCharacter_DamageEventServer = FName(TEXT("DamageEventServer"));
+	void ANuclearNightmareCharacter::DamageEventServer(float HealthAmount)
+	{
+		NuclearNightmareCharacter_eventDamageEventServer_Parms Parms;
+		Parms.HealthAmount=HealthAmount;
+		ProcessEvent(FindFunctionChecked(NAME_ANuclearNightmareCharacter_DamageEventServer),&Parms);
 	}
 	static FName NAME_ANuclearNightmareCharacter_DropItemOnClient = FName(TEXT("DropItemOnClient"));
 	void ANuclearNightmareCharacter::DropItemOnClient(AItemActor* Item)
@@ -608,9 +708,12 @@ void FInventoryFull_DelegateWrapper(const FMulticastScriptDelegate& InventoryFul
 		static const FNameNativePtrPair Funcs[] = {
 			{ "AddMappingInput", &ANuclearNightmareCharacter::execAddMappingInput },
 			{ "AttemptItemPickUp", &ANuclearNightmareCharacter::execAttemptItemPickUp },
+			{ "CallDamageEvent", &ANuclearNightmareCharacter::execCallDamageEvent },
 			{ "CameraToggleOnClient", &ANuclearNightmareCharacter::execCameraToggleOnClient },
 			{ "CrouchOnClient", &ANuclearNightmareCharacter::execCrouchOnClient },
 			{ "CrouchOnServer", &ANuclearNightmareCharacter::execCrouchOnServer },
+			{ "DamageEventMulticast", &ANuclearNightmareCharacter::execDamageEventMulticast },
+			{ "DamageEventServer", &ANuclearNightmareCharacter::execDamageEventServer },
 			{ "DropItemOnClient", &ANuclearNightmareCharacter::execDropItemOnClient },
 			{ "DropItemOnServer", &ANuclearNightmareCharacter::execDropItemOnServer },
 			{ "FlashlightOff", &ANuclearNightmareCharacter::execFlashlightOff },
@@ -684,6 +787,46 @@ void FInventoryFull_DelegateWrapper(const FMulticastScriptDelegate& InventoryFul
 		if (!ReturnFunction)
 		{
 			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ANuclearNightmareCharacter_AttemptItemPickUp_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_ANuclearNightmareCharacter_CallDamageEvent_Statics
+	{
+		struct NuclearNightmareCharacter_eventCallDamageEvent_Parms
+		{
+			float DamageAmount;
+		};
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_DamageAmount;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_ANuclearNightmareCharacter_CallDamageEvent_Statics::NewProp_DamageAmount = { "DamageAmount", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(NuclearNightmareCharacter_eventCallDamageEvent_Parms, DamageAmount), METADATA_PARAMS(0, nullptr) };
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_ANuclearNightmareCharacter_CallDamageEvent_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ANuclearNightmareCharacter_CallDamageEvent_Statics::NewProp_DamageAmount,
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_ANuclearNightmareCharacter_CallDamageEvent_Statics::Function_MetaDataParams[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//Health\n" },
+#endif
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Health" },
+#endif
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ANuclearNightmareCharacter_CallDamageEvent_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ANuclearNightmareCharacter, nullptr, "CallDamageEvent", nullptr, nullptr, Z_Construct_UFunction_ANuclearNightmareCharacter_CallDamageEvent_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_ANuclearNightmareCharacter_CallDamageEvent_Statics::PropPointers), sizeof(Z_Construct_UFunction_ANuclearNightmareCharacter_CallDamageEvent_Statics::NuclearNightmareCharacter_eventCallDamageEvent_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04080401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ANuclearNightmareCharacter_CallDamageEvent_Statics::Function_MetaDataParams), Z_Construct_UFunction_ANuclearNightmareCharacter_CallDamageEvent_Statics::Function_MetaDataParams) };
+	static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_ANuclearNightmareCharacter_CallDamageEvent_Statics::PropPointers) < 2048);
+	static_assert(sizeof(Z_Construct_UFunction_ANuclearNightmareCharacter_CallDamageEvent_Statics::NuclearNightmareCharacter_eventCallDamageEvent_Parms) < MAX_uint16);
+	UFunction* Z_Construct_UFunction_ANuclearNightmareCharacter_CallDamageEvent()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ANuclearNightmareCharacter_CallDamageEvent_Statics::FuncParams);
 		}
 		return ReturnFunction;
 	}
@@ -801,6 +944,66 @@ void FInventoryFull_DelegateWrapper(const FMulticastScriptDelegate& InventoryFul
 		if (!ReturnFunction)
 		{
 			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ANuclearNightmareCharacter_CrouchOnServer_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_ANuclearNightmareCharacter_DamageEventMulticast_Statics
+	{
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_HealthAmount;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_ANuclearNightmareCharacter_DamageEventMulticast_Statics::NewProp_HealthAmount = { "HealthAmount", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(NuclearNightmareCharacter_eventDamageEventMulticast_Parms, HealthAmount), METADATA_PARAMS(0, nullptr) };
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_ANuclearNightmareCharacter_DamageEventMulticast_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ANuclearNightmareCharacter_DamageEventMulticast_Statics::NewProp_HealthAmount,
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_ANuclearNightmareCharacter_DamageEventMulticast_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ANuclearNightmareCharacter_DamageEventMulticast_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ANuclearNightmareCharacter, nullptr, "DamageEventMulticast", nullptr, nullptr, Z_Construct_UFunction_ANuclearNightmareCharacter_DamageEventMulticast_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_ANuclearNightmareCharacter_DamageEventMulticast_Statics::PropPointers), sizeof(NuclearNightmareCharacter_eventDamageEventMulticast_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00084CC0, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ANuclearNightmareCharacter_DamageEventMulticast_Statics::Function_MetaDataParams), Z_Construct_UFunction_ANuclearNightmareCharacter_DamageEventMulticast_Statics::Function_MetaDataParams) };
+	static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_ANuclearNightmareCharacter_DamageEventMulticast_Statics::PropPointers) < 2048);
+	static_assert(sizeof(NuclearNightmareCharacter_eventDamageEventMulticast_Parms) < MAX_uint16);
+	UFunction* Z_Construct_UFunction_ANuclearNightmareCharacter_DamageEventMulticast()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ANuclearNightmareCharacter_DamageEventMulticast_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_ANuclearNightmareCharacter_DamageEventServer_Statics
+	{
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_HealthAmount;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_ANuclearNightmareCharacter_DamageEventServer_Statics::NewProp_HealthAmount = { "HealthAmount", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(NuclearNightmareCharacter_eventDamageEventServer_Parms, HealthAmount), METADATA_PARAMS(0, nullptr) };
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_ANuclearNightmareCharacter_DamageEventServer_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ANuclearNightmareCharacter_DamageEventServer_Statics::NewProp_HealthAmount,
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_ANuclearNightmareCharacter_DamageEventServer_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ANuclearNightmareCharacter_DamageEventServer_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ANuclearNightmareCharacter, nullptr, "DamageEventServer", nullptr, nullptr, Z_Construct_UFunction_ANuclearNightmareCharacter_DamageEventServer_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_ANuclearNightmareCharacter_DamageEventServer_Statics::PropPointers), sizeof(NuclearNightmareCharacter_eventDamageEventServer_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00280CC0, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ANuclearNightmareCharacter_DamageEventServer_Statics::Function_MetaDataParams), Z_Construct_UFunction_ANuclearNightmareCharacter_DamageEventServer_Statics::Function_MetaDataParams) };
+	static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_ANuclearNightmareCharacter_DamageEventServer_Statics::PropPointers) < 2048);
+	static_assert(sizeof(NuclearNightmareCharacter_eventDamageEventServer_Parms) < MAX_uint16);
+	UFunction* Z_Construct_UFunction_ANuclearNightmareCharacter_DamageEventServer()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ANuclearNightmareCharacter_DamageEventServer_Statics::FuncParams);
 		}
 		return ReturnFunction;
 	}
@@ -1721,6 +1924,14 @@ void FInventoryFull_DelegateWrapper(const FMulticastScriptDelegate& InventoryFul
 #endif
 		static const UECodeGen_Private::FMulticastDelegatePropertyParams NewProp_InventoryScroll;
 #if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_DamageEventDelegate_MetaData[];
+#endif
+		static const UECodeGen_Private::FMulticastDelegatePropertyParams NewProp_DamageEventDelegate;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_HealthDeath_MetaData[];
+#endif
+		static const UECodeGen_Private::FMulticastDelegatePropertyParams NewProp_HealthDeath;
+#if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_InventoryCapcity_MetaData[];
 #endif
 		static const UECodeGen_Private::FIntPropertyParams NewProp_InventoryCapcity;
@@ -1749,6 +1960,10 @@ void FInventoryFull_DelegateWrapper(const FMulticastScriptDelegate& InventoryFul
 #endif
 		static void NewProp_bSprinting_SetBit(void* Obj);
 		static const UECodeGen_Private::FBoolPropertyParams NewProp_bSprinting;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_Health_MetaData[];
+#endif
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_Health;
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_bPeakLeft_MetaData[];
 #endif
@@ -1841,9 +2056,12 @@ void FInventoryFull_DelegateWrapper(const FMulticastScriptDelegate& InventoryFul
 	const FClassFunctionLinkInfo Z_Construct_UClass_ANuclearNightmareCharacter_Statics::FuncInfo[] = {
 		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_AddMappingInput, "AddMappingInput" }, // 3927939939
 		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_AttemptItemPickUp, "AttemptItemPickUp" }, // 1946516490
+		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_CallDamageEvent, "CallDamageEvent" }, // 2136817003
 		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_CameraToggleOnClient, "CameraToggleOnClient" }, // 3409967154
 		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_CrouchOnClient, "CrouchOnClient" }, // 1091692659
 		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_CrouchOnServer, "CrouchOnServer" }, // 1457779063
+		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_DamageEventMulticast, "DamageEventMulticast" }, // 169947909
+		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_DamageEventServer, "DamageEventServer" }, // 3355283108
 		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_DropItemOnClient, "DropItemOnClient" }, // 2444109725
 		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_DropItemOnServer, "DropItemOnServer" }, // 3408017480
 		{ &Z_Construct_UFunction_ANuclearNightmareCharacter_FlashlightOff, "FlashlightOff" }, // 91466856
@@ -2220,6 +2438,18 @@ void FInventoryFull_DelegateWrapper(const FMulticastScriptDelegate& InventoryFul
 #endif
 	const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InventoryScroll = { "InventoryScroll", nullptr, (EPropertyFlags)0x0010000010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANuclearNightmareCharacter, InventoryScroll), Z_Construct_UDelegateFunction_NuclearNightmare_OnInventoryScroll__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InventoryScroll_MetaData), Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InventoryScroll_MetaData) }; // 3211397233
 #if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_DamageEventDelegate_MetaData[] = {
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_DamageEventDelegate = { "DamageEventDelegate", nullptr, (EPropertyFlags)0x0010000010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANuclearNightmareCharacter, DamageEventDelegate), Z_Construct_UDelegateFunction_NuclearNightmare_DamageEventDelegate__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_DamageEventDelegate_MetaData), Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_DamageEventDelegate_MetaData) }; // 3972224338
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_HealthDeath_MetaData[] = {
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_HealthDeath = { "HealthDeath", nullptr, (EPropertyFlags)0x0010000010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANuclearNightmareCharacter, HealthDeath), Z_Construct_UDelegateFunction_NuclearNightmare_HealthDeath__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_HealthDeath_MetaData), Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_HealthDeath_MetaData) }; // 1390464338
+#if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InventoryCapcity_MetaData[] = {
 		{ "AllowPrivateAccess", "true" },
 		{ "Category", "Inventory" },
@@ -2296,6 +2526,19 @@ void FInventoryFull_DelegateWrapper(const FMulticastScriptDelegate& InventoryFul
 		((ANuclearNightmareCharacter*)Obj)->bSprinting = 1;
 	}
 	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_bSprinting = { "bSprinting", nullptr, (EPropertyFlags)0x0010000000000025, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(ANuclearNightmareCharacter), &Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_bSprinting_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_bSprinting_MetaData), Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_bSprinting_MetaData) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_Health_MetaData[] = {
+		{ "Category", "Health" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//Health\n" },
+#endif
+		{ "ModuleRelativePath", "NuclearNightmareCharacter.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Health" },
+#endif
+	};
+#endif
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_Health = { "Health", nullptr, (EPropertyFlags)0x0010000000000025, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANuclearNightmareCharacter, Health), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_Health_MetaData), Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_Health_MetaData) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_bPeakLeft_MetaData[] = {
 		{ "Category", "Movement" },
@@ -2523,6 +2766,8 @@ void FInventoryFull_DelegateWrapper(const FMulticastScriptDelegate& InventoryFul
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_ShowPickUpIcon,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_RemovePickUpIcon,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InventoryScroll,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_DamageEventDelegate,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_HealthDeath,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_InventoryCapcity,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_ItemLookedAt,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_CurrentSlotIndex,
@@ -2530,6 +2775,7 @@ void FInventoryFull_DelegateWrapper(const FMulticastScriptDelegate& InventoryFul
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_SprintValue,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_WalkValue,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_bSprinting,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_Health,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_bPeakLeft,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_bPeakRight,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANuclearNightmareCharacter_Statics::NewProp_bFlashlightToggle,
@@ -2584,6 +2830,7 @@ void FInventoryFull_DelegateWrapper(const FMulticastScriptDelegate& InventoryFul
 	void ANuclearNightmareCharacter::ValidateGeneratedRepEnums(const TArray<struct FRepRecord>& ClassReps) const
 	{
 		static const FName Name_bSprinting(TEXT("bSprinting"));
+		static const FName Name_Health(TEXT("Health"));
 		static const FName Name_bPeakLeft(TEXT("bPeakLeft"));
 		static const FName Name_bPeakRight(TEXT("bPeakRight"));
 		static const FName Name_bFlashlightToggle(TEXT("bFlashlightToggle"));
@@ -2605,6 +2852,7 @@ void FInventoryFull_DelegateWrapper(const FMulticastScriptDelegate& InventoryFul
 
 		const bool bIsValid = true
 			&& Name_bSprinting == ClassReps[(int32)ENetFields_Private::bSprinting].Property->GetFName()
+			&& Name_Health == ClassReps[(int32)ENetFields_Private::Health].Property->GetFName()
 			&& Name_bPeakLeft == ClassReps[(int32)ENetFields_Private::bPeakLeft].Property->GetFName()
 			&& Name_bPeakRight == ClassReps[(int32)ENetFields_Private::bPeakRight].Property->GetFName()
 			&& Name_bFlashlightToggle == ClassReps[(int32)ENetFields_Private::bFlashlightToggle].Property->GetFName()
@@ -2633,9 +2881,9 @@ void FInventoryFull_DelegateWrapper(const FMulticastScriptDelegate& InventoryFul
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_ANuclearNightmareCharacter, ANuclearNightmareCharacter::StaticClass, TEXT("ANuclearNightmareCharacter"), &Z_Registration_Info_UClass_ANuclearNightmareCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ANuclearNightmareCharacter), 1809414233U) },
+		{ Z_Construct_UClass_ANuclearNightmareCharacter, ANuclearNightmareCharacter::StaticClass, TEXT("ANuclearNightmareCharacter"), &Z_Registration_Info_UClass_ANuclearNightmareCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ANuclearNightmareCharacter), 310416127U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_2280484233(TEXT("/Script/NuclearNightmare"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_2823487145(TEXT("/Script/NuclearNightmare"),
 		Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Source_NuclearNightmare_NuclearNightmareCharacter_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);
