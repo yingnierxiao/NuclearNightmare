@@ -658,6 +658,19 @@ void ANuclearNightmareCharacter::DropItem()
 	}
 }
 
+void ANuclearNightmareCharacter::RemoveItem(AItemActor* Item)
+{
+	if(Item)
+	{
+		Item->UnEquip(this);
+		CurrentSlotIndex = -1;
+		InventoryScroll.Broadcast(-1);
+		
+		ItemsInInv.Remove(Item);
+		InventoryUpdatedDelegate.Broadcast();
+	}
+}
+
 void ANuclearNightmareCharacter::DropItemOnServer_Implementation(AItemActor* Item)
 {
 	DropItemOnClient(Item);

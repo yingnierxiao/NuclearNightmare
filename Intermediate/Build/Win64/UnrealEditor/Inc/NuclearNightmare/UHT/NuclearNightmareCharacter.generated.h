@@ -75,6 +75,7 @@ NUCLEARNIGHTMARE_API void FDamageEventDelegate_DelegateWrapper(const FMulticastS
 	DECLARE_FUNCTION(execRPCSetYawControlRotationServer); \
 	DECLARE_FUNCTION(execDropItemOnClient); \
 	DECLARE_FUNCTION(execDropItemOnServer); \
+	DECLARE_FUNCTION(execRemoveItem); \
 	DECLARE_FUNCTION(execGetItemSlot); \
 	DECLARE_FUNCTION(execHasItem); \
 	DECLARE_FUNCTION(execAttemptItemPickUp); \

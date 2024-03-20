@@ -364,6 +364,9 @@ protected:
 
 	void DropItem();
 
+	UFUNCTION(BlueprintCallable)
+	void RemoveItem(AItemActor* Item);
+
 	UFUNCTION(Server, Reliable)
 	void DropItemOnServer(AItemActor* Item);
 
