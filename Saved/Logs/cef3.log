@@ -1,2 +1,25 @@
-[0308/195712.719:WARNING:value_store_frontend.cc(45)] Reading mhjfbmdgcfjbbpaeojofohoefgiehjai.alarms from  failed: IO error: .../MANIFEST-000001: Unable to create sequential file (ChromeMethodBFE: 7::NewSequentialFile::1)
-[0308/195909.423:ERROR:gpu_init.cc(426)] Passthrough is not supported, GL is disabled
+[0326/212830.113:ERROR:backend_impl.cc(1041)] Critical error found -8
+[0326/212830.113:WARNING:storage_block-inl.h(146)] Failed data load.
+[0326/212830.114:WARNING:storage_block-inl.h(146)] Failed data load.
+[0326/212830.114:ERROR:entry_impl.cc(1075)] No file for c1030864
+[0326/212830.114:WARNING:storage_block-inl.h(146)] Failed data load.
+[0326/212830.114:WARNING:storage_block-inl.h(146)] Failed data load.
+[0326/212830.114:WARNING:storage_block-inl.h(146)] Failed data load.
+[0326/212830.114:WARNING:storage_block-inl.h(146)] Failed data load.
+[0326/212830.114:ERROR:entry_impl.cc(1075)] No file for c1030866
+[0326/212830.116:WARNING:storage_block-inl.h(146)] Failed data load.
+[0326/212830.116:WARNING:storage_block-inl.h(146)] Failed data load.
+[0326/212830.789:WARNING:storage_block-inl.h(146)] Failed data load.
+[0326/212830.789:WARNING:storage_block-inl.h(146)] Failed data load.
+[0326/212830.789:WARNING:storage_block-inl.h(146)] Failed data load.
+[0326/212836.670:WARNING:spdy_session.cc(3431)] Received HEADERS for invalid stream 9
+[0326/212838.834:ERROR:leveldb_factory.cc(91)] Failed to open LevelDB database from D:/NuclearNightmare/NuclearNightmare/Saved/webcache_4430\IndexedDB\https_www.youtube-nocookie.com_0.indexeddb.leveldb,IO error: D:/NuclearNightmare/NuclearNightmare/Saved/webcache_4430\IndexedDB\https_www.youtube-nocookie.com_0.indexeddb.leveldb/MANIFEST-000001: Unable to create sequential file (ChromeMethodBFE: 7::NewSequentialFile::1)
+[0326/212838.839:ERROR:leveldb_factory.cc(91)] Failed to open LevelDB database from D:/NuclearNightmare/NuclearNightmare/Saved/webcache_4430\IndexedDB\https_www.youtube-nocookie.com_0.indexeddb.leveldb,IO error: D:/NuclearNightmare/NuclearNightmare/Saved/webcache_4430\IndexedDB\https_www.youtube-nocookie.com_0.indexeddb.leveldb/MANIFEST-000001: Unable to create sequential file (ChromeMethodBFE: 7::NewSequentialFile::1)
+[0326/212839.829:WARNING:value_store_frontend.cc(45)] Reading mhjfbmdgcfjbbpaeojofohoefgiehjai.alarms from  failed: IO error: .../MANIFEST-000001: Unable to create sequential file (ChromeMethodBFE: 7::NewSequentialFile::1)
+[0326/212840.099:ERROR:leveldb_factory.cc(91)] Failed to open LevelDB database from D:/NuclearNightmare/NuclearNightmare/Saved/webcache_4430\IndexedDB\https_www.youtube-nocookie.com_0.indexeddb.leveldb,IO error: D:/NuclearNightmare/NuclearNightmare/Saved/webcache_4430\IndexedDB\https_www.youtube-nocookie.com_0.indexeddb.leveldb/MANIFEST-000001: Unable to create sequential file (ChromeMethodBFE: 7::NewSequentialFile::1)
+[0326/212840.105:ERROR:leveldb_factory.cc(91)] Failed to open LevelDB database from D:/NuclearNightmare/NuclearNightmare/Saved/webcache_4430\IndexedDB\https_www.youtube-nocookie.com_0.indexeddb.leveldb,IO error: D:/NuclearNightmare/NuclearNightmare/Saved/webcache_4430\IndexedDB\https_www.youtube-nocookie.com_0.indexeddb.leveldb/MANIFEST-000001: Unable to create sequential file (ChromeMethodBFE: 7::NewSequentialFile::1)
+[0326/212946.489:ERROR:leveldb_factory.cc(91)] Failed to open LevelDB database from D:/NuclearNightmare/NuclearNightmare/Saved/webcache_4430\IndexedDB\https_www.youtube-nocookie.com_0.indexeddb.leveldb,IO error: D:/NuclearNightmare/NuclearNightmare/Saved/webcache_4430\IndexedDB\https_www.youtube-nocookie.com_0.indexeddb.leveldb/MANIFEST-000001: Unable to create sequential file (ChromeMethodBFE: 7::NewSequentialFile::1)
+[0326/212946.492:ERROR:leveldb_factory.cc(91)] Failed to open LevelDB database from D:/NuclearNightmare/NuclearNightmare/Saved/webcache_4430\IndexedDB\https_www.youtube-nocookie.com_0.indexeddb.leveldb,IO error: D:/NuclearNightmare/NuclearNightmare/Saved/webcache_4430\IndexedDB\https_www.youtube-nocookie.com_0.indexeddb.leveldb/MANIFEST-000001: Unable to create sequential file (ChromeMethodBFE: 7::NewSequentialFile::1)
+[0326/212947.478:ERROR:leveldb_factory.cc(91)] Failed to open LevelDB database from D:/NuclearNightmare/NuclearNightmare/Saved/webcache_4430\IndexedDB\https_www.youtube-nocookie.com_0.indexeddb.leveldb,IO error: D:/NuclearNightmare/NuclearNightmare/Saved/webcache_4430\IndexedDB\https_www.youtube-nocookie.com_0.indexeddb.leveldb/MANIFEST-000001: Unable to create sequential file (ChromeMethodBFE: 7::NewSequentialFile::1)
+[0326/212947.483:ERROR:leveldb_factory.cc(91)] Failed to open LevelDB database from D:/NuclearNightmare/NuclearNightmare/Saved/webcache_4430\IndexedDB\https_www.youtube-nocookie.com_0.indexeddb.leveldb,IO error: D:/NuclearNightmare/NuclearNightmare/Saved/webcache_4430\IndexedDB\https_www.youtube-nocookie.com_0.indexeddb.leveldb/MANIFEST-000001: Unable to create sequential file (ChromeMethodBFE: 7::NewSequentialFile::1)
+[0326/213029.052:ERROR:gpu_init.cc(426)] Passthrough is not supported, GL is disabled
