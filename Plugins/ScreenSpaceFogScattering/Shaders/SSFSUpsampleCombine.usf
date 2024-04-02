@@ -1,0 +1,54 @@
+// Copyright 2024 Dmitry Karpukhin. All Rights Reserved.
+
+#include "SSFSCommon.ush"
+
+float2 InputSize;
+Texture2D PreviousTexture;
+float Radius;
+RWTexture2D<float4> Output;
+
+float3 Upsample(Texture2D Texture, SamplerState Sampler, float2 UV, float2 PixelSize)
+{
+	const float2 Coords[9] = {
+		float2(-1.0f,  1.0f), float2(0.0f,  1.0f), float2(1.0f,  1.0f),
+		float2(-1.0f,  0.0f), float2(0.0f,  0.0f), float2(1.0f,  0.0f),
+		float2(-1.0f, -1.0f), float2(0.0f, -1.0f), float2(1.0f, -1.0f)
+	};
+
+	const float Weights[9] = {
+		0.0625f, 0.125f, 0.0625f,
+		0.125f,  0.25f,  0.125f,
+		0.0625f, 0.125f, 0.0625f
+	};
+
+	float3 Color = float3(0.0f, 0.0f, 0.0f);
+
+	UNROLL
+	for(int i = 0; i < 9; i++)
+	{
+		const float2 CurrentUV = UV + Coords[i] * PixelSize;
+		Color += Weights[i] * Texture2DSampleLevel(Texture, Sampler, CurrentUV, 0).rgb;
+	}
+
+	return Color;
+}
+
+[numthreads(GROUP_SIZE, GROUP_SIZE, 1)]
+void UpsampleCombineCS(uint2 DispatchThreadId : SV_DispatchThreadID)
+{
+	// Check that we are in scope
+	if (any(DispatchThreadId >= ViewportRect.zw))
+	{
+		return;
+	}
+
+	const float2 UV = ((float2(View.ViewRectMin.xy) + (DispatchThreadId + 0.5)) * ViewportInvSize) * UVScale;
+	const float2 InPixelSize = (1.0f / InputSize) * 0.5;
+
+	const float3 CurrentColor = Texture2DSampleLevel(InputTexture, InputSampler, UV, 0).rgb;
+	const float3 PreviousColor = Upsample(PreviousTexture, InputSampler, UV, InPixelSize);
+
+	float3 OutColor = lerp(CurrentColor, PreviousColor, Radius);
+	
+	Output[View.ViewRectMin.xy + DispatchThreadId] = float4(OutColor, 1);
+}

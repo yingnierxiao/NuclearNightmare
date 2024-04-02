@@ -6370,6 +6370,18 @@
 			"Type": "RequiredResource"
 		},
 		{
+			"Path": "$(ProjectDir)/Plugins/ScreenSpaceFogScattering/Binaries/Win64/UnrealEditor-ScreenSpaceFogScattering.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/ScreenSpaceFogScattering/Binaries/Win64/UnrealEditor-ScreenSpaceFogScattering.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/ScreenSpaceFogScattering/Binaries/Win64/UnrealEditor.modules",
+			"Type": "RequiredResource"
+		},
+		{
 			"Path": "$(ProjectDir)/Plugins/ShaderDirectory/Binaries/Win64/UnrealEditor-ShaderDirectory.dll",
 			"Type": "DynamicLibrary"
 		},

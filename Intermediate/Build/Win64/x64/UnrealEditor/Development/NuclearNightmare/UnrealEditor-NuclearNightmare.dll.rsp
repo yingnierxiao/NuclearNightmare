@@ -61,6 +61,7 @@
 "D:\NuclearNightmare\NuclearNightmare\Plugins\AsyncLoadingScreen\Intermediate\Build\Win64\x64\UnrealEditor\Development\AsyncLoadingScreen\UnrealEditor-AsyncLoadingScreen.lib"
 "D:\NuclearNightmare\NuclearNightmare\Plugins\DLSS\Intermediate\Build\Win64\x64\UnrealEditor\Development\DLSS\UnrealEditor-DLSS.lib"
 "D:\NuclearNightmare\NuclearNightmare\Plugins\SmoothSync\Intermediate\Build\Win64\x64\UnrealEditor\Development\SmoothSyncPlugin\UnrealEditor-SmoothSyncPlugin.lib"
+"D:\NuclearNightmare\NuclearNightmare\Plugins\ScreenSpaceFogScattering\Intermediate\Build\Win64\x64\UnrealEditor\Development\ScreenSpaceFogScattering\UnrealEditor-ScreenSpaceFogScattering.lib"
 "delayimp.lib"
 "wininet.lib"
 "rpcrt4.lib"

@@ -1,0 +1,20 @@
+// Copyright 2024 Dmitry Karpukhin. All Rights Reserved.
+
+#include "/Engine/Public/Platform.ush"
+#include "/Engine/Private/Common.ush"
+#include "/Engine/Private/ScreenPass.ush"
+
+#define DEFAULT_GROUP_SIZE 8
+#define GROUP_SIZE (DEFAULT_GROUP_SIZE)
+
+// Viewport size
+uint4 ViewportRect; // declared in PostProcessCommon.ush
+
+// This is the UV for Viewport
+float2 ViewportInvSize;
+
+// This is the multiplier to scale Viewport UV (0..1) to current SceneColor RT
+float2 UVScale;
+
+Texture2D InputTexture;
+SamplerState InputSampler;

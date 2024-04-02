@@ -1,0 +1,12 @@
+{
+	"RemapUnityFiles": 
+	{
+		"Module.ScreenSpaceFogScattering.cpp.obj": [
+			"ScreenSpaceFogScattering.init.gen.cpp.obj",
+			"SSFSSubsystem.gen.cpp.obj",
+			"SSFS.cpp.obj",
+			"SSFSSubSystem.cpp.obj",
+			"SSFSViewExtension.cpp.obj"
+		]
+	}
+}

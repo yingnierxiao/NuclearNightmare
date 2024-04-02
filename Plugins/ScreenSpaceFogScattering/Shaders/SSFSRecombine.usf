@@ -1,0 +1,29 @@
+// Copyright 2024 Dmitry Karpukhin. All Rights Reserved.
+
+#include "SSFSCommon.ush"
+
+Texture2D ScatteringTexture;
+float PrefilterIntensity;
+Texture2D SetupTexture;
+RWTexture2D<float4> Output;
+
+[numthreads(GROUP_SIZE, GROUP_SIZE, 1)]
+void RecombineCS(uint2 DispatchThreadId : SV_DispatchThreadID)
+{
+	// Check that we are in scope
+	if (any(DispatchThreadId >= ViewportRect.zw))
+	{
+		return;
+    }
+
+	const float2 UV = ((float2(View.ViewRectMin.xy) + (DispatchThreadId + 0.5)) * ViewportInvSize) * UVScale;
+	const float2 NonScaledUV = ((float2(View.ViewRectMin.xy) + (DispatchThreadId + 0.5)) * ViewportInvSize);
+
+	const float4 SceneColor = Texture2DSample(InputTexture, InputSampler, UV);
+	const float3 ScatteringColor = Texture2DSample(ScatteringTexture, InputSampler, NonScaledUV);
+	const float HeightFog = Texture2DSample(SetupTexture, InputSampler, NonScaledUV).a;
+	
+	float3 OutColor = lerp(SceneColor.rgb, ScatteringColor, HeightFog);
+
+	Output[View.ViewRectMin.xy + DispatchThreadId] = float4(OutColor, SceneColor.a);
+}

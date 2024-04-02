@@ -1,0 +1,126 @@
+// Copyright 2024 Dmitry Karpukhin. All Rights Reserved.
+
+#include "SSFSCommon.ush"
+
+int PassNumber;
+float2 InputSize;
+float HighQuality;
+float LuminanceWeighting;
+RWTexture2D<float4> Output;
+
+float3 DownsampleHighQuality(Texture2D Texture, SamplerState Sampler, float2 UV, float2 PixelSize, int PassNumber)
+{
+	const float2 Coords[13] = {
+		float2(-1.0f,  1.0f), float2(1.0f,  1.0f),
+		float2(-1.0f, -1.0f), float2(1.0f, -1.0f),
+		float2(-2.0f, 2.0f), float2(0.0f, 2.0f), float2(2.0f, 2.0f),
+		float2(-2.0f, 0.0f), float2(0.0f, 0.0f), float2(2.0f, 0.0f),
+		float2(-2.0f,-2.0f), float2(0.0f,-2.0f), float2(2.0f,-2.0f)
+	};
+	
+	const float Weights[13] = {
+		// 4 samples
+		// (1 / 4) * 0.5f = 0.125f
+		0.125f, 0.125f,
+		0.125f, 0.125f,
+
+		// 9 samples
+		// (1 / 9) * 0.5f
+		0.0555555f, 0.0555555f, 0.0555555f,
+		0.0555555f, 0.0555555f, 0.0555555f,
+		0.0555555f, 0.0555555f, 0.0555555f
+	};
+
+	float3 OutColor = float3(0.0f, 0.0f, 0.0f);
+		
+	// Apply Karis Average Luminance Weighting
+	if (LuminanceWeighting)
+	{
+		float Weight = 0.0;
+		
+		UNROLL
+		for(int i = 0; i < 13; i++)
+		{
+			const float2 CurrentUV = UV + Coords[i] * PixelSize;
+			const float3 CurrentColor = Texture2DSample(Texture, Sampler, CurrentUV).rgb;
+			const float LuminanceWeight = 1.0 / (Luminance(CurrentColor) + 1.0);
+			OutColor += CurrentColor * LuminanceWeight;
+			Weight += LuminanceWeight;
+		}
+		OutColor /= Weight;
+	}
+	else
+	{
+		UNROLL
+		for(int i = 0; i < 13; i++)
+		{
+			const float2 CurrentUV = UV + Coords[i] * PixelSize;
+			OutColor += Texture2DSample(Texture, Sampler, CurrentUV).rgb * Weights[i];
+		}
+	}
+
+	return OutColor;
+}
+
+float3 DownsampleLowQuality(Texture2D Texture, SamplerState Sampler, float2 UV, float2 PixelSize, int PassNumber)
+{
+	const float2 Coords[4] = {
+		float2(-1.0f,  1.0f), float2(1.0f,  1.0f),
+		float2(-1.0f, -1.0f), float2(1.0f, -1.0f)
+	};
+
+	float3 OutColor = float3(0.0f, 0.0f, 0.0f);
+		
+	// Apply Karis Average Luminance Weighting
+	if (LuminanceWeighting)
+	{
+		float WeightSum = 0.0;
+		
+		UNROLL
+		for(int i = 0; i < 4; i++)
+		{
+			const float2 CurrentUV = UV + Coords[i] * PixelSize;
+			const float3 CurrentColor = Texture2DSample(Texture, Sampler, CurrentUV).rgb;
+			const float Weight = 1.0 / (Luminance(CurrentColor) + 1.0);
+			OutColor += CurrentColor * Weight;
+			WeightSum += Weight;
+		}
+		OutColor /= WeightSum;
+	}
+	else
+	{
+		UNROLL
+		for(int i = 0; i < 4; i++)
+		{
+			const float2 CurrentUV = UV + Coords[i] * PixelSize;
+			OutColor += Texture2DSample(Texture, Sampler, CurrentUV).rgb * 0.25f;
+		}
+	}
+
+	return OutColor;
+}
+
+[numthreads(GROUP_SIZE, GROUP_SIZE, 1)]
+void DownsampleCS(uint2 DispatchThreadId : SV_DispatchThreadID)
+{
+	// Check that we are in scope
+	if (any(DispatchThreadId >= ViewportRect.zw))
+	{
+		return;
+	}
+
+	const float2 UV = ((float2(View.ViewRectMin.xy) + (DispatchThreadId + 0.5)) * ViewportInvSize) * UVScale;
+	const float2 InPixelSize = (1.0f / InputSize) * 0.5;
+	float3 OutColor = float3(0.0f, 0.0f ,0.0f);
+
+	if (HighQuality > 0)
+	{
+		OutColor = DownsampleHighQuality(InputTexture, InputSampler, UV, InPixelSize, PassNumber);
+	}
+	else
+	{
+		OutColor = DownsampleLowQuality(InputTexture, InputSampler, UV, InPixelSize, PassNumber);
+	}
+	
+	Output[View.ViewRectMin.xy + DispatchThreadId] = float4(OutColor, 1);
+}

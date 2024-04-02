@@ -13,6 +13,7 @@
 		"D:\\NuclearNightmare\\NuclearNightmare\\Plugins\\DLSS\\Source\\NGXVulkanRHIPreInit\\NGXVulkanRHIPreInit.Build.cs",
 		"D:\\NuclearNightmare\\NuclearNightmare\\Plugins\\DLSS\\Source\\NGXVulkanRHI\\NGXVulkanRHI.Build.cs",
 		"D:\\NuclearNightmare\\NuclearNightmare\\Plugins\\DLSS\\Source\\ThirdParty\\NGX\\NGX.Build.cs",
+		"D:\\NuclearNightmare\\NuclearNightmare\\Plugins\\ScreenSpaceFogScattering\\Source\\ScreenSpaceFogScattering\\ScreenSpaceFogScattering.Build.cs",
 		"D:\\NuclearNightmare\\NuclearNightmare\\Plugins\\ShaderDirectory\\Source\\ShaderDirectory\\ShaderDirectory.Build.cs",
 		"D:\\NuclearNightmare\\NuclearNightmare\\Plugins\\SmoothSync\\Source\\SmoothSyncPlugin\\SmoothSyncPlugin.Build.cs",
 		"D:\\NuclearNightmare\\NuclearNightmare\\Source\\NuclearNightmare.Target.cs",

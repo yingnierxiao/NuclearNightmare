@@ -276,6 +276,9 @@
 /I "D:\NuclearNightmare\NuclearNightmare\Plugins\DLSS\Intermediate\Build\Win64\UnrealEditor\Inc\DLSS\UHT"
 /I "D:\NuclearNightmare\NuclearNightmare\Plugins\DLSS\Source"
 /I "D:\NuclearNightmare\NuclearNightmare\Plugins\DLSS\Source\DLSS\Public"
+/I "D:\NuclearNightmare\NuclearNightmare\Plugins\SmoothSync\Intermediate\Build\Win64\UnrealEditor\Inc\SmoothSyncPlugin\UHT"
+/I "D:\NuclearNightmare\NuclearNightmare\Plugins\SmoothSync\Source"
+/I "D:\NuclearNightmare\NuclearNightmare\Plugins\SmoothSync\Source\SmoothSyncPlugin\Public"
 /external:W0
 /external:I "ThirdParty\mimalloc\include"
 /external:I "ThirdParty\LibTiff\Source\Win64"
