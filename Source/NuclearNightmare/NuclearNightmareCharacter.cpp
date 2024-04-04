@@ -578,55 +578,63 @@ int32 ANuclearNightmareCharacter::GetItemSlot(FString ItemName)
 
 void ANuclearNightmareCharacter::InventoryScrollFunction(bool backwards)
 {
-	bool FoundIndex = false;
-	const bool WasLastIndexValid = ItemsInInv.IsValidIndex(CurrentSlotIndex);
-	int32 LastIndex = -1;
-	if(WasLastIndexValid)
+	if(!bCantScroll)
 	{
-		LastIndex = CurrentSlotIndex;
-	}
-
-	if(backwards && CurrentSlotIndex == -1)
-	{
-		CurrentSlotIndex = ItemsInInv.Num();
-	}
-
-	if(!backwards && CurrentSlotIndex == ItemsInInv.Num() + 1)
-	{
-		CurrentSlotIndex = 0;
-	}
-	
-	(backwards)? CurrentSlotIndex-- : CurrentSlotIndex++;
-
-	if(!backwards && CurrentSlotIndex > ItemsInInv.Num())
-	{
-		CurrentSlotIndex = 0;
-	}
-	
-	for(int32 i = 0; i < ItemsInInv.Num(); i++)
-	{
-		if (CurrentSlotIndex == i)
+		bool FoundIndex = false;
+		const bool WasLastIndexValid = ItemsInInv.IsValidIndex(CurrentSlotIndex);
+		int32 LastIndex = -1;
+		if(WasLastIndexValid)
 		{
-			ItemsInInv[i]->Equip(this);
-			FoundIndex = true;
-			InventoryScroll.Broadcast(i);
-			
-			break;
+			LastIndex = CurrentSlotIndex;
 		}
-	}
 
-	//const FString LogIndex = FString::FromInt(CurrentSlotIndex);
-	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, LogIndex);
+		if(backwards && CurrentSlotIndex == -1)
+		{
+			CurrentSlotIndex = ItemsInInv.Num();
+		}
 
-	if(WasLastIndexValid)
-	{
-		ItemsInInv[LastIndex]->UnEquip(this);
-	}
+		if(!backwards && CurrentSlotIndex == ItemsInInv.Num() + 1)
+		{
+			CurrentSlotIndex = 0;
+		}
+	
+		(backwards)? CurrentSlotIndex-- : CurrentSlotIndex++;
 
-	if(!FoundIndex)
-	{
-		(backwards)? CurrentSlotIndex = ItemsInInv.Num() : CurrentSlotIndex = -1;
-		InventoryScroll.Broadcast(CurrentSlotIndex);	
+		if(!backwards && CurrentSlotIndex > ItemsInInv.Num())
+		{
+			CurrentSlotIndex = 0;
+		}
+	
+		for(int32 i = 0; i < ItemsInInv.Num(); i++)
+		{
+			if (CurrentSlotIndex == i)
+			{
+				//ItemsInInv[i]->Equip(this);
+				ItemToEquip = ItemsInInv[i];
+				bCantScroll = true;
+				FTimerHandle ResetInvHandle;
+				GetWorldTimerManager().SetTimer(ResetInvHandle, this, &ANuclearNightmareCharacter::InventoryEquip, 0.5f, false);
+				
+				FoundIndex = true;
+				InventoryScroll.Broadcast(i);
+			
+				break;
+			}
+		}
+
+		//const FString LogIndex = FString::FromInt(CurrentSlotIndex);
+		//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, LogIndex);
+
+		if(WasLastIndexValid)
+		{
+			ItemsInInv[LastIndex]->UnEquip(this);
+		}
+
+		if(!FoundIndex)
+		{
+			(backwards)? CurrentSlotIndex = ItemsInInv.Num() : CurrentSlotIndex = -1;
+			InventoryScroll.Broadcast(CurrentSlotIndex);	
+		}
 	}
 }
 
@@ -638,6 +646,12 @@ void ANuclearNightmareCharacter::InventoryScrollForward()
 void ANuclearNightmareCharacter::InventoryScrollBack()
 {
 	InventoryScrollFunction(true);
+}
+
+void ANuclearNightmareCharacter::InventoryEquip()
+{
+	ItemToEquip->Equip(this);
+	bCantScroll = false;
 }
 
 void ANuclearNightmareCharacter::DropItem()

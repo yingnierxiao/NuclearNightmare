@@ -362,6 +362,10 @@ protected:
 	void InventoryScrollForward();
 	void InventoryScrollBack();
 
+	void InventoryEquip();
+	bool bCantScroll;
+	AItemActor* ItemToEquip;
+
 	void DropItem();
 
 	UFUNCTION(BlueprintCallable)
