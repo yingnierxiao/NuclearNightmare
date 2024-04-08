@@ -613,7 +613,7 @@ void ANuclearNightmareCharacter::InventoryScrollFunction(bool backwards)
 				ItemToEquip = ItemsInInv[i];
 				bCantScroll = true;
 				FTimerHandle ResetInvHandle;
-				GetWorldTimerManager().SetTimer(ResetInvHandle, this, &ANuclearNightmareCharacter::InventoryEquip, 0.5f, false);
+				GetWorldTimerManager().SetTimer(ResetInvHandle, this, &ANuclearNightmareCharacter::InventoryEquip, 0.25f, false);
 				
 				FoundIndex = true;
 				InventoryScroll.Broadcast(i);
