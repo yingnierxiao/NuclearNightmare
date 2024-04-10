@@ -27732,6 +27732,10 @@
 			"Type": "UFS"
 		},
 		{
+			"Path": "$(ProjectDir)/Plugins/ScreenSpaceFogScattering/ScreenSpaceFogScattering.uplugin",
+			"Type": "UFS"
+		},
+		{
 			"Path": "$(ProjectDir)/Plugins/ShaderDirectory/ShaderDirectory.uplugin",
 			"Type": "UFS"
 		},
