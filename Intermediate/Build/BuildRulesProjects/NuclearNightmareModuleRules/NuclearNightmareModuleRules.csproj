@@ -16,12 +16,10 @@
   </ItemGroup>
   <ItemGroup>
   <Compile Include="..\..\..\..\Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\AsyncLoadingScreen.Build.cs"><Link>Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\AsyncLoadingScreen.Build.cs</Link></Compile>
-  <Compile Include="..\..\..\..\Plugins\ShaderDirectory\Source\ShaderDirectory\ShaderDirectory.Build.cs"><Link>Plugins\ShaderDirectory\Source\ShaderDirectory\ShaderDirectory.Build.cs</Link></Compile>
+  <Compile Include="..\..\..\..\Plugins\ScreenSpaceFogScattering\Source\ScreenSpaceFogScattering\ScreenSpaceFogScattering.Build.cs"><Link>Plugins\ScreenSpaceFogScattering\Source\ScreenSpaceFogScattering\ScreenSpaceFogScattering.Build.cs</Link></Compile>
+  <Compile Include="..\..\..\..\Plugins\SmoothSync\Source\SmoothSyncPlugin\SmoothSyncPlugin.Build.cs"><Link>Plugins\SmoothSync\Source\SmoothSyncPlugin\SmoothSyncPlugin.Build.cs</Link></Compile>
   <Compile Include="..\..\..\..\Source\NuclearNightmare.Target.cs"><Link>Source\NuclearNightmare.Target.cs</Link></Compile>
   <Compile Include="..\..\..\..\Source\NuclearNightmareEditor.Target.cs"><Link>Source\NuclearNightmareEditor.Target.cs</Link></Compile>
   <Compile Include="..\..\..\..\Source\NuclearNightmare\NuclearNightmare.Build.cs"><Link>Source\NuclearNightmare\NuclearNightmare.Build.cs</Link></Compile>
-  <Compile Include="..\..\..\..\Source\ShaderMacro.Target.cs"><Link>Source\ShaderMacro.Target.cs</Link></Compile>
-  <Compile Include="..\..\..\..\Source\ShaderMacroEditor.Target.cs"><Link>Source\ShaderMacroEditor.Target.cs</Link></Compile>
-  <Compile Include="..\..\..\..\Source\ShaderMacro\ShaderMacro.Build.cs"><Link>Source\ShaderMacro\ShaderMacro.Build.cs</Link></Compile>
   </ItemGroup>
 </Project>

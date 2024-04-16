@@ -77,3 +77,5 @@ Gameplay_Auto8.umap filter=lfs diff=lfs merge=lfs -text
 T_Exp1_Ground1_color.uasset filter=lfs diff=lfs merge=lfs -text
 T_Exp1_Ground3_color.uasset filter=lfs diff=lfs merge=lfs -text
 T_Exp1_Ground3_packed.uasset filter=lfs diff=lfs merge=lfs -text
+NuclearNightmare-Win64-Shipping.exe filter=lfs diff=lfs merge=lfs -text
+NuclearNightmare-Windows.ucas filter=lfs diff=lfs merge=lfs -text

@@ -1,25 +1,11 @@
 {
 	"SourceFiles": [
 		"D:\\NuclearNightmare\\NuclearNightmare\\Source\\NuclearNightmare\\NuclearNightmare.Build.cs",
-		"D:\\NuclearNightmare\\NuclearNightmare\\Source\\ShaderMacro\\ShaderMacro.Build.cs",
 		"D:\\NuclearNightmare\\NuclearNightmare\\Plugins\\AsyncLoadingScreen\\Source\\AsyncLoadingScreen\\AsyncLoadingScreen.Build.cs",
-		"D:\\NuclearNightmare\\NuclearNightmare\\Plugins\\DLSS\\Source\\DLSSBlueprint\\DLSSBlueprint.Build.cs",
-		"D:\\NuclearNightmare\\NuclearNightmare\\Plugins\\DLSS\\Source\\DLSSEditor\\DLSSEditor.Build.cs",
-		"D:\\NuclearNightmare\\NuclearNightmare\\Plugins\\DLSS\\Source\\DLSSUtility\\DLSSUtility.Build.cs",
-		"D:\\NuclearNightmare\\NuclearNightmare\\Plugins\\DLSS\\Source\\DLSS\\DLSS.Build.cs",
-		"D:\\NuclearNightmare\\NuclearNightmare\\Plugins\\DLSS\\Source\\NGXD3D11RHI\\NGXD3D11RHI.Build.cs",
-		"D:\\NuclearNightmare\\NuclearNightmare\\Plugins\\DLSS\\Source\\NGXD3D12RHI\\NGXD3D12RHI.Build.cs",
-		"D:\\NuclearNightmare\\NuclearNightmare\\Plugins\\DLSS\\Source\\NGXRHI\\NGXRHI.Build.cs",
-		"D:\\NuclearNightmare\\NuclearNightmare\\Plugins\\DLSS\\Source\\NGXVulkanRHIPreInit\\NGXVulkanRHIPreInit.Build.cs",
-		"D:\\NuclearNightmare\\NuclearNightmare\\Plugins\\DLSS\\Source\\NGXVulkanRHI\\NGXVulkanRHI.Build.cs",
-		"D:\\NuclearNightmare\\NuclearNightmare\\Plugins\\DLSS\\Source\\ThirdParty\\NGX\\NGX.Build.cs",
 		"D:\\NuclearNightmare\\NuclearNightmare\\Plugins\\ScreenSpaceFogScattering\\Source\\ScreenSpaceFogScattering\\ScreenSpaceFogScattering.Build.cs",
-		"D:\\NuclearNightmare\\NuclearNightmare\\Plugins\\ShaderDirectory\\Source\\ShaderDirectory\\ShaderDirectory.Build.cs",
 		"D:\\NuclearNightmare\\NuclearNightmare\\Plugins\\SmoothSync\\Source\\SmoothSyncPlugin\\SmoothSyncPlugin.Build.cs",
 		"D:\\NuclearNightmare\\NuclearNightmare\\Source\\NuclearNightmare.Target.cs",
-		"D:\\NuclearNightmare\\NuclearNightmare\\Source\\NuclearNightmareEditor.Target.cs",
-		"D:\\NuclearNightmare\\NuclearNightmare\\Source\\ShaderMacro.Target.cs",
-		"D:\\NuclearNightmare\\NuclearNightmare\\Source\\ShaderMacroEditor.Target.cs"
+		"D:\\NuclearNightmare\\NuclearNightmare\\Source\\NuclearNightmareEditor.Target.cs"
 	],
 	"EngineVersion": "5.3.2"
 }
