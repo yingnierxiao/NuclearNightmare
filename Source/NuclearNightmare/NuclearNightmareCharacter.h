@@ -261,7 +261,7 @@ protected:
 
 	UFUNCTION(NetMulticast, Reliable)
 	void SprintOnClient(bool Sprinting);
-
+	
 	void sprint();
 	void StopSprint();
 

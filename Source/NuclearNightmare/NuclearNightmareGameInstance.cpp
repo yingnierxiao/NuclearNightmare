@@ -89,7 +89,7 @@ void UNuclearNightmareGameInstance::OnCreateSessionComplete(FName SessionName, b
 
 	if(Succeeded)
 	{
-		GetWorld()->ServerTravel("/Game/Maps/Lobby?listen");
+		GetWorld()->ServerTravel("/Game/Maps/Gameplay?listen");
 	}
 }
 
@@ -105,6 +105,9 @@ void UNuclearNightmareGameInstance::CreateServer(FString SessionName, bool IsLan
 	SessionSettings.bShouldAdvertise = true;
 	SessionSettings.bUsesPresence = true;
 	SessionSettings.NumPublicConnections = 4;
+	SessionSettings.bUseLobbiesIfAvailable = true;
+
+	MySessionName = FName(SessionName);
 
 	SessionSettings.Set(FName("SERVER_NAME_KEY"), SessionName, EOnlineDataAdvertisementType::ViaOnlineServiceAndPing);
 	SessionSettings.Set(FName("SERVER_HOSTNAME_KEY"), SessionName, EOnlineDataAdvertisementType::ViaOnlineServiceAndPing);
@@ -119,7 +122,7 @@ void UNuclearNightmareGameInstance::FindServers(bool IsLan)
 	
 	SessionSearch = MakeShareable(new FOnlineSessionSearch());
 	SessionSearch->bIsLanQuery = IsLan;
-	SessionSearch->MaxSearchResults = 10000;
+	SessionSearch->MaxSearchResults = 150000;
 	SessionSearch->QuerySettings.Set(SEARCH_PRESENCE, true, EOnlineComparisonOp::Equals);
 	SessionInterface->FindSessions(0, SessionSearch.ToSharedRef());
 }
