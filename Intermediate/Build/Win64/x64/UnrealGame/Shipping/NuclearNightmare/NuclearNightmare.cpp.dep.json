@@ -1,0 +1,14 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\nuclearnightmare\\nuclearnightmare\\source\\nuclearnightmare\\nuclearnightmare.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\nuclearnightmare\\nuclearnightmare\\intermediate\\build\\win64\\x64\\nuclearnightmare\\shipping\\engine\\sharedpch.engine.cpp20.h.pch",
+        "Includes": [
+            "d:\\nuclearnightmare\\nuclearnightmare\\intermediate\\build\\win64\\x64\\unrealgame\\shipping\\nuclearnightmare\\definitions.nuclearnightmare.h",
+            "d:\\nuclearnightmare\\nuclearnightmare\\source\\nuclearnightmare\\nuclearnightmare.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

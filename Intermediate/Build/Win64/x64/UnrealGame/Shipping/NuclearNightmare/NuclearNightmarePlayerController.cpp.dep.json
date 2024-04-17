@@ -1,0 +1,35 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\nuclearnightmare\\nuclearnightmare\\source\\nuclearnightmare\\nuclearnightmareplayercontroller.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\nuclearnightmare\\nuclearnightmare\\intermediate\\build\\win64\\x64\\nuclearnightmare\\shipping\\engine\\sharedpch.engine.cpp20.h.pch",
+        "Includes": [
+            "d:\\nuclearnightmare\\nuclearnightmare\\intermediate\\build\\win64\\x64\\unrealgame\\shipping\\nuclearnightmare\\definitions.nuclearnightmare.h",
+            "d:\\nuclearnightmare\\nuclearnightmare\\source\\nuclearnightmare\\nuclearnightmareplayercontroller.h",
+            "d:\\nuclearnightmare\\nuclearnightmare\\intermediate\\build\\win64\\unrealgame\\inc\\nuclearnightmare\\uht\\nuclearnightmareplayercontroller.generated.h",
+            "d:\\epic games\\ue_5.3\\engine\\plugins\\enhancedinput\\source\\enhancedinput\\public\\enhancedinputsubsystems.h",
+            "d:\\epic games\\ue_5.3\\engine\\plugins\\enhancedinput\\source\\enhancedinput\\public\\enhancedinputsubsysteminterface.h",
+            "d:\\epic games\\ue_5.3\\engine\\plugins\\enhancedinput\\source\\enhancedinput\\public\\enhancedplayerinput.h",
+            "d:\\epic games\\ue_5.3\\engine\\source\\runtime\\engine\\classes\\gameframework\\playerinput.h",
+            "d:\\epic games\\ue_5.3\\engine\\source\\runtime\\engine\\public\\gesturerecognizer.h",
+            "d:\\epic games\\ue_5.3\\engine\\source\\runtime\\engine\\public\\keystate.h",
+            "d:\\epic games\\ue_5.3\\engine\\intermediate\\build\\win64\\unrealgame\\inc\\engine\\uht\\playerinput.generated.h",
+            "d:\\epic games\\ue_5.3\\engine\\plugins\\enhancedinput\\source\\enhancedinput\\public\\inputaction.h",
+            "d:\\epic games\\ue_5.3\\engine\\plugins\\enhancedinput\\source\\enhancedinput\\public\\inputmodifiers.h",
+            "d:\\epic games\\ue_5.3\\engine\\plugins\\enhancedinput\\source\\enhancedinput\\public\\inputactionvalue.h",
+            "d:\\epic games\\ue_5.3\\engine\\plugins\\enhancedinput\\intermediate\\build\\win64\\unrealgame\\inc\\enhancedinput\\uht\\inputactionvalue.generated.h",
+            "d:\\epic games\\ue_5.3\\engine\\plugins\\enhancedinput\\intermediate\\build\\win64\\unrealgame\\inc\\enhancedinput\\uht\\inputmodifiers.generated.h",
+            "d:\\epic games\\ue_5.3\\engine\\plugins\\enhancedinput\\source\\enhancedinput\\public\\inputtriggers.h",
+            "d:\\epic games\\ue_5.3\\engine\\plugins\\enhancedinput\\intermediate\\build\\win64\\unrealgame\\inc\\enhancedinput\\uht\\inputtriggers.generated.h",
+            "d:\\epic games\\ue_5.3\\engine\\plugins\\enhancedinput\\intermediate\\build\\win64\\unrealgame\\inc\\enhancedinput\\uht\\inputaction.generated.h",
+            "d:\\epic games\\ue_5.3\\engine\\plugins\\enhancedinput\\intermediate\\build\\win64\\unrealgame\\inc\\enhancedinput\\uht\\enhancedplayerinput.generated.h",
+            "d:\\epic games\\ue_5.3\\engine\\plugins\\enhancedinput\\source\\enhancedinput\\public\\playermappablekeyslot.h",
+            "d:\\epic games\\ue_5.3\\engine\\plugins\\enhancedinput\\intermediate\\build\\win64\\unrealgame\\inc\\enhancedinput\\uht\\playermappablekeyslot.generated.h",
+            "d:\\epic games\\ue_5.3\\engine\\plugins\\enhancedinput\\intermediate\\build\\win64\\unrealgame\\inc\\enhancedinput\\uht\\enhancedinputsubsysteminterface.generated.h",
+            "d:\\epic games\\ue_5.3\\engine\\plugins\\enhancedinput\\intermediate\\build\\win64\\unrealgame\\inc\\enhancedinput\\uht\\enhancedinputsubsystems.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

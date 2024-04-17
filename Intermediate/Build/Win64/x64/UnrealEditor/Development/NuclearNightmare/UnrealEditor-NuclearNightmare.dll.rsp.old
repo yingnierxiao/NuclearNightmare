@@ -18,6 +18,7 @@
 /ignore:4099
 /ALTERNATENAME:__imp___std_init_once_begin_initialize=__imp_InitOnceBeginInitialize
 /ALTERNATENAME:__imp___std_init_once_complete=__imp_InitOnceComplete
+/DELAYLOAD:"steam_api64.dll"
 /DELAYLOAD:"d3d12.dll"
 /DELAYLOAD:"DBGHELP.DLL"
 /LIBPATH:"D:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\lib\x64"
@@ -43,11 +44,12 @@
 "D:\NuclearNightmare\NuclearNightmare\Intermediate\Build\Win64\x64\UnrealEditor\Development\NuclearNightmare\NuclearNightmarePlayerController.gen.cpp.obj"
 "D:\NuclearNightmare\NuclearNightmare\Intermediate\Build\Win64\x64\UnrealEditor\Development\NuclearNightmare\ItemActor.cpp.obj"
 "D:\NuclearNightmare\NuclearNightmare\Intermediate\Build\Win64\x64\UnrealEditor\Development\NuclearNightmare\NuclearNightmare.cpp.obj"
-"D:\NuclearNightmare\NuclearNightmare\Intermediate\Build\Win64\x64\UnrealEditor\Development\NuclearNightmare\NuclearNightmareGameInstance.cpp.obj"
+"D:\NuclearNightmare\NuclearNightmare\Intermediate\Build\Win64\x64\UnrealEditor\Development\NuclearNightmare\NuclearNightmareCharacter.cpp.obj"
 "D:\NuclearNightmare\NuclearNightmare\Intermediate\Build\Win64\x64\UnrealEditor\Development\NuclearNightmare\NuclearNightmareGameMode.cpp.obj"
 "D:\NuclearNightmare\NuclearNightmare\Intermediate\Build\Win64\x64\UnrealEditor\Development\NuclearNightmare\NuclearNightmarePlayerController.cpp.obj"
-"D:\NuclearNightmare\NuclearNightmare\Intermediate\Build\Win64\x64\UnrealEditor\Development\NuclearNightmare\NuclearNightmareCharacter.cpp.obj"
+"D:\NuclearNightmare\NuclearNightmare\Intermediate\Build\Win64\x64\UnrealEditor\Development\NuclearNightmare\NuclearNightmareGameInstance.cpp.obj"
 "D:\NuclearNightmare\NuclearNightmare\Intermediate\Build\Win64\x64\UnrealEditor\Development\NuclearNightmare\Default.rc2.res"
+"ThirdParty\Steamworks\Steamv153\sdk\redistributable_bin\win64\steam_api64.lib"
 "..\Intermediate\Build\Win64\x64\UnrealEditor\Development\Engine\UnrealEditor-Engine.lib"
 "..\Intermediate\Build\Win64\x64\UnrealEditor\Development\Core\UnrealEditor-Core.lib"
 "..\Intermediate\Build\Win64\x64\UnrealEditor\Development\CoreUObject\UnrealEditor-CoreUObject.lib"
@@ -59,7 +61,6 @@
 "..\Plugins\Online\OnlineSubsystem\Intermediate\Build\Win64\x64\UnrealEditor\Development\OnlineSubsystem\UnrealEditor-OnlineSubsystem.lib"
 "..\Plugins\Online\OnlineSubsystemSteam\Intermediate\Build\Win64\x64\UnrealEditor\Development\OnlineSubsystemSteam\UnrealEditor-OnlineSubsystemSteam.lib"
 "D:\NuclearNightmare\NuclearNightmare\Plugins\AsyncLoadingScreen\Intermediate\Build\Win64\x64\UnrealEditor\Development\AsyncLoadingScreen\UnrealEditor-AsyncLoadingScreen.lib"
-"D:\NuclearNightmare\NuclearNightmare\Plugins\DLSS\Intermediate\Build\Win64\x64\UnrealEditor\Development\DLSS\UnrealEditor-DLSS.lib"
 "D:\NuclearNightmare\NuclearNightmare\Plugins\SmoothSync\Intermediate\Build\Win64\x64\UnrealEditor\Development\SmoothSyncPlugin\UnrealEditor-SmoothSyncPlugin.lib"
 "D:\NuclearNightmare\NuclearNightmare\Plugins\ScreenSpaceFogScattering\Intermediate\Build\Win64\x64\UnrealEditor\Development\ScreenSpaceFogScattering\UnrealEditor-ScreenSpaceFogScattering.lib"
 "delayimp.lib"

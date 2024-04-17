@@ -14,6 +14,7 @@
     <None Include="..\..\.gitattributes" />
     <None Include="..\..\.gitignore" />
     <None Include="..\..\.vsconfig" />
+    <None Include="..\..\Arctic.png" />
     <None Include="..\..\Bunker.png" />
     <None Include="..\..\README.md" />
     <None Include="..\..\West_Heli_UH60A.png" />
@@ -164,44 +165,113 @@
     <None Include="..\..\Plugins\AsyncLoadingScreen\Resources\Icon64.png">
       <Filter>Plugins\AsyncLoadingScreen\Resources</Filter>
     </None>
-    <Filter Include="Plugins\ShaderDirectory">
-      <UniqueIdentifier>{28027EA5-3AF1-3F73-B74F-5736A6B2F838}</UniqueIdentifier>
+    <Filter Include="Plugins\ScreenSpaceFogScattering">
+      <UniqueIdentifier>{E94941B6-33A2-3178-B2DD-54D3B52805C7}</UniqueIdentifier>
     </Filter>
-    <None Include="..\..\Plugins\ShaderDirectory\ShaderDirectory.uplugin">
-      <Filter>Plugins\ShaderDirectory</Filter>
+    <None Include="..\..\Plugins\ScreenSpaceFogScattering\ScreenSpaceFogScattering.uplugin">
+      <Filter>Plugins\ScreenSpaceFogScattering</Filter>
     </None>
-    <Filter Include="Plugins\ShaderDirectory\Resources">
-      <UniqueIdentifier>{18BAC7DB-81B4-311D-B90A-AA67FFA6EEB5}</UniqueIdentifier>
+    <Filter Include="Plugins\ScreenSpaceFogScattering\Resources">
+      <UniqueIdentifier>{2E2C61D7-6C59-3C41-9DD5-B1A9D887CFF7}</UniqueIdentifier>
     </Filter>
-    <None Include="..\..\Plugins\ShaderDirectory\Resources\Icon128.png">
-      <Filter>Plugins\ShaderDirectory\Resources</Filter>
+    <None Include="..\..\Plugins\ScreenSpaceFogScattering\Resources\Icon128.png">
+      <Filter>Plugins\ScreenSpaceFogScattering\Resources</Filter>
     </None>
-    <Filter Include="Plugins\ShaderDirectory\Shaders">
-      <UniqueIdentifier>{3E350FE7-1E55-3DAE-94FF-8652B1B9CB50}</UniqueIdentifier>
+    <Filter Include="Plugins\ScreenSpaceFogScattering\Shaders">
+      <UniqueIdentifier>{164EACBD-1605-3AC0-B1CD-51F511E1A626}</UniqueIdentifier>
     </Filter>
-    <None Include="..\..\Plugins\ShaderDirectory\Shaders\CustomFunction.ush">
-      <Filter>Plugins\ShaderDirectory\Shaders</Filter>
+    <None Include="..\..\Plugins\ScreenSpaceFogScattering\Shaders\SSFSCommon.ush">
+      <Filter>Plugins\ScreenSpaceFogScattering\Shaders</Filter>
     </None>
-    <Filter Include="Plugins\ShaderDirectory\Source">
-      <UniqueIdentifier>{882BC1A0-2E47-3EFB-BC78-49762BAFAD43}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Plugins\ShaderDirectory\Source\ShaderDirectory">
-      <UniqueIdentifier>{02BA42EF-FF4E-384D-91C5-B38FDF10BA20}</UniqueIdentifier>
-    </Filter>
-    <None Include="..\..\Plugins\ShaderDirectory\Source\ShaderDirectory\ShaderDirectory.Build.cs">
-      <Filter>Plugins\ShaderDirectory\Source\ShaderDirectory</Filter>
+    <None Include="..\..\Plugins\ScreenSpaceFogScattering\Shaders\SSFSDownsample.usf">
+      <Filter>Plugins\ScreenSpaceFogScattering\Shaders</Filter>
     </None>
-    <Filter Include="Plugins\ShaderDirectory\Source\ShaderDirectory\Private">
-      <UniqueIdentifier>{7051B3A6-D694-3DA9-9E1E-11FB6558B447}</UniqueIdentifier>
+    <None Include="..\..\Plugins\ScreenSpaceFogScattering\Shaders\SSFSRecombine.usf">
+      <Filter>Plugins\ScreenSpaceFogScattering\Shaders</Filter>
+    </None>
+    <None Include="..\..\Plugins\ScreenSpaceFogScattering\Shaders\SSFSSetup.usf">
+      <Filter>Plugins\ScreenSpaceFogScattering\Shaders</Filter>
+    </None>
+    <None Include="..\..\Plugins\ScreenSpaceFogScattering\Shaders\SSFSUpsampleCombine.usf">
+      <Filter>Plugins\ScreenSpaceFogScattering\Shaders</Filter>
+    </None>
+    <Filter Include="Plugins\SmoothSync">
+      <UniqueIdentifier>{04E45472-B61A-301F-8D09-1B1BF0D837D2}</UniqueIdentifier>
     </Filter>
-    <ClCompile Include="..\..\Plugins\ShaderDirectory\Source\ShaderDirectory\Private\ShaderDirectory.cpp">
-      <Filter>Plugins\ShaderDirectory\Source\ShaderDirectory\Private</Filter>
+    <None Include="..\..\Plugins\SmoothSync\SmoothSyncPlugin.uplugin">
+      <Filter>Plugins\SmoothSync</Filter>
+    </None>
+    <Filter Include="Plugins\SmoothSync\Resources">
+      <UniqueIdentifier>{13BDFAC3-6B81-381F-B6D1-46B9CB893874}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Plugins\SmoothSync\Resources\Icon128.png">
+      <Filter>Plugins\SmoothSync\Resources</Filter>
+    </None>
+    <Filter Include="Plugins\ScreenSpaceFogScattering\Source">
+      <UniqueIdentifier>{D6F5E489-697B-39D4-831A-6361345C2833}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Plugins\ScreenSpaceFogScattering\Source\ScreenSpaceFogScattering">
+      <UniqueIdentifier>{48815F3C-4A91-3AFD-99D5-ADD9602FA6F5}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Plugins\ScreenSpaceFogScattering\Source\ScreenSpaceFogScattering\ScreenSpaceFogScattering.Build.cs">
+      <Filter>Plugins\ScreenSpaceFogScattering\Source\ScreenSpaceFogScattering</Filter>
+    </None>
+    <Filter Include="Plugins\ScreenSpaceFogScattering\Source\ScreenSpaceFogScattering\Private">
+      <UniqueIdentifier>{597D9876-ED6E-3E9C-9E12-6BFE150860C2}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Plugins\ScreenSpaceFogScattering\Source\ScreenSpaceFogScattering\Private\SSFS.cpp">
+      <Filter>Plugins\ScreenSpaceFogScattering\Source\ScreenSpaceFogScattering\Private</Filter>
     </ClCompile>
-    <Filter Include="Plugins\ShaderDirectory\Source\ShaderDirectory\Public">
-      <UniqueIdentifier>{1EADB008-2E3D-323B-A793-6F851CA15ABE}</UniqueIdentifier>
+    <ClCompile Include="..\..\Plugins\ScreenSpaceFogScattering\Source\ScreenSpaceFogScattering\Private\SSFSSubSystem.cpp">
+      <Filter>Plugins\ScreenSpaceFogScattering\Source\ScreenSpaceFogScattering\Private</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Plugins\ScreenSpaceFogScattering\Source\ScreenSpaceFogScattering\Private\SSFSSubsystem.h">
+      <Filter>Plugins\ScreenSpaceFogScattering\Source\ScreenSpaceFogScattering\Private</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Plugins\ScreenSpaceFogScattering\Source\ScreenSpaceFogScattering\Private\SSFSViewExtension.cpp">
+      <Filter>Plugins\ScreenSpaceFogScattering\Source\ScreenSpaceFogScattering\Private</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Plugins\ScreenSpaceFogScattering\Source\ScreenSpaceFogScattering\Private\SSFSViewExtension.h">
+      <Filter>Plugins\ScreenSpaceFogScattering\Source\ScreenSpaceFogScattering\Private</Filter>
+    </ClInclude>
+    <Filter Include="Plugins\ScreenSpaceFogScattering\Source\ScreenSpaceFogScattering\Public">
+      <UniqueIdentifier>{7131E0AD-81DC-30DC-9F2B-E58D3D26CCE0}</UniqueIdentifier>
     </Filter>
-    <ClInclude Include="..\..\Plugins\ShaderDirectory\Source\ShaderDirectory\Public\ShaderDirectory.h">
-      <Filter>Plugins\ShaderDirectory\Source\ShaderDirectory\Public</Filter>
+    <ClInclude Include="..\..\Plugins\ScreenSpaceFogScattering\Source\ScreenSpaceFogScattering\Public\SSFS.h">
+      <Filter>Plugins\ScreenSpaceFogScattering\Source\ScreenSpaceFogScattering\Public</Filter>
+    </ClInclude>
+    <Filter Include="Plugins\SmoothSync\Source">
+      <UniqueIdentifier>{395E857F-3FD0-3857-9F0C-7A4B177B7A64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Plugins\SmoothSync\Source\SmoothSyncPlugin">
+      <UniqueIdentifier>{0D00C843-637E-39B4-82B6-5400922FFA5E}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Plugins\SmoothSync\Source\SmoothSyncPlugin\SmoothSyncPlugin.Build.cs">
+      <Filter>Plugins\SmoothSync\Source\SmoothSyncPlugin</Filter>
+    </None>
+    <Filter Include="Plugins\SmoothSync\Source\SmoothSyncPlugin\Private">
+      <UniqueIdentifier>{BD607FDA-AEFD-378A-A969-AF1CE1D2CC73}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Plugins\SmoothSync\Source\SmoothSyncPlugin\Private\SmoothSync.cpp">
+      <Filter>Plugins\SmoothSync\Source\SmoothSyncPlugin\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Plugins\SmoothSync\Source\SmoothSyncPlugin\Private\SmoothSyncPlugin.cpp">
+      <Filter>Plugins\SmoothSync\Source\SmoothSyncPlugin\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Plugins\SmoothSync\Source\SmoothSyncPlugin\Private\State.cpp">
+      <Filter>Plugins\SmoothSync\Source\SmoothSyncPlugin\Private</Filter>
+    </ClCompile>
+    <Filter Include="Plugins\SmoothSync\Source\SmoothSyncPlugin\Public">
+      <UniqueIdentifier>{3405C388-7D77-3D8D-85C7-879C11773497}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Plugins\SmoothSync\Source\SmoothSyncPlugin\Public\SmoothSync.h">
+      <Filter>Plugins\SmoothSync\Source\SmoothSyncPlugin\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Plugins\SmoothSync\Source\SmoothSyncPlugin\Public\SmoothSyncPlugin.h">
+      <Filter>Plugins\SmoothSync\Source\SmoothSyncPlugin\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Plugins\SmoothSync\Source\SmoothSyncPlugin\Public\State.h">
+      <Filter>Plugins\SmoothSync\Source\SmoothSyncPlugin\Public</Filter>
     </ClInclude>
     <Filter Include="Source\NuclearNightmare">
       <UniqueIdentifier>{97A27FC3-A29D-3FB0-A85E-B1EC38FECB5A}</UniqueIdentifier>
@@ -244,24 +314,6 @@
     </ClCompile>
     <ClInclude Include="..\..\Source\NuclearNightmare\NuclearNightmarePlayerController.h">
       <Filter>Source\NuclearNightmare</Filter>
-    </ClInclude>
-    <Filter Include="Source\ShaderMacro">
-      <UniqueIdentifier>{8F8A2ACE-3438-3582-9E9A-EB49DA88DC56}</UniqueIdentifier>
-    </Filter>
-    <None Include="..\..\Source\ShaderMacro\ShaderMacro.Build.cs">
-      <Filter>Source\ShaderMacro</Filter>
-    </None>
-    <ClCompile Include="..\..\Source\ShaderMacro\ShaderMacro.cpp">
-      <Filter>Source\ShaderMacro</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Source\ShaderMacro\ShaderMacro.h">
-      <Filter>Source\ShaderMacro</Filter>
-    </ClInclude>
-    <ClCompile Include="..\..\Source\ShaderMacro\ShaderMacroGameModeBase.cpp">
-      <Filter>Source\ShaderMacro</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Source\ShaderMacro\ShaderMacroGameModeBase.h">
-      <Filter>Source\ShaderMacro</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

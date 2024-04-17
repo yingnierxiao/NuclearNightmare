@@ -1,0 +1,21 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\nuclearnightmare\\nuclearnightmare\\intermediate\\build\\win64\\unrealgame\\inc\\nuclearnightmare\\uht\\nuclearnightmaregameinstance.gen.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\nuclearnightmare\\nuclearnightmare\\intermediate\\build\\win64\\x64\\nuclearnightmare\\shipping\\engine\\sharedpch.engine.cpp20.h.pch",
+        "Includes": [
+            "d:\\nuclearnightmare\\nuclearnightmare\\intermediate\\build\\win64\\x64\\unrealgame\\shipping\\nuclearnightmare\\definitions.nuclearnightmare.h",
+            "d:\\nuclearnightmare\\nuclearnightmare\\source\\nuclearnightmare\\nuclearnightmaregameinstance.h",
+            "d:\\epic games\\ue_5.3\\engine\\plugins\\online\\onlinesubsystem\\source\\public\\interfaces\\onlinesessioninterface.h",
+            "d:\\epic games\\ue_5.3\\engine\\plugins\\online\\onlinesubsystem\\source\\public\\onlinesubsystemtypes.h",
+            "d:\\epic games\\ue_5.3\\engine\\plugins\\online\\onlinesubsystem\\source\\public\\onlinesubsystemnames.h",
+            "d:\\epic games\\ue_5.3\\engine\\plugins\\online\\onlinesubsystem\\source\\public\\onlinedelegatemacros.h",
+            "d:\\epic games\\ue_5.3\\engine\\plugins\\online\\onlinesubsystem\\source\\public\\interfaces\\onlinesessiondelegates.h",
+            "d:\\epic games\\ue_5.3\\engine\\plugins\\online\\onlinesubsystem\\source\\public\\onlinekeyvaluepair.h",
+            "d:\\nuclearnightmare\\nuclearnightmare\\intermediate\\build\\win64\\unrealgame\\inc\\nuclearnightmare\\uht\\nuclearnightmaregameinstance.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}
