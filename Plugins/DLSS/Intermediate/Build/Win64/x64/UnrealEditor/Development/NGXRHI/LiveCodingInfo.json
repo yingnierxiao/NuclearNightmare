@@ -1,8 +1,0 @@
-{
-	"RemapUnityFiles": 
-	{
-		"Module.NGXRHI.cpp.obj": [
-			"NGXRHI.cpp.obj"
-		]
-	}
-}

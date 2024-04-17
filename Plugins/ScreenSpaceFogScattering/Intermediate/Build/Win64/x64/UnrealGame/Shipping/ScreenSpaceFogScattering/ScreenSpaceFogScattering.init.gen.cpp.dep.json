@@ -1,0 +1,13 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\nuclearnightmare\\nuclearnightmare\\plugins\\screenspacefogscattering\\intermediate\\build\\win64\\unrealgame\\inc\\screenspacefogscattering\\uht\\screenspacefogscattering.init.gen.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\nuclearnightmare\\nuclearnightmare\\intermediate\\build\\win64\\x64\\nuclearnightmare\\shipping\\engine\\sharedpch.engine.cpp20.h.pch",
+        "Includes": [
+            "d:\\nuclearnightmare\\nuclearnightmare\\plugins\\screenspacefogscattering\\intermediate\\build\\win64\\x64\\unrealgame\\shipping\\screenspacefogscattering\\definitions.screenspacefogscattering.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

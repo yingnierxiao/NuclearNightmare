@@ -114,9 +114,13 @@ void EmptyLinkFunctionForGeneratedCodeAsyncLoadingScreenLibrary() {}
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UAsyncLoadingScreenLibrary_GetIsEnableLoadingScreen_Statics::Function_MetaDataParams[] = {
 		{ "Category", "Async Loading Screen" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/**\n\x09 * Get enable/disable the loading screen for next levels\n\x09 *\n\x09 **/" },
+#endif
 		{ "ModuleRelativePath", "Public/AsyncLoadingScreenLibrary.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "Get enable/disable the loading screen for next levels" },
+#endif
 	};
 #endif
 	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UAsyncLoadingScreenLibrary_GetIsEnableLoadingScreen_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UAsyncLoadingScreenLibrary, nullptr, "GetIsEnableLoadingScreen", nullptr, nullptr, Z_Construct_UFunction_UAsyncLoadingScreenLibrary_GetIsEnableLoadingScreen_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UAsyncLoadingScreenLibrary_GetIsEnableLoadingScreen_Statics::PropPointers), sizeof(Z_Construct_UFunction_UAsyncLoadingScreenLibrary_GetIsEnableLoadingScreen_Statics::AsyncLoadingScreenLibrary_eventGetIsEnableLoadingScreen_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x14022401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UAsyncLoadingScreenLibrary_GetIsEnableLoadingScreen_Statics::Function_MetaDataParams), Z_Construct_UFunction_UAsyncLoadingScreenLibrary_GetIsEnableLoadingScreen_Statics::Function_MetaDataParams) };
@@ -141,9 +145,13 @@ void EmptyLinkFunctionForGeneratedCodeAsyncLoadingScreenLibrary() {}
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UAsyncLoadingScreenLibrary_PreloadBackgroundImages_Statics::Function_MetaDataParams[] = {
 		{ "Category", "Async Loading Screen" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/**\n\x09 * Load all background images into memory\n\x09 * \n\x09 * Only use this function when: \n\x09 * \"bPreloadBackgroundImages\" option is checked, \n\x09 * and you called \"RemovePreloadedBackgroundImages\" before.\n\x09 * \n\x09 * You don't need to use this if you never call\n\x09 * \"RemovePreloadedBackgroundImages\" function,\n\x09 * since the background images are still in the memory\n\x09 * \n\x09 * Note: Call this function before calling \"OpenLevel\" node.\n\x09 * \n\x09 **/" },
+#endif
 		{ "ModuleRelativePath", "Public/AsyncLoadingScreenLibrary.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "Load all background images into memory\n\nOnly use this function when:\n\"bPreloadBackgroundImages\" option is checked,\nand you called \"RemovePreloadedBackgroundImages\" before.\n\nYou don't need to use this if you never call\n\"RemovePreloadedBackgroundImages\" function,\nsince the background images are still in the memory\n\nNote: Call this function before calling \"OpenLevel\" node." },
+#endif
 	};
 #endif
 	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UAsyncLoadingScreenLibrary_PreloadBackgroundImages_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UAsyncLoadingScreenLibrary, nullptr, "PreloadBackgroundImages", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04022401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UAsyncLoadingScreenLibrary_PreloadBackgroundImages_Statics::Function_MetaDataParams), Z_Construct_UFunction_UAsyncLoadingScreenLibrary_PreloadBackgroundImages_Statics::Function_MetaDataParams) };
@@ -166,9 +174,13 @@ void EmptyLinkFunctionForGeneratedCodeAsyncLoadingScreenLibrary() {}
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UAsyncLoadingScreenLibrary_RemovePreloadedBackgroundImages_Statics::Function_MetaDataParams[] = {
 		{ "Category", "Async Loading Screen" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/**\n\x09 * Remove all preloaded background images\n\x09 * \n\x09 * Only need to use this function when \n\x09 * \"bPreloadBackgroundImages\" is checked.\n\x09 * \n\x09 * You need to call \"PreloadBackgroundImages\" \n\x09 * to manually load all background images again.\n\x09 * \n\x09 **/" },
+#endif
 		{ "ModuleRelativePath", "Public/AsyncLoadingScreenLibrary.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "Remove all preloaded background images\n\nOnly need to use this function when\n\"bPreloadBackgroundImages\" is checked.\n\nYou need to call \"PreloadBackgroundImages\"\nto manually load all background images again." },
+#endif
 	};
 #endif
 	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UAsyncLoadingScreenLibrary_RemovePreloadedBackgroundImages_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UAsyncLoadingScreenLibrary, nullptr, "RemovePreloadedBackgroundImages", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04022401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UAsyncLoadingScreenLibrary_RemovePreloadedBackgroundImages_Statics::Function_MetaDataParams), Z_Construct_UFunction_UAsyncLoadingScreenLibrary_RemovePreloadedBackgroundImages_Statics::Function_MetaDataParams) };
@@ -201,9 +213,13 @@ void EmptyLinkFunctionForGeneratedCodeAsyncLoadingScreenLibrary() {}
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UAsyncLoadingScreenLibrary_SetDisplayBackgroundIndex_Statics::Function_MetaDataParams[] = {
 		{ "Category", "Async Loading Screen" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/**\n\x09 * Set which background will be displayed on the loading screen by index. The \"SetDisplayBackgroundManually\" option in Background setting needs to be \"true\" to use this function.\n\x09 * \n\x09 * @param BackgroundIndex Valid index of the Background in \"Images\" array in Background setting. If the index is not valid, then it will display random background instead.\n\x09 **/" },
+#endif
 		{ "ModuleRelativePath", "Public/AsyncLoadingScreenLibrary.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "Set which background will be displayed on the loading screen by index. The \"SetDisplayBackgroundManually\" option in Background setting needs to be \"true\" to use this function.\n\n@param BackgroundIndex Valid index of the Background in \"Images\" array in Background setting. If the index is not valid, then it will display random background instead." },
+#endif
 	};
 #endif
 	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UAsyncLoadingScreenLibrary_SetDisplayBackgroundIndex_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UAsyncLoadingScreenLibrary, nullptr, "SetDisplayBackgroundIndex", nullptr, nullptr, Z_Construct_UFunction_UAsyncLoadingScreenLibrary_SetDisplayBackgroundIndex_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UAsyncLoadingScreenLibrary_SetDisplayBackgroundIndex_Statics::PropPointers), sizeof(Z_Construct_UFunction_UAsyncLoadingScreenLibrary_SetDisplayBackgroundIndex_Statics::AsyncLoadingScreenLibrary_eventSetDisplayBackgroundIndex_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04022401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UAsyncLoadingScreenLibrary_SetDisplayBackgroundIndex_Statics::Function_MetaDataParams), Z_Construct_UFunction_UAsyncLoadingScreenLibrary_SetDisplayBackgroundIndex_Statics::Function_MetaDataParams) };
@@ -238,9 +254,13 @@ void EmptyLinkFunctionForGeneratedCodeAsyncLoadingScreenLibrary() {}
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UAsyncLoadingScreenLibrary_SetDisplayMovieIndex_Statics::Function_MetaDataParams[] = {
 		{ "Category", "Async Loading Screen" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/**\n\x09 * Set which movie will be displayed on the loading screen by index. The \"SetDisplayMovieIndexManually\" option needs to be \"true\" to use this function.\n\x09 *\n\x09 * @param MovieIndex Valid index of the movie in \"MoviePaths\" array.\n\x09 **/" },
+#endif
 		{ "ModuleRelativePath", "Public/AsyncLoadingScreenLibrary.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "Set which movie will be displayed on the loading screen by index. The \"SetDisplayMovieIndexManually\" option needs to be \"true\" to use this function.\n\n@param MovieIndex Valid index of the movie in \"MoviePaths\" array." },
+#endif
 	};
 #endif
 	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UAsyncLoadingScreenLibrary_SetDisplayMovieIndex_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UAsyncLoadingScreenLibrary, nullptr, "SetDisplayMovieIndex", nullptr, nullptr, Z_Construct_UFunction_UAsyncLoadingScreenLibrary_SetDisplayMovieIndex_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UAsyncLoadingScreenLibrary_SetDisplayMovieIndex_Statics::PropPointers), sizeof(Z_Construct_UFunction_UAsyncLoadingScreenLibrary_SetDisplayMovieIndex_Statics::AsyncLoadingScreenLibrary_eventSetDisplayMovieIndex_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04022401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UAsyncLoadingScreenLibrary_SetDisplayMovieIndex_Statics::Function_MetaDataParams), Z_Construct_UFunction_UAsyncLoadingScreenLibrary_SetDisplayMovieIndex_Statics::Function_MetaDataParams) };
@@ -275,9 +295,13 @@ void EmptyLinkFunctionForGeneratedCodeAsyncLoadingScreenLibrary() {}
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UAsyncLoadingScreenLibrary_SetDisplayTipTextIndex_Statics::Function_MetaDataParams[] = {
 		{ "Category", "Async Loading Screen" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/**\n\x09 * Set which text will be displayed on the loading screen by index. The \"SetDisplayTipTextManually\" option in Tip Widget setting needs to be \"true\" to use this function.\n\x09 *\n\x09 * @param TipTextIndex Valid index of the text in \"TipText\" array in Tip Widget setting. If the index is not valid, then it will display random text instead.\n\x09 **/" },
+#endif
 		{ "ModuleRelativePath", "Public/AsyncLoadingScreenLibrary.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "Set which text will be displayed on the loading screen by index. The \"SetDisplayTipTextManually\" option in Tip Widget setting needs to be \"true\" to use this function.\n\n@param TipTextIndex Valid index of the text in \"TipText\" array in Tip Widget setting. If the index is not valid, then it will display random text instead." },
+#endif
 	};
 #endif
 	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UAsyncLoadingScreenLibrary_SetDisplayTipTextIndex_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UAsyncLoadingScreenLibrary, nullptr, "SetDisplayTipTextIndex", nullptr, nullptr, Z_Construct_UFunction_UAsyncLoadingScreenLibrary_SetDisplayTipTextIndex_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UAsyncLoadingScreenLibrary_SetDisplayTipTextIndex_Statics::PropPointers), sizeof(Z_Construct_UFunction_UAsyncLoadingScreenLibrary_SetDisplayTipTextIndex_Statics::AsyncLoadingScreenLibrary_eventSetDisplayTipTextIndex_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04022401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UAsyncLoadingScreenLibrary_SetDisplayTipTextIndex_Statics::Function_MetaDataParams), Z_Construct_UFunction_UAsyncLoadingScreenLibrary_SetDisplayTipTextIndex_Statics::Function_MetaDataParams) };
@@ -317,9 +341,13 @@ void EmptyLinkFunctionForGeneratedCodeAsyncLoadingScreenLibrary() {}
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UAsyncLoadingScreenLibrary_SetEnableLoadingScreen_Statics::Function_MetaDataParams[] = {
 		{ "Category", "Async Loading Screen" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/**\n\x09 * Set enable/disable the loading screen for next levels\n\x09 *\n\x09 * @param bIsEnableLoadingScreen Should we enable the loading screen for next level?\n\x09 **/" },
+#endif
 		{ "ModuleRelativePath", "Public/AsyncLoadingScreenLibrary.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "Set enable/disable the loading screen for next levels\n\n@param bIsEnableLoadingScreen Should we enable the loading screen for next level?" },
+#endif
 	};
 #endif
 	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UAsyncLoadingScreenLibrary_SetEnableLoadingScreen_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UAsyncLoadingScreenLibrary, nullptr, "SetEnableLoadingScreen", nullptr, nullptr, Z_Construct_UFunction_UAsyncLoadingScreenLibrary_SetEnableLoadingScreen_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UAsyncLoadingScreenLibrary_SetEnableLoadingScreen_Statics::PropPointers), sizeof(Z_Construct_UFunction_UAsyncLoadingScreenLibrary_SetEnableLoadingScreen_Statics::AsyncLoadingScreenLibrary_eventSetEnableLoadingScreen_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04022401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UAsyncLoadingScreenLibrary_SetEnableLoadingScreen_Statics::Function_MetaDataParams), Z_Construct_UFunction_UAsyncLoadingScreenLibrary_SetEnableLoadingScreen_Statics::Function_MetaDataParams) };
@@ -344,9 +372,13 @@ void EmptyLinkFunctionForGeneratedCodeAsyncLoadingScreenLibrary() {}
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UAsyncLoadingScreenLibrary_StopLoadingScreen_Statics::Function_MetaDataParams[] = {
 		{ "Category", "Async Loading Screen" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/**\n\x09 * Stop the loading screen. To use this function, you must enable the \"bAllowEngineTick\" option.\n\x09 * Call this function in BeginPlay event to stop the Loading Screen (works with Delay node).\n\x09 *\n\x09 **/" },
+#endif
 		{ "ModuleRelativePath", "Public/AsyncLoadingScreenLibrary.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "Stop the loading screen. To use this function, you must enable the \"bAllowEngineTick\" option.\nCall this function in BeginPlay event to stop the Loading Screen (works with Delay node)." },
+#endif
 	};
 #endif
 	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UAsyncLoadingScreenLibrary_StopLoadingScreen_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UAsyncLoadingScreenLibrary, nullptr, "StopLoadingScreen", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04022401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UAsyncLoadingScreenLibrary_StopLoadingScreen_Statics::Function_MetaDataParams), Z_Construct_UFunction_UAsyncLoadingScreenLibrary_StopLoadingScreen_Statics::Function_MetaDataParams) };
@@ -380,22 +412,26 @@ void EmptyLinkFunctionForGeneratedCodeAsyncLoadingScreenLibrary() {}
 	};
 	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_UAsyncLoadingScreenLibrary_Statics::DependentSingletons) < 16);
 	const FClassFunctionLinkInfo Z_Construct_UClass_UAsyncLoadingScreenLibrary_Statics::FuncInfo[] = {
-		{ &Z_Construct_UFunction_UAsyncLoadingScreenLibrary_GetIsEnableLoadingScreen, "GetIsEnableLoadingScreen" }, // 2895707229
-		{ &Z_Construct_UFunction_UAsyncLoadingScreenLibrary_PreloadBackgroundImages, "PreloadBackgroundImages" }, // 3009040858
-		{ &Z_Construct_UFunction_UAsyncLoadingScreenLibrary_RemovePreloadedBackgroundImages, "RemovePreloadedBackgroundImages" }, // 1911979924
-		{ &Z_Construct_UFunction_UAsyncLoadingScreenLibrary_SetDisplayBackgroundIndex, "SetDisplayBackgroundIndex" }, // 1280624039
-		{ &Z_Construct_UFunction_UAsyncLoadingScreenLibrary_SetDisplayMovieIndex, "SetDisplayMovieIndex" }, // 1549074950
-		{ &Z_Construct_UFunction_UAsyncLoadingScreenLibrary_SetDisplayTipTextIndex, "SetDisplayTipTextIndex" }, // 3103109358
-		{ &Z_Construct_UFunction_UAsyncLoadingScreenLibrary_SetEnableLoadingScreen, "SetEnableLoadingScreen" }, // 2441836953
-		{ &Z_Construct_UFunction_UAsyncLoadingScreenLibrary_StopLoadingScreen, "StopLoadingScreen" }, // 1721238776
+		{ &Z_Construct_UFunction_UAsyncLoadingScreenLibrary_GetIsEnableLoadingScreen, "GetIsEnableLoadingScreen" }, // 897897383
+		{ &Z_Construct_UFunction_UAsyncLoadingScreenLibrary_PreloadBackgroundImages, "PreloadBackgroundImages" }, // 2653290442
+		{ &Z_Construct_UFunction_UAsyncLoadingScreenLibrary_RemovePreloadedBackgroundImages, "RemovePreloadedBackgroundImages" }, // 2013861029
+		{ &Z_Construct_UFunction_UAsyncLoadingScreenLibrary_SetDisplayBackgroundIndex, "SetDisplayBackgroundIndex" }, // 3824100962
+		{ &Z_Construct_UFunction_UAsyncLoadingScreenLibrary_SetDisplayMovieIndex, "SetDisplayMovieIndex" }, // 3030161542
+		{ &Z_Construct_UFunction_UAsyncLoadingScreenLibrary_SetDisplayTipTextIndex, "SetDisplayTipTextIndex" }, // 3058601712
+		{ &Z_Construct_UFunction_UAsyncLoadingScreenLibrary_SetEnableLoadingScreen, "SetEnableLoadingScreen" }, // 3639650636
+		{ &Z_Construct_UFunction_UAsyncLoadingScreenLibrary_StopLoadingScreen, "StopLoadingScreen" }, // 737332958
 	};
 	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_UAsyncLoadingScreenLibrary_Statics::FuncInfo) < 2048);
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UAsyncLoadingScreenLibrary_Statics::Class_MetaDataParams[] = {
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/**\n * Async Loading Screen Function Library\n */" },
+#endif
 		{ "IncludePath", "AsyncLoadingScreenLibrary.h" },
 		{ "ModuleRelativePath", "Public/AsyncLoadingScreenLibrary.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "Async Loading Screen Function Library" },
+#endif
 	};
 #endif
 	const FCppClassTypeInfoStatic Z_Construct_UClass_UAsyncLoadingScreenLibrary_Statics::StaticCppClassTypeInfo = {
@@ -431,15 +467,15 @@ void EmptyLinkFunctionForGeneratedCodeAsyncLoadingScreenLibrary() {}
 	UAsyncLoadingScreenLibrary::UAsyncLoadingScreenLibrary(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {}
 	DEFINE_VTABLE_PTR_HELPER_CTOR(UAsyncLoadingScreenLibrary);
 	UAsyncLoadingScreenLibrary::~UAsyncLoadingScreenLibrary() {}
-	struct Z_CompiledInDeferFile_FID_build_U5M_Marketplace_Sync_LocalBuilds_PluginTemp_HostProject_Plugins_AsyncLoadingScreen_Source_AsyncLoadingScreen_Public_AsyncLoadingScreenLibrary_h_Statics
+	struct Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Plugins_AsyncLoadingScreen_Source_AsyncLoadingScreen_Public_AsyncLoadingScreenLibrary_h_Statics
 	{
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
-	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_build_U5M_Marketplace_Sync_LocalBuilds_PluginTemp_HostProject_Plugins_AsyncLoadingScreen_Source_AsyncLoadingScreen_Public_AsyncLoadingScreenLibrary_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_UAsyncLoadingScreenLibrary, UAsyncLoadingScreenLibrary::StaticClass, TEXT("UAsyncLoadingScreenLibrary"), &Z_Registration_Info_UClass_UAsyncLoadingScreenLibrary, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UAsyncLoadingScreenLibrary), 4198129761U) },
+	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Plugins_AsyncLoadingScreen_Source_AsyncLoadingScreen_Public_AsyncLoadingScreenLibrary_h_Statics::ClassInfo[] = {
+		{ Z_Construct_UClass_UAsyncLoadingScreenLibrary, UAsyncLoadingScreenLibrary::StaticClass, TEXT("UAsyncLoadingScreenLibrary"), &Z_Registration_Info_UClass_UAsyncLoadingScreenLibrary, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UAsyncLoadingScreenLibrary), 1767234052U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_build_U5M_Marketplace_Sync_LocalBuilds_PluginTemp_HostProject_Plugins_AsyncLoadingScreen_Source_AsyncLoadingScreen_Public_AsyncLoadingScreenLibrary_h_2570338046(TEXT("/Script/AsyncLoadingScreen"),
-		Z_CompiledInDeferFile_FID_build_U5M_Marketplace_Sync_LocalBuilds_PluginTemp_HostProject_Plugins_AsyncLoadingScreen_Source_AsyncLoadingScreen_Public_AsyncLoadingScreenLibrary_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_build_U5M_Marketplace_Sync_LocalBuilds_PluginTemp_HostProject_Plugins_AsyncLoadingScreen_Source_AsyncLoadingScreen_Public_AsyncLoadingScreenLibrary_h_Statics::ClassInfo),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Plugins_AsyncLoadingScreen_Source_AsyncLoadingScreen_Public_AsyncLoadingScreenLibrary_h_3990077968(TEXT("/Script/AsyncLoadingScreen"),
+		Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Plugins_AsyncLoadingScreen_Source_AsyncLoadingScreen_Public_AsyncLoadingScreenLibrary_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Plugins_AsyncLoadingScreen_Source_AsyncLoadingScreen_Public_AsyncLoadingScreenLibrary_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

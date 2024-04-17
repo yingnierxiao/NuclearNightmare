@@ -1,0 +1,21 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\nuclearnightmare\\nuclearnightmare\\plugins\\asyncloadingscreen\\intermediate\\build\\win64\\unrealgame\\inc\\asyncloadingscreen\\uht\\loadingscreensettings.gen.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\nuclearnightmare\\nuclearnightmare\\intermediate\\build\\win64\\x64\\nuclearnightmare\\shipping\\engine\\sharedpch.engine.cpp20.h.pch",
+        "Includes": [
+            "d:\\nuclearnightmare\\nuclearnightmare\\plugins\\asyncloadingscreen\\intermediate\\build\\win64\\x64\\unrealgame\\shipping\\asyncloadingscreen\\definitions.asyncloadingscreen.h",
+            "d:\\nuclearnightmare\\nuclearnightmare\\plugins\\asyncloadingscreen\\source\\asyncloadingscreen\\public\\loadingscreensettings.h",
+            "d:\\epic games\\ue_5.3\\engine\\source\\runtime\\movieplayer\\public\\movieplayer.h",
+            "d:\\epic games\\ue_5.3\\engine\\source\\runtime\\engine\\public\\slate\\slatetextures.h",
+            "d:\\epic games\\ue_5.3\\engine\\source\\runtime\\slatecore\\public\\textures\\slateupdatabletexture.h",
+            "d:\\epic games\\ue_5.3\\engine\\intermediate\\build\\win64\\unrealgame\\inc\\movieplayer\\uht\\movieplayer.generated.h",
+            "d:\\epic games\\ue_5.3\\engine\\source\\runtime\\slate\\public\\widgets\\layout\\sscalebox.h",
+            "d:\\epic games\\ue_5.3\\engine\\intermediate\\build\\win64\\unrealgame\\inc\\slate\\uht\\sscalebox.generated.h",
+            "d:\\nuclearnightmare\\nuclearnightmare\\plugins\\asyncloadingscreen\\intermediate\\build\\win64\\unrealgame\\inc\\asyncloadingscreen\\uht\\loadingscreensettings.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

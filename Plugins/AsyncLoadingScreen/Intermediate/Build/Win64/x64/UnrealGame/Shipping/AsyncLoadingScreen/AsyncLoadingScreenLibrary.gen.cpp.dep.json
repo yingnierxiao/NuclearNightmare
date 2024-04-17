@@ -1,0 +1,15 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\nuclearnightmare\\nuclearnightmare\\plugins\\asyncloadingscreen\\intermediate\\build\\win64\\unrealgame\\inc\\asyncloadingscreen\\uht\\asyncloadingscreenlibrary.gen.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\nuclearnightmare\\nuclearnightmare\\intermediate\\build\\win64\\x64\\nuclearnightmare\\shipping\\engine\\sharedpch.engine.cpp20.h.pch",
+        "Includes": [
+            "d:\\nuclearnightmare\\nuclearnightmare\\plugins\\asyncloadingscreen\\intermediate\\build\\win64\\x64\\unrealgame\\shipping\\asyncloadingscreen\\definitions.asyncloadingscreen.h",
+            "d:\\nuclearnightmare\\nuclearnightmare\\plugins\\asyncloadingscreen\\source\\asyncloadingscreen\\public\\asyncloadingscreenlibrary.h",
+            "d:\\nuclearnightmare\\nuclearnightmare\\plugins\\asyncloadingscreen\\intermediate\\build\\win64\\unrealgame\\inc\\asyncloadingscreen\\uht\\asyncloadingscreenlibrary.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

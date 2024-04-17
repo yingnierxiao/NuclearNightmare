@@ -1,8 +1,0 @@
-{
-	"RemapUnityFiles": 
-	{
-		"Module.NGXD3D11RHI.cpp.obj": [
-			"NGXD3D11RHI.cpp.obj"
-		]
-	}
-}
