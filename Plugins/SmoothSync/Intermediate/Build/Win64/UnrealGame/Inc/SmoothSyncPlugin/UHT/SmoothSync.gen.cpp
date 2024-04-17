@@ -54,10 +54,14 @@ void EmptyLinkFunctionForGeneratedCodeSmoothSync() {}
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UEnum_SmoothSyncPlugin_SyncMode_Statics::Enum_MetaDataParams[] = {
 		{ "BlueprintType", "true" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/// <summary>The variables that will be synced.</summary>\n" },
+#endif
 		{ "ModuleRelativePath", "Public/SmoothSync.h" },
 		{ "NONE.Name", "SyncMode::NONE" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "<summary>The variables that will be synced.</summary>" },
+#endif
 		{ "X.Name", "SyncMode::X" },
 		{ "XY.Name", "SyncMode::XY" },
 		{ "XYZ.Name", "SyncMode::XYZ" },
@@ -116,11 +120,15 @@ void EmptyLinkFunctionForGeneratedCodeSmoothSync() {}
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UEnum_SmoothSyncPlugin_ExtrapolationMode_Statics::Enum_MetaDataParams[] = {
 		{ "BlueprintType", "true" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/// <summary>The extrapolation mode.</summary>\n" },
+#endif
 		{ "LIMITED.Name", "ExtrapolationMode::LIMITED" },
 		{ "ModuleRelativePath", "Public/SmoothSync.h" },
 		{ "NONE.Name", "ExtrapolationMode::NONE" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "<summary>The extrapolation mode.</summary>" },
+#endif
 		{ "UNLIMITED.Name", "ExtrapolationMode::UNLIMITED" },
 	};
 #endif
@@ -174,11 +182,15 @@ void EmptyLinkFunctionForGeneratedCodeSmoothSync() {}
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UEnum_SmoothSyncPlugin_RestState_Statics::Enum_MetaDataParams[] = {
 		{ "AT_REST.Name", "RestState::AT_REST" },
 		{ "BlueprintType", "true" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/// <summary>The variables that will be synced.</summary>\n" },
+#endif
 		{ "JUST_STARTED_MOVING.Name", "RestState::JUST_STARTED_MOVING" },
 		{ "ModuleRelativePath", "Public/SmoothSync.h" },
 		{ "MOVING.Name", "RestState::MOVING" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "<summary>The variables that will be synced.</summary>" },
+#endif
 	};
 #endif
 	const UECodeGen_Private::FEnumParams Z_Construct_UEnum_SmoothSyncPlugin_RestState_Statics::EnumParams = {
@@ -428,9 +440,13 @@ void EmptyLinkFunctionForGeneratedCodeSmoothSync() {}
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USmoothSync_clearBuffer_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SmoothSync" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/// Clear the state buffer. You will call this on all unowned Actor instances on ownership changes.\n" },
+#endif
 		{ "ModuleRelativePath", "Public/SmoothSync.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "Clear the state buffer. You will call this on all unowned Actor instances on ownership changes." },
+#endif
 	};
 #endif
 	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_USmoothSync_clearBuffer_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USmoothSync, nullptr, "clearBuffer", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_USmoothSync_clearBuffer_Statics::Function_MetaDataParams), Z_Construct_UFunction_USmoothSync_clearBuffer_Statics::Function_MetaDataParams) };
@@ -509,9 +525,13 @@ void EmptyLinkFunctionForGeneratedCodeSmoothSync() {}
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USmoothSync_enableSmoothSync_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SmoothSync" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/// Used to turn Smooth Sync on and off. True to enable Smooth Sync. False to disable Smooth Sync.\n///\x09Will automatically send RPCs across the network. Is meant to be called on the owned version of the Actor.\n" },
+#endif
 		{ "ModuleRelativePath", "Public/SmoothSync.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "Used to turn Smooth Sync on and off. True to enable Smooth Sync. False to disable Smooth Sync.\n      Will automatically send RPCs across the network. Is meant to be called on the owned version of the Actor." },
+#endif
 	};
 #endif
 	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_USmoothSync_enableSmoothSync_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USmoothSync, nullptr, "enableSmoothSync", nullptr, nullptr, Z_Construct_UFunction_USmoothSync_enableSmoothSync_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_USmoothSync_enableSmoothSync_Statics::PropPointers), sizeof(Z_Construct_UFunction_USmoothSync_enableSmoothSync_Statics::SmoothSync_eventenableSmoothSync_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_USmoothSync_enableSmoothSync_Statics::Function_MetaDataParams), Z_Construct_UFunction_USmoothSync_enableSmoothSync_Statics::Function_MetaDataParams) };
@@ -536,9 +556,13 @@ void EmptyLinkFunctionForGeneratedCodeSmoothSync() {}
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USmoothSync_forceStateSendNextFrame_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SmoothSync" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/// Forces the SmoothState (Transform) to be sent on owned objects the next time it goes through TickComponent(). \n/// The SmoothState (Transform) will get sent next frame regardless of all limitations.\n" },
+#endif
 		{ "ModuleRelativePath", "Public/SmoothSync.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "Forces the SmoothState (Transform) to be sent on owned objects the next time it goes through TickComponent().\nThe SmoothState (Transform) will get sent next frame regardless of all limitations." },
+#endif
 	};
 #endif
 	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_USmoothSync_forceStateSendNextFrame_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USmoothSync, nullptr, "forceStateSendNextFrame", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_USmoothSync_forceStateSendNextFrame_Statics::Function_MetaDataParams), Z_Construct_UFunction_USmoothSync_forceStateSendNextFrame_Statics::Function_MetaDataParams) };
@@ -620,9 +644,13 @@ void EmptyLinkFunctionForGeneratedCodeSmoothSync() {}
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USmoothSync_setSceneComponentToSync_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SmoothSync" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/// Used to set the transform that you want to sync on this SmoothSync. If this is not called, SmoothSync will sync the actor. \n/// Must have one SmoothSync for each Transform that you want to sync. \n" },
+#endif
 		{ "ModuleRelativePath", "Public/SmoothSync.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "Used to set the transform that you want to sync on this SmoothSync. If this is not called, SmoothSync will sync the actor.\nMust have one SmoothSync for each Transform that you want to sync." },
+#endif
 	};
 #endif
 	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_USmoothSync_setSceneComponentToSync_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USmoothSync, nullptr, "setSceneComponentToSync", nullptr, nullptr, Z_Construct_UFunction_USmoothSync_setSceneComponentToSync_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_USmoothSync_setSceneComponentToSync_Statics::PropPointers), sizeof(Z_Construct_UFunction_USmoothSync_setSceneComponentToSync_Statics::SmoothSync_eventsetSceneComponentToSync_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_USmoothSync_setSceneComponentToSync_Statics::Function_MetaDataParams), Z_Construct_UFunction_USmoothSync_setSceneComponentToSync_Statics::Function_MetaDataParams) };
@@ -795,9 +823,13 @@ void EmptyLinkFunctionForGeneratedCodeSmoothSync() {}
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_USmoothSync_teleport_Statics::Function_MetaDataParams[] = {
 		{ "Category", "SmoothSync" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/// Teleport the player so that position will not be interpolated on non-owners. Use teleport() on the owner and \n/// the Actor will jump to the current owner's position on non-owners. \n" },
+#endif
 		{ "ModuleRelativePath", "Public/SmoothSync.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "Teleport the player so that position will not be interpolated on non-owners. Use teleport() on the owner and\nthe Actor will jump to the current owner's position on non-owners." },
+#endif
 	};
 #endif
 	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_USmoothSync_teleport_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_USmoothSync, nullptr, "teleport", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_USmoothSync_teleport_Statics::Function_MetaDataParams), Z_Construct_UFunction_USmoothSync_teleport_Statics::Function_MetaDataParams) };
@@ -1005,17 +1037,17 @@ void EmptyLinkFunctionForGeneratedCodeSmoothSync() {}
 	};
 	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_USmoothSync_Statics::DependentSingletons) < 16);
 	const FClassFunctionLinkInfo Z_Construct_UClass_USmoothSync_Statics::FuncInfo[] = {
-		{ &Z_Construct_UFunction_USmoothSync_clearBuffer, "clearBuffer" }, // 1893211275
+		{ &Z_Construct_UFunction_USmoothSync_clearBuffer, "clearBuffer" }, // 2887772187
 		{ &Z_Construct_UFunction_USmoothSync_ClientSendsTransformToServer, "ClientSendsTransformToServer" }, // 437833352
-		{ &Z_Construct_UFunction_USmoothSync_enableSmoothSync, "enableSmoothSync" }, // 1108092160
-		{ &Z_Construct_UFunction_USmoothSync_forceStateSendNextFrame, "forceStateSendNextFrame" }, // 2694815441
+		{ &Z_Construct_UFunction_USmoothSync_enableSmoothSync, "enableSmoothSync" }, // 984294773
+		{ &Z_Construct_UFunction_USmoothSync_forceStateSendNextFrame, "forceStateSendNextFrame" }, // 1877476768
 		{ &Z_Construct_UFunction_USmoothSync_ServerSendsTransformToEveryone, "ServerSendsTransformToEveryone" }, // 1271991452
-		{ &Z_Construct_UFunction_USmoothSync_setSceneComponentToSync, "setSceneComponentToSync" }, // 2746416089
+		{ &Z_Construct_UFunction_USmoothSync_setSceneComponentToSync, "setSceneComponentToSync" }, // 3854094517
 		{ &Z_Construct_UFunction_USmoothSync_SmoothSyncEnableClientToServer, "SmoothSyncEnableClientToServer" }, // 3454013713
 		{ &Z_Construct_UFunction_USmoothSync_SmoothSyncEnableServerToClients, "SmoothSyncEnableServerToClients" }, // 2841385439
 		{ &Z_Construct_UFunction_USmoothSync_SmoothSyncTeleportClientToServer, "SmoothSyncTeleportClientToServer" }, // 1969305580
 		{ &Z_Construct_UFunction_USmoothSync_SmoothSyncTeleportServerToClients, "SmoothSyncTeleportServerToClients" }, // 1385593046
-		{ &Z_Construct_UFunction_USmoothSync_teleport, "teleport" }, // 2051619377
+		{ &Z_Construct_UFunction_USmoothSync_teleport, "teleport" }, // 4236160372
 	};
 	static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_USmoothSync_Statics::FuncInfo) < 2048);
 #if WITH_METADATA
@@ -1029,9 +1061,13 @@ void EmptyLinkFunctionForGeneratedCodeSmoothSync() {}
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USmoothSync_Statics::NewProp_interpolationBackTime_MetaData[] = {
 		{ "Category", "Important" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/// <summary>How much time in the past non-owned objects should be.</summary>\n/// <remarks>\n/// interpolationBackTime is the amount of time in the past the object will be on non-owners.\n/// This is so if you hit a latency spike, you still have a buffer of the interpolation back time of known States \n/// before you start extrapolating into the unknown.\n///\n/// Increasing will make interpolation more likely to be used,\n/// which means the synced position will be more likely to be an actual position that the owner was at.\n///\n/// Decreasing will make extrapolation more likely to be used,\n/// this will increase reponsiveness, but with any latency spikes that last longer than the interpolationBackTime, \n/// the position will be less correct to where the player was actually at.\n///\n/// Keep this higher than 1/SendRate to attempt to always interpolate. Keep in mind your send rate may fluctuate\n/// depending on your Unreal NetpdateFrequency settings and NetPriority. \n///  \n/// Measured in seconds.\n/// </remarks>\n" },
+#endif
 		{ "ModuleRelativePath", "Public/SmoothSync.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "<summary>How much time in the past non-owned objects should be.</summary>\n<remarks>\ninterpolationBackTime is the amount of time in the past the object will be on non-owners.\nThis is so if you hit a latency spike, you still have a buffer of the interpolation back time of known States\nbefore you start extrapolating into the unknown.\n\nIncreasing will make interpolation more likely to be used,\nwhich means the synced position will be more likely to be an actual position that the owner was at.\n\nDecreasing will make extrapolation more likely to be used,\nthis will increase reponsiveness, but with any latency spikes that last longer than the interpolationBackTime,\nthe position will be less correct to where the player was actually at.\n\nKeep this higher than 1/SendRate to attempt to always interpolate. Keep in mind your send rate may fluctuate\ndepending on your Unreal NetpdateFrequency settings and NetPriority.\n\nMeasured in seconds.\n</remarks>" },
+#endif
 	};
 #endif
 	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_USmoothSync_Statics::NewProp_interpolationBackTime = { "interpolationBackTime", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USmoothSync, interpolationBackTime), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_USmoothSync_Statics::NewProp_interpolationBackTime_MetaData), Z_Construct_UClass_USmoothSync_Statics::NewProp_interpolationBackTime_MetaData) };
@@ -1039,18 +1075,26 @@ void EmptyLinkFunctionForGeneratedCodeSmoothSync() {}
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USmoothSync_Statics::NewProp_extrapolationMode_MetaData[] = {
 		{ "Category", "Extrapolation" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/// <summary>The amount of extrapolation used.</summary>\n/// <remarks>\n/// Extrapolation is going into the unknown based on information we had in the past. Generally, you'll\n/// want extrapolation to help fill in missing information during lag spikes. \n/// None - Use no extrapolation. \n/// Limited - Use the settings for extrapolation limits. \n/// Unlimited - Allow extrapolation forever. \n/// </remarks>\n" },
+#endif
 		{ "ModuleRelativePath", "Public/SmoothSync.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "<summary>The amount of extrapolation used.</summary>\n<remarks>\nExtrapolation is going into the unknown based on information we had in the past. Generally, you'll\nwant extrapolation to help fill in missing information during lag spikes.\nNone - Use no extrapolation.\nLimited - Use the settings for extrapolation limits.\nUnlimited - Allow extrapolation forever.\n</remarks>" },
+#endif
 	};
 #endif
-	const UECodeGen_Private::FEnumPropertyParams Z_Construct_UClass_USmoothSync_Statics::NewProp_extrapolationMode = { "extrapolationMode", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USmoothSync, extrapolationMode), Z_Construct_UEnum_SmoothSyncPlugin_ExtrapolationMode, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_USmoothSync_Statics::NewProp_extrapolationMode_MetaData), Z_Construct_UClass_USmoothSync_Statics::NewProp_extrapolationMode_MetaData) }; // 640070318
+	const UECodeGen_Private::FEnumPropertyParams Z_Construct_UClass_USmoothSync_Statics::NewProp_extrapolationMode = { "extrapolationMode", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USmoothSync, extrapolationMode), Z_Construct_UEnum_SmoothSyncPlugin_ExtrapolationMode, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_USmoothSync_Statics::NewProp_extrapolationMode_MetaData), Z_Construct_UClass_USmoothSync_Statics::NewProp_extrapolationMode_MetaData) }; // 1410925073
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USmoothSync_Statics::NewProp_useExtrapolationTimeLimit_MetaData[] = {
 		{ "Category", "Extrapolation" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/// <summary>Whether or not to have an extrapolation time limit.</summary>\n" },
+#endif
 		{ "ModuleRelativePath", "Public/SmoothSync.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "<summary>Whether or not to have an extrapolation time limit.</summary>" },
+#endif
 	};
 #endif
 	void Z_Construct_UClass_USmoothSync_Statics::NewProp_useExtrapolationTimeLimit_SetBit(void* Obj)
@@ -1061,18 +1105,26 @@ void EmptyLinkFunctionForGeneratedCodeSmoothSync() {}
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USmoothSync_Statics::NewProp_extrapolationTimeLimit_MetaData[] = {
 		{ "Category", "Extrapolation" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/// <summary>How much time into the future a non-owned object is allowed to extrapolate.</summary>\n/// <remarks>\n/// Extrapolating too far tends to cause erratic and non-realistic movement, but a little bit of extrapolation is \n/// better than none because it keeps things working semi-right during latency spikes.\n///\n/// Measured in seconds.\n/// </remarks>\n" },
+#endif
 		{ "ModuleRelativePath", "Public/SmoothSync.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "<summary>How much time into the future a non-owned object is allowed to extrapolate.</summary>\n<remarks>\nExtrapolating too far tends to cause erratic and non-realistic movement, but a little bit of extrapolation is\nbetter than none because it keeps things working semi-right during latency spikes.\n\nMeasured in seconds.\n</remarks>" },
+#endif
 	};
 #endif
 	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_USmoothSync_Statics::NewProp_extrapolationTimeLimit = { "extrapolationTimeLimit", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USmoothSync, extrapolationTimeLimit), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_USmoothSync_Statics::NewProp_extrapolationTimeLimit_MetaData), Z_Construct_UClass_USmoothSync_Statics::NewProp_extrapolationTimeLimit_MetaData) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USmoothSync_Statics::NewProp_useExtrapolationDistanceLimit_MetaData[] = {
 		{ "Category", "Extrapolation" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/// <summary>Whether or not to have an extrapolation distance limit.</summary>\n" },
+#endif
 		{ "ModuleRelativePath", "Public/SmoothSync.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "<summary>Whether or not to have an extrapolation distance limit.</summary>" },
+#endif
 	};
 #endif
 	void Z_Construct_UClass_USmoothSync_Statics::NewProp_useExtrapolationDistanceLimit_SetBit(void* Obj)
@@ -1083,99 +1135,143 @@ void EmptyLinkFunctionForGeneratedCodeSmoothSync() {}
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USmoothSync_Statics::NewProp_extrapolationDistanceLimit_MetaData[] = {
 		{ "Category", "Extrapolation" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/// <summary>How much distance into the future a non-owned object is allowed to extrapolate.</summary>\n/// <remarks>\n/// Extrapolating too far tends to cause erratic and non-realistic movement, but a little bit of extrapolation is \n/// better than none because it keeps things working semi-right during latency spikes.\n/// \n/// Measured in distance units.\n/// </remarks>\n" },
+#endif
 		{ "ModuleRelativePath", "Public/SmoothSync.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "<summary>How much distance into the future a non-owned object is allowed to extrapolate.</summary>\n<remarks>\nExtrapolating too far tends to cause erratic and non-realistic movement, but a little bit of extrapolation is\nbetter than none because it keeps things working semi-right during latency spikes.\n\nMeasured in distance units.\n</remarks>" },
+#endif
 	};
 #endif
 	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_USmoothSync_Statics::NewProp_extrapolationDistanceLimit = { "extrapolationDistanceLimit", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USmoothSync, extrapolationDistanceLimit), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_USmoothSync_Statics::NewProp_extrapolationDistanceLimit_MetaData), Z_Construct_UClass_USmoothSync_Statics::NewProp_extrapolationDistanceLimit_MetaData) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USmoothSync_Statics::NewProp_sendPositionThreshold_MetaData[] = {
 		{ "Category", "Thresholds" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/// <summary>The position won't send unless one of its Vector values has changed this much.</summary>\n/// <remarks>\n/// Set to 0 to send the position of owned objects if it has changed since the last sent position.\n/// Will not send quicker than SendRate.\n///\n/// If greater than 0, a synced object's position is only sent if its vector position value is off from the last\n/// sent position by more than the threshold. \n///\n/// Measured in distance units.\n/// </remarks>\n" },
+#endif
 		{ "ModuleRelativePath", "Public/SmoothSync.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "<summary>The position won't send unless one of its Vector values has changed this much.</summary>\n<remarks>\nSet to 0 to send the position of owned objects if it has changed since the last sent position.\nWill not send quicker than SendRate.\n\nIf greater than 0, a synced object's position is only sent if its vector position value is off from the last\nsent position by more than the threshold.\n\nMeasured in distance units.\n</remarks>" },
+#endif
 	};
 #endif
 	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_USmoothSync_Statics::NewProp_sendPositionThreshold = { "sendPositionThreshold", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USmoothSync, sendPositionThreshold), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_USmoothSync_Statics::NewProp_sendPositionThreshold_MetaData), Z_Construct_UClass_USmoothSync_Statics::NewProp_sendPositionThreshold_MetaData) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USmoothSync_Statics::NewProp_sendRotationThreshold_MetaData[] = {
 		{ "Category", "Thresholds" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/// <summary>The rotation won't send unless one of its Vector values has changed this much.</summary>\n/// <remarks>\n/// Set to 0 to send the rotation of owned objects if it has changed since the last sent rotation.\n/// Will not send quicker than SendRate.\n///\n/// If greater than 0, a synced object's rotation is only sent if its euler value is off from the last sent rotation\n/// by more than the threshold.\n///\n/// Measured in degrees.\n/// </remarks>\n" },
+#endif
 		{ "ModuleRelativePath", "Public/SmoothSync.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "<summary>The rotation won't send unless one of its Vector values has changed this much.</summary>\n<remarks>\nSet to 0 to send the rotation of owned objects if it has changed since the last sent rotation.\nWill not send quicker than SendRate.\n\nIf greater than 0, a synced object's rotation is only sent if its euler value is off from the last sent rotation\nby more than the threshold.\n\nMeasured in degrees.\n</remarks>" },
+#endif
 	};
 #endif
 	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_USmoothSync_Statics::NewProp_sendRotationThreshold = { "sendRotationThreshold", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USmoothSync, sendRotationThreshold), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_USmoothSync_Statics::NewProp_sendRotationThreshold_MetaData), Z_Construct_UClass_USmoothSync_Statics::NewProp_sendRotationThreshold_MetaData) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USmoothSync_Statics::NewProp_sendScaleThreshold_MetaData[] = {
 		{ "Category", "Thresholds" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/// <summary>The scale won't send unless one of its Vector values it changed this much.</summary>\n/// <remarks>\n/// Set to 0 to send the scale of owned objects if it has changed since the last sent scale.\n/// Will not send quicker than SendRate.\n///\n/// If greater than 0, a synced object's scale is only sent if its scale is off from the last sent scale by more \n/// than the threshold. \n///\n/// Measured in distance units.\n/// </remarks>\n" },
+#endif
 		{ "ModuleRelativePath", "Public/SmoothSync.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "<summary>The scale won't send unless one of its Vector values it changed this much.</summary>\n<remarks>\nSet to 0 to send the scale of owned objects if it has changed since the last sent scale.\nWill not send quicker than SendRate.\n\nIf greater than 0, a synced object's scale is only sent if its scale is off from the last sent scale by more\nthan the threshold.\n\nMeasured in distance units.\n</remarks>" },
+#endif
 	};
 #endif
 	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_USmoothSync_Statics::NewProp_sendScaleThreshold = { "sendScaleThreshold", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USmoothSync, sendScaleThreshold), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_USmoothSync_Statics::NewProp_sendScaleThreshold_MetaData), Z_Construct_UClass_USmoothSync_Statics::NewProp_sendScaleThreshold_MetaData) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USmoothSync_Statics::NewProp_sendVelocityThreshold_MetaData[] = {
 		{ "Category", "Thresholds" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/// <summary>The velocity won't send unless one of its Vector values changed this much.</summary>\n/// <remarks>\n/// Set to 0 to send the velocity of owned objects if it has changed since the last sent velocity.\n/// Will not send quicker than SendRate.\n///\n/// If greater than 0, a synced object's velocity is only sent if its velocity is off from the last sent velocity\n/// by more than the threshold. \n///\n/// Measured in velocity units.\n/// </remarks>\n" },
+#endif
 		{ "ModuleRelativePath", "Public/SmoothSync.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "<summary>The velocity won't send unless one of its Vector values changed this much.</summary>\n<remarks>\nSet to 0 to send the velocity of owned objects if it has changed since the last sent velocity.\nWill not send quicker than SendRate.\n\nIf greater than 0, a synced object's velocity is only sent if its velocity is off from the last sent velocity\nby more than the threshold.\n\nMeasured in velocity units.\n</remarks>" },
+#endif
 	};
 #endif
 	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_USmoothSync_Statics::NewProp_sendVelocityThreshold = { "sendVelocityThreshold", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USmoothSync, sendVelocityThreshold), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_USmoothSync_Statics::NewProp_sendVelocityThreshold_MetaData), Z_Construct_UClass_USmoothSync_Statics::NewProp_sendVelocityThreshold_MetaData) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USmoothSync_Statics::NewProp_sendAngularVelocityThreshold_MetaData[] = {
 		{ "Category", "Thresholds" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/// <summary>The angular velocity won't send unless one of its Vector values changed this much.</summary>\n/// <remarks>\n/// Set to 0 to send the angular velocity of owned objects if it has changed since the last sent angular velocity.\n/// Will not send quicker than SendRate.\n///\n/// If greater than 0, a synced object's angular velocity is only sent if its angular velocity is off from the last sent angular velocity\n/// by more than the threshold. \n///\n/// Measured in radians per second.\n/// </remarks>\n" },
+#endif
 		{ "ModuleRelativePath", "Public/SmoothSync.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "<summary>The angular velocity won't send unless one of its Vector values changed this much.</summary>\n<remarks>\nSet to 0 to send the angular velocity of owned objects if it has changed since the last sent angular velocity.\nWill not send quicker than SendRate.\n\nIf greater than 0, a synced object's angular velocity is only sent if its angular velocity is off from the last sent angular velocity\nby more than the threshold.\n\nMeasured in radians per second.\n</remarks>" },
+#endif
 	};
 #endif
 	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_USmoothSync_Statics::NewProp_sendAngularVelocityThreshold = { "sendAngularVelocityThreshold", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USmoothSync, sendAngularVelocityThreshold), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_USmoothSync_Statics::NewProp_sendAngularVelocityThreshold_MetaData), Z_Construct_UClass_USmoothSync_Statics::NewProp_sendAngularVelocityThreshold_MetaData) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USmoothSync_Statics::NewProp_receivedPositionThreshold_MetaData[] = {
 		{ "Category", "Thresholds" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/// <summary>The position won't be set on non-owned objects unless it changed this much.</summary>\n/// <remarks>\n/// Set to 0 to always update the position of non-owned objects if it has changed, and to use one less distance check per frame if you also have positionSnapThreshold at 0.\n/// If greater than 0, a synced object's position is only updated if it is off from the target position by more than the threshold.\n///\n/// Usually keep this at 0 or really low, at higher numbers it's useful if you are extrapolating into the future and want to stop instantly \n/// and not have it backtrack to where it currently is on the owner.\n///\n/// Measured in distance units.\n/// </remarks>\n" },
+#endif
 		{ "ModuleRelativePath", "Public/SmoothSync.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "<summary>The position won't be set on non-owned objects unless it changed this much.</summary>\n<remarks>\nSet to 0 to always update the position of non-owned objects if it has changed, and to use one less distance check per frame if you also have positionSnapThreshold at 0.\nIf greater than 0, a synced object's position is only updated if it is off from the target position by more than the threshold.\n\nUsually keep this at 0 or really low, at higher numbers it's useful if you are extrapolating into the future and want to stop instantly\nand not have it backtrack to where it currently is on the owner.\n\nMeasured in distance units.\n</remarks>" },
+#endif
 	};
 #endif
 	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_USmoothSync_Statics::NewProp_receivedPositionThreshold = { "receivedPositionThreshold", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USmoothSync, receivedPositionThreshold), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_USmoothSync_Statics::NewProp_receivedPositionThreshold_MetaData), Z_Construct_UClass_USmoothSync_Statics::NewProp_receivedPositionThreshold_MetaData) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USmoothSync_Statics::NewProp_receivedRotationThreshold_MetaData[] = {
 		{ "Category", "Thresholds" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/// <summary>The rotation won't be set on non-owned objects unless it changed this much.</summary>\n/// <remarks>\n/// Set to 0 to always update the rotation of non-owned objects if it has changed, and to use one less FQuat4f.AngularDistance() check per frame if you also have rotationSnapThreshold at 0.\n/// If greater than 0, a synced object's rotation is only updated if it is off from the target rotation by more than the threshold.\n///\n/// Usually keep this at 0 or really low, at higher numbers it's useful if you are extrapolating into the future and want to stop instantly and \n/// not have it backtrack to where it currently is on the owner.\n///\n/// Measured in degrees.\n/// </remarks>\n" },
+#endif
 		{ "ModuleRelativePath", "Public/SmoothSync.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "<summary>The rotation won't be set on non-owned objects unless it changed this much.</summary>\n<remarks>\nSet to 0 to always update the rotation of non-owned objects if it has changed, and to use one less FQuat4f.AngularDistance() check per frame if you also have rotationSnapThreshold at 0.\nIf greater than 0, a synced object's rotation is only updated if it is off from the target rotation by more than the threshold.\n\nUsually keep this at 0 or really low, at higher numbers it's useful if you are extrapolating into the future and want to stop instantly and\nnot have it backtrack to where it currently is on the owner.\n\nMeasured in degrees.\n</remarks>" },
+#endif
 	};
 #endif
 	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_USmoothSync_Statics::NewProp_receivedRotationThreshold = { "receivedRotationThreshold", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USmoothSync, receivedRotationThreshold), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_USmoothSync_Statics::NewProp_receivedRotationThreshold_MetaData), Z_Construct_UClass_USmoothSync_Statics::NewProp_receivedRotationThreshold_MetaData) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USmoothSync_Statics::NewProp_positionSnapThreshold_MetaData[] = {
 		{ "Category", "Thresholds" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/// <summary>If a synced object's position is more than positionSnapThreshold units from the target position, it will jump to the target position immediately instead of lerping.</summary>\n/// <remarks>\n/// Set to zero to not use at all and use one less distance check per frame if you also have receivedPositionThreshold at 0.\n///\n/// Measured in distance units.\n/// </summary>\n" },
+#endif
 		{ "ModuleRelativePath", "Public/SmoothSync.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "<summary>If a synced object's position is more than positionSnapThreshold units from the target position, it will jump to the target position immediately instead of lerping.</summary>\n<remarks>\nSet to zero to not use at all and use one less distance check per frame if you also have receivedPositionThreshold at 0.\n\nMeasured in distance units.\n</summary>" },
+#endif
 	};
 #endif
 	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_USmoothSync_Statics::NewProp_positionSnapThreshold = { "positionSnapThreshold", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USmoothSync, positionSnapThreshold), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_USmoothSync_Statics::NewProp_positionSnapThreshold_MetaData), Z_Construct_UClass_USmoothSync_Statics::NewProp_positionSnapThreshold_MetaData) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USmoothSync_Statics::NewProp_rotationSnapThreshold_MetaData[] = {
 		{ "Category", "Thresholds" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/// <summary>If a synced object's rotation is more than rotationSnapThreshold from the target rotation, it will jump to the target rotation immediately instead of lerping.</summary>\n/// <remarks>\n/// Set to zero to not use at all and use one less FQuat4f.AnglularDistance() check per frame if you also have receivedRotationThreshold at 0.\n///\n/// Measured in degrees.\n/// </remarks>\n" },
+#endif
 		{ "ModuleRelativePath", "Public/SmoothSync.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "<summary>If a synced object's rotation is more than rotationSnapThreshold from the target rotation, it will jump to the target rotation immediately instead of lerping.</summary>\n<remarks>\nSet to zero to not use at all and use one less FQuat4f.AnglularDistance() check per frame if you also have receivedRotationThreshold at 0.\n\nMeasured in degrees.\n</remarks>" },
+#endif
 	};
 #endif
 	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_USmoothSync_Statics::NewProp_rotationSnapThreshold = { "rotationSnapThreshold", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USmoothSync, rotationSnapThreshold), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_USmoothSync_Statics::NewProp_rotationSnapThreshold_MetaData), Z_Construct_UClass_USmoothSync_Statics::NewProp_rotationSnapThreshold_MetaData) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USmoothSync_Statics::NewProp_scaleSnapThreshold_MetaData[] = {
 		{ "Category", "Thresholds" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/// <summary>If a synced object's scale is more than scaleSnapThreshold units from the target scale, it will jump to the target scale immediately instead of lerping.</summary>\n/// <remarks>\n/// Set to zero to not use at all and use one less distance check per frame.\n///\n/// Measured in distance units.\n/// </remarks>\n" },
+#endif
 		{ "ModuleRelativePath", "Public/SmoothSync.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "<summary>If a synced object's scale is more than scaleSnapThreshold units from the target scale, it will jump to the target scale immediately instead of lerping.</summary>\n<remarks>\nSet to zero to not use at all and use one less distance check per frame.\n\nMeasured in distance units.\n</remarks>" },
+#endif
 	};
 #endif
 	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_USmoothSync_Statics::NewProp_scaleSnapThreshold = { "scaleSnapThreshold", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USmoothSync, scaleSnapThreshold), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_USmoothSync_Statics::NewProp_scaleSnapThreshold_MetaData), Z_Construct_UClass_USmoothSync_Statics::NewProp_scaleSnapThreshold_MetaData) };
@@ -1184,9 +1280,13 @@ void EmptyLinkFunctionForGeneratedCodeSmoothSync() {}
 		{ "Category", "Important" },
 		{ "ClampMax", "5.0" },
 		{ "ClampMin", "0.0" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/// <summary>How much to smooth owner time.</summary>\n/// <remarks>\n/// This is how long, in seconds, it takes to adjust the estimated owner time offset to match the latest value from the owner.\n/// Larger values mean smoother movement, but more delay reacting to changes in owner time (usually caused by changing latency).\n/// Smaller values will keep things more accurate but may result in jittering / stuttering due to natural variations in latency.\n/// Set to zero to always use the latest owner time offset with no smoothing at all. \n/// A value of 0 is not recommended and will definitely result in at least a small amount of stuttering.\n/// Note that this option is not used when latency compensation is enabled. Use the options in Time Sync instead.\n/// </remarks>\n" },
+#endif
 		{ "ModuleRelativePath", "Public/SmoothSync.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "<summary>How much to smooth owner time.</summary>\n<remarks>\nThis is how long, in seconds, it takes to adjust the estimated owner time offset to match the latest value from the owner.\nLarger values mean smoother movement, but more delay reacting to changes in owner time (usually caused by changing latency).\nSmaller values will keep things more accurate but may result in jittering / stuttering due to natural variations in latency.\nSet to zero to always use the latest owner time offset with no smoothing at all.\nA value of 0 is not recommended and will definitely result in at least a small amount of stuttering.\nNote that this option is not used when latency compensation is enabled. Use the options in Time Sync instead.\n</remarks>" },
+#endif
 		{ "UIMax", "5.0" },
 		{ "UIMin", "0.0" },
 	};
@@ -1197,9 +1297,13 @@ void EmptyLinkFunctionForGeneratedCodeSmoothSync() {}
 		{ "Category", "Important" },
 		{ "ClampMax", "1.0" },
 		{ "ClampMin", "0.0" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/// <summary>How fast to lerp the position to the target SmoothState. 0 is never, 1 is instant.</summary>\n/// <remarks>\n/// Lower values mean smoother but maybe sluggish movement.\n/// Higher values mean more responsive but maybe jerky or stuttery movement.\n/// </remarks>\n" },
+#endif
 		{ "ModuleRelativePath", "Public/SmoothSync.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "<summary>How fast to lerp the position to the target SmoothState. 0 is never, 1 is instant.</summary>\n<remarks>\nLower values mean smoother but maybe sluggish movement.\nHigher values mean more responsive but maybe jerky or stuttery movement.\n</remarks>" },
+#endif
 		{ "UIMax", "1.0" },
 		{ "UIMin", "0.0" },
 	};
@@ -1210,9 +1314,13 @@ void EmptyLinkFunctionForGeneratedCodeSmoothSync() {}
 		{ "Category", "Important" },
 		{ "ClampMax", "1.0" },
 		{ "ClampMin", "0.0" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/// <summary>How fast to lerp the rotation to the target State. 0 is never, 1 is instant..</summary>\n/// <remarks>\n/// Lower values mean smoother but maybe sluggish movement.\n/// Higher values mean more responsive but maybe jerky or stuttery movement.\n/// </remarks>\n" },
+#endif
 		{ "ModuleRelativePath", "Public/SmoothSync.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "<summary>How fast to lerp the rotation to the target State. 0 is never, 1 is instant..</summary>\n<remarks>\nLower values mean smoother but maybe sluggish movement.\nHigher values mean more responsive but maybe jerky or stuttery movement.\n</remarks>" },
+#endif
 		{ "UIMax", "1.0" },
 		{ "UIMin", "0.0" },
 	};
@@ -1223,9 +1331,13 @@ void EmptyLinkFunctionForGeneratedCodeSmoothSync() {}
 		{ "Category", "Important" },
 		{ "ClampMax", "1.0" },
 		{ "ClampMin", "0.0" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/// <summary>How fast to lerp the scale to the target State. 0 is never, 1 is instant.</summary>\n/// <remarks>\n/// Lower values mean smoother but maybe sluggish movement.\n/// Higher values mean more responsive but maybe jerky or stuttery movement.\n/// </remarks>\n" },
+#endif
 		{ "ModuleRelativePath", "Public/SmoothSync.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "<summary>How fast to lerp the scale to the target State. 0 is never, 1 is instant.</summary>\n<remarks>\nLower values mean smoother but maybe sluggish movement.\nHigher values mean more responsive but maybe jerky or stuttery movement.\n</remarks>" },
+#endif
 		{ "UIMax", "1.0" },
 		{ "UIMin", "0.0" },
 	};
@@ -1235,58 +1347,82 @@ void EmptyLinkFunctionForGeneratedCodeSmoothSync() {}
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USmoothSync_Statics::NewProp_syncPosition_MetaData[] = {
 		{ "Category", "SyncModes" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/// <summary>Position sync mode</summary>\n/// <remarks>\n/// Fine tune how position is synced. \n/// For objects that don't move, use SyncMode.NONE\n/// </remarks>\n" },
+#endif
 		{ "ModuleRelativePath", "Public/SmoothSync.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "<summary>Position sync mode</summary>\n<remarks>\nFine tune how position is synced.\nFor objects that don't move, use SyncMode.NONE\n</remarks>" },
+#endif
 	};
 #endif
-	const UECodeGen_Private::FEnumPropertyParams Z_Construct_UClass_USmoothSync_Statics::NewProp_syncPosition = { "syncPosition", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USmoothSync, syncPosition), Z_Construct_UEnum_SmoothSyncPlugin_SyncMode, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_USmoothSync_Statics::NewProp_syncPosition_MetaData), Z_Construct_UClass_USmoothSync_Statics::NewProp_syncPosition_MetaData) }; // 2850950279
+	const UECodeGen_Private::FEnumPropertyParams Z_Construct_UClass_USmoothSync_Statics::NewProp_syncPosition = { "syncPosition", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USmoothSync, syncPosition), Z_Construct_UEnum_SmoothSyncPlugin_SyncMode, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_USmoothSync_Statics::NewProp_syncPosition_MetaData), Z_Construct_UClass_USmoothSync_Statics::NewProp_syncPosition_MetaData) }; // 699156310
 	const UECodeGen_Private::FBytePropertyParams Z_Construct_UClass_USmoothSync_Statics::NewProp_syncRotation_Underlying = { "UnderlyingType", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, nullptr, METADATA_PARAMS(0, nullptr) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USmoothSync_Statics::NewProp_syncRotation_MetaData[] = {
 		{ "Category", "SyncModes" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/// <summary>Rotation sync mode</summary>\n/// <remarks>\n/// Fine tune how rotation is synced. \n/// For objects that don't rotate, use SyncMode.NONE\n/// </remarks>\n" },
+#endif
 		{ "ModuleRelativePath", "Public/SmoothSync.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "<summary>Rotation sync mode</summary>\n<remarks>\nFine tune how rotation is synced.\nFor objects that don't rotate, use SyncMode.NONE\n</remarks>" },
+#endif
 	};
 #endif
-	const UECodeGen_Private::FEnumPropertyParams Z_Construct_UClass_USmoothSync_Statics::NewProp_syncRotation = { "syncRotation", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USmoothSync, syncRotation), Z_Construct_UEnum_SmoothSyncPlugin_SyncMode, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_USmoothSync_Statics::NewProp_syncRotation_MetaData), Z_Construct_UClass_USmoothSync_Statics::NewProp_syncRotation_MetaData) }; // 2850950279
+	const UECodeGen_Private::FEnumPropertyParams Z_Construct_UClass_USmoothSync_Statics::NewProp_syncRotation = { "syncRotation", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USmoothSync, syncRotation), Z_Construct_UEnum_SmoothSyncPlugin_SyncMode, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_USmoothSync_Statics::NewProp_syncRotation_MetaData), Z_Construct_UClass_USmoothSync_Statics::NewProp_syncRotation_MetaData) }; // 699156310
 	const UECodeGen_Private::FBytePropertyParams Z_Construct_UClass_USmoothSync_Statics::NewProp_syncScale_Underlying = { "UnderlyingType", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, nullptr, METADATA_PARAMS(0, nullptr) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USmoothSync_Statics::NewProp_syncScale_MetaData[] = {
 		{ "Category", "SyncModes" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/// <summary>Scale sync mode</summary>\n/// <remarks>\n/// Fine tune how scale is synced. \n/// For objects that don't scale, use SyncMode.NONE\n/// </remarks>\n" },
+#endif
 		{ "ModuleRelativePath", "Public/SmoothSync.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "<summary>Scale sync mode</summary>\n<remarks>\nFine tune how scale is synced.\nFor objects that don't scale, use SyncMode.NONE\n</remarks>" },
+#endif
 	};
 #endif
-	const UECodeGen_Private::FEnumPropertyParams Z_Construct_UClass_USmoothSync_Statics::NewProp_syncScale = { "syncScale", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USmoothSync, syncScale), Z_Construct_UEnum_SmoothSyncPlugin_SyncMode, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_USmoothSync_Statics::NewProp_syncScale_MetaData), Z_Construct_UClass_USmoothSync_Statics::NewProp_syncScale_MetaData) }; // 2850950279
+	const UECodeGen_Private::FEnumPropertyParams Z_Construct_UClass_USmoothSync_Statics::NewProp_syncScale = { "syncScale", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USmoothSync, syncScale), Z_Construct_UEnum_SmoothSyncPlugin_SyncMode, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_USmoothSync_Statics::NewProp_syncScale_MetaData), Z_Construct_UClass_USmoothSync_Statics::NewProp_syncScale_MetaData) }; // 699156310
 	const UECodeGen_Private::FBytePropertyParams Z_Construct_UClass_USmoothSync_Statics::NewProp_syncVelocity_Underlying = { "UnderlyingType", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, nullptr, METADATA_PARAMS(0, nullptr) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USmoothSync_Statics::NewProp_syncVelocity_MetaData[] = {
 		{ "Category", "SyncModes" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/// <summary>Velocity sync mode</summary>\n/// <remarks>\n/// Fine tune how velocity is synced.\n/// Syncs Primitive (if simulating physics), Movement, or CharacterMovement Components as well as allows for more accurate extrapolation.\n/// </remarks>\n" },
+#endif
 		{ "ModuleRelativePath", "Public/SmoothSync.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "<summary>Velocity sync mode</summary>\n<remarks>\nFine tune how velocity is synced.\nSyncs Primitive (if simulating physics), Movement, or CharacterMovement Components as well as allows for more accurate extrapolation.\n</remarks>" },
+#endif
 	};
 #endif
-	const UECodeGen_Private::FEnumPropertyParams Z_Construct_UClass_USmoothSync_Statics::NewProp_syncVelocity = { "syncVelocity", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USmoothSync, syncVelocity), Z_Construct_UEnum_SmoothSyncPlugin_SyncMode, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_USmoothSync_Statics::NewProp_syncVelocity_MetaData), Z_Construct_UClass_USmoothSync_Statics::NewProp_syncVelocity_MetaData) }; // 2850950279
+	const UECodeGen_Private::FEnumPropertyParams Z_Construct_UClass_USmoothSync_Statics::NewProp_syncVelocity = { "syncVelocity", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USmoothSync, syncVelocity), Z_Construct_UEnum_SmoothSyncPlugin_SyncMode, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_USmoothSync_Statics::NewProp_syncVelocity_MetaData), Z_Construct_UClass_USmoothSync_Statics::NewProp_syncVelocity_MetaData) }; // 699156310
 	const UECodeGen_Private::FBytePropertyParams Z_Construct_UClass_USmoothSync_Statics::NewProp_syncAngularVelocity_Underlying = { "UnderlyingType", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, nullptr, METADATA_PARAMS(0, nullptr) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USmoothSync_Statics::NewProp_syncAngularVelocity_MetaData[] = {
 		{ "Category", "SyncModes" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/// <summary>Angular velocity sync mode</summary>\n/// <remarks>\n/// Fine tune how angular velocity is synced. \n/// </remarks>\n" },
+#endif
 		{ "ModuleRelativePath", "Public/SmoothSync.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "<summary>Angular velocity sync mode</summary>\n<remarks>\nFine tune how angular velocity is synced.\n</remarks>" },
+#endif
 	};
 #endif
-	const UECodeGen_Private::FEnumPropertyParams Z_Construct_UClass_USmoothSync_Statics::NewProp_syncAngularVelocity = { "syncAngularVelocity", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USmoothSync, syncAngularVelocity), Z_Construct_UEnum_SmoothSyncPlugin_SyncMode, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_USmoothSync_Statics::NewProp_syncAngularVelocity_MetaData), Z_Construct_UClass_USmoothSync_Statics::NewProp_syncAngularVelocity_MetaData) }; // 2850950279
+	const UECodeGen_Private::FEnumPropertyParams Z_Construct_UClass_USmoothSync_Statics::NewProp_syncAngularVelocity = { "syncAngularVelocity", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USmoothSync, syncAngularVelocity), Z_Construct_UEnum_SmoothSyncPlugin_SyncMode, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_USmoothSync_Statics::NewProp_syncAngularVelocity_MetaData), Z_Construct_UClass_USmoothSync_Statics::NewProp_syncAngularVelocity_MetaData) }; // 699156310
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USmoothSync_Statics::NewProp_syncMovementMode_MetaData[] = {
 		{ "Category", "SyncModes" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "///\x09<summary>Sync Movement Mode (animations)</summary>\n/// <remarks>\n/// Syncs Unreal's Movement Mode (animations) for Characters.\n/// </remarks>\n" },
+#endif
 		{ "ModuleRelativePath", "Public/SmoothSync.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "<summary>Sync Movement Mode (animations)</summary>\n<remarks>\nSyncs Unreal's Movement Mode (animations) for Characters.\n</remarks>" },
+#endif
 	};
 #endif
 	void Z_Construct_UClass_USmoothSync_Statics::NewProp_syncMovementMode_SetBit(void* Obj)
@@ -1297,9 +1433,13 @@ void EmptyLinkFunctionForGeneratedCodeSmoothSync() {}
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USmoothSync_Statics::NewProp_isPositionCompressed_MetaData[] = {
 		{ "Category", "Compression" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/// <summary>Compress position floats when sending over the network.</summary>\n/// <remarks>\n/// Convert position floats sent over the network to Halfs, which use half as much bandwidth but are also half as precise.\n/// </remarks>\n" },
+#endif
 		{ "ModuleRelativePath", "Public/SmoothSync.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "<summary>Compress position floats when sending over the network.</summary>\n<remarks>\nConvert position floats sent over the network to Halfs, which use half as much bandwidth but are also half as precise.\n</remarks>" },
+#endif
 	};
 #endif
 	void Z_Construct_UClass_USmoothSync_Statics::NewProp_isPositionCompressed_SetBit(void* Obj)
@@ -1310,9 +1450,13 @@ void EmptyLinkFunctionForGeneratedCodeSmoothSync() {}
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USmoothSync_Statics::NewProp_isRotationCompressed_MetaData[] = {
 		{ "Category", "Compression" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/// <summary>Compress rotation floats when sending over the network.</summary>\n/// <remarks>\n/// Convert rotation floats sent over the network to Halfs, which use half as much bandwidth but are also half as precise.\n/// </remarks>\n" },
+#endif
 		{ "ModuleRelativePath", "Public/SmoothSync.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "<summary>Compress rotation floats when sending over the network.</summary>\n<remarks>\nConvert rotation floats sent over the network to Halfs, which use half as much bandwidth but are also half as precise.\n</remarks>" },
+#endif
 	};
 #endif
 	void Z_Construct_UClass_USmoothSync_Statics::NewProp_isRotationCompressed_SetBit(void* Obj)
@@ -1323,9 +1467,13 @@ void EmptyLinkFunctionForGeneratedCodeSmoothSync() {}
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USmoothSync_Statics::NewProp_isScaleCompressed_MetaData[] = {
 		{ "Category", "Compression" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/// <summary>Compress scale floats when sending over the network.</summary>\n/// <remarks>\n/// Convert scale floats sent over the network to Halfs, which use half as much bandwidth but are also half as precise.\n/// </remarks>\n" },
+#endif
 		{ "ModuleRelativePath", "Public/SmoothSync.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "<summary>Compress scale floats when sending over the network.</summary>\n<remarks>\nConvert scale floats sent over the network to Halfs, which use half as much bandwidth but are also half as precise.\n</remarks>" },
+#endif
 	};
 #endif
 	void Z_Construct_UClass_USmoothSync_Statics::NewProp_isScaleCompressed_SetBit(void* Obj)
@@ -1336,9 +1484,13 @@ void EmptyLinkFunctionForGeneratedCodeSmoothSync() {}
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USmoothSync_Statics::NewProp_isVelocityCompressed_MetaData[] = {
 		{ "Category", "Compression" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/// <summary>Compress velocity floats when sending over the network.</summary>\n/// <remarks>\n/// Convert velocity floats sent over the network to Halfs, which use half as much bandwidth but are also half as precise.\n/// </remarks>\n" },
+#endif
 		{ "ModuleRelativePath", "Public/SmoothSync.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "<summary>Compress velocity floats when sending over the network.</summary>\n<remarks>\nConvert velocity floats sent over the network to Halfs, which use half as much bandwidth but are also half as precise.\n</remarks>" },
+#endif
 	};
 #endif
 	void Z_Construct_UClass_USmoothSync_Statics::NewProp_isVelocityCompressed_SetBit(void* Obj)
@@ -1349,9 +1501,13 @@ void EmptyLinkFunctionForGeneratedCodeSmoothSync() {}
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USmoothSync_Statics::NewProp_isAngularVelocityCompressed_MetaData[] = {
 		{ "Category", "Compression" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/// <summary>Compress angular velocity floats when sending over the network.</summary>\n/// <remarks>\n/// Convert angular velocity floats sent over the network to Halfs, which use half as much bandwidth but are also half as precise.\n/// </remarks>\n" },
+#endif
 		{ "ModuleRelativePath", "Public/SmoothSync.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "<summary>Compress angular velocity floats when sending over the network.</summary>\n<remarks>\nConvert angular velocity floats sent over the network to Halfs, which use half as much bandwidth but are also half as precise.\n</remarks>" },
+#endif
 	};
 #endif
 	void Z_Construct_UClass_USmoothSync_Statics::NewProp_isAngularVelocityCompressed_SetBit(void* Obj)
@@ -1362,18 +1518,26 @@ void EmptyLinkFunctionForGeneratedCodeSmoothSync() {}
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USmoothSync_Statics::NewProp_sendRate_MetaData[] = {
 		{ "Category", "Important" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/// <summary>How many times per second to send network updates.</summary>\n/// <remarks>Keep in mind this can be limited by Unreal's Net Update Frequency.</remarks>\n" },
+#endif
 		{ "ModuleRelativePath", "Public/SmoothSync.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "<summary>How many times per second to send network updates.</summary>\n<remarks>Keep in mind this can be limited by Unreal's Net Update Frequency.</remarks>" },
+#endif
 	};
 #endif
 	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_USmoothSync_Statics::NewProp_sendRate = { "sendRate", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USmoothSync, sendRate), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_USmoothSync_Statics::NewProp_sendRate_MetaData), Z_Construct_UClass_USmoothSync_Statics::NewProp_sendRate_MetaData) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USmoothSync_Statics::NewProp_isUsingOriginRebasing_MetaData[] = {
 		{ "Category", "Important" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/// <summary>Whether or not to sync origin for Origin Rebasing.</summary>\n/// <remarks>You will need this only if your levels are very large. This requires an extra byte when syncing.</remarks>\n" },
+#endif
 		{ "ModuleRelativePath", "Public/SmoothSync.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "<summary>Whether or not to sync origin for Origin Rebasing.</summary>\n<remarks>You will need this only if your levels are very large. This requires an extra byte when syncing.</remarks>" },
+#endif
 	};
 #endif
 	void Z_Construct_UClass_USmoothSync_Statics::NewProp_isUsingOriginRebasing_SetBit(void* Obj)
@@ -1384,9 +1548,13 @@ void EmptyLinkFunctionForGeneratedCodeSmoothSync() {}
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USmoothSync_Statics::NewProp_alwaysSendOrigin_MetaData[] = {
 		{ "Category", "Important" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/// <summary>Send the origin with every update. Costs extra but fixes issues with network relevancy.</summary>\n" },
+#endif
 		{ "ModuleRelativePath", "Public/SmoothSync.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "<summary>Send the origin with every update. Costs extra but fixes issues with network relevancy.</summary>" },
+#endif
 	};
 #endif
 	void Z_Construct_UClass_USmoothSync_Statics::NewProp_alwaysSendOrigin_SetBit(void* Obj)
@@ -1397,9 +1565,13 @@ void EmptyLinkFunctionForGeneratedCodeSmoothSync() {}
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USmoothSync_Statics::NewProp_syncOwnershipChange_MetaData[] = {
 		{ "Category", "Important" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/// <summary>Sync changes in owernship.</summary>\n/// <remarks>\n/// Sends an extra byte with each network state that allows clients to handle ownership changes\n/// </remarks>\n" },
+#endif
 		{ "ModuleRelativePath", "Public/SmoothSync.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "<summary>Sync changes in owernship.</summary>\n<remarks>\nSends an extra byte with each network state that allows clients to handle ownership changes\n</remarks>" },
+#endif
 	};
 #endif
 	void Z_Construct_UClass_USmoothSync_Statics::NewProp_syncOwnershipChange_SetBit(void* Obj)
@@ -1410,37 +1582,53 @@ void EmptyLinkFunctionForGeneratedCodeSmoothSync() {}
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USmoothSync_Statics::NewProp_realComponentToSync_MetaData[] = {
 		{ "Category", "Important" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/// <summary>Gets assigned to the real transform to sync. Use SetSceneComponentToSync() method to set it up. If\n/// this variable is not assigned, SmoothSync will sync the actor.</summary>\n" },
+#endif
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/SmoothSync.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "<summary>Gets assigned to the real transform to sync. Use SetSceneComponentToSync() method to set it up. If\nthis variable is not assigned, SmoothSync will sync the actor.</summary>" },
+#endif
 	};
 #endif
 	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_USmoothSync_Statics::NewProp_realComponentToSync = { "realComponentToSync", nullptr, (EPropertyFlags)0x001000000008000c, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USmoothSync, realComponentToSync), Z_Construct_UClass_USceneComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_USmoothSync_Statics::NewProp_realComponentToSync_MetaData), Z_Construct_UClass_USmoothSync_Statics::NewProp_realComponentToSync_MetaData) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USmoothSync_Statics::NewProp_interpolationTime_MetaData[] = {
 		{ "Category", "Important" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/// <summary>\n/// The time that the non-owner uses to playback the Transform of the owner. This is sent from the owner to non-owners.\n/// This is exposed so you can line up things like animations with the exact positioning. You could send over what animation you want in your own RPC along with \n/// UGameplayStatics::GetRealTimeSeconds(smoothSyncScript->GetOwner()->GetWorld()) and then have the animation happen when this variable has reached that time on the non-owners.\n/// </summary>\n" },
+#endif
 		{ "ModuleRelativePath", "Public/SmoothSync.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "<summary>\nThe time that the non-owner uses to playback the Transform of the owner. This is sent from the owner to non-owners.\nThis is exposed so you can line up things like animations with the exact positioning. You could send over what animation you want in your own RPC along with\nUGameplayStatics::GetRealTimeSeconds(smoothSyncScript->GetOwner()->GetWorld()) and then have the animation happen when this variable has reached that time on the non-owners.\n</summary>" },
+#endif
 	};
 #endif
 	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_USmoothSync_Statics::NewProp_interpolationTime = { "interpolationTime", nullptr, (EPropertyFlags)0x0010000000000014, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USmoothSync, interpolationTime), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_USmoothSync_Statics::NewProp_interpolationTime_MetaData), Z_Construct_UClass_USmoothSync_Statics::NewProp_interpolationTime_MetaData) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USmoothSync_Statics::NewProp_atRestPositionThreshold_MetaData[] = {
 		{ "Category", "Thresholds" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/// <summary>Actor will come to positional rest if it stops moving by this amount. Used to smooth out stops and starts.</summary>\n" },
+#endif
 		{ "ModuleRelativePath", "Public/SmoothSync.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "<summary>Actor will come to positional rest if it stops moving by this amount. Used to smooth out stops and starts.</summary>" },
+#endif
 	};
 #endif
 	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_USmoothSync_Statics::NewProp_atRestPositionThreshold = { "atRestPositionThreshold", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USmoothSync, atRestPositionThreshold), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_USmoothSync_Statics::NewProp_atRestPositionThreshold_MetaData), Z_Construct_UClass_USmoothSync_Statics::NewProp_atRestPositionThreshold_MetaData) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USmoothSync_Statics::NewProp_atRestRotationThreshold_MetaData[] = {
 		{ "Category", "Thresholds" },
+#if !UE_BUILD_SHIPPING
 		{ "Comment", "/// <summary>Actor will come to rotational rest if it stops rotating by this amount. Used to smooth out stops and starts.</summary>\n" },
+#endif
 		{ "ModuleRelativePath", "Public/SmoothSync.h" },
+#if !UE_BUILD_SHIPPING
 		{ "ToolTip", "<summary>Actor will come to rotational rest if it stops rotating by this amount. Used to smooth out stops and starts.</summary>" },
+#endif
 	};
 #endif
 	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_USmoothSync_Statics::NewProp_atRestRotationThreshold = { "atRestRotationThreshold", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(USmoothSync, atRestRotationThreshold), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_USmoothSync_Statics::NewProp_atRestRotationThreshold_MetaData), Z_Construct_UClass_USmoothSync_Statics::NewProp_atRestRotationThreshold_MetaData) };
@@ -1524,21 +1712,21 @@ void EmptyLinkFunctionForGeneratedCodeSmoothSync() {}
 	}
 	DEFINE_VTABLE_PTR_HELPER_CTOR(USmoothSync);
 	USmoothSync::~USmoothSync() {}
-	struct Z_CompiledInDeferFile_FID_build_U5M_Marketplace_Sync_LocalBuilds_PluginTemp_HostProject_Plugins_SmoothSyncPlugin_Source_SmoothSyncPlugin_Public_SmoothSync_h_Statics
+	struct Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Plugins_SmoothSync_Source_SmoothSyncPlugin_Public_SmoothSync_h_Statics
 	{
 		static const FEnumRegisterCompiledInInfo EnumInfo[];
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
-	const FEnumRegisterCompiledInInfo Z_CompiledInDeferFile_FID_build_U5M_Marketplace_Sync_LocalBuilds_PluginTemp_HostProject_Plugins_SmoothSyncPlugin_Source_SmoothSyncPlugin_Public_SmoothSync_h_Statics::EnumInfo[] = {
-		{ SyncMode_StaticEnum, TEXT("SyncMode"), &Z_Registration_Info_UEnum_SyncMode, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 2850950279U) },
-		{ ExtrapolationMode_StaticEnum, TEXT("ExtrapolationMode"), &Z_Registration_Info_UEnum_ExtrapolationMode, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 640070318U) },
-		{ RestState_StaticEnum, TEXT("RestState"), &Z_Registration_Info_UEnum_RestState, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 3036912386U) },
+	const FEnumRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Plugins_SmoothSync_Source_SmoothSyncPlugin_Public_SmoothSync_h_Statics::EnumInfo[] = {
+		{ SyncMode_StaticEnum, TEXT("SyncMode"), &Z_Registration_Info_UEnum_SyncMode, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 699156310U) },
+		{ ExtrapolationMode_StaticEnum, TEXT("ExtrapolationMode"), &Z_Registration_Info_UEnum_ExtrapolationMode, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 1410925073U) },
+		{ RestState_StaticEnum, TEXT("RestState"), &Z_Registration_Info_UEnum_RestState, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 1331498417U) },
 	};
-	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_build_U5M_Marketplace_Sync_LocalBuilds_PluginTemp_HostProject_Plugins_SmoothSyncPlugin_Source_SmoothSyncPlugin_Public_SmoothSync_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_USmoothSync, USmoothSync::StaticClass, TEXT("USmoothSync"), &Z_Registration_Info_UClass_USmoothSync, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(USmoothSync), 694881436U) },
+	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Plugins_SmoothSync_Source_SmoothSyncPlugin_Public_SmoothSync_h_Statics::ClassInfo[] = {
+		{ Z_Construct_UClass_USmoothSync, USmoothSync::StaticClass, TEXT("USmoothSync"), &Z_Registration_Info_UClass_USmoothSync, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(USmoothSync), 1155463296U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_build_U5M_Marketplace_Sync_LocalBuilds_PluginTemp_HostProject_Plugins_SmoothSyncPlugin_Source_SmoothSyncPlugin_Public_SmoothSync_h_2192319691(TEXT("/Script/SmoothSyncPlugin"),
-		Z_CompiledInDeferFile_FID_build_U5M_Marketplace_Sync_LocalBuilds_PluginTemp_HostProject_Plugins_SmoothSyncPlugin_Source_SmoothSyncPlugin_Public_SmoothSync_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_build_U5M_Marketplace_Sync_LocalBuilds_PluginTemp_HostProject_Plugins_SmoothSyncPlugin_Source_SmoothSyncPlugin_Public_SmoothSync_h_Statics::ClassInfo),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Plugins_SmoothSync_Source_SmoothSyncPlugin_Public_SmoothSync_h_2943569122(TEXT("/Script/SmoothSyncPlugin"),
+		Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Plugins_SmoothSync_Source_SmoothSyncPlugin_Public_SmoothSync_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Plugins_SmoothSync_Source_SmoothSyncPlugin_Public_SmoothSync_h_Statics::ClassInfo),
 		nullptr, 0,
-		Z_CompiledInDeferFile_FID_build_U5M_Marketplace_Sync_LocalBuilds_PluginTemp_HostProject_Plugins_SmoothSyncPlugin_Source_SmoothSyncPlugin_Public_SmoothSync_h_Statics::EnumInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_build_U5M_Marketplace_Sync_LocalBuilds_PluginTemp_HostProject_Plugins_SmoothSyncPlugin_Source_SmoothSyncPlugin_Public_SmoothSync_h_Statics::EnumInfo));
+		Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Plugins_SmoothSync_Source_SmoothSyncPlugin_Public_SmoothSync_h_Statics::EnumInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_NuclearNightmare_NuclearNightmare_Plugins_SmoothSync_Source_SmoothSyncPlugin_Public_SmoothSync_h_Statics::EnumInfo));
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
